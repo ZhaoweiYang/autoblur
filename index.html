@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoBlur · 视频车牌 / 人脸自动打码</title>
+  <meta name="description" content="在浏览器本地识别视频中的车牌与人脸，自选打码后导出。全部处理不上传服务器。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1><span class="logo">🛡️</span> AutoBlur</h1>
+      <p class="tagline">上传视频 → 自动识别 <b>车牌 / 人脸</b> → 勾选要打码的对象 → 导出。<br>
+        <span class="privacy">🔒 全部处理均在你的浏览器本地完成，视频<b>不会上传</b>到任何服务器。</span>
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- engine status -->
+    <div id="engineChip" class="chip" title="识别引擎状态">
+      <span class="dot"></span><span id="engineText">识别引擎将在选择视频后加载</span>
+    </div>
+
+    <!-- STEP 1: upload -->
+    <section id="step-upload" class="card step">
+      <h2><span class="num">1</span> 选择视频</h2>
+      <label id="dropZone" class="dropzone" for="fileInput">
+        <div class="dz-inner">
+          <div class="dz-icon">🎬</div>
+          <div class="dz-title">点击选择，或拖拽视频到此处</div>
+          <div class="dz-hint">支持 MP4 / WebM / MOV 等浏览器可播放格式 · 建议时长 &lt; 2 分钟以获得较快处理速度</div>
+        </div>
+        <input id="fileInput" type="file" accept="video/*" hidden />
+      </label>
+      <div id="fileMeta" class="file-meta" hidden></div>
+    </section>
+
+    <!-- STEP 2: detect -->
+    <section id="step-detect" class="card step" hidden>
+      <h2><span class="num">2</span> 识别车牌与人脸</h2>
+      <div class="controls-row">
+        <label class="toggle"><input type="checkbox" id="optFace" checked /> <span>👤 识别人脸</span></label>
+        <label class="toggle"><input type="checkbox" id="optPlate" checked /> <span>🚗 识别车牌</span></label>
+        <label class="select-field">识别密度
+          <select id="optDensity">
+            <option value="2">快速 (2帧/秒)</option>
+            <option value="4" selected>标准 (4帧/秒)</option>
+            <option value="8">精细 (8帧/秒)</option>
+          </select>
+        </label>
+        <button id="btnAnalyze" class="btn btn-primary">开始识别</button>
+      </div>
+      <div id="analyzeProgress" class="progress" hidden>
+        <div class="progress-bar"><div id="analyzeBar" class="progress-fill"></div></div>
+        <div class="progress-meta"><span id="analyzeText">准备中…</span><button id="btnCancelAnalyze" class="btn btn-ghost btn-sm">停止</button></div>
+      </div>
+      <p class="note">提示：浏览器端使用 OpenCV Haar 模型进行识别，正脸与清晰的车牌效果最佳；侧脸、模糊或过小的目标可能漏检，可在下一步<b>手动框选</b>补充。</p>
+    </section>
+
+    <!-- STEP 3: review & select -->
+    <section id="step-review" class="card step" hidden>
+      <h2><span class="num">3</span> 勾选要打码的对象</h2>
+      <div class="review-grid">
+        <div class="preview-col">
+          <div class="preview-wrap">
+            <canvas id="previewCanvas"></canvas>
+            <div id="drawHint" class="draw-hint" hidden>拖动鼠标框选要遮挡的区域</div>
+          </div>
+          <input id="scrub" class="scrub" type="range" min="0" max="1000" value="0" />
+          <div class="preview-tools">
+            <label class="select-field">遮挡方式
+              <select id="styleSel">
+                <option value="mosaic" selected>马赛克</option>
+                <option value="blur">高斯模糊</option>
+                <option value="black">黑色遮挡</option>
+              </select>
+            </label>
+            <label class="select-field strength-field">强度 <input id="strength" type="range" min="1" max="10" value="6" /></label>
+            <button id="btnManual" class="btn btn-ghost btn-sm">✏️ 手动框选</button>
+          </div>
+          <p class="legend"><span class="sw sw-red"></span> 未打码（点击方框可切换）　<span class="sw sw-green"></span> 已选中打码</p>
+        </div>
+        <div class="list-col">
+          <div class="list-actions">
+            <button id="btnAll" class="btn btn-ghost btn-sm">全选</button>
+            <button id="btnNone" class="btn btn-ghost btn-sm">全不选</button>
+            <span id="selCount" class="sel-count"></span>
+          </div>
+          <div id="detectList" class="detect-list"></div>
+        </div>
+      </div>
+      <div class="actions-bar">
+        <button id="btnExport" class="btn btn-primary btn-lg">🚀 开始打码并导出</button>
+        <span class="hint-inline">导出按视频原速进行，约需与视频时长相当的时间。</span>
+      </div>
+    </section>
+
+    <!-- STEP 4: export -->
+    <section id="step-export" class="card step" hidden>
+      <h2><span class="num">4</span> 处理与下载</h2>
+      <div id="exportProgress" class="progress" hidden>
+        <div class="progress-bar"><div id="exportBar" class="progress-fill"></div></div>
+        <div class="progress-meta"><span id="exportText">处理中…</span></div>
+      </div>
+      <div id="resultBox" class="result" hidden>
+        <video id="resultVideo" controls playsinline></video>
+        <div class="result-actions">
+          <a id="downloadLink" class="btn btn-primary" download>⬇️ 下载已打码视频</a>
+          <button id="btnRestart" class="btn btn-ghost">重新选择 / 处理</button>
+          <span id="resultMeta" class="hint-inline"></span>
+        </div>
+      </div>
+    </section>
+
+    <div id="unsupported" class="card warn" hidden>
+      ⚠️ 你的浏览器可能不完全支持本工具所需的特性（MediaRecorder / Canvas 采集）。建议使用最新版 <b>Chrome / Edge</b> 获得最佳效果。
+    </div>
+  </main>
+
+  <div id="engineOverlay" class="overlay" hidden>
+    <div class="overlay-card">
+      <div class="spinner" aria-hidden="true"></div>
+      <div class="overlay-title">正在加载识别引擎…</div>
+      <div id="overlayStatus" class="overlay-sub">首次加载约 10MB，期间页面可能短暂无响应，请稍候。</div>
+    </div>
+  </div>
+
+  <footer class="site-footer wrap">
+    <p>AutoBlur · 纯前端隐私打码工具 · 识别基于 <a href="https://opencv.org/" target="_blank" rel="noopener">OpenCV.js</a> · 本页面所有计算均在本地浏览器运行。</p>
+  </footer>
+
+  <!-- app modules -->
+  <script src="js/mosaic.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/detector.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
