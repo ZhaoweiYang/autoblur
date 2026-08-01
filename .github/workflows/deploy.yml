@@ -21,13 +21,14 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # enablement:true turns on Pages (source = GitHub Actions) on first run.
+      # No job-level `environment:` binding here: on a brand-new repo that gate
+      # is evaluated before this step runs and rejects the job before Pages is
+      # enabled. deploy-pages still publishes to the github-pages environment.
       - name: Configure Pages (enable if needed)
         uses: actions/configure-pages@v5
         with:
@@ -52,3 +53,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Show deployed URL
+        run: echo "Deployed to ${{ steps.deployment.outputs.page_url }}"
