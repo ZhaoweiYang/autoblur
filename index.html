@@ -47,8 +47,8 @@
         <label class="select-field">识别密度
           <select id="optDensity">
             <option value="2">快速 (2帧/秒)</option>
-            <option value="4" selected>标准 (4帧/秒)</option>
-            <option value="8">精细 (8帧/秒)</option>
+            <option value="3" selected>标准 (3帧/秒)</option>
+            <option value="5">精细 (5帧/秒)</option>
           </select>
         </label>
         <button id="btnAnalyze" class="btn btn-primary">开始识别</button>
@@ -57,7 +57,7 @@
         <div class="progress-bar"><div id="analyzeBar" class="progress-fill"></div></div>
         <div class="progress-meta"><span id="analyzeText">准备中…</span><button id="btnCancelAnalyze" class="btn btn-ghost btn-sm">停止</button></div>
       </div>
-      <p class="note">提示：浏览器端使用 OpenCV Haar 模型进行识别，正脸与清晰的车牌效果最佳；侧脸、模糊或过小的目标可能漏检，可在下一步<b>手动框选</b>补充。</p>
+      <p class="note">提示：人脸使用 <b>YuNet 深度模型</b>识别，对侧脸、角度和光线更鲁棒；车牌使用快速 Haar 模型，正对、清晰的车牌效果最佳。深度模型比传统方法更慢一些，请留意进度条；漏检的目标可在下一步<b>手动框选</b>补充。</p>
     </section>
 
     <!-- STEP 3: review & select -->

@@ -152,9 +152,10 @@
   }
 
   /* ---------------- analysis ---------------- */
-  function toDets(rects, dW, dH) {
+  function toDets(rects) {
+    // rects come from Detector already normalized to [0,1].
     return rects.map((r) => {
-      const box = { x: r.x / dW, y: r.y / dH, w: r.w / dW, h: r.h / dH };
+      const box = { x: r.x, y: r.y, w: r.w, h: r.h };
       return { box, thumb: cropThumbFrom(detCanvas, detCtx, box) };
     });
   }
@@ -175,7 +176,7 @@
     state.tracks = state.tracks.filter((t) => t.category === 'manual');
     state.selected = new Set([...state.selected].filter((uid) => state.tracks.some((t) => t.uid === uid)));
 
-    const targetW = 640;
+    const targetW = 448; // balance YuNet DNN speed vs. small-face recall
     const scale = state.vw > targetW ? targetW / state.vw : 1;
     const dW = Math.max(2, Math.round(state.vw * scale));
     const dH = Math.max(2, Math.round(state.vh * scale));
@@ -198,8 +199,8 @@
       try { detCtx.drawImage(video, 0, 0, dW, dH); } catch (e) {}
       let res = { faces: [], plates: [] };
       try { res = Detector.detect(detCanvas, { face, plate }); } catch (e) { console.error(e); }
-      if (face) faceT.update(toDets(res.faces, dW, dH), t);
-      if (plate) plateT.update(toDets(res.plates, dW, dH), t);
+      if (face) faceT.update(toDets(res.faces), t);
+      if (plate) plateT.update(toDets(res.plates), t);
       const p = (i + 1) / nSamples;
       els.analyzeBar.style.width = (p * 100).toFixed(1) + '%';
       els.analyzeText.textContent = '识别中… ' + (i + 1) + ' / ' + nSamples + ' 帧';
