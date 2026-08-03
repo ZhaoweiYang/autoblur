@@ -153,6 +153,9 @@ select { background: var(--card2); border: 1px solid var(--line); border-radius:
 
 /* engine loading overlay */
 .overlay { position: fixed; inset: 0; background: rgba(9,11,26,.82); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; z-index: 100; }
+/* `.overlay` sets display:flex, which would otherwise override the `hidden`
+   attribute's display:none and leave the overlay covering (and blocking) the page. */
+.overlay[hidden] { display: none; }
 .overlay-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px 34px; text-align: center; max-width: 360px; box-shadow: var(--shadow); }
 .overlay-title { font-size: 18px; font-weight: 700; margin-top: 16px; }
 .overlay-sub { color: var(--muted); font-size: 13.5px; margin-top: 8px; }

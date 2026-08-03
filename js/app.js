@@ -198,7 +198,10 @@
       await seekTo(t);
       try { detCtx.drawImage(video, 0, 0, dW, dH); } catch (e) {}
       let res = { faces: [], plates: [] };
-      try { res = Detector.detect(detCanvas, { face, plate }); } catch (e) { console.error(e); }
+      try {
+        const imageData = detCtx.getImageData(0, 0, dW, dH);
+        res = await Detector.detect(imageData, { face, plate });
+      } catch (e) { console.error(e); }
       if (face) faceT.update(toDets(res.faces), t);
       if (plate) plateT.update(toDets(res.plates), t);
       const p = (i + 1) / nSamples;

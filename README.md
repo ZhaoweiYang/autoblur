@@ -24,6 +24,8 @@
 3. **本地渲染**：导出时按原速播放源视频，用 `requestVideoFrameCallback` 逐帧绘制到画布，对所选目标按时间插值出的位置打码。
 4. **录制导出**：用 `canvas.captureStream()` + `MediaRecorder` 录制画布，并通过 Web Audio 把原始音轨混入，生成可下载的视频文件。
 
+识别引擎（OpenCV.js + WASM，约 10MB）运行在 **Web Worker 后台线程**里：主线程直接加载这么大的 WASM 会被浏览器长时间阻塞（Chrome 限制主线程上的大型同步 WASM 编译），放到 Worker 里既不冻结界面、又能在约 1 秒内完成初始化。
+
 全部逻辑是纯静态前端（HTML + CSS + JS），因此可以直接部署在 GitHub Pages 上。
 
 ## ⚠️ 使用说明与局限
