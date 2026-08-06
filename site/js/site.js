@@ -1,4 +1,4 @@
-/* BGBlur marketing site — small progressive-enhancement helpers. */
+/* AutoBlur marketing site — small progressive-enhancement helpers. */
 (function () {
   'use strict';
 

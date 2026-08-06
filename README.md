@@ -75,7 +75,8 @@ site/                      # 营销站（内容对标 bgblur.com/en，视觉风�
 
 ## 🌐 营销站 `site/`
 
-`site/` 下是一套独立的静态营销站，内容对标 [bgblur.com/en](https://www.bgblur.com/en)（人脸 / 车牌 / 背景模糊工具站），
+`site/` 下是一套独立的静态营销站，站名 **AutoBlur**，与仓库根目录的工具本体同名。
+内容对标 [bgblur.com/en](https://www.bgblur.com/en)（人脸 / 车牌 / 背景模糊工具站），
 视觉语言对标 [n8n.io](https://n8n.io/)：珊瑚粉主色 `#EA4B71` + 深靛蓝 `#101330`、暖白纸张底、
 发丝级描边卡片、等宽小标签，以及贯穿全站的「工作流节点图」母题（把 n8n 的画布语言用来表现打码流水线）。
 
@@ -87,7 +88,11 @@ site/pricing.html                           # 定价
 site/features/face-blur.html                # 人脸打码
 site/features/background-blur.html          # 背景虚化
 site/features/license-plate-blur.html       # 车牌打码
+site/features/blur-anything.html            # 按名称打码任意物体
+site/features/pixelated-blur.html           # 马赛克 / 像素化
+site/features/video-editor.html             # AI 视频编辑器
 site/features/image-background-blur.html    # 图片背景虚化
+site/features/photo-blur.html               # 图片打码
 site/css/site.css                           # 设计令牌与全部组件样式
 site/js/site.js                             # 移动端菜单、对比滑块、滚动出现、FAQ 手风琴
 ```

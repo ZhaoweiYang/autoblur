@@ -1,5 +1,5 @@
 /* =========================================================
-   BGBlur — marketing site
+   AutoBlur — marketing site
    Visual language modelled on n8n.io:
    coral accent (#EA4B71) on ink navy (#101330), warm paper
    surfaces, hairline-bordered cards, mono eyebrows and a
@@ -216,8 +216,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   box-shadow: 0 4px 12px -4px rgba(234,75,113,.7);
 }
 .brand-mark svg { width: 17px; height: 17px; }
-.brand span b { font-weight: 640; }
-.brand-suffix { color: var(--muted-2); font-weight: 500; }
+/* wordmark lockup: light "auto" + heavy "blur", works on light and dark */
+.brand > span { font-weight: 480; letter-spacing: -.028em; }
+.brand > span b { font-weight: 680; }
 
 .nav-links { display: flex; align-items: center; gap: 4px; margin-left: 6px; }
 .nav-links > li { position: relative; }
@@ -705,7 +706,6 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
   /* keep the header on one line at phone widths */
   .brand { font-size: 18px; }
-  .brand-suffix { display: none; }
   .nav-actions .btn--sm { padding: 9px 12px; }
   .nav-links { top: 68px; }
 }
