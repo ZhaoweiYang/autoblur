@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free Video Blur Tool | Blur Faces, Backgrounds &amp; Plates | BGBlur</title>
+<meta name="description" content="Blur faces, backgrounds and license plates in videos with AI. Free, no watermark, instant results. Upload your video, choose what to blur, and download — no signup required." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23ea4b71'/><circle cx='50' cy='50' r='24' fill='%23fff' opacity='.9'/></svg>" />
+<link rel="stylesheet" href="css/site.css" />
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<!-- ============ header ============ -->
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+      </span>
+      <span>bg<b>blur</b><span class="brand-suffix">.com</span></span>
+    </a>
+
+    <ul class="nav-links">
+      <li class="has-menu">
+        <a class="nav-link" href="tools.html">Tools
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <div class="menu">
+          <a href="features/face-blur.html">
+            <span class="mi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></span>
+            <span><strong>Face Blur</strong><small>Auto-detect and blur every face in a video</small></span>
+          </a>
+          <a href="features/background-blur.html">
+            <span class="mi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="11" r="3"/><path d="M3 18c2.5-3 5-4 9-4s6.5 1 9 4"/></svg></span>
+            <span><strong>Background Blur</strong><small>Keep the subject sharp, soften everything else</small></span>
+          </a>
+          <a href="features/license-plate-blur.html">
+            <span class="mi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11h2M11 11h2M16 11h2"/></svg></span>
+            <span><strong>License Plate Blur</strong><small>Dashcam, street view and fleet footage</small></span>
+          </a>
+          <a href="features/image-background-blur.html">
+            <span class="mi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/></svg></span>
+            <span><strong>Image Background Blur</strong><small>Photo bokeh for JPG, PNG and more</small></span>
+          </a>
+          <a href="tools.html">
+            <span class="mi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></span>
+            <span><strong>All tools</strong><small>Objects, text, logos, mosaic and pixelate</small></span>
+          </a>
+        </div>
+      </li>
+      <li><a class="nav-link" href="examples.html">Examples</a></li>
+      <li><a class="nav-link" href="index.html#how">How it works</a></li>
+      <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+      <li><a class="nav-link" href="index.html#faq">FAQ</a></li>
+    </ul>
+
+    <span class="nav-spacer"></span>
+
+    <div class="nav-actions">
+      <a class="btn btn--ghost btn--sm" href="examples.html">See examples</a>
+      <a class="btn btn--sm" href="../index.html">Blur a video free</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ hero ============ -->
+<section class="on-dark dots glow hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="pill"><span class="dot"></span> Free · No watermark · No signup</span>
+        <h1 class="display">Blur faces, plates and backgrounds <span class="hl">in any video</span></h1>
+        <p class="lead">BGBlur's AI finds faces, license plates and moving objects for you, then tracks them frame by frame. Upload a video, choose what to blur, download a clean file — that's the whole workflow.</p>
+        <div class="btn-row">
+          <a class="btn btn--lg" href="../index.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 8l5-5 5 5M5 21h14"/></svg>
+            Upload a video
+          </a>
+          <a class="btn btn--lg btn--light" href="examples.html">Watch before &amp; after</a>
+        </div>
+        <div class="hero-meta">
+          <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Runs in your browser</span>
+          <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Files never stored on a server</span>
+          <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> MP4, MOV, WebM, JPG, PNG</span>
+        </div>
+      </div>
+
+      <!-- workflow canvas: the n8n node-graph motif, wired to the blur pipeline -->
+      <div class="canvas" aria-hidden="true">
+        <div class="canvas-bar">
+          <span class="lights"><i></i><i></i><i></i></span>
+          blur pipeline
+          <span class="live"><i></i> running</span>
+        </div>
+        <div class="flow">
+          <div class="flow-node">
+            <span class="n-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 8l5-5 5 5M5 21h14"/></svg></span>
+            <span class="n-body"><strong>Upload</strong><small>street-walk-4k.mp4 · 01:42</small></span>
+            <span class="n-state">done</span>
+          </div>
+          <div class="flow-wire"></div>
+          <div class="flow-node">
+            <span class="n-ic n-ic--violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></span>
+            <span class="n-body"><strong>Detect faces</strong><small>7 faces found</small></span>
+            <span class="n-state">done</span>
+          </div>
+          <div class="flow-wire"></div>
+          <div class="flow-node">
+            <span class="n-ic n-ic--amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11h2M11 11h2M16 11h2"/></svg></span>
+            <span class="n-body"><strong>Detect plates</strong><small>3 vehicles tracked</small></span>
+            <span class="n-state">done</span>
+          </div>
+          <div class="flow-wire"></div>
+          <div class="flow-node">
+            <span class="n-ic n-ic--mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9M7 16l5 5 5-5M5 3h14"/></svg></span>
+            <span class="n-body"><strong>Export</strong><small>mosaic · strength 6 · MP4</small></span>
+            <span class="n-state">ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-strip">
+      <span class="label">Used for</span>
+      <ul>
+        <li>YouTube &amp; social clips</li>
+        <li>Dashcam footage</li>
+        <li>Real-estate tours</li>
+        <li>Webinars &amp; interviews</li>
+        <li>Body-cam &amp; CCTV review</li>
+        <li>GDPR deliverables</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ tools ============ -->
+<section class="section" id="tools">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Blur tools</span>
+      <h2 class="h2">One editor, every kind of blur</h2>
+      <p>Faces, backgrounds, license plates, text, logos and any object you draw a box around — in video and in photos, all from the same browser tab.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <a class="card tool-card reveal" href="features/face-blur.html">
+        <span class="tc-art">
+          <svg viewBox="0 0 320 180" role="img" aria-label="Faces detected and blurred">
+            <rect width="320" height="180" fill="#f3f0eb"/>
+            <g fill="#d9d4ca"><circle cx="90" cy="72" r="26"/><path d="M52 150c0-24 17-38 38-38s38 14 38 38z"/><circle cx="200" cy="80" r="21"/><path d="M170 150c0-19 13-30 30-30s30 11 30 30z"/></g>
+            <g fill="none" stroke="#ea4b71" stroke-width="2.5">
+              <rect x="62" y="44" width="56" height="56" rx="4"/><rect x="177" y="57" width="46" height="46" rx="4"/>
+            </g>
+            <g fill="#ea4b71" opacity=".85">
+              <rect x="66" y="48" width="12" height="12"/><rect x="82" y="48" width="12" height="12" opacity=".7"/><rect x="98" y="48" width="12" height="12" opacity=".5"/>
+              <rect x="66" y="64" width="12" height="12" opacity=".6"/><rect x="82" y="64" width="12" height="12"/><rect x="98" y="64" width="12" height="12" opacity=".75"/>
+              <rect x="66" y="80" width="12" height="12" opacity=".45"/><rect x="82" y="80" width="12" height="12" opacity=".65"/><rect x="98" y="80" width="12" height="12" opacity=".55"/>
+              <rect x="181" y="61" width="12" height="12" opacity=".7"/><rect x="195" y="61" width="12" height="12" opacity=".5"/><rect x="209" y="61" width="10" height="12" opacity=".8"/>
+              <rect x="181" y="75" width="12" height="12" opacity=".55"/><rect x="195" y="75" width="12" height="12" opacity=".8"/><rect x="209" y="75" width="10" height="12" opacity=".6"/>
+              <rect x="181" y="89" width="12" height="10" opacity=".75"/><rect x="195" y="89" width="12" height="10" opacity=".45"/><rect x="209" y="89" width="10" height="10" opacity=".7"/>
+            </g>
+            <text x="62" y="38" font-family="monospace" font-size="10" fill="#ea4b71">face 0.98</text>
+          </svg>
+        </span>
+        <span class="tc-body">
+          <span class="h3">Face Blur</span>
+          <p>AI detects and blurs faces automatically to protect privacy and identity — from a single speaker to 100+ people in a crowd.</p>
+          <span class="link-arrow">Blur faces</span>
+        </span>
+      </a>
+
+      <a class="card tool-card reveal" href="features/background-blur.html">
+        <span class="tc-art">
+          <svg viewBox="0 0 320 180" role="img" aria-label="Background blurred behind a subject">
+            <rect width="320" height="180" fill="#f3f0eb"/>
+            <g opacity=".45"><rect x="20" y="30" width="60" height="90" rx="4" fill="#c9c3b7"/><rect x="240" y="50" width="60" height="70" rx="4" fill="#c9c3b7"/><circle cx="270" cy="36" r="12" fill="#d9d4ca"/><rect x="0" y="140" width="320" height="40" fill="#ddd8cd"/></g>
+            <g fill="#101330"><circle cx="160" cy="70" r="27"/><path d="M116 160c0-27 20-42 44-42s44 15 44 42z"/></g>
+            <circle cx="160" cy="70" r="40" fill="none" stroke="#ea4b71" stroke-width="2.5" stroke-dasharray="6 5"/>
+            <text x="196" y="118" font-family="monospace" font-size="10" fill="#ea4b71">subject kept sharp</text>
+          </svg>
+        </span>
+        <span class="tc-body">
+          <span class="h3">Background Blur</span>
+          <p>Soften a distracting room while the subject stays in focus. Depth-of-field looks without a green screen, DSLR lens or timeline.</p>
+          <span class="link-arrow">Blur backgrounds</span>
+        </span>
+      </a>
+
+      <a class="card tool-card reveal" href="features/license-plate-blur.html">
+        <span class="tc-art">
+          <svg viewBox="0 0 320 180" role="img" aria-label="License plate detected and blurred">
+            <rect width="320" height="180" fill="#f3f0eb"/>
+            <path d="M50 118h220l-16-40c-3-8-10-13-19-13H85c-9 0-16 5-19 13z" fill="#d9d4ca"/>
+            <rect x="40" y="118" width="240" height="26" rx="8" fill="#c9c3b7"/>
+            <circle cx="88" cy="146" r="14" fill="#101330"/><circle cx="232" cy="146" r="14" fill="#101330"/>
+            <rect x="128" y="122" width="64" height="20" rx="3" fill="#fff"/>
+            <g fill="#ea4b71"><rect x="131" y="125" width="14" height="14"/><rect x="147" y="125" width="14" height="14" opacity=".65"/><rect x="163" y="125" width="14" height="14" opacity=".85"/><rect x="179" y="125" width="10" height="14" opacity=".55"/></g>
+            <rect x="124" y="118" width="72" height="28" rx="4" fill="none" stroke="#ea4b71" stroke-width="2.5"/>
+            <text x="124" y="112" font-family="monospace" font-size="10" fill="#ea4b71">plate 0.94</text>
+          </svg>
+        </span>
+        <span class="tc-body">
+          <span class="h3">License Plate Blur</span>
+          <p>Trained specifically for plates in driving footage, dashcams and street-view video — so creators and fleets stay compliant with privacy law.</p>
+          <span class="link-arrow">Blur plates</span>
+        </span>
+      </a>
+
+      <a class="card tool-card reveal" href="features/image-background-blur.html">
+        <span class="tc-art">
+          <svg viewBox="0 0 320 180" role="img" aria-label="Photo background blur">
+            <rect width="320" height="180" fill="#f3f0eb"/>
+            <rect x="60" y="24" width="200" height="132" rx="8" fill="#fff" stroke="#e6e2da"/>
+            <g opacity=".4"><rect x="72" y="36" width="176" height="70" fill="#cfc9bd"/><circle cx="110" cy="62" r="14" fill="#e0dbd0"/><path d="m72 106 44-34 32 22 30-24 70 36v6H72z" fill="#bdb6a8"/></g>
+            <g fill="#101330"><circle cx="160" cy="106" r="20"/><path d="M128 152c0-19 14-30 32-30s32 11 32 30z"/></g>
+            <g stroke="#ea4b71" stroke-width="2.5" fill="none"><path d="M72 36h176v70H72z" stroke-dasharray="6 5"/></g>
+            <text x="72" y="20" font-family="monospace" font-size="10" fill="#ea4b71">JPG · PNG · WEBP</text>
+          </svg>
+        </span>
+        <span class="tc-body">
+          <span class="h3">Image Background Blur</span>
+          <p>Upload a photo and the AI detects the subject, then applies a professional background blur that creates depth and focus.</p>
+          <span class="link-arrow">Blur a photo</span>
+        </span>
+      </a>
+
+      <a class="card tool-card reveal" href="tools.html#objects">
+        <span class="tc-art">
+          <svg viewBox="0 0 320 180" role="img" aria-label="Custom object selection">
+            <rect width="320" height="180" fill="#f3f0eb"/>
+            <rect x="40" y="40" width="90" height="60" rx="6" fill="#d9d4ca"/>
+            <rect x="150" y="70" width="130" height="70" rx="6" fill="#d9d4ca"/>
+            <g fill="#ea4b71" opacity=".85"><rect x="154" y="74" width="20" height="20"/><rect x="178" y="74" width="20" height="20" opacity=".6"/><rect x="202" y="74" width="20" height="20" opacity=".8"/><rect x="226" y="74" width="20" height="20" opacity=".5"/><rect x="250" y="74" width="26" height="20" opacity=".7"/><rect x="154" y="98" width="20" height="20" opacity=".55"/><rect x="178" y="98" width="20" height="20" opacity=".85"/><rect x="202" y="98" width="20" height="20" opacity=".6"/><rect x="226" y="98" width="20" height="20" opacity=".75"/><rect x="250" y="98" width="26" height="20" opacity=".45"/></g>
+            <rect x="150" y="70" width="130" height="70" rx="6" fill="none" stroke="#ea4b71" stroke-width="2.5"/>
+            <g fill="#ea4b71"><rect x="146" y="66" width="8" height="8"/><rect x="276" y="66" width="8" height="8"/><rect x="146" y="136" width="8" height="8"/><rect x="276" y="136" width="8" height="8"/></g>
+            <text x="150" y="62" font-family="monospace" font-size="10" fill="#ea4b71">custom region</text>
+          </svg>
+        </span>
+        <span class="tc-body">
+          <span class="h3">Objects, Text &amp; Logos</span>
+          <p>Draw a box around anything the AI shouldn't have to guess — a screen, a badge, a house number, a brand mark — and it stays covered as it moves.</p>
+          <span class="link-arrow">Blur objects</span>
+        </span>
+      </a>
+
+      <a class="card tool-card reveal" href="tools.html#styles">
+        <span class="tc-art">
+          <svg viewBox="0 0 320 180" role="img" aria-label="Blur, mosaic and solid styles">
+            <rect width="320" height="180" fill="#f3f0eb"/>
+            <g>
+              <rect x="24" y="46" width="80" height="88" rx="8" fill="#d9d4ca"/>
+              <circle cx="64" cy="90" r="26" fill="#ea4b71" opacity=".55"/>
+              <circle cx="64" cy="90" r="18" fill="#ea4b71" opacity=".5"/>
+              <text x="24" y="152" font-family="monospace" font-size="10" fill="#6c7086">gaussian</text>
+            </g>
+            <g>
+              <rect x="120" y="46" width="80" height="88" rx="8" fill="#d9d4ca"/>
+              <g fill="#ea4b71"><rect x="136" y="66" width="16" height="16" opacity=".8"/><rect x="152" y="66" width="16" height="16" opacity=".5"/><rect x="168" y="66" width="16" height="16" opacity=".7"/><rect x="136" y="82" width="16" height="16" opacity=".55"/><rect x="152" y="82" width="16" height="16" opacity=".85"/><rect x="168" y="82" width="16" height="16" opacity=".6"/><rect x="136" y="98" width="16" height="16" opacity=".7"/><rect x="152" y="98" width="16" height="16" opacity=".45"/><rect x="168" y="98" width="16" height="16" opacity=".8"/></g>
+              <text x="120" y="152" font-family="monospace" font-size="10" fill="#6c7086">mosaic</text>
+            </g>
+            <g>
+              <rect x="216" y="46" width="80" height="88" rx="8" fill="#d9d4ca"/>
+              <rect x="232" y="66" width="48" height="48" fill="#101330"/>
+              <text x="216" y="152" font-family="monospace" font-size="10" fill="#6c7086">solid</text>
+            </g>
+          </svg>
+        </span>
+        <span class="tc-body">
+          <span class="h3">Blur, Mosaic or Pixelate</span>
+          <p>Pick the look and dial the strength — subtle depth-of-field softness, bokeh-style heavy blur, chunky mosaic or a solid block.</p>
+          <span class="link-arrow">Compare styles</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ how it works ============ -->
+<section class="section section--paper section--line" id="how">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">How it works</span>
+      <h2 class="h2">Three steps. No editing timeline.</h2>
+      <p>Upload your video, choose what to blur, and download your result. No signup, no plugins, no app to install.</p>
+    </div>
+
+    <div class="steps steps--connected">
+      <article class="step reveal">
+        <h3 class="h3">Upload your video or photo</h3>
+        <p>Drag in an MP4, MOV or WebM clip — or a JPG, JPEG, PNG or other common image format. Everything opens straight in the browser, on desktop or on your phone.</p>
+      </article>
+      <article class="step reveal">
+        <h3 class="h3">Choose what to blur</h3>
+        <p>Faces, backgrounds, license plates, text, logos or any object you select. The AI detects them automatically and tracks moving elements throughout the video, so blur follows the subject instead of needing manual keyframes.</p>
+      </article>
+      <article class="step reveal">
+        <h3 class="h3">Preview and export</h3>
+        <p>Adjust blur strength and style, scrub the preview, then export a clean file — ready to publish, with no watermark burned into the frame.</p>
+      </article>
+    </div>
+
+    <div class="btn-row center reveal" style="margin-top:44px; justify-content:center;">
+      <a class="btn btn--lg" href="../index.html">Start blurring — free</a>
+      <a class="btn btn--lg btn--ghost" href="examples.html">See real results</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ tracking split ============ -->
+<section class="section">
+  <div class="wrap split">
+    <div class="split-copy reveal">
+      <span class="eyebrow">Motion tracking</span>
+      <h2 class="h2">The blur follows the subject, frame by frame</h2>
+      <p class="lead">BGBlur's AI automatically tracks moving objects, faces and vehicles — no masking every frame by hand.</p>
+      <ul class="checks">
+        <li><b>Multi-face tracking.</b> Two people, ten people, or 100+ faces in a crowded scene are detected and followed simultaneously.</li>
+        <li><b>Keeps identity across cuts.</b> Each tracked subject gets its own toggle, so you can blur one person and leave the rest untouched.</li>
+        <li><b>Handles turns and partial views.</b> Profiles, angled shots and difficult lighting still register.</li>
+        <li><b>Manual top-up.</b> Anything the detector misses, you box in yourself — and it gets tracked too.</li>
+      </ul>
+      <a class="link-arrow" href="features/face-blur.html">Read about face tracking</a>
+    </div>
+
+    <div class="split-media reveal">
+      <div class="canvas canvas--light">
+        <div class="canvas-bar">
+          <span class="lights"><i></i><i></i><i></i></span>
+          detections · frame 412
+        </div>
+        <div class="flow">
+          <div class="flow-node">
+            <span class="n-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></span>
+            <span class="n-body"><strong>Face #1 · speaker</strong><small>00:00 → 01:42 · tracked</small></span>
+            <span class="n-state">blur</span>
+          </div>
+          <div class="flow-wire"></div>
+          <div class="flow-node">
+            <span class="n-ic n-ic--violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></span>
+            <span class="n-body"><strong>Face #2 · passer-by</strong><small>00:14 → 00:22 · tracked</small></span>
+            <span class="n-state">blur</span>
+          </div>
+          <div class="flow-wire"></div>
+          <div class="flow-node">
+            <span class="n-ic n-ic--amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11h2M11 11h2M16 11h2"/></svg></span>
+            <span class="n-body"><strong>Plate · parked van</strong><small>00:31 → 01:05 · tracked</small></span>
+            <span class="n-state">blur</span>
+          </div>
+          <div class="flow-wire"></div>
+          <div class="flow-node">
+            <span class="n-ic n-ic--mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m9 9 6 6M15 9l-6 6"/></svg></span>
+            <span class="n-body"><strong>Custom box · door number</strong><small>00:52 → 00:58 · manual</small></span>
+            <span class="n-state">blur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ why choose ============ -->
+<section class="section on-dark dots">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why BGBlur</span>
+      <h2 class="h2">Everything a privacy edit needs — and nothing it doesn't</h2>
+      <p>Built for creators, fleets and compliance teams who just need the sensitive parts covered and the file back.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="card card--dark reveal">
+        <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3 class="h3">Processed in your browser</h3>
+        <p>BGBlur uses client-side technology to process video securely — files are processed locally and never uploaded or stored permanently on external servers.</p>
+      </article>
+      <article class="card card--dark reveal">
+        <span class="card-ic card-ic--violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="5"/></svg></span>
+        <h3 class="h3">Automatic AI detection</h3>
+        <p>The AI analyses your video and finds faces, plates, backgrounds and objects on its own. You review the list and tick what should be covered.</p>
+      </article>
+      <article class="card card--dark reveal">
+        <span class="card-ic card-ic--mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/><circle cx="9" cy="8" r="2.6" fill="currentColor" stroke="none"/><circle cx="15" cy="16" r="2.6" fill="currentColor" stroke="none"/></svg></span>
+        <h3 class="h3">Adjustable strength</h3>
+        <p>Dial the blur from subtle depth-of-field to strong bokeh-style backgrounds, or switch to mosaic and pixelation when you need the region unrecoverable.</p>
+      </article>
+      <article class="card card--dark reveal">
+        <span class="card-ic card-ic--amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <h3 class="h3">No watermark, genuinely free</h3>
+        <p>Free processing with no hidden paywall. Upload videos and photos, apply the blur, download files that are ready to publish as-is.</p>
+      </article>
+      <article class="card card--dark reveal">
+        <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
+        <h3 class="h3">Works on your phone</h3>
+        <p>Fully responsive and optimised for mobile browsers — blur a video background or pixelate faces directly on iPhone, iPad or Android.</p>
+      </article>
+      <article class="card card--dark reveal">
+        <span class="card-ic card-ic--violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+        <h3 class="h3">No signup, no install</h3>
+        <p>Nothing to download, no plugins, no account. Open the page, drop the file in, get the export — the same on any modern browser.</p>
+      </article>
+    </div>
+
+    <div class="stats reveal" style="margin-top:56px;">
+      <div class="stat"><b>100+</b><span>faces tracked in one scene</span></div>
+      <div class="stat"><b>0</b><span>watermarks on your export</span></div>
+      <div class="stat"><b>10 min</b><span>free video length</span></div>
+      <div class="stat"><b>4</b><span>blur styles to choose from</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ use cases ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Use cases</span>
+      <h2 class="h2">Who blurs with BGBlur</h2>
+      <p>Anything filmed in public, in an office or at home usually carries something you'd rather not publish.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="card reveal">
+        <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 8 6 4-6 4z"/><rect x="2" y="4" width="20" height="16" rx="3"/></svg></span>
+        <h3 class="h3">Creators &amp; vloggers</h3>
+        <p>Publish street footage, event clips and reaction videos without exposing bystanders who never agreed to be filmed.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-ic card-ic--amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17V9l2-4h8l2 4v8"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg></span>
+        <h3 class="h3">Dashcam &amp; fleets</h3>
+        <p>Blur license plates in driving footage, dashcam uploads and street-view video so transport teams stay compliant with privacy law.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-ic card-ic--violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
+        <h3 class="h3">Webinars &amp; talking heads</h3>
+        <p>Soften a messy home office behind the speaker in tutorials, webinars, interviews and course recordings — after they were filmed.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-ic card-ic--mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12z"/><path d="M9 21v-7h6v7"/></svg></span>
+        <h3 class="h3">Real estate</h3>
+        <p>Walk-through tours keep the property in frame and take out the neighbours, parked cars, family photos and house numbers.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg></span>
+        <h3 class="h3">Compliance &amp; legal</h3>
+        <p>Anonymise CCTV, body-cam and incident footage before it is shared with insurers, regulators or the public record.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card-ic card-ic--amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5z"/><path d="M7 11v5c0 1.7 2.2 3 5 3s5-1.3 5-3v-5"/></svg></span>
+        <h3 class="h3">Schools &amp; healthcare</h3>
+        <p>Share classroom or clinical recordings for training while every identifiable face and name badge stays covered.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ comparison ============ -->
+<section class="section section--paper section--line">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Compare</span>
+      <h2 class="h2">Versus doing it in a video editor</h2>
+      <p>Traditional software can blur a region — but you place and keyframe every mask yourself.</p>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table class="cmp">
+        <thead>
+          <tr><th>Task</th><th>BGBlur</th><th>Traditional editor</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Finding faces</td><td class="yes">Automatic AI detection</td><td class="no">Spot them yourself, frame by frame</td></tr>
+          <tr><td>Moving subjects</td><td class="yes">Tracked across the clip</td><td class="no">Manual keyframes on every mask</td></tr>
+          <tr><td>License plates</td><td class="yes">Purpose-trained detector</td><td class="no">Hand-drawn masks</td></tr>
+          <tr><td>Background blur</td><td class="yes">Subject-aware, no green screen</td><td class="no">Rotoscoping or chroma key</td></tr>
+          <tr><td>Setup</td><td class="yes">Open a browser tab</td><td class="no">Install, licence, learn the timeline</td></tr>
+          <tr><td>Where your file goes</td><td class="yes">Stays in your browser</td><td class="no">Cloud renders on many web tools</td></tr>
+          <tr><td>Watermark</td><td class="yes">None</td><td class="no">Common on free tiers</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ privacy ============ -->
+<section class="section">
+  <div class="wrap split split--flip">
+    <div class="split-media reveal">
+      <div class="canvas canvas--light">
+        <div class="canvas-bar"><span class="lights"><i></i><i></i><i></i></span> privacy</div>
+        <div class="flow">
+          <div class="flow-node">
+            <span class="n-ic n-ic--mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+            <span class="n-body"><strong>Your device</strong><small>decode · detect · blur · encode</small></span>
+            <span class="n-state">local</span>
+          </div>
+          <div class="flow-wire" style="background-image:linear-gradient(rgba(108,112,134,.5) 55%, transparent 0); animation:none;"></div>
+          <div class="flow-node" style="opacity:.55">
+            <span class="n-ic" style="background:#e6e2da; color:#9296a8;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10a6 6 0 0 0-11.3-2A4.5 4.5 0 0 0 7 17h10a4 4 0 0 0 1-7z"/><path d="m3 3 18 18"/></svg></span>
+            <span class="n-body"><strong>Upload to a server</strong><small>not part of the pipeline</small></span>
+            <span class="n-state" style="color:var(--muted); border-color:var(--line);">skipped</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="split-copy reveal">
+      <span class="eyebrow">Privacy</span>
+      <h2 class="h2">Your footage doesn't leave the browser tab</h2>
+      <p class="lead">BGBlur leverages client-side technology to process videos securely: files are processed locally in your browser and never uploaded or stored permanently on external servers.</p>
+      <ul class="checks">
+        <li><b>No account required</b> — nothing to sign up for, nothing to link.</li>
+        <li><b>Nothing kept</b> — close the tab and the working copy is gone with it.</li>
+        <li><b>Blur is baked in</b> — the exported file carries the mosaic in its pixels; it isn't an overlay someone can peel off.</li>
+        <li><b>Helps with GDPR-style obligations</b> — anonymise identifiable people and vehicles before you publish or hand footage over.</li>
+      </ul>
+      <a class="link-arrow" href="index.html#faq">Read the privacy FAQ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ testimonials ============ -->
+<section class="section section--paper section--line">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Loved by</span>
+      <h2 class="h2">What people use it for</h2>
+    </div>
+    <div class="grid grid-3">
+      <figure class="quote reveal">
+        <span class="stars" aria-label="5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+        </span>
+        <p>I film in crowded markets every week. Detection catches the faces I'd never have spotted, and the export is ready before I've finished writing the description.</p>
+        <figcaption><span class="avatar">MR</span><span><b>Marta R.</b><small>Travel vlogger</small></span></figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <span class="stars" aria-label="5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+        </span>
+        <p>Our drivers upload dashcam clips for training. Plates get blurred before anything is shared internally, and legal stopped asking where the footage was being processed.</p>
+        <figcaption><span class="avatar">DK</span><span><b>Dan K.</b><small>Fleet operations lead</small></span></figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <span class="stars" aria-label="5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg>
+        </span>
+        <p>My home office is a disaster. Background blur after the fact saved a whole course recording I'd otherwise have had to shoot again.</p>
+        <figcaption><span class="avatar">AS</span><span><b>Aiko S.</b><small>Online course creator</small></span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ pricing preview ============ -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="h2">Free is a real tier, not a trial</h2>
+      <p>Blur, preview and download without paying and without a watermark. Pro exists for long files and heavy batches.</p>
+    </div>
+
+    <div class="plans">
+      <section class="plan reveal">
+        <div class="plan-head">
+          <h3 class="h3">Free</h3>
+          <div class="price"><b>$0</b><span>forever</span></div>
+          <p class="muted small">For one-off clips and everyday uploads.</p>
+        </div>
+        <ul class="checks">
+          <li>Videos up to <b>200&nbsp;MB</b> and <b>10 minutes</b></li>
+          <li>Face, plate, background and object blur</li>
+          <li>Blur, mosaic, pixelate and solid styles</li>
+          <li>No watermark on exports</li>
+          <li>No signup</li>
+        </ul>
+        <a class="btn btn--ghost" href="../index.html">Start blurring</a>
+      </section>
+
+      <section class="plan plan--featured reveal">
+        <div class="plan-head">
+          <h3 class="h3">Pro <span class="plan-badge">Popular</span></h3>
+          <div class="price"><b>$9</b><span>/ month</span></div>
+          <p class="muted small">For longer footage and regular publishing.</p>
+        </div>
+        <ul class="checks">
+          <li>Videos up to <b>1&nbsp;GB</b> and longer durations</li>
+          <li>Unlimited blur processing</li>
+          <li>Priority processing queue</li>
+          <li>Batch multiple clips in one session</li>
+          <li>Everything in Free</li>
+        </ul>
+        <a class="btn" href="pricing.html">Compare plans</a>
+      </section>
+
+      <section class="plan reveal">
+        <div class="plan-head">
+          <h3 class="h3">Teams</h3>
+          <div class="price"><b>Custom</b></div>
+          <p class="muted small">For fleets, agencies and compliance workflows.</p>
+        </div>
+        <ul class="checks">
+          <li>Shared presets across the team</li>
+          <li>Volume plate and face anonymisation</li>
+          <li>Retention and processing documentation</li>
+          <li>Priority support</li>
+          <li>Everything in Pro</li>
+        </ul>
+        <a class="btn btn--ghost" href="pricing.html#teams">Talk to us</a>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section--paper section--line" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="h2">Questions people ask before uploading</h2>
+    </div>
+
+    <div class="faq reveal">
+      <details open>
+        <summary>Is BGBlur really free?</summary>
+        <div class="faq-body"><p>Yes. BGBlur offers genuine free blur processing with no hidden paywalls — you can upload videos and photos, apply professional blur effects and download clean files ready for publishing. Free covers videos under 200&nbsp;MB and 10 minutes; Pro raises those limits for longer footage.</p></div>
+      </details>
+      <details>
+        <summary>Do you upload or store my video?</summary>
+        <div class="faq-body"><p>No. BGBlur leverages advanced client-side technology to process videos securely — files are processed locally in your browser and are never uploaded or stored permanently on external servers. When you close the tab, the working copy goes with it.</p></div>
+      </details>
+      <details>
+        <summary>What can I blur?</summary>
+        <div class="faq-body"><p>Faces (auto-detected by AI), backgrounds, license plates, text, logos and any custom object you select. The AI tracks moving elements throughout the video, so the blur follows the subject instead of requiring keyframes.</p></div>
+      </details>
+      <details>
+        <summary>Does it handle more than one face?</summary>
+        <div class="faq-body"><p>Yes. BGBlur's AI detects and blurs multiple moving faces simultaneously — whether the shot has 2 people, 10 people or 100+ faces in a crowded scene. Each tracked face is listed separately, so you can blur some and leave others visible.</p></div>
+      </details>
+      <details>
+        <summary>Which file formats are supported?</summary>
+        <div class="faq-body"><p>Common browser-playable video formats including MP4, MOV and WebM, plus JPG, JPEG, PNG and other common image formats for background blur processing.</p></div>
+      </details>
+      <details>
+        <summary>Is there a watermark on the export?</summary>
+        <div class="faq-body"><p>No watermark on any tier. The blur itself is rendered into the pixels of the exported file, so it can't be removed or peeled off afterwards.</p></div>
+      </details>
+      <details>
+        <summary>Do I need to install anything or create an account?</summary>
+        <div class="faq-body"><p>Neither. BGBlur is a completely web-based tool: upload any video or image, pick a blur tool and apply pixelation or blur instantly inside your browser, with no apps, plugins or signup.</p></div>
+      </details>
+      <details>
+        <summary>Does it work on a phone?</summary>
+        <div class="faq-body"><p>Yes. BGBlur is fully responsive and optimised for mobile browsers, so you can blur a video background or pixelate faces directly on an iPhone, iPad or Android device.</p></div>
+      </details>
+      <details>
+        <summary>Can I control how strong the blur is?</summary>
+        <div class="faq-body"><p>Yes — adjust blur strength for anything from a subtle depth-of-field effect to a stronger bokeh-style background, and switch between gaussian blur, mosaic, pixelation and a solid block.</p></div>
+      </details>
+      <details>
+        <summary>What if the AI misses something?</summary>
+        <div class="faq-body"><p>Draw a box around it yourself. Manual regions are tracked exactly like detected ones, so a missed plate or a house number stays covered as the camera moves.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section--tight">
+  <div class="wrap">
+    <div class="cta-band dots reveal">
+      <div class="inner">
+        <span class="eyebrow">Get started</span>
+        <h2 class="h2">Blur your first video in about a minute</h2>
+        <p class="lead">Free, no watermark, no signup — and the footage never leaves your browser.</p>
+        <div class="btn-row">
+          <a class="btn btn--lg" href="../index.html">Upload a video</a>
+          <a class="btn btn--lg btn--light" href="tools.html">Browse all tools</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ footer ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+          </span>
+          <span>bg<b>blur</b><span class="brand-suffix">.com</span></span>
+        </a>
+        <p>Free AI video and image blur tools — faces, license plates, backgrounds and objects, processed right in your browser.</p>
+        <div class="socials">
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2H21l-6.5 7.4L22 22h-6l-4.7-6.2L5.9 22H3l7-8-7.3-12h6.2l4.3 5.7zM17 20h1.6L7.1 3.9H5.4z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.3-.4-4.9a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.6 2.6 0 0 0-1.8 1.8C2 8.7 2 12 2 12s0 3.3.4 4.9c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8zM10 15.2V8.8l5.5 3.2z"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.7-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.6 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Video</h4>
+        <ul>
+          <li><a href="features/face-blur.html">Face blur</a></li>
+          <li><a href="features/background-blur.html">Background blur</a></li>
+          <li><a href="features/license-plate-blur.html">License plate blur</a></li>
+          <li><a href="tools.html#objects">Object blur</a></li>
+          <li><a href="tools.html#styles">Mosaic &amp; pixelate</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Photo</h4>
+        <ul>
+          <li><a href="features/image-background-blur.html">Image background blur</a></li>
+          <li><a href="features/image-background-blur.html#portrait">Portrait bokeh</a></li>
+          <li><a href="tools.html">Photo blur</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="index.html#how">How it works</a></li>
+          <li><a href="examples.html">Examples</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#tools">All tools</a></li>
+          <li><a href="index.html#faq">Privacy</a></li>
+          <li><a href="index.html#faq">Terms</a></li>
+          <li><a href="pricing.html#teams">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> BGBlur. All rights reserved.</span>
+      <span class="sep">
+        <a href="index.html#faq">Privacy</a>
+        <a href="index.html#faq">Terms</a>
+        <a href="index.html">English</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>

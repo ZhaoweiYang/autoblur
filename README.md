@@ -69,8 +69,32 @@ vendor/opencv.js           # 本地内置的 OpenCV.js（含 WASM + DNN，自包
 models/face_detection_yunet_2023mar.onnx     # YuNet 人脸深度模型
 models/haarcascade_frontalface_alt2.xml      # 人脸 Haar（YuNet 加载失败时回退）
 models/haarcascade_russian_plate_number.xml  # 车牌 Haar
+site/                      # 营销站（内容对标 bgblur.com/en，视觉风格对标 n8n.io）
 .github/workflows/deploy.yml
 ```
+
+## 🌐 营销站 `site/`
+
+`site/` 下是一套独立的静态营销站，内容对标 [bgblur.com/en](https://www.bgblur.com/en)（人脸 / 车牌 / 背景模糊工具站），
+视觉语言对标 [n8n.io](https://n8n.io/)：珊瑚粉主色 `#EA4B71` + 深靛蓝 `#101330`、暖白纸张底、
+发丝级描边卡片、等宽小标签，以及贯穿全站的「工作流节点图」母题（把 n8n 的画布语言用来表现打码流水线）。
+
+```
+site/index.html                             # 首页
+site/tools.html                             # 全部工具
+site/examples.html                          # 前后对比（可拖拽滑块）
+site/pricing.html                           # 定价
+site/features/face-blur.html                # 人脸打码
+site/features/background-blur.html          # 背景虚化
+site/features/license-plate-blur.html       # 车牌打码
+site/features/image-background-blur.html    # 图片背景虚化
+site/css/site.css                           # 设计令牌与全部组件样式
+site/js/site.js                             # 移动端菜单、对比滑块、滚动出现、FAQ 手风琴
+```
+
+- 纯静态、零依赖、零外部请求（图标与插画均为内联 SVG，字体走系统字体栈），直接双击 `site/index.html` 即可预览。
+- 站内所有「上传 / 开始打码」按钮都指向本仓库根目录的 AutoBlur 工具本体。
+- 若要让它成为站点首页，把 `site/` 的内容提到仓库根目录、并把现有工具页挪到 `app.html` 即可。
 
 ## 📄 许可与来源
 
