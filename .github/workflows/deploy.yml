@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - claude/video-plate-face-mosaic-9swagr
+      - claude/bgblur-website-design-hqvp10
       - main
   workflow_dispatch:
 
