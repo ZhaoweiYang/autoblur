@@ -250,10 +250,6 @@ textarea:focus, select:focus { border-color: var(--brand); }
 .use > span { font-size: 28px; display: block; margin-bottom: 8px; }
 
 /* pricing */
-.billing { display: flex; justify-content: center; gap: 4px; margin: -20px auto 34px; padding: 4px; width: max-content; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
-.billing button { border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 600; padding: 8px 16px; border-radius: 9px; cursor: pointer; }
-.billing button.active { background: var(--card-2); color: var(--text); }
-.billing em { font-style: normal; color: #4ade80; font-size: 12px; margin-left: 4px; }
 .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
 .plan { padding: 30px 26px; position: relative; display: flex; flex-direction: column; }
 .plan h3 { margin: 0; font-size: 20px; }

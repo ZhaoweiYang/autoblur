@@ -234,14 +234,10 @@
       <div class="wrap">
         <h2 class="section-title" data-i18n="p.title">Simple, credit-based pricing</h2>
         <p class="section-sub" data-i18n="p.sub">1 credit = 1 video. Cancel anytime.</p>
-        <div class="billing" role="group">
-          <button type="button" class="active" data-billing="monthly" data-i18n="p.monthly">Monthly</button>
-          <button type="button" data-billing="yearly"><span data-i18n="p.yearly">Yearly</span> <em data-i18n="p.save">-20%</em></button>
-        </div>
         <div class="plans">
           <div class="plan card">
             <h3 data-i18n="p.free">Free</h3>
-            <div class="price"><b data-price="0">$0</b><span data-i18n="p.mo">/mo</span></div>
+            <div class="price"><b data-i18n="p.freePrice">$0</b></div>
             <p class="plan-desc" data-i18n="p.freeD">Try it out, no card required.</p>
             <ul>
               <li data-i18n="p.f1">3 credits</li>
@@ -254,7 +250,7 @@
           <div class="plan card featured">
             <span class="ribbon" data-i18n="p.popular">Most popular</span>
             <h3>Pro</h3>
-            <div class="price"><b data-price="12">$12</b><span data-i18n="p.mo">/mo</span></div>
+            <div class="price"><b data-i18n="p.proPrice">$99</b><span data-i18n="p.yr">/year</span></div>
             <p class="plan-desc" data-i18n="p.proD">For creators posting every week.</p>
             <ul>
               <li data-i18n="p.p1">150 credits / month</li>
@@ -266,7 +262,7 @@
           </div>
           <div class="plan card">
             <h3>Studio</h3>
-            <div class="price"><b data-price="39">$39</b><span data-i18n="p.mo">/mo</span></div>
+            <div class="price"><b data-i18n="p.studioPrice">Custom</b></div>
             <p class="plan-desc" data-i18n="p.studioD">For teams and agencies.</p>
             <ul>
               <li data-i18n="p.s1">600 credits / month</li>
@@ -274,7 +270,7 @@
               <li data-i18n="p.s3">Priority rendering</li>
               <li data-i18n="p.s4">API access</li>
             </ul>
-            <button type="button" class="btn btn-ghost btn-block" data-plan="studio" data-i18n="p.studioCta">Get Studio</button>
+            <button type="button" class="btn btn-ghost btn-block" data-plan="studio" data-i18n="p.studioCta">Contact sales</button>
           </div>
         </div>
       </div>

@@ -73,8 +73,8 @@
       'u.6t': 'Marketing', 'u.6d': 'Produce video variations for campaigns in minutes.',
 
       'p.title': 'Simple, credit-based pricing',
-      'p.sub': '1 credit = 1 video. Cancel anytime.',
-      'p.monthly': 'Monthly', 'p.yearly': 'Yearly', 'p.save': '-20%', 'p.mo': '/mo',
+      'p.sub': '1 credit = 1 video. Billed yearly, cancel anytime.',
+      'p.freePrice': '$0', 'p.proPrice': '$99', 'p.yr': '/year', 'p.studioPrice': 'Custom',
       'p.free': 'Free', 'p.freeD': 'Try it out, no card required.',
       'p.f1': '3 credits', 'p.f2': '720p export', 'p.f3': 'Watermark', 'p.f4': 'All camera motions',
       'p.freeCta': 'Start free', 'p.popular': 'Most popular',
@@ -83,7 +83,7 @@
       'p.cta': 'Get Pro',
       'p.studioD': 'For teams and agencies.',
       'p.s1': '600 credits / month', 'p.s2': 'Everything in Pro', 'p.s3': 'Priority rendering', 'p.s4': 'API access',
-      'p.studioCta': 'Get Studio',
+      'p.studioCta': 'Contact sales',
 
       'q.title': 'Frequently asked questions',
       'q.1q': 'What is Ugokie?', 'q.1a': 'Ugokie (from Japanese 動く絵, "moving picture") is an online tool that turns a still image into a short video with cinematic camera motion.',
@@ -176,8 +176,8 @@
       'u.6t': 'マーケティング', 'u.6d': 'キャンペーン用の動画バリエーションを数分で。',
 
       'p.title': 'シンプルなクレジット制料金',
-      'p.sub': '1クレジット＝動画1本。いつでも解約できます。',
-      'p.monthly': '月払い', 'p.yearly': '年払い', 'p.save': '20%オフ', 'p.mo': '/月',
+      'p.sub': '1クレジット＝動画1本。年払い・いつでも解約できます。',
+      'p.freePrice': '¥0', 'p.proPrice': '¥15,199', 'p.yr': '/年', 'p.studioPrice': '要相談',
       'p.free': 'フリー', 'p.freeD': 'まずはお試し。カード登録不要。',
       'p.f1': '3クレジット', 'p.f2': '720pで書き出し', 'p.f3': 'ウォーターマークあり', 'p.f4': '全カメラワーク',
       'p.freeCta': '無料で始める', 'p.popular': '一番人気',
@@ -186,7 +186,7 @@
       'p.cta': 'Proにする',
       'p.studioD': 'チーム・代理店向け。',
       'p.s1': '毎月600クレジット', 'p.s2': 'Proの全機能', 'p.s3': '優先レンダリング', 'p.s4': 'APIアクセス',
-      'p.studioCta': 'Studioにする',
+      'p.studioCta': 'お問い合わせ',
 
       'q.title': 'よくある質問',
       'q.1q': 'Ugokieとは？', 'q.1a': 'Ugokie（うごくえ／動く絵）は、1枚の静止画から映画のようなカメラワークの短い動画を作るオンラインツールです。',

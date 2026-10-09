@@ -6,8 +6,8 @@
 - **Generator**: upload or drag in an image (JPG/PNG/WebP, 10MB max) or pick a sample. Set a prompt, camera motion, aspect ratio (16:9 / 9:16 / 1:1 / 4:3), duration, quality and look, then click **Generate**.
 - **8 camera motions**: zoom in/out, pan left/right, tilt up, orbit, dolly zoom, handheld. **Auto** chooses one from keywords in the prompt (English or Japanese, e.g. `zoom in`, `右へパン`).
 - **Looks**: Natural, Cinematic (letterbox + vignette), Warm film (grain), Monochrome.
-- **Bilingual UI**: EN / 日本語 switch. The language comes from `?lang=en|ja`, then the saved choice, then the browser language. Prices show in USD or JPY.
-- **Landing sections**: examples gallery, features, 3 steps, use cases, pricing (monthly/yearly), FAQ, CTA, footer.
+- **Bilingual UI**: EN / 日本語 switch. The language comes from `?lang=en|ja`, then the saved choice, then the browser language. Prices show in USD (EN) or JPY (JA).
+- **Landing sections**: examples gallery, features, 3 steps, use cases, pricing (Pro: $99/year · ¥15,199/年), FAQ, CTA, footer.
 - **Credits (demo)**: 3 free credits stored in `localStorage`. The free tier adds a watermark.
 
 ## How it renders

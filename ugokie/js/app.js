@@ -364,22 +364,7 @@
   els.again.addEventListener('click', generate);
 
   /* ---------------- pricing ---------------- */
-  let billing = 'monthly';
-  function renderPrices() {
-    document.querySelectorAll('[data-price]').forEach(el => {
-      const m = Number(el.dataset.price);
-      const v = billing === 'yearly' ? Math.round(m * 0.8 * 100) / 100 : m;
-      el.textContent = window.I18N.lang === 'ja' ? `¥${Math.round(v * 150).toLocaleString('ja-JP')}` : `$${v}`;
-    });
-  }
-  document.querySelectorAll('[data-billing]').forEach(b => b.addEventListener('click', () => {
-    billing = b.dataset.billing;
-    document.querySelectorAll('[data-billing]').forEach(x => x.classList.toggle('active', x === b));
-    renderPrices();
-  }));
   document.querySelectorAll('[data-plan]').forEach(b => b.addEventListener('click', () => toast(t('toast.checkout'))));
-  document.addEventListener('langchange', renderPrices);
-  renderPrices();
 
   /* ---------------- misc ---------------- */
   const navLinks = $('navLinks');
