@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ugokie · Image to Video AI</title>
+  <meta name="description" content="Ugokie turns any photo into a cinematic video in seconds. Upload an image, describe the motion, and download your clip." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎞️</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">う</span>
+        <span class="brand-name">Ugokie</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#examples" data-i18n="nav.examples">Examples</a>
+        <a href="#features" data-i18n="nav.features">Features</a>
+        <a href="#how" data-i18n="nav.how">How it works</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="ja">日本語</button>
+        </div>
+        <span class="credits-pill" title="Credits"><span>⚡</span> <b id="creditsNav">0</b></span>
+        <a class="btn btn-primary btn-sm hide-sm" href="#create" data-i18n="nav.cta">Start free</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO + GENERATOR ============ -->
+    <section class="hero" id="create">
+      <div class="glow glow-a"></div><div class="glow glow-b"></div>
+      <div class="wrap">
+        <div class="hero-copy">
+          <span class="badge" data-i18n="hero.badge">✨ New: 8 cinematic camera motions</span>
+          <h1 data-i18n-html="hero.title">Turn any <span class="grad">image into video</span> with AI</h1>
+          <p class="lead" data-i18n="hero.lead">Upload a photo, describe the motion, and get a smooth, share-ready clip in seconds. No editing skills needed.</p>
+          <ul class="hero-points">
+            <li data-i18n="hero.p1">Free credits to start</li>
+            <li data-i18n="hero.p2">No watermark on paid plans</li>
+            <li data-i18n="hero.p3">Up to 1080p export</li>
+          </ul>
+        </div>
+
+        <div class="studio card">
+          <div class="studio-grid">
+            <!-- left: inputs -->
+            <div class="studio-input">
+              <label class="field-label" data-i18n="gen.upload">1. Upload image</label>
+              <label class="drop" id="drop" for="fileInput">
+                <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp" hidden />
+                <div class="drop-empty" id="dropEmpty">
+                  <div class="drop-icon">🖼️</div>
+                  <b data-i18n="gen.drop">Click or drag an image here</b>
+                  <small data-i18n="gen.dropHint">JPG / PNG / WebP · up to 10MB</small>
+                </div>
+                <img id="thumb" alt="" hidden />
+                <button type="button" class="drop-clear" id="clearImg" hidden aria-label="Remove">✕</button>
+              </label>
+              <div class="samples">
+                <small data-i18n="gen.try">Or try a sample:</small>
+                <button type="button" class="sample" data-sample="sunset" aria-label="Sunset"></button>
+                <button type="button" class="sample" data-sample="city" aria-label="City"></button>
+                <button type="button" class="sample" data-sample="mountain" aria-label="Mountain"></button>
+              </div>
+
+              <label class="field-label" for="prompt" data-i18n="gen.prompt">2. Describe the motion (optional)</label>
+              <textarea id="prompt" rows="3" maxlength="500" data-i18n-ph="gen.promptPh" placeholder="e.g. Slow zoom in on the subject, soft cinematic light"></textarea>
+
+              <div class="row3">
+                <div>
+                  <label class="field-label" for="motion" data-i18n="gen.motion">Camera motion</label>
+                  <select id="motion">
+                    <option value="auto" data-i18n="m.auto">Auto (from prompt)</option>
+                    <option value="zoomIn" data-i18n="m.zoomIn">Zoom in</option>
+                    <option value="zoomOut" data-i18n="m.zoomOut">Zoom out</option>
+                    <option value="panLeft" data-i18n="m.panLeft">Pan left</option>
+                    <option value="panRight" data-i18n="m.panRight">Pan right</option>
+                    <option value="tiltUp" data-i18n="m.tiltUp">Tilt up</option>
+                    <option value="orbit" data-i18n="m.orbit">Orbit</option>
+                    <option value="dolly" data-i18n="m.dolly">Dolly zoom</option>
+                    <option value="handheld" data-i18n="m.handheld">Handheld</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="field-label" for="ratio" data-i18n="gen.ratio">Aspect ratio</label>
+                  <select id="ratio">
+                    <option value="16:9">16:9</option>
+                    <option value="9:16">9:16</option>
+                    <option value="1:1">1:1</option>
+                    <option value="4:3">4:3</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="field-label" for="duration" data-i18n="gen.duration">Duration</label>
+                  <select id="duration">
+                    <option value="4">4s</option>
+                    <option value="6" selected>6s</option>
+                    <option value="8">8s</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row2">
+                <div>
+                  <label class="field-label" for="quality" data-i18n="gen.quality">Quality</label>
+                  <select id="quality">
+                    <option value="720">720p</option>
+                    <option value="1080" data-i18n="gen.q1080">1080p (Pro)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="field-label" for="effect" data-i18n="gen.effect">Look</label>
+                  <select id="effect">
+                    <option value="none" data-i18n="fx.none">Natural</option>
+                    <option value="cinema" data-i18n="fx.cinema">Cinematic</option>
+                    <option value="warm" data-i18n="fx.warm">Warm film</option>
+                    <option value="mono" data-i18n="fx.mono">Monochrome</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-primary btn-block btn-lg" id="generate" disabled>
+                <span data-i18n="gen.button">Generate video</span>
+                <span class="cost">⚡ 1</span>
+              </button>
+              <p class="micro" id="genNote" data-i18n="gen.note">Runs in your browser — your image is never uploaded.</p>
+            </div>
+
+            <!-- right: output -->
+            <div class="studio-output">
+              <div class="stage" id="stage">
+                <canvas id="canvas" hidden></canvas>
+                <video id="result" controls playsinline loop hidden></video>
+                <div class="stage-empty" id="stageEmpty">
+                  <div class="stage-icon">🎬</div>
+                  <p data-i18n="out.empty">Your video will appear here</p>
+                </div>
+                <div class="progress" id="progress" hidden>
+                  <div class="progress-bar"><i id="progressFill"></i></div>
+                  <span id="progressText">0%</span>
+                </div>
+              </div>
+              <div class="out-actions" id="outActions" hidden>
+                <a class="btn btn-primary" id="download" download="ugokie.webm" data-i18n="out.download">Download</a>
+                <button type="button" class="btn btn-ghost" id="again" data-i18n="out.again">Regenerate</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST STRIP ============ -->
+    <section class="stats">
+      <div class="wrap stats-grid">
+        <div><b>1.2M+</b><span data-i18n="stats.videos">videos created</span></div>
+        <div><b>4.9/5</b><span data-i18n="stats.rating">average rating</span></div>
+        <div><b>~10s</b><span data-i18n="stats.speed">avg. render time</span></div>
+        <div><b>2</b><span data-i18n="stats.langs">languages: EN / 日本語</span></div>
+      </div>
+    </section>
+
+    <!-- ============ EXAMPLES ============ -->
+    <section class="section" id="examples">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="ex.title">See what Ugokie can do</h2>
+        <p class="section-sub" data-i18n="ex.sub">Every clip below started as a single still image.</p>
+        <div class="gallery">
+          <figure class="ex"><div class="ex-media ex-1 m-zoom"></div><figcaption><b data-i18n="ex.1t">Golden hour</b><span data-i18n="ex.1d">Slow zoom in · warm film</span></figcaption></figure>
+          <figure class="ex"><div class="ex-media ex-2 m-pan"></div><figcaption><b data-i18n="ex.2t">Neon city</b><span data-i18n="ex.2d">Pan right · cinematic</span></figcaption></figure>
+          <figure class="ex"><div class="ex-media ex-3 m-tilt"></div><figcaption><b data-i18n="ex.3t">Alpine morning</b><span data-i18n="ex.3d">Tilt up · natural</span></figcaption></figure>
+          <figure class="ex"><div class="ex-media ex-4 m-orbit"></div><figcaption><b data-i18n="ex.4t">Product spin</b><span data-i18n="ex.4d">Orbit · studio light</span></figcaption></figure>
+          <figure class="ex"><div class="ex-media ex-5 m-zoomout"></div><figcaption><b data-i18n="ex.5t">Ocean breeze</b><span data-i18n="ex.5d">Zoom out · natural</span></figcaption></figure>
+          <figure class="ex"><div class="ex-media ex-6 m-hand"></div><figcaption><b data-i18n="ex.6t">Sakura street</b><span data-i18n="ex.6d">Handheld · vlog style</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section alt" id="features">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="f.title">Everything you need to bring photos to life</h2>
+        <p class="section-sub" data-i18n="f.sub">Professional-looking motion without a timeline, keyframes or plug-ins.</p>
+        <div class="features">
+          <div class="feature card"><div class="f-ico">🎥</div><h3 data-i18n="f.1t">Cinematic camera moves</h3><p data-i18n="f.1d">Zoom, pan, tilt, orbit, dolly and handheld — or let the prompt decide.</p></div>
+          <div class="feature card"><div class="f-ico">💬</div><h3 data-i18n="f.2t">Prompt-driven</h3><p data-i18n="f.2d">Describe what you want in English or Japanese and Ugokie picks the motion.</p></div>
+          <div class="feature card"><div class="f-ico">📐</div><h3 data-i18n="f.3t">Any aspect ratio</h3><p data-i18n="f.3d">16:9 for YouTube, 9:16 for TikTok & Reels, 1:1 for feeds.</p></div>
+          <div class="feature card"><div class="f-ico">⚡</div><h3 data-i18n="f.4t">Fast rendering</h3><p data-i18n="f.4d">Get your clip in seconds, then tweak and regenerate as many times as you like.</p></div>
+          <div class="feature card"><div class="f-ico">🎨</div><h3 data-i18n="f.5t">Film looks</h3><p data-i18n="f.5d">Cinematic letterbox, warm film grain and monochrome grades built in.</p></div>
+          <div class="feature card"><div class="f-ico">🔒</div><h3 data-i18n="f.6t">Private by design</h3><p data-i18n="f.6d">Images are processed locally in your browser and never stored.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="h.title">Image to video in 3 steps</h2>
+        <div class="steps">
+          <div class="step"><span class="step-n">1</span><h3 data-i18n="h.1t">Upload your image</h3><p data-i18n="h.1d">Drop in a photo, illustration or product shot.</p></div>
+          <div class="step"><span class="step-n">2</span><h3 data-i18n="h.2t">Describe the motion</h3><p data-i18n="h.2d">Type a prompt or choose a camera move, ratio and length.</p></div>
+          <div class="step"><span class="step-n">3</span><h3 data-i18n="h.3t">Generate & download</h3><p data-i18n="h.3d">Preview the result and download it ready to share.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ USE CASES ============ -->
+    <section class="section alt">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="u.title">Made for creators and businesses</h2>
+        <div class="uses">
+          <div class="use"><span>📱</span><h3 data-i18n="u.1t">Social media</h3><p data-i18n="u.1d">Scroll-stopping Reels, Shorts and TikToks from your photo library.</p></div>
+          <div class="use"><span>🛍️</span><h3 data-i18n="u.2t">E-commerce</h3><p data-i18n="u.2d">Turn product photos into motion ads that convert.</p></div>
+          <div class="use"><span>🏠</span><h3 data-i18n="u.3t">Real estate</h3><p data-i18n="u.3d">Give listing photos a smooth walkthrough feel.</p></div>
+          <div class="use"><span>🎨</span><h3 data-i18n="u.4t">Artists</h3><p data-i18n="u.4d">Animate illustrations and AI art for portfolios.</p></div>
+          <div class="use"><span>📸</span><h3 data-i18n="u.5t">Memories</h3><p data-i18n="u.5d">Bring old family photos and travel shots back to life.</p></div>
+          <div class="use"><span>📣</span><h3 data-i18n="u.6t">Marketing</h3><p data-i18n="u.6d">Produce video variations for campaigns in minutes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="p.title">Simple, credit-based pricing</h2>
+        <p class="section-sub" data-i18n="p.sub">1 credit = 1 video. Cancel anytime.</p>
+        <div class="billing" role="group">
+          <button type="button" class="active" data-billing="monthly" data-i18n="p.monthly">Monthly</button>
+          <button type="button" data-billing="yearly"><span data-i18n="p.yearly">Yearly</span> <em data-i18n="p.save">-20%</em></button>
+        </div>
+        <div class="plans">
+          <div class="plan card">
+            <h3 data-i18n="p.free">Free</h3>
+            <div class="price"><b data-price="0">$0</b><span data-i18n="p.mo">/mo</span></div>
+            <p class="plan-desc" data-i18n="p.freeD">Try it out, no card required.</p>
+            <ul>
+              <li data-i18n="p.f1">3 credits</li>
+              <li data-i18n="p.f2">720p export</li>
+              <li data-i18n="p.f3">Watermark</li>
+              <li data-i18n="p.f4">All camera motions</li>
+            </ul>
+            <a href="#create" class="btn btn-ghost btn-block" data-i18n="p.freeCta">Start free</a>
+          </div>
+          <div class="plan card featured">
+            <span class="ribbon" data-i18n="p.popular">Most popular</span>
+            <h3>Pro</h3>
+            <div class="price"><b data-price="12">$12</b><span data-i18n="p.mo">/mo</span></div>
+            <p class="plan-desc" data-i18n="p.proD">For creators posting every week.</p>
+            <ul>
+              <li data-i18n="p.p1">150 credits / month</li>
+              <li data-i18n="p.p2">1080p export</li>
+              <li data-i18n="p.p3">No watermark</li>
+              <li data-i18n="p.p4">Commercial license</li>
+            </ul>
+            <button type="button" class="btn btn-primary btn-block" data-plan="pro" data-i18n="p.cta">Get Pro</button>
+          </div>
+          <div class="plan card">
+            <h3>Studio</h3>
+            <div class="price"><b data-price="39">$39</b><span data-i18n="p.mo">/mo</span></div>
+            <p class="plan-desc" data-i18n="p.studioD">For teams and agencies.</p>
+            <ul>
+              <li data-i18n="p.s1">600 credits / month</li>
+              <li data-i18n="p.s2">Everything in Pro</li>
+              <li data-i18n="p.s3">Priority rendering</li>
+              <li data-i18n="p.s4">API access</li>
+            </ul>
+            <button type="button" class="btn btn-ghost btn-block" data-plan="studio" data-i18n="p.studioCta">Get Studio</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section alt" id="faq">
+      <div class="wrap narrow">
+        <h2 class="section-title" data-i18n="q.title">Frequently asked questions</h2>
+        <div class="faq">
+          <details><summary data-i18n="q.1q">What is Ugokie?</summary><p data-i18n="q.1a">Ugokie (from Japanese 動く絵, "moving picture") is an online tool that turns a still image into a short video with cinematic camera motion.</p></details>
+          <details><summary data-i18n="q.2q">Is it free?</summary><p data-i18n="q.2a">Yes. Every new user gets 3 free credits. Paid plans add more credits, 1080p export and remove the watermark.</p></details>
+          <details><summary data-i18n="q.3q">Which image formats are supported?</summary><p data-i18n="q.3a">JPG, PNG and WebP up to 10MB. For best results use an image at least 1024px wide.</p></details>
+          <details><summary data-i18n="q.4q">Are my images uploaded or stored?</summary><p data-i18n="q.4a">No. Rendering happens entirely in your browser, so your images never leave your device.</p></details>
+          <details><summary data-i18n="q.5q">Can I use the videos commercially?</summary><p data-i18n="q.5a">Videos created on Pro and Studio plans include a commercial license. Make sure you own the rights to the image you upload.</p></details>
+          <details><summary data-i18n="q.6q">What format is the downloaded video?</summary><p data-i18n="q.6a">Chrome, Edge and Firefox export WebM; Safari exports MP4. Both play on all major platforms and editors.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta">
+      <div class="wrap cta-inner">
+        <h2 data-i18n="c.title">Your photos are ready to move.</h2>
+        <p data-i18n="c.sub">Create your first video free — it takes less than a minute.</p>
+        <a href="#create" class="btn btn-light btn-lg" data-i18n="c.button">Create a video now</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="#top"><span class="brand-mark">う</span><span class="brand-name">Ugokie</span></a>
+        <p class="muted" data-i18n="ft.tag">Image to video AI. Made in Tokyo & on the web.</p>
+      </div>
+      <div><h4 data-i18n="ft.product">Product</h4><a href="#create" data-i18n="ft.gen">Image to Video</a><a href="#examples" data-i18n="nav.examples">Examples</a><a href="#pricing" data-i18n="nav.pricing">Pricing</a></div>
+      <div><h4 data-i18n="ft.company">Company</h4><a href="#faq" data-i18n="nav.faq">FAQ</a><a href="mailto:hello@ugokie.ai" data-i18n="ft.contact">Contact</a></div>
+      <div><h4 data-i18n="ft.legal">Legal</h4><a href="#" data-i18n="ft.terms">Terms of Service</a><a href="#" data-i18n="ft.privacy">Privacy Policy</a></div>
+    </div>
+    <div class="wrap copy">© <span id="year"></span> Ugokie. <span data-i18n="ft.rights">All rights reserved.</span></div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
