@@ -85,64 +85,12 @@
   ['dragleave', 'drop'].forEach(ev => els.drop.addEventListener(ev, e => { e.preventDefault(); els.drop.classList.remove('over'); }));
   els.drop.addEventListener('drop', e => loadFile(e.dataTransfer.files[0]));
 
-  /* ---------------- procedural sample images ---------------- */
-  function makeSample(kind) {
-    const c = document.createElement('canvas');
-    c.width = 1600; c.height = 1000;
-    const g = c.getContext('2d');
-    const W = c.width, H = c.height;
-    const rand = mulberry32(kind.length * 97);
-
-    if (kind === 'sunset') {
-      let sky = g.createLinearGradient(0, 0, 0, H);
-      sky.addColorStop(0, '#2b1055'); sky.addColorStop(0.45, '#d53369'); sky.addColorStop(0.75, '#ffb347'); sky.addColorStop(1, '#ffcc70');
-      g.fillStyle = sky; g.fillRect(0, 0, W, H);
-      g.fillStyle = 'rgba(255,240,200,0.95)'; g.beginPath(); g.arc(W * 0.62, H * 0.62, 110, 0, Math.PI * 2); g.fill();
-      ['#7a2048', '#4a1238', '#240a28'].forEach((col, i) => ridge(g, W, H, H * (0.66 + i * 0.1), 60 - i * 10, col, rand));
-    } else if (kind === 'city') {
-      let sky = g.createLinearGradient(0, 0, 0, H);
-      sky.addColorStop(0, '#0b0628'); sky.addColorStop(1, '#3a1c71');
-      g.fillStyle = sky; g.fillRect(0, 0, W, H);
-      for (let i = 0; i < 120; i++) { g.fillStyle = `rgba(255,255,255,${rand() * 0.8})`; g.fillRect(rand() * W, rand() * H * 0.5, 2, 2); }
-      let x = 0;
-      while (x < W) {
-        const bw = 60 + rand() * 120, bh = 200 + rand() * 520;
-        g.fillStyle = `hsl(${250 + rand() * 30},40%,${8 + rand() * 10}%)`;
-        g.fillRect(x, H - bh, bw, bh);
-        for (let wy = H - bh + 16; wy < H - 10; wy += 22)
-          for (let wx = x + 10; wx < x + bw - 10; wx += 18)
-            if (rand() > 0.55) { g.fillStyle = rand() > 0.5 ? '#ff4fd8' : '#43e8ff'; g.globalAlpha = 0.5 + rand() * 0.5; g.fillRect(wx, wy, 8, 10); g.globalAlpha = 1; }
-        x += bw + 4;
-      }
-    } else {
-      let sky = g.createLinearGradient(0, 0, 0, H);
-      sky.addColorStop(0, '#89c2ff'); sky.addColorStop(1, '#e8f4ff');
-      g.fillStyle = sky; g.fillRect(0, 0, W, H);
-      g.fillStyle = '#ffffff';
-      for (let i = 0; i < 5; i++) { const cx = rand() * W, cy = 80 + rand() * 200; for (let k = 0; k < 5; k++) { g.beginPath(); g.arc(cx + k * 40, cy + (k % 2) * 12, 40, 0, Math.PI * 2); g.fill(); } }
-      // snowy peaks
-      g.fillStyle = '#5b6f8f';
-      g.beginPath(); g.moveTo(0, H * 0.8); g.lineTo(W * 0.3, H * 0.28); g.lineTo(W * 0.55, H * 0.75); g.lineTo(W * 0.75, H * 0.35); g.lineTo(W, H * 0.7); g.lineTo(W, H); g.lineTo(0, H); g.fill();
-      g.fillStyle = '#fff';
-      g.beginPath(); g.moveTo(W * 0.3, H * 0.28); g.lineTo(W * 0.36, H * 0.4); g.lineTo(W * 0.24, H * 0.4); g.fill();
-      g.beginPath(); g.moveTo(W * 0.75, H * 0.35); g.lineTo(W * 0.8, H * 0.45); g.lineTo(W * 0.7, H * 0.45); g.fill();
-      ['#2f6b4f', '#1e4d39'].forEach((col, i) => ridge(g, W, H, H * (0.8 + i * 0.08), 40, col, rand));
-    }
-    return c;
-  }
-  function ridge(g, W, H, base, amp, color, rand) {
-    g.fillStyle = color; g.beginPath(); g.moveTo(0, H);
-    for (let x = 0; x <= W; x += 40) g.lineTo(x, base - Math.sin(x / 180 + rand()) * amp - rand() * amp * 0.5);
-    g.lineTo(W, H); g.closePath(); g.fill();
-  }
-  function mulberry32(a) {
-    return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let r = Math.imul(a ^ a >>> 15, 1 | a); r = r + Math.imul(r ^ r >>> 7, 61 | r) ^ r; return ((r ^ r >>> 14) >>> 0) / 4294967296; };
-  }
-  document.querySelectorAll('[data-sample]').forEach(btn => {
-    const s = makeSample(btn.dataset.sample);
-    btn.style.backgroundImage = `url(${s.toDataURL('image/jpeg', 0.7)})`;
-    btn.addEventListener('click', () => setImage(s));
-  });
+  /* ---------------- sample photos ---------------- */
+  document.querySelectorAll('[data-sample]').forEach(btn => btn.addEventListener('click', () => {
+    const img = new Image();
+    img.onload = () => setImage(img);
+    img.src = btn.dataset.sample;
+  }));
 
   /* ---------------- motion ---------------- */
   // Keywords (EN + JA) used when motion = "auto".
@@ -365,6 +313,17 @@
 
   /* ---------------- pricing ---------------- */
   document.querySelectorAll('[data-plan]').forEach(b => b.addEventListener('click', () => toast(t('toast.checkout'))));
+
+  /* ---------------- gallery: play clips only while on screen ---------------- */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clips = document.querySelectorAll('.gallery video');
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting) target.play().catch(() => {});
+      else target.pause();
+    }), { threshold: 0.25 });
+    clips.forEach(v => io.observe(v));
+  }
 
   /* ---------------- misc ---------------- */
   const navLinks = $('navLinks');

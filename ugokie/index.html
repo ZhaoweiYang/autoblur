@@ -68,9 +68,9 @@
               </label>
               <div class="samples">
                 <small data-i18n="gen.try">Or try a sample:</small>
-                <button type="button" class="sample" data-sample="sunset" aria-label="Sunset"></button>
-                <button type="button" class="sample" data-sample="city" aria-label="City"></button>
-                <button type="button" class="sample" data-sample="mountain" aria-label="Mountain"></button>
+                <button type="button" class="sample" data-sample="assets/samples/lantern-alley.jpg" style="background-image:url(assets/samples/lantern-alley.jpg)" aria-label="Lantern alley"></button>
+                <button type="button" class="sample" data-sample="assets/samples/sakura.jpg" style="background-image:url(assets/samples/sakura.jpg)" aria-label="Sakura"></button>
+                <button type="button" class="sample" data-sample="assets/samples/lake-boat.jpg" style="background-image:url(assets/samples/lake-boat.jpg)" aria-label="Lake"></button>
               </div>
 
               <label class="field-label" for="prompt" data-i18n="gen.prompt">2. Describe the motion (optional)</label>
@@ -176,13 +176,14 @@
         <h2 class="section-title" data-i18n="ex.title">See what Ugokie can do</h2>
         <p class="section-sub" data-i18n="ex.sub">Every clip below started as a single still image.</p>
         <div class="gallery">
-          <figure class="ex"><div class="ex-media ex-1 m-zoom"></div><figcaption><b data-i18n="ex.1t">Golden hour</b><span data-i18n="ex.1d">Slow zoom in · warm film</span></figcaption></figure>
-          <figure class="ex"><div class="ex-media ex-2 m-pan"></div><figcaption><b data-i18n="ex.2t">Neon city</b><span data-i18n="ex.2d">Pan right · cinematic</span></figcaption></figure>
-          <figure class="ex"><div class="ex-media ex-3 m-tilt"></div><figcaption><b data-i18n="ex.3t">Alpine morning</b><span data-i18n="ex.3d">Tilt up · natural</span></figcaption></figure>
-          <figure class="ex"><div class="ex-media ex-4 m-orbit"></div><figcaption><b data-i18n="ex.4t">Product spin</b><span data-i18n="ex.4d">Orbit · studio light</span></figcaption></figure>
-          <figure class="ex"><div class="ex-media ex-5 m-zoomout"></div><figcaption><b data-i18n="ex.5t">Ocean breeze</b><span data-i18n="ex.5d">Zoom out · natural</span></figcaption></figure>
-          <figure class="ex"><div class="ex-media ex-6 m-hand"></div><figcaption><b data-i18n="ex.6t">Sakura street</b><span data-i18n="ex.6d">Handheld · vlog style</span></figcaption></figure>
+          <figure class="ex"><video class="ex-media" poster="assets/examples/golden-hour.jpg" muted loop playsinline preload="none"><source src="assets/examples/golden-hour.mp4" type='video/mp4; codecs="avc1.64001f"'><source src="assets/examples/golden-hour.webm" type="video/webm"></video><figcaption><b data-i18n="ex.1t"></b><span data-i18n="ex.1d"></span></figcaption></figure>
+          <figure class="ex"><video class="ex-media" poster="assets/examples/neon-city.jpg" muted loop playsinline preload="none"><source src="assets/examples/neon-city.mp4" type='video/mp4; codecs="avc1.64001f"'><source src="assets/examples/neon-city.webm" type="video/webm"></video><figcaption><b data-i18n="ex.2t"></b><span data-i18n="ex.2d"></span></figcaption></figure>
+          <figure class="ex"><video class="ex-media" poster="assets/examples/alpine-lake.jpg" muted loop playsinline preload="none"><source src="assets/examples/alpine-lake.mp4" type='video/mp4; codecs="avc1.64001f"'><source src="assets/examples/alpine-lake.webm" type="video/webm"></video><figcaption><b data-i18n="ex.3t"></b><span data-i18n="ex.3d"></span></figcaption></figure>
+          <figure class="ex"><video class="ex-media" poster="assets/examples/instant-camera.jpg" muted loop playsinline preload="none"><source src="assets/examples/instant-camera.mp4" type='video/mp4; codecs="avc1.64001f"'><source src="assets/examples/instant-camera.webm" type="video/webm"></video><figcaption><b data-i18n="ex.4t"></b><span data-i18n="ex.4d"></span></figcaption></figure>
+          <figure class="ex"><video class="ex-media" poster="assets/examples/ocean-breeze.jpg" muted loop playsinline preload="none"><source src="assets/examples/ocean-breeze.mp4" type='video/mp4; codecs="avc1.64001f"'><source src="assets/examples/ocean-breeze.webm" type="video/webm"></video><figcaption><b data-i18n="ex.5t"></b><span data-i18n="ex.5d"></span></figcaption></figure>
+          <figure class="ex"><video class="ex-media" poster="assets/examples/fuji-sakura.jpg" muted loop playsinline preload="none"><source src="assets/examples/fuji-sakura.mp4" type='video/mp4; codecs="avc1.64001f"'><source src="assets/examples/fuji-sakura.webm" type="video/webm"></video><figcaption><b data-i18n="ex.6t"></b><span data-i18n="ex.6d"></span></figcaption></figure>
         </div>
+        <p class="credit" data-i18n="ex.credit">Source photos from Unsplash.</p>
       </div>
     </section>
 
