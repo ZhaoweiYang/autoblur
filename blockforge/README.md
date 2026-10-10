@@ -1,41 +1,51 @@
-# BlockForge — bilingual (EN / 日本語) game-asset studio landing page
+# BlockForge website (English / 日本語)
 
-A static, dependency-free landing site for an AI asset tool aimed at game creators
-(thumbnails, UI, textures, clothing, icons, GFX and sound effects), with a full
-English / Japanese language switch.
+Static, crawler-friendly marketing site for **BlockForge**, operated by **CALDRIVO GLOBAL INC**.
+Every page is pre-rendered HTML in both languages, so search engines and compliance crawlers see the full
+content, prices, policies and structured data without running JavaScript.
 
-## Features
+```
+site/          ← the deployable website (upload this folder as-is)
+src/           ← sources; run the build to regenerate site/
+```
 
-- **EN / 日本語 switch** in the nav. Language is picked from `?lang=ja|en`, then the
-  saved choice, then the browser language. All copy lives in `js/i18n.js`.
-- **Per-language pricing** (USD for English, JPY for Japanese) with a monthly / yearly toggle.
-- **Working demo workspace**: type a prompt, pick a tool, and a preview is generated
-  locally in the browser (canvas images, WebAudio sounds) and can be downloaded as PNG / WAV.
-  Replace `openWorkspace()` in `js/app.js` with a call to your real generation API.
-- Hero with tool tabs and prompt suggestions, a scrolling ribbon, tool cards, a showcase
-  carousel ("use this idea"), a "why" section, reviews, pricing, an FAQ accordion, a final CTA
-  and a sticky quick-create bar.
-- Dark theme by default with a light-theme toggle; responsive down to phone width.
+## Deploy
 
-## Before launch
+Upload the **contents of `site/`** to any static host (Netlify, Cloudflare Pages, Vercel, S3/OSS, Nginx, GitHub Pages).
+No server code and no build step on the host. All links are relative, so it also works in a sub-folder.
 
-- The reviews are **sample placeholders** (labelled as such on the page). Replace them with real reviews.
-- The stats in the hero (`data-count` in `index.html`) and prices (`window.PRICES` in `js/i18n.js`) are placeholders.
-- "Start free" / plan buttons open a placeholder dialog. Wire them to your sign-up flow.
+- English: `/index.html`, `/checkout.html`, `/contact.html`, `/legal/*.html`
+- Japanese: the same paths under `/ja/`
+- `sitemap.xml`, `robots.txt`, `site.webmanifest` are included.
 
-## Run locally
+## Change something
+
+All business facts live in **`src/config.mjs`**: domain, checkout link, card statement descriptor, accepted cards,
+company name/address/email, price per language (USD / JPY), trial length, credits, refund window.
+Every page, every policy and the JSON-LD read from it, so they always agree.
 
 ```bash
-python3 -m http.server 8000
-# open http://localhost:8000/blockforge/
+node src/build.mjs     # Node 18+, no dependencies → rewrites site/
 ```
 
-## Files
+Before going live, set in `src/config.mjs`:
 
-```
-index.html       page structure (text comes from data-i18n keys)
-css/style.css    styles and theme tokens
-js/i18n.js       English + Japanese copy, price tables
-js/gen.js        procedural image / sound generators for the demo
-js/app.js        i18n, theme, creator widgets, workspace, carousel, pricing, FAQ
-```
+- `SITE.siteUrl`: your real domain (used for canonical, hreflang, Open Graph, sitemap).
+- `SITE.checkoutUrl`: your payment processor's hosted checkout / payment link. While empty, the
+  "Start 1-hour free trial" button opens an email to support.
+- `SITE.statementDescriptor`: must match the descriptor configured at your payment processor.
+
+## What's in it
+
+- **SEO / crawler**: unique `<title>` and description per page, canonical, `hreflang` (en / ja / x-default),
+  Open Graph + Twitter cards with 1200×630 images, sitemap with language alternates, robots.txt.
+- **Schema.org JSON-LD**: `Organization` (legal name, logo, address, email, contact point), `WebSite`,
+  `Product` with `Offer`s in USD and JPY (1-hour free trial + annual `UnitPriceSpecification`, accepted cards,
+  `MerchantReturnPolicy`), `WebApplication`, `FAQPage`, `BreadcrumbList`, `CheckoutPage`, `ContactPage`.
+- **Pricing & checkout**: one plan, US$99/year (English) or ¥16,999/year tax included (Japanese), 1-hour free trial,
+  automatic annual renewal, 30-Day Money-Back Guarantee, statement descriptor, card badges, consent checkbox, and
+  the local time of the first charge.
+- **Policies** (`src/legal/*.mjs`, EN + JA): Terms of Service, Privacy, Refund, Cancellation, Shipping & Delivery,
+  Cookies, Accessibility, DMCA / Copyright, Disclaimer, Do Not Sell or Share, and 特定商取引法に基づく表記.
+  `node src/lib/check-legal.mjs` validates them (structure, allowed HTML, no placeholder text, no hard-coded prices).
+- **Preview mode**: the home page draws quick previews in the browser (`src/assets/js/gen.js`); no account needed.
