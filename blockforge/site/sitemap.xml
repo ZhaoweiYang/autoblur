@@ -161,6 +161,38 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://blockforge.vip/legal/cookies.html"/>
   </url>
   <url>
+    <loc>https://blockforge.vip/legal/accessibility.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blockforge.vip/legal/accessibility.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://blockforge.vip/ja/legal/accessibility.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://blockforge.vip/legal/accessibility.html"/>
+  </url>
+  <url>
+    <loc>https://blockforge.vip/ja/legal/accessibility.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blockforge.vip/legal/accessibility.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://blockforge.vip/ja/legal/accessibility.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://blockforge.vip/legal/accessibility.html"/>
+  </url>
+  <url>
+    <loc>https://blockforge.vip/legal/dmca.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blockforge.vip/legal/dmca.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://blockforge.vip/ja/legal/dmca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://blockforge.vip/legal/dmca.html"/>
+  </url>
+  <url>
+    <loc>https://blockforge.vip/ja/legal/dmca.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blockforge.vip/legal/dmca.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://blockforge.vip/ja/legal/dmca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://blockforge.vip/legal/dmca.html"/>
+  </url>
+  <url>
     <loc>https://blockforge.vip/legal/disclaimer.html</loc>
     <lastmod>2026-10-10</lastmod>
     <priority>0.4</priority>
