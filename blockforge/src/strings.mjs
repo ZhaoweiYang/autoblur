@@ -15,15 +15,15 @@ export const STRINGS = {
     nav: {
       assets: "Assets", how: "How it works", ideas: "Ideas", pricing: "Pricing", faq: "FAQ", contact: "Contact",
       cta: "Start free trial", menu: "Menu", theme: "Switch light/dark theme", skip: "Skip to content",
-      lang: "Language"
+      lang: "Language", mainNav: "Main", homeLabel: "BlockForgeo home"
     },
     meta: {
-      homeTitle: `BlockForgeo — AI game art & sound | ${E.trial}, then ${E.price}/year`,
+      homeTitle: `BlockForgeo: AI game art & sound | Free 1-hour trial, ${E.price}/yr`,
       homeDesc: `Turn a one-line idea into cover art, icons, textures, avatar shirts, character renders, UI kits and sound effects. ${E.trial}, then ${E.priceWithCode} per year.`,
       checkoutTitle: `Start your ${E.trial} — BlockForgeo Pro`,
-      checkoutDesc: `Review BlockForgeo Pro before you start: ${E.trial}, then ${E.priceWithCode} billed once a year. Cancel anytime. 30-day money-back guarantee on unused credits.`,
+      checkoutDesc: `Review BlockForgeo Pro before you start: ${E.trial}, then ${E.priceWithCode} once a year. Cancel anytime. 30-day money-back guarantee.`,
       contactTitle: "Contact BlockForgeo — CALDRIVO GLOBAL INC",
-      contactDesc: `Contact BlockForgeo support at ${E.email}. BlockForgeo is operated by ${E.company}, ${E.addressOneLine}.`,
+      contactDesc: `Email BlockForgeo support at ${E.email}. BlockForgeo is operated by ${E.company} in Aurora, Colorado, USA.`,
       legalTitle: "Legal & policies — BlockForgeo",
       legalDesc: "Terms of Service, Privacy, Refund, Cancellation, Delivery, Cookie, Accessibility, DMCA, Disclaimer and Do Not Sell or Share policies for BlockForgeo.",
       ogAlt: `BlockForgeo — prompt in, game-ready art out. ${E.trial}, then ${E.price} per year.`
@@ -37,7 +37,7 @@ export const STRINGS = {
     prompt: {
       thumbnail: { label: "Describe the cover", ph: "e.g. a neon racing track floating above the clouds", btn: "Forge a preview" },
       icon: { label: "Describe the icon", ph: "e.g. a frost bow with a blue glow", btn: "Forge a preview" },
-      ui: { label: "Describe the screen", ph: "e.g. a potion shop with 8 item slots", btn: "Forge a preview" },
+      ui: { label: "Describe the screen", ph: "e.g. a potion shop with glowing shelves", btn: "Forge a preview" },
       texture: { label: "Describe the surface", ph: "e.g. cracked desert ground", btn: "Forge a preview" },
       clothing: { label: "Describe the shirt", ph: "e.g. an astronaut jacket with orange stripes", btn: "Forge a preview" },
       gfx: { label: "Describe the character", ph: "e.g. a knight holding a glowing sword", btn: "Forge a preview" },
@@ -46,7 +46,7 @@ export const STRINGS = {
     chips: {
       thumbnail: ["castle siege at sunset", "speedrun through a candy factory", "submarine escape, 10 seconds left", "pet hatching day in a crystal cave", "rooftop chase in a rainy city"],
       icon: ["frost bow", "treasure map", "speed potion", "dragon egg", "VIP crown"],
-      ui: ["potion shop with 8 slots", "quest log", "battle-pass track", "loading screen", "trading window"],
+      ui: ["potion shop", "quest log", "battle-pass track", "loading screen", "trading window"],
       texture: ["cracked desert ground", "rusted steel plates", "mossy cobblestone", "glowing crystal floor", "snowy roof tiles"],
       clothing: ["astronaut jacket", "samurai armor shirt", "neon tracksuit", "lumberjack flannel", "soccer kit"],
       gfx: ["knight with a glowing sword", "skater mid-trick", "desert nomad", "robot mechanic", "wizard apprentice"],
@@ -83,7 +83,7 @@ export const STRINGS = {
     },
     how: {
       eyebrow: "How it works",
-      title: "A session takes <em>about a minute.</em>",
+      title: "A session usually takes <em>about a minute.</em>",
       steps: [
         ["Choose the asset", "Pick one of seven asset types. Each is preset to the size your platform expects."],
         ["Write one line", "Describe the subject and the mood. Attach a reference image when you want a specific style."],
@@ -132,13 +132,13 @@ export const STRINGS = {
       timelineTitle: "How billing works",
       timeline: [
         ["Now", "Start your free trial", `Add a card. You're charged ${E.price.replace(/\d[\d.,]*/, "0")}. You get full access and ${E.trialCredits} trial credits.`],
-        ["After 1 hour", `${E.price} is charged`, `Your card is charged ${E.priceWithCode} for 12 months of Pro and ${E.credits} credits are added. Cancel before the hour ends and you pay nothing.`],
+        ["After 1 hour", `${E.price} is charged`, `Your card is charged ${E.priceWithCode}, plus any applicable sales tax or VAT, for 12 months of Pro and ${E.credits} credits are added. Cancel before the hour ends and you pay nothing.`],
         ["Within 30 days", "Money-back guarantee", "Ask for a refund within 30 days of any annual charge and get your money back for unused credits. No questions asked."],
-        ["Every 12 months", `Renews at ${E.price}`, `Your plan renews automatically until you cancel. We email you at least ${E.reminderDays} days before every renewal. If the price ever changes, we tell you at least ${E.priceChangeNoticeDays} days before it applies.`]
+        ["Every 12 months", "Renews automatically", `Renews at the then-current annual price (now ${E.price}) until you cancel. We email you at least ${E.reminderDays} days before every renewal, and at least ${E.priceChangeNoticeDays} days before any price change applies.`]
       ],
       guaranteeTitle: "30-Day Money-Back Guarantee",
       guaranteeLine: "Full refund on unused credits. No questions asked.",
-      guaranteeBody: `Within ${E.refundDays} days of any annual charge, we refund the fee for every credit you haven't used. Haven't used any? You get the full ${E.price} back. Used ${E.refundExample.used}? You get ${E.refundExample.amount}.`,
+      guaranteeBody: `Within ${E.refundDays} days of any annual charge, we refund the fee for every credit you haven't used. Haven't used any? You get the full ${E.price} back. Used ${E.refundExample.used}? You get ${E.refundExample.amount}. A refund also ends your subscription.`,
       descriptorTitle: "On your card statement",
       descriptor: `Your card statement will show "${E.descriptor}".`,
       cardsTitle: "Accepted payment methods",
@@ -151,14 +151,14 @@ export const STRINGS = {
       eyebrow: "FAQ",
       title: "Questions, <em>answered</em>",
       items: [
-        ["How does the 1-hour free trial work?", `Start the trial with a credit or debit card. For 1 hour you get full Pro access and ${E.trialCredits} trial credits, and nothing is charged. When the hour ends, your card is automatically charged ${E.priceWithCode} for 12 months of BlockForgeo Pro, unless you cancel before then. One trial per person.`],
-        ["When exactly will I be charged?", `Exactly 1 hour after you start the trial, then every 12 months on the same date until you cancel. We email a reminder ${E.reminderDays} days before every renewal and a receipt after every charge.`],
+        ["How does the 1-hour free trial work?", `Start the trial with a credit or debit card. For 1 hour you get full Pro access and ${E.trialCredits} trial credits, and nothing is charged. When the hour ends, your card is automatically charged ${E.priceWithCode} (plus any applicable sales tax or VAT) for 12 months of BlockForgeo Pro, unless you cancel before then. One trial per person and per payment card.`],
+        ["When exactly will I be charged?", `Exactly 1 hour after you start the trial, then every 12 months on the same date until you cancel. We email a reminder at least ${E.reminderDays} days before every renewal and a receipt after every charge. Renewals are at the then-current annual price (now ${E.price}).`],
         ["What will I see on my card statement?", `Your card statement will show "${E.descriptor}".`],
         ["How do I cancel?", "Go to Account → Billing → Cancel subscription, or email support from your account email. Cancel within the trial hour and you are never charged. Cancel after a charge and you keep Pro and your remaining credits until the end of the paid year, with no further charges."],
-        ["What is the 30-Day Money-Back Guarantee?", `Full refund on unused credits. No questions asked. Within ${E.refundDays} days of any annual charge, ask for a refund and we return the annual fee × unused credits ÷ ${E.credits}. If you haven't used any credits, that's the full ${E.price}. Refunds go back to your original card within 5 business days; your bank may take 5–10 business days to show it.`],
+        ["What is the 30-Day Money-Back Guarantee?", `Full refund on unused credits. No questions asked. Within ${E.refundDays} days of any annual charge, ask for a refund and we return the annual fee × unused credits ÷ ${E.credits}. If you haven't used any credits, that's the full ${E.price}. Refunds go back to your original card within 5 business days; your bank may take 5–10 business days to show it. A refund ends your subscription and removes that year's remaining credits; assets you already made stay yours.`],
         ["What does BlockForgeo Pro include?", `${E.credits} credits per paid year, all 7 asset types, full-resolution PNG and WAV downloads, commercial use of your assets, and an English and Japanese interface. Unused credits expire at the end of each paid year.`],
         ["How many credits does each asset use?", `Cover art, icons, textures, avatar shirts, character renders and sound effects use ${PLAN.creditCosts.thumbnail} credit each. A UI kit uses ${PLAN.creditCosts.ui} credits. If a generation fails, its credits are returned automatically.`],
-        ["Which payment methods and currencies do you accept?", `Visa, Mastercard, American Express, JCB and Discover credit and debit cards. The English site charges ${E.price} in US dollars (USD); the Japanese site charges ${J.price} in Japanese yen (JPY, tax included). You pay in the currency shown at checkout.`],
+        ["Which payment methods and currencies do you accept?", `Visa, Mastercard, American Express, JCB and Discover credit and debit cards. On this site BlockForgeo Pro is ${E.price} per year, charged in US dollars (USD); any sales tax or VAT for your location is shown at checkout before you confirm. Our Japanese site lists its own price in Japanese yen.`],
         ["Is preview mode free?", "Yes. Preview mode draws a quick, rough sketch in your browser, on your own device. It needs no account, uses no credits and isn't the AI output. BlockForgeo Pro generates the full-resolution AI assets."],
         ["Can I use the assets commercially?", "Yes. You own the assets you generate (as far as the law allows) and can use them commercially, including in monetized games. We don't use your prompts, uploads or assets to train AI models."],
         ["Is BlockForgeo affiliated with Roblox or other game platforms?", "No. BlockForgeo is an independent product of CALDRIVO GLOBAL INC and isn't affiliated with, endorsed by or sponsored by Roblox Corporation or any other game platform."]
@@ -187,16 +187,21 @@ export const STRINGS = {
       today: "Due today",
       todayValue: E.price.replace(/\d[\d.,]*/, "0"),
       afterTrial: "After your 1-hour trial",
-      afterTrialValue: `${E.priceWithCode} / year`,
+      afterTrialValue: `${E.priceWithCode} / year, plus any applicable sales tax or VAT`,
       renews: "Renews",
-      renewsValue: `Every 12 months at ${E.price} until you cancel. Any price change is emailed at least ${E.priceChangeNoticeDays} days before it applies`,
+      renewsValue: `Every 12 months at the then-current annual price (now ${E.price}) until you cancel. Any price change is emailed at least ${E.priceChangeNoticeDays} days before it applies`,
+      access: "Access",
+      accessValue: "Immediately when your trial starts",
+      tax: "Tax",
+      taxValue: "Any sales tax or VAT for your location is added and shown on the payment page before you confirm",
       includes: "Includes",
       includesValue: `${E.credits} credits per year · all 7 asset types · commercial use`,
       trialCredits: "During the trial",
       trialCreditsValue: `Full access + ${E.trialCredits} trial credits`,
-      timeLine: "If you start now, your card will be charged at",
-      timeLineFallback: "1 hour after you start, unless you cancel first.",
-      consent: `I understand that my card will be charged ${E.priceWithCode} one hour after my free trial starts unless I cancel before then, and that my plan then renews automatically every 12 months at the current annual price (now ${E.price}) until I cancel. I agree to the <a href="legal/terms.html">Terms of Service</a>, <a href="legal/refund.html">Refund Policy</a> and <a href="legal/cancellation.html">Cancellation Policy</a>.`,
+      timeLine: "When your card is charged:",
+      timeLineFallback: "exactly 1 hour after your trial starts, unless you cancel before then.",
+      timeLineLive: "If you start your trial now, your card will be charged at",
+      consent: `I understand that my card will be charged ${E.priceWithCode}, plus any applicable sales tax or VAT, one hour after my free trial starts unless I cancel before then, and that my plan then renews automatically every 12 months at the then-current annual price (now ${E.price}) until I cancel. I agree to the <a href="legal/terms.html">Terms of Service</a>, <a href="legal/refund.html">Refund Policy</a> and <a href="legal/cancellation.html">Cancellation Policy</a>.`,
       button: "Start 1-hour free trial",
       buttonHint: "Tick the box above to continue.",
       secure: "You'll enter your card on our payment processor's secure page. We never see or store your full card number.",
@@ -205,7 +210,7 @@ export const STRINGS = {
       next: [
         `We email you a confirmation with your trial end time and a cancel link.`,
         `After 1 hour, ${E.price} is charged and ${E.credits} credits are added to your account.`,
-        `${E.reminderDays} days before each renewal we email you a reminder.`,
+        `At least ${E.reminderDays} days before each renewal we email you a reminder with the amount and date.`,
         "Cancel anytime from Account → Billing, or by emailing support."
       ]
     },
@@ -238,7 +243,8 @@ export const STRINGS = {
       onThisPage: "On this page",
       home: "Home",
       questions: "Questions about this policy?",
-      read: "Read"
+      read: "Read",
+      breadcrumb: "Breadcrumb"
     },
     ws: {
       title: "Preview mode",
@@ -249,6 +255,7 @@ export const STRINGS = {
       close: "Close",
       play: "Play sound",
       empty: "Write a short description first.",
+      error: "This preview couldn't be drawn in your browser. Try another asset type or a different browser.",
       size: "Preview size",
       cost: "With Pro",
       upgrade: "Make it with Pro"
@@ -263,10 +270,10 @@ export const STRINGS = {
     nav: {
       assets: "アセット", how: "使い方", ideas: "アイデア", pricing: "料金", faq: "よくある質問", contact: "お問い合わせ",
       cta: "無料トライアル", menu: "メニュー", theme: "ライト／ダークテーマ切替", skip: "本文へスキップ",
-      lang: "言語"
+      lang: "言語", mainNav: "メインメニュー", homeLabel: "BlockForgeo ホーム"
     },
     meta: {
-      homeTitle: `BlockForgeo — ゲーム制作のためのAI素材工房｜${J.trial}、以降${J.pricePerYear}`,
+      homeTitle: `BlockForgeo｜AIゲーム素材工房｜1時間無料、以降年額${J.price}（税込）`,
       homeDesc: `ひとことのアイデアから、カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、UIキット、効果音を作成。${J.trial}のあと${J.pricePerYear}。`,
       checkoutTitle: `${J.trial}を開始 — BlockForgeo Pro`,
       checkoutDesc: `開始前にご確認ください：${J.trial}のあと、${J.pricePerYear}を年1回お支払い。いつでも解約でき、未使用クレジット分は30日間全額返金します。`,
@@ -285,7 +292,7 @@ export const STRINGS = {
     prompt: {
       thumbnail: { label: "カバー画像の内容", ph: "例：雲の上に浮かぶネオンのレーストラック", btn: "プレビューを作成" },
       icon: { label: "アイコンの内容", ph: "例：青く光る氷の弓", btn: "プレビューを作成" },
-      ui: { label: "画面の内容", ph: "例：8つのアイテム枠があるポーション屋", btn: "プレビューを作成" },
+      ui: { label: "画面の内容", ph: "例：棚が光るポーション屋", btn: "プレビューを作成" },
       texture: { label: "素材感の内容", ph: "例：ひび割れた砂漠の地面", btn: "プレビューを作成" },
       clothing: { label: "シャツのデザイン", ph: "例：オレンジのラインが入った宇宙飛行士ジャケット", btn: "プレビューを作成" },
       gfx: { label: "キャラクターの内容", ph: "例：光る剣を構えた騎士", btn: "プレビューを作成" },
@@ -294,7 +301,7 @@ export const STRINGS = {
     chips: {
       thumbnail: ["夕暮れの城攻め", "お菓子工場をスピードラン", "残り10秒の潜水艦脱出", "水晶洞窟でペット孵化", "雨の街の屋上チェイス"],
       icon: ["氷の弓", "宝の地図", "スピードポーション", "ドラゴンの卵", "VIPの王冠"],
-      ui: ["8枠のポーション屋", "クエスト一覧", "バトルパスの進行表", "ロード画面", "トレード画面"],
+      ui: ["ポーション屋", "クエスト一覧", "バトルパスの進行表", "ロード画面", "トレード画面"],
       texture: ["ひび割れた砂漠", "錆びた鉄板", "苔むした石畳", "光るクリスタルの床", "雪の積もった屋根瓦"],
       clothing: ["宇宙飛行士ジャケット", "侍の鎧シャツ", "ネオンのジャージ", "木こりのネルシャツ", "サッカーのユニフォーム"],
       gfx: ["光る剣の騎士", "トリック中のスケーター", "砂漠の旅人", "ロボット整備士", "見習い魔法使い"],
@@ -331,7 +338,7 @@ export const STRINGS = {
     },
     how: {
       eyebrow: "使い方",
-      title: "1回の作成は<em>およそ1分。</em>",
+      title: "1回の作成は<em>通常およそ1分。</em>",
       steps: [
         ["アセットを選ぶ", "7種類から選びます。サイズはプラットフォームに合わせて設定済みです。"],
         ["ひとことで説明する", "主役と雰囲気を書くだけ。特定のスタイルにしたいときは参考画像を添付できます。"],
@@ -382,11 +389,11 @@ export const STRINGS = {
         ["今すぐ", "無料トライアル開始", `カードを登録します。この時点の請求は¥0です。すべての機能と${J.trialCredits}トライアルクレジットを利用できます。`],
         ["1時間後", `${J.price}を請求`, `${J.priceWithCode}が12か月分として請求され、${J.credits}クレジットが付与されます。1時間以内に解約すれば料金は一切かかりません。`],
         ["30日以内", "返金保証", "各年額請求から30日以内にお申し出いただければ、未使用クレジット分を全額返金します。理由は問いません。"],
-        ["12か月ごと", `${J.price}で自動更新`, `解約するまで自動で更新されます。更新の${J.reminderDays}日前までにメールでお知らせします。価格を変更する場合は、適用の${J.priceChangeNoticeDays}日前までにご案内します。`]
+        ["12か月ごと", "自動更新", `解約するまで、その時点の年額料金（現在は${J.price}）で自動更新されます。更新の${J.reminderDays}日前までにメールでお知らせし、価格を変更する場合は適用の${J.priceChangeNoticeDays}日前までにご案内します。`]
       ],
       guaranteeTitle: "30日間返金保証",
       guaranteeLine: "未使用クレジット分を全額返金。理由は問いません。",
-      guaranteeBody: `各年額請求から${J.refundDays}日以内なら、まだ使っていないクレジット分の料金をすべて返金します。まったく使っていなければ${J.price}を全額返金。${J.refundExample.used}クレジット使用済みなら${J.refundExample.amount}を返金します。`,
+      guaranteeBody: `各年額請求から${J.refundDays}日以内なら、まだ使っていないクレジット分の料金をすべて返金します。まったく使っていなければ${J.price}を全額返金。${J.refundExample.used}クレジット使用済みなら${J.refundExample.amount}を返金します。返金をもってサブスクリプションは終了します。`,
       descriptorTitle: "カード明細の表記",
       descriptor: `カードの利用明細には「${J.descriptor}」と表示されます。`,
       cardsTitle: "ご利用いただける支払方法",
@@ -396,17 +403,17 @@ export const STRINGS = {
       policyLinks: "詳しくはこちら："
     },
     faq: {
-      eyebrow: "FAQ",
+      eyebrow: "よくある質問",
       title: "ご質問に<em>お答えします</em>",
       items: [
-        ["1時間の無料トライアルはどのような仕組みですか？", `クレジットカードまたはデビットカードを登録してトライアルを開始します。1時間、Pro のすべての機能と${J.trialCredits}トライアルクレジットを利用でき、この間の請求はありません。1時間が経過すると、それまでに解約しない限り、BlockForgeo Pro 12か月分として${J.priceWithCode}が自動的に請求されます。トライアルはお一人様1回限りです。`],
+        ["1時間の無料トライアルはどのような仕組みですか？", `クレジットカードまたはデビットカードを登録してトライアルを開始します。1時間、Pro のすべての機能と${J.trialCredits}トライアルクレジットを利用でき、この間の請求はありません。1時間が経過すると、それまでに解約しない限り、BlockForgeo Pro 12か月分として${J.priceWithCode}が自動的に請求されます。トライアルはお一人様・カード1枚につき1回限りです。`],
         ["いつ請求されますか？", `トライアル開始のちょうど1時間後に初回の請求が行われ、その後は解約するまで12か月ごとに同じ日付で請求されます。更新の${J.reminderDays}日前までにお知らせメールを、各請求後には領収メールをお送りします。`],
         ["カード明細にはどのように表示されますか？", `カードの利用明細には「${J.descriptor}」と表示されます。`],
         ["解約方法を教えてください。", "アカウント → お支払い → サブスクリプションを解約、またはご登録のメールアドレスからサポートへご連絡ください。トライアルの1時間以内に解約すれば料金はかかりません。請求後に解約した場合は、以後の請求は行われず、お支払い済みの1年間の終わりまで Pro と残りのクレジットをご利用いただけます。"],
-        ["30日間返金保証とは何ですか？", `未使用クレジット分を全額返金します。理由は問いません。各年額請求から${J.refundDays}日以内にお申し出いただくと、「年額料金 × 未使用クレジット ÷ ${J.credits}」を返金します。クレジットを使っていなければ${J.price}を全額返金します。返金は5営業日以内にお支払いに使用したカードへ処理され、明細への反映にはカード会社により5〜10営業日かかる場合があります。`],
+        ["30日間返金保証とは何ですか？", `未使用クレジット分を全額返金します。理由は問いません。各年額請求から${J.refundDays}日以内にお申し出いただくと、「年額料金 × 未使用クレジット ÷ ${J.credits}」を返金します。クレジットを使っていなければ${J.price}を全額返金します。返金は5営業日以内にお支払いに使用したカードへ処理され、明細への反映にはカード会社により5〜10営業日かかる場合があります。返金を行うとサブスクリプションは終了し、その年度の残りのクレジットは削除されます（作成済みの素材は引き続きお客様のものです）。`],
         ["BlockForgeo Pro には何が含まれますか？", `有料期間1年ごとに${J.credits}クレジット、7種類のアセットすべて、フル解像度の PNG・WAV ダウンロード、作成したアセットの商用利用、日本語・英語のインターフェースが含まれます。未使用のクレジットは各有料期間の終了時に失効します。`],
         ["アセット1点に何クレジット必要ですか？", `カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、効果音は各${PLAN.creditCosts.thumbnail}クレジット、UIキットは${PLAN.creditCosts.ui}クレジットです。作成に失敗した場合、クレジットは自動的に戻ります。`],
-        ["支払方法と通貨を教えてください。", `Visa、Mastercard、American Express、JCB、Discover のクレジットカード・デビットカードをご利用いただけます。日本語サイトでは${J.price}（日本円・税込）、英語サイトでは${E.price}（米ドル）でのお支払いとなり、決済画面に表示された通貨で請求されます。`],
+        ["支払方法と通貨を教えてください。", `Visa、Mastercard、American Express、JCB、Discover のクレジットカード・デビットカードをご利用いただけます。このサイトでの料金は${J.pricePerYear}で、日本円（JPY）で請求されます。英語サイトでは米ドル建ての料金を表示しています。`],
         ["プレビューモードは無料ですか？", "はい。プレビューモードはブラウザ上（お使いの端末内）で簡易的なラフを描く機能で、アカウント不要・クレジット不要です。AI による作成結果ではありません。フル解像度の AI アセットは BlockForgeo Pro で作成できます。"],
         ["作成したアセットは商用利用できますか？", "はい。作成したアセットは（法律で認められる範囲で）お客様のものとなり、収益化したゲームを含めて商用利用できます。お客様のプロンプト、アップロード画像、作成物を AI の学習に使うことはありません。"],
         ["BlockForgeo は Roblox などのゲームプラットフォームと提携していますか？", "いいえ。BlockForgeo は CALDRIVO GLOBAL INC が提供する独立したサービスであり、Roblox Corporation その他のゲームプラットフォームとの提携・承認・後援関係はありません。"]
@@ -437,13 +444,16 @@ export const STRINGS = {
       afterTrial: "1時間のトライアル終了後",
       afterTrialValue: `${J.priceWithCode}／年`,
       renews: "更新",
-      renewsValue: `解約するまで12か月ごとに${J.price}（税込）。価格を変更する場合は適用の${J.priceChangeNoticeDays}日前までにメールでご案内します`,
+      renewsValue: `解約するまで12か月ごとに、その時点の年額料金（現在は${J.price}・税込）で自動更新。価格を変更する場合は適用の${J.priceChangeNoticeDays}日前までにメールでご案内します`,
+      access: "提供時期",
+      accessValue: "カード承認後、トライアル開始と同時にご利用いただけます",
       includes: "含まれるもの",
       includesValue: `年${J.credits}クレジット・7種類のアセットすべて・商用利用`,
       trialCredits: "トライアル中",
       trialCreditsValue: `すべての機能＋${J.trialCredits}トライアルクレジット`,
-      timeLine: "今すぐ開始した場合、カードへの請求日時は",
-      timeLineFallback: "開始から1時間後です（それまでに解約しない場合）。",
+      timeLine: "カードへの請求時期：",
+      timeLineFallback: "トライアル開始からちょうど1時間後（それまでに解約しない場合）",
+      timeLineLive: "今すぐトライアルを開始した場合の請求日時：",
       consent: `無料トライアル開始の1時間後（それまでに解約しない場合）に${J.priceWithCode}が請求され、その後は解約するまで12か月ごとに、その時点の年額料金（現在は${J.price}）で自動更新されることを理解しました。<a href="legal/terms.html">利用規約</a>、<a href="legal/refund.html">返金ポリシー</a>、<a href="legal/cancellation.html">解約ポリシー</a>に同意します。`,
       button: "1時間の無料トライアルを開始",
       buttonHint: "上のチェックボックスにチェックを入れてください。",
@@ -486,7 +496,8 @@ export const STRINGS = {
       onThisPage: "このページの内容",
       home: "ホーム",
       questions: "このポリシーについてのご質問は",
-      read: "読む"
+      read: "読む",
+      breadcrumb: "パンくずリスト"
     },
     ws: {
       title: "プレビューモード",
@@ -497,6 +508,7 @@ export const STRINGS = {
       close: "閉じる",
       play: "再生",
       empty: "まず短い説明を書いてください。",
+      error: "このブラウザではプレビューを描画できませんでした。別のアセットの種類か、別のブラウザでお試しください。",
       size: "プレビューのサイズ",
       cost: "Pro の場合",
       upgrade: "Pro で作成する"
@@ -511,7 +523,7 @@ export function runtimeStrings(lang) {
   return {
     tools: S.tools, prompt: S.prompt, chips: S.chips, ws: S.ws, credit: S.credit,
     ideas: S.ideas.items.map(([, text]) => text), toolOrder: TOOLS, creditCosts: PLAN.creditCosts,
-    checkout: { timeLine: S.checkout.timeLine, timeLineFallback: S.checkout.timeLineFallback }
+    checkout: { timeLine: S.checkout.timeLine, timeLineFallback: S.checkout.timeLineFallback, timeLineLive: S.checkout.timeLineLive }
   };
 }
 

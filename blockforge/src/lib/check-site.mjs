@@ -52,7 +52,8 @@ for (const file of html) {
     const prod = (data["@graph"] || []).find((n) => n["@type"] === "Product");
     if (prod) {
       const cur = prod.offers.map((o) => `${o.price} ${o.priceCurrency}`).join(", ");
-      if (!cur.includes(`${PLAN.prices.en.amount.toFixed(2)} USD`) || !cur.includes(`${PLAN.prices.ja.amount} JPY`)) bad(file, `Product offers wrong: ${cur}`);
+      const want = isJa ? `${PLAN.prices.ja.amount} JPY` : `${PLAN.prices.en.amount.toFixed(2)} USD`;
+      if (prod.offers.length !== 1 || cur !== want) bad(file, `Product offers wrong: ${cur} (expected ${want})`);
     }
   }
   // --- visible content
@@ -67,8 +68,10 @@ for (const file of html) {
   // --- links + anchors
   for (const [, href] of src.matchAll(/\shref="([^"]+)"/g)) {
     if (/^(https?:|mailto:|tel:|data:)/.test(href)) continue;
+    if (/index\.html(#|$)/.test(href)) bad(file, `link to index.html instead of directory URL: ${href}`);
     const [path, hash] = href.split("#");
-    const target = path ? resolve(dirname(file), path) : file;
+    let target = path ? resolve(dirname(file), path) : file;
+    if (existsSync(target) && statSync(target).isDirectory()) target = join(target, "index.html");
     if (!existsSync(target)) { bad(file, `broken link ${href}`); continue; }
     if (hash && target.endsWith(".html")) {
       const t = readFileSync(target, "utf8");

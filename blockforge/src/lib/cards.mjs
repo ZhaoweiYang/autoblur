@@ -18,7 +18,7 @@ const CARDS = {
     `<rect x="9" y="6" width="9" height="20" rx="3" fill="#0e4c96"/><rect x="19.5" y="6" width="9" height="20" rx="3" fill="#e21836"/><rect x="30" y="6" width="9" height="20" rx="3" fill="#00a14b"/><text x="13.5" y="19.6" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="8.5" fill="#fff">J</text><text x="24" y="19.6" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="8.5" fill="#fff">C</text><text x="34.5" y="19.6" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="8.5" fill="#fff">B</text>`,
     "JCB", "#d9d9d9"),
   discover: () => frame("#ffffff",
-    `<text x="5" y="19.4" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="7.4" fill="#231f20">DISC</text><circle cx="28.4" cy="16.6" r="3.9" fill="#f76f20"/><text x="32.6" y="19.4" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="7.4" fill="#231f20">VER</text><path d="M30 31.5h12.5a5 5 0 0 0 5-5V21C42 26 36 29.5 30 31.5z" fill="#f76f20"/>`,
+    `<text x="4" y="19" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="6.8" fill="#231f20">DISC</text><circle cx="24.4" cy="16.6" r="3.4" fill="#f76f20"/><text x="28.4" y="19" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="6.8" fill="#231f20">VER</text><path d="M30 31.5h12.5a5 5 0 0 0 5-5V24C43 28 37 30.5 30 31.5z" fill="#f76f20"/>`,
     "Discover", "#d9d9d9")
 };
 

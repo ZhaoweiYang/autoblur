@@ -157,13 +157,17 @@
 
   function headline(prompt) {
     const p = prompt.toLowerCase();
-    const num = prompt.match(/\d[\d,.$¥]*/g);
+    const num = prompt.match(/\d[\d,.:$¥]*/g);
     if (has(p, "vs", "対")) return num && num.length > 1 ? `${num[0]} VS ${num[1]}` : "VS";
     if (num) return (has(p, "level", "lvl", "レベル") ? "LVL " : "") + num[num.length - 1];
     const words = prompt.replace(/[,.!?！？、。]/g, " ").trim().split(/\s+/).filter((w) => w.length > 2);
     if (!words.length) return prompt.slice(0, 8).toUpperCase();
-    if (/[぀-ヿ一-龯]/.test(prompt)) return prompt.replace(/[、。,.!！?？]/g, "").slice(0, 7);
-    return words.slice(-2).join(" ").toUpperCase().slice(0, 16);
+    if (/[぀-ヿ一-龯]/.test(prompt)) {
+      // Japanese: use the last phrase; the caller shrinks the font to fit.
+      const parts = prompt.split(/[、。,.!！?？\s]+/).filter(Boolean);
+      return parts[parts.length - 1] || prompt;
+    }
+    return words.slice(-2).join(" ").toUpperCase();
   }
 
   /* ---------- thumbnail 16:9 ---------- */
@@ -410,12 +414,10 @@
       }
       ctx.restore();
     });
-    // front emblem
+    // front emblem (a star, so it never reads as a trademark symbol)
     ctx.fillStyle = accent; ctx.strokeStyle = "#111"; ctx.lineWidth = 4;
     ctx.beginPath(); ctx.arc(295, 128, 26, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    ctx.font = '900 28px "Unbounded", sans-serif';
-    ctx.fillStyle = "#111"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-    ctx.fillText((prompt.trim()[0] || "B").toUpperCase(), 295, 130);
+    star(ctx, 295, 129, 17, "#111");
     // zipper / collar
     ctx.fillStyle = c2; ctx.fillRect(231, 74, 128, 10); ctx.fillRect(427, 74, 128, 10);
     // outline the template guides
@@ -465,9 +467,12 @@
     roundRect(ctx, px, py, pw, ph, 36); ctx.fill(); ctx.stroke();
     ctx.fillStyle = dark; roundRect(ctx, px + 24, py + 100, pw - 48, ph - 124, 24); ctx.fill();
     // title bar
-    const titleTxt = headline(prompt).slice(0, 14) || "SHOP";
+    const titleTxt = headline(prompt.replace(/\b\d+\s*(item\s*)?slots?\b|\d+\s*枠の?/gi, " ").replace(/\bwith\b/gi, " ").trim()) || "SHOP";
     ctx.fillStyle = accent; roundRect(ctx, px + pw / 2 - 200, py - 30, 400, 90, 28); ctx.fill(); ctx.stroke();
-    ctx.font = '900 46px "Unbounded", "Zen Kaku Gothic New", sans-serif';
+    let titleSize = 46;
+    ctx.font = `900 ${titleSize}px "Unbounded", "Zen Kaku Gothic New", sans-serif`;
+    const tw = ctx.measureText(titleTxt).width;
+    if (tw > 360) { titleSize = Math.floor((titleSize * 360) / tw); ctx.font = `900 ${titleSize}px "Unbounded", "Zen Kaku Gothic New", sans-serif`; }
     ctx.fillStyle = "#fff"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     ctx.lineWidth = 8; ctx.strokeText(titleTxt, px + pw / 2, py + 15); ctx.fillText(titleTxt, px + pw / 2, py + 15);
     // close button

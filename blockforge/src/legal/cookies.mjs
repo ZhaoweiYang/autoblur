@@ -86,7 +86,7 @@ export default {
       </ul>
       <p>What happens when you delete or block them:</p>
       <ul>
-        <li><strong><code>bf-lang</code>:</strong> the site forgets your language. Each page opens in its own language, except that if your browser&rsquo;s language is Japanese, English pages switch to the Japanese version automatically. You can choose again at any time with the language switch. Because the currency follows the page language, prices are then shown in the currency of the page you are viewing.</li>
+        <li><strong><code>bf-lang</code>:</strong> the site forgets your language, and each page opens in its own language. You can choose again at any time with the language switch. Because the currency follows the page language, prices are then shown in the currency of the page you are viewing.</li>
         <li><strong><code>bf-theme</code>:</strong> the site returns to its default theme until you choose again.</li>
         <li><strong>All browser storage blocked:</strong> the website still works; it simply cannot remember these choices.</li>
         <li><strong>Workspace cookies:</strong> deleting them signs you out, and blocking them means you cannot sign in to the workspace. Signing out or deleting cookies does not cancel your subscription and does not affect your credits. To cancel, use Account &rarr; Billing &rarr; Cancel subscription or email us from your account email (see our <a href="cancellation.html">Cancellation Policy</a>).</li>
@@ -185,7 +185,7 @@ export default {
       </ul>
       <p>削除またはブロックした場合の影響は次のとおりです。</p>
       <ul>
-        <li><strong><code>bf-lang</code>：</strong>表示言語の選択が記憶されなくなります。各ページはそのページの言語で表示されますが、ブラウザの言語設定が日本語の場合は、英語版のページが自動的に日本語版に切り替わります。言語切替でいつでも選び直せます。表示通貨はページの言語に連動するため、料金は表示中のページの通貨で表示されます。</li>
+        <li><strong><code>bf-lang</code>：</strong>表示言語の選択が記憶されなくなり、各ページはそのページの言語で表示されます。言語切替でいつでも選び直せます。表示通貨はページの言語に連動するため、料金は表示中のページの通貨で表示されます。</li>
         <li><strong><code>bf-theme</code>：</strong>選び直すまで、既定のテーマで表示されます。</li>
         <li><strong>ブラウザの保存をすべてブロックした場合：</strong>ウェブサイトは引き続きご利用いただけますが、これらの設定は記憶されません。</li>
         <li><strong>ワークスペースのCookie：</strong>削除するとログアウトされ、ブロックするとワークスペースにログインできなくなります。ログアウトやCookieの削除によってサブスクリプションが解約されることはなく、クレジットにも影響しません。解約は、「アカウント &rarr; お支払い &rarr; サブスクリプションを解約」から行うか、アカウントに登録されたメールアドレスから当社にメールでご連絡ください（<a href="cancellation.html">解約ポリシー</a>参照）。</li>

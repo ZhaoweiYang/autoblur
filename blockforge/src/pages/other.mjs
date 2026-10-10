@@ -15,13 +15,16 @@ export function checkoutPage(lang, legal) {
     [C.plan, ""],
     [C.today, C.todayValue],
     [C.trialCredits, C.trialCreditsValue],
+    [C.access, C.accessValue],
     [C.afterTrial, C.afterTrialValue],
+    ...(C.tax ? [[C.tax, C.taxValue]] : []),
     [C.renews, C.renewsValue],
     [C.includes, C.includesValue]
   ];
   const main = `
 <section class="section page-top">
   <div class="wrap checkout-grid">
+    <nav class="crumbs crumbs-full" aria-label="${esc(S.legal.breadcrumb)}"><a href="${rel(langPath(lang, "index.html"))}">${esc(S.legal.home)}</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(C.title)}</span></nav>
     <div>
       <span class="eyebrow">${esc(C.eyebrow)}</span>
       <h1 class="h2">${esc(C.title)}</h1>
@@ -66,7 +69,7 @@ export function checkoutPage(lang, legal) {
       <div class="side-box">
         <h2 class="h3">${esc(Pr.cancelTitle)}</h2>
         <p>${esc(Pr.cancelBody)}</p>
-        <p class="policy-links"><a href="${rel(langPath(lang, "legal/refund.html"))}">${esc(legal.find((m) => m.slug === "refund")[lang].title)}</a> · <a href="${rel(langPath(lang, "legal/cancellation.html"))}">${esc(legal.find((m) => m.slug === "cancellation")[lang].title)}</a> · <a href="${rel(langPath(lang, "legal/terms.html"))}">${esc(legal.find((m) => m.slug === "terms")[lang].title)}</a></p>
+        <p class="policy-links"><a href="${rel(langPath(lang, "legal/refund.html"))}">${esc(legal.find((m) => m.slug === "refund")[lang].title)}</a> · <a href="${rel(langPath(lang, "legal/cancellation.html"))}">${esc(legal.find((m) => m.slug === "cancellation")[lang].title)}</a> · <a href="${rel(langPath(lang, "legal/terms.html"))}">${esc(legal.find((m) => m.slug === "terms")[lang].title)}</a>${lang === "ja" ? ` · <a href="${rel(langPath(lang, "legal/commercial-disclosure.html"))}">${esc(legal.find((m) => m.slug === "commercial-disclosure").ja.title)}</a>` : ""}</p>
       </div>
     </aside>
   </div>
@@ -79,7 +82,7 @@ export function checkoutPage(lang, legal) {
     jsonld: [
       webPage("CheckoutPage", { name: S.meta.checkoutTitle, description: S.meta.checkoutDesc, path: langPath(lang, enPath), lang }),
       breadcrumbs([[S.legal.home, langPath(lang, "index.html")], [C.title, langPath(lang, enPath)]]),
-      product(lang), returnPolicyNode()
+      product(lang), returnPolicyNode(lang)
     ],
     scripts: ["app.js"],
     main
@@ -94,6 +97,7 @@ export function contactPage(lang, legal) {
   const main = `
 <section class="section page-top">
   <div class="wrap narrow-wide">
+    <nav class="crumbs" aria-label="${esc(S.legal.breadcrumb)}"><a href="${rel(langPath(lang, "index.html"))}">${esc(S.legal.home)}</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(C.title)}</span></nav>
     <span class="eyebrow">${esc(C.eyebrow)}</span>
     <h1 class="h2">${esc(C.title)}</h1>
     <p class="lead left">${esc(C.sub)}</p>
@@ -144,7 +148,7 @@ export function legalPage(lang, mod, legal) {
   const main = `
 <section class="section page-top legal">
   <div class="wrap legal-grid">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="${rel(langPath(lang, "index.html"))}">${esc(L.home)}</a> <span aria-hidden="true">›</span> <a href="${rel(langPath(lang, "legal/index.html"))}">${esc(L.hubTitle)}</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(P.title)}</span></nav>
+    <nav class="crumbs" aria-label="${esc(L.breadcrumb)}"><a href="${rel(langPath(lang, "index.html"))}">${esc(L.home)}</a> <span aria-hidden="true">›</span> <a href="${rel(langPath(lang, "legal/index.html"))}">${esc(L.hubTitle)}</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(P.title)}</span></nav>
     <header class="legal-head">
       <span class="eyebrow">${esc(L.eyebrow)}</span>
       <h1 class="h2">${esc(P.title)}</h1>
@@ -176,7 +180,7 @@ export function legalHub(lang, legal) {
   const main = `
 <section class="section page-top">
   <div class="wrap narrow-wide">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="${rel(langPath(lang, "index.html"))}">${esc(L.home)}</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(L.hubTitle)}</span></nav>
+    <nav class="crumbs" aria-label="${esc(L.breadcrumb)}"><a href="${rel(langPath(lang, "index.html"))}">${esc(L.home)}</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(L.hubTitle)}</span></nav>
     <span class="eyebrow">${esc(L.eyebrow)}</span>
     <h1 class="h2">${esc(L.hubTitle)}</h1>
     <p class="lead left">${esc(L.hubSub)}</p>

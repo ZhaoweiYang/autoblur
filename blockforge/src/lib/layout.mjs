@@ -11,6 +11,8 @@ export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", 
 export const langPath = (lang, enPath) => (lang === "ja" ? `ja/${enPath}` : enPath);
 const depthOf = (path) => path.split("/").length - 1;
 export const relFrom = (fromPath) => (to) => "../".repeat(depthOf(fromPath)) + to;
+/* Links to directory index pages use the directory URL (matches canonical). */
+export const pretty = (href) => href.replace(/(^|\/)index\.html(?=$|#)/, "$1") || "./";
 
 export const LOGO = `<svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l12 7-12 7L4 10z" fill="#ffa64d"/><path d="M4 10l12 7v13L4 23z" fill="#ff6b3d"/><path d="M28 10l-12 7v13l12-7z" fill="#b8390f"/><path d="M16 3l12 7-12 7L4 10z" fill="none" stroke="#ffd2a8" stroke-width=".8" stroke-linejoin="round"/></svg>`;
 
@@ -22,7 +24,7 @@ function head({ lang, enPath, title, description, ogType, jsonld, noindex }) {
   const rel = relFrom(path);
   const ogImg = abs(`assets/img/og-${lang}.png`);
   const altLang = lang === "ja" ? "en" : "ja";
-  const altHref = rel(langPath(altLang, enPath));
+  const altHref = pretty(rel(langPath(altLang, enPath)));
   return `<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -64,7 +66,7 @@ function head({ lang, enPath, title, description, ogType, jsonld, noindex }) {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap">
 <link rel="stylesheet" href="${rel("assets/css/style.css")}">
 <script>(function(){try{var t=localStorage.getItem("bf-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}
-try{if(/[?&]lang=/.test(location.search))return;var cur="${lang}",p=localStorage.getItem("bf-lang");if(!p&&cur==="en"&&(navigator.language||"").toLowerCase().indexOf("ja")===0)p="ja";if(p&&p!==cur){location.replace(${JSON.stringify(altHref)}+location.hash);}}catch(e){}})();</script>
+try{if(/[?&]lang=/.test(location.search))return;var cur="${lang}",p=localStorage.getItem("bf-lang");if(p&&p!==cur){location.replace(${JSON.stringify(altHref)}+location.hash);}}catch(e){}})();</script>
 <script type="application/ld+json">${graph([organization(), website(lang), ...(jsonld || [])])}</script>
 </head>`;
 }
@@ -78,8 +80,8 @@ function header({ lang, enPath, isHome }) {
   const enHref = rel(enPath), jaHref = rel(`ja/${enPath}`);
   return `<a class="skip" href="#main">${S.nav.skip}</a>
 <header class="nav-wrap">
-  <nav class="nav" aria-label="Main">
-    <a class="brand" href="${home}" aria-label="BlockForgeo home">${LOGO}<span>Block<b>Forgeo</b></span></a>
+  <nav class="nav" aria-label="${S.nav.mainNav}">
+    <a class="brand" href="${home}" aria-label="${S.nav.homeLabel}">${LOGO}<span>Block<b>Forgeo</b></span></a>
     <ul class="nav-links" id="navLinks">
       <li><a class="nav-link" href="${sec("assets")}">${S.nav.assets}</a></li>
       <li><a class="nav-link" href="${sec("how")}">${S.nav.how}</a></li>
@@ -148,13 +150,15 @@ function footer({ lang, enPath, legal, isHome }) {
 </footer>`;
 }
 
+const prettyLinks = (html) => html.replace(/href="([^"#:]*?)index\.html(#[^"]*)?"/g, (m, dir, hash) => `href="${dir || "./"}${hash || ""}"`);
+
 export function page(opts) {
   const { lang, enPath, bodyClass = "", main, scripts = [] } = opts;
   const S = STRINGS[lang];
   const path = langPath(lang, enPath);
   const rel = relFrom(path);
   const runtime = { lang, checkoutUrl: SITE.checkoutUrl, email: FACTS.en.email, t: runtimeStrings(lang) };
-  return `<!DOCTYPE html>
+  return prettyLinks(`<!DOCTYPE html>
 <html lang="${S.htmlLang}">
 ${head(opts)}
 <body class="${["lang-" + lang, bodyClass].filter(Boolean).join(" ")}">
@@ -167,5 +171,5 @@ ${footer(opts)}
 ${scripts.map((s) => `<script src="${rel(`assets/js/${s}`)}" defer></script>`).join("\n")}
 </body>
 </html>
-`;
+`);
 }

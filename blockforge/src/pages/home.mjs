@@ -2,7 +2,7 @@ import { SITE, PLAN, FACTS } from "../config.mjs";
 import { STRINGS, TOOLS } from "../strings.mjs";
 import { page, esc, langPath, relFrom, LOGO } from "../lib/layout.mjs";
 import { cardBadges } from "../lib/cards.mjs";
-import { product, webApplication, faqPage, webPage, returnPolicyNode, abs } from "../lib/schema.mjs";
+import { product, faqPage, webPage, returnPolicyNode, abs } from "../lib/schema.mjs";
 
 const creditLabel = (S, n) => (n === 1 ? S.credit.one : S.credit.n.replace("{n}", n));
 
@@ -18,14 +18,11 @@ const GLYPH = {
 };
 const glyph = (id) => `<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">${GLYPH[id]}</svg>`;
 
-/* Prompts used to draw the static preview tiles (same in both languages). */
+/* Prompts used to draw the static preview tiles, per language, so any text
+ * drawn into the art (cover headline, UI title) matches the page language. */
 const ART = {
-  thumbnail: "castle siege at sunset level 99",
-  icon: "golden coin badge",
-  ui: "potion shop",
-  texture: "mossy cobblestone",
-  clothing: "racing jersey",
-  gfx: "neon knight"
+  en: { thumbnail: "castle siege at sunset level 99", icon: "golden coin badge", ui: "potion shop", texture: "mossy cobblestone", clothing: "racing jersey", gfx: "neon knight" },
+  ja: { thumbnail: "夕暮れの城攻め レベル99", icon: "金貨のバッジ", ui: "ポーション屋", texture: "苔むした石畳", clothing: "レーシングジャージ", gfx: "ネオンの騎士" }
 };
 
 export function homePage(lang, legal) {
@@ -42,7 +39,7 @@ export function homePage(lang, legal) {
 
   const slot = (id) => id === "sfx"
     ? `<div class="art art-sfx" data-slot="sfx"></div>`
-    : `<canvas class="art art-${id}" data-art="${id}" data-prompt="${esc(ART[id])}" width="${id === "thumbnail" || id === "ui" ? 1280 : id === "clothing" ? 585 : 512}" height="${id === "thumbnail" || id === "ui" ? 720 : id === "clothing" ? 559 : 512}"></canvas>`;
+    : `<canvas class="art art-${id}" data-art="${id}" data-prompt="${esc(ART[lang][id])}" width="${id === "thumbnail" || id === "ui" ? 1280 : id === "clothing" ? 585 : 512}" height="${id === "thumbnail" || id === "ui" ? 720 : id === "clothing" ? 559 : 512}"></canvas>`;
 
   const main = `
 <section class="hero" id="top">
@@ -242,7 +239,7 @@ export function homePage(lang, legal) {
     bodyClass: "home",
     jsonld: [
       webPage("WebPage", { name: S.meta.homeTitle, description: S.meta.homeDesc, path: langPath(lang, enPath), lang }),
-      product(lang), webApplication(lang), returnPolicyNode(), faqPage(S.faq.items, url)
+      product(lang), returnPolicyNode(lang), faqPage(S.faq.items, url)
     ],
     scripts: ["gen.js", "app.js"],
     main

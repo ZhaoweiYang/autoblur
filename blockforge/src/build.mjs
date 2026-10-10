@@ -27,7 +27,9 @@ const legal = (await Promise.all(legalFiles.map(async (f) => (await import(pathT
   .sort((a, b) => a.order - b.order);
 
 // 2. Render pages.
-rmSync(out, { recursive: true, force: true });
+// Empty site/ but keep the folder itself (keeps local preview servers working).
+mkdirSync(out, { recursive: true });
+for (const entry of readdirSync(out)) rmSync(join(out, entry), { recursive: true, force: true });
 const pages = [];
 const write = (path, html) => {
   const file = join(out, path);

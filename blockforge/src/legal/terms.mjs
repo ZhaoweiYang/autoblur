@@ -39,12 +39,12 @@ export default {
       <h2 id="service">4. The service</h2>
       <p>${E.brand} is an online creative tool for game creators. In the web workspace, you describe what you want and ${E.brand} generates game assets with AI:</p>
       <ul>
-        <li><strong>Thumbnails:</strong> 16:9 game thumbnails at 1920&times;1080 pixels.</li>
-        <li><strong>Icons:</strong> 512&times;512 game icons with transparent backgrounds.</li>
+        <li><strong>Cover art (thumbnails):</strong> 16:9 game thumbnails at 1920&times;1080 pixels.</li>
+        <li><strong>Game icons:</strong> 512&times;512 game icons with transparent backgrounds.</li>
         <li><strong>Textures:</strong> seamless 512&times;512 textures.</li>
-        <li><strong>Clothing:</strong> shirt-template clothing images at 585&times;559 pixels.</li>
-        <li><strong>GFX:</strong> 512&times;512 character renders.</li>
-        <li><strong>UI layouts:</strong> editable UI layouts, exported as images plus a layer list that you can rebuild in a game editor.</li>
+        <li><strong>Avatar shirts (clothing):</strong> shirt-template clothing images at 585&times;559 pixels.</li>
+        <li><strong>Character renders (GFX):</strong> 512&times;512 character renders.</li>
+        <li><strong>UI kits (UI layouts):</strong> editable UI layouts, exported as images plus a layer list that you can rebuild in a game editor.</li>
         <li><strong>Sound effects:</strong> short sound effects.</li>
       </ul>
       <p>Images are delivered as PNG files and sounds as WAV files. The Service is entirely digital: you download your assets from the workspace, and nothing is shipped to you.</p>
@@ -120,13 +120,13 @@ export default {
           <tr><th>Tool</th><th>Credits per asset</th></tr>
         </thead>
         <tbody>
-          <tr><td>Thumbnail (1920&times;1080)</td><td>${C.thumbnail}</td></tr>
-          <tr><td>Icon (512&times;512)</td><td>${C.icon}</td></tr>
+          <tr><td>Cover art / thumbnail (1920&times;1080)</td><td>${C.thumbnail}</td></tr>
+          <tr><td>Game icon (512&times;512)</td><td>${C.icon}</td></tr>
           <tr><td>Texture (512&times;512)</td><td>${C.texture}</td></tr>
-          <tr><td>Clothing (585&times;559)</td><td>${C.clothing}</td></tr>
-          <tr><td>GFX character render (512&times;512)</td><td>${C.gfx}</td></tr>
+          <tr><td>Avatar shirt / clothing (585&times;559)</td><td>${C.clothing}</td></tr>
+          <tr><td>Character render / GFX (512&times;512)</td><td>${C.gfx}</td></tr>
           <tr><td>Sound effect (WAV)</td><td>${C.sfx}</td></tr>
-          <tr><td>UI layout</td><td>${C.ui}</td></tr>
+          <tr><td>UI kit / UI layout</td><td>${C.ui}</td></tr>
         </tbody>
       </table>
       <ul>
@@ -261,12 +261,12 @@ export default {
       <h2 id="service">第4条（本サービスの内容）</h2>
       <p>${J.brand}は、ゲームクリエイター向けのオンライン制作ツールです。ウェブ上のワークスペースで作りたいものを入力すると、${J.brand}がAIによって次のゲーム用素材を生成します。</p>
       <ul>
-        <li><strong>サムネイル：</strong>16:9のゲームサムネイル（1920&times;1080ピクセル）</li>
-        <li><strong>アイコン：</strong>背景が透明な512&times;512のゲームアイコン</li>
+        <li><strong>カバー画像（サムネイル）：</strong>16:9のゲームサムネイル（1920&times;1080ピクセル）</li>
+        <li><strong>ゲームアイコン：</strong>背景が透明な512&times;512のゲームアイコン</li>
         <li><strong>テクスチャ：</strong>継ぎ目なく並べられる512&times;512のテクスチャ</li>
-        <li><strong>衣装：</strong>シャツテンプレート形式の衣装画像（585&times;559ピクセル）</li>
-        <li><strong>GFX：</strong>512&times;512のキャラクターレンダー</li>
-        <li><strong>UIレイアウト：</strong>編集可能なUIレイアウト（画像と、ゲームエディタで再構成できるレイヤー一覧として書き出し）</li>
+        <li><strong>アバター用シャツ（衣装）：</strong>シャツテンプレート形式の衣装画像（585&times;559ピクセル）</li>
+        <li><strong>キャラクター画像（GFX）：</strong>512&times;512のキャラクターレンダー</li>
+        <li><strong>UIキット（UIレイアウト）：</strong>編集可能なUIレイアウト（画像と、ゲームエディタで再構成できるレイヤー一覧として書き出し）</li>
         <li><strong>効果音：</strong>短い効果音</li>
       </ul>
       <p>画像はPNG形式、音声はWAV形式で提供します。本サービスはすべてデジタルで提供され、素材はワークスペースからダウンロードしていただきます。物品の発送はありません。</p>
@@ -342,13 +342,13 @@ export default {
           <tr><th>ツール</th><th>1点あたりのクレジット</th></tr>
         </thead>
         <tbody>
-          <tr><td>サムネイル（1920&times;1080）</td><td>${C.thumbnail}</td></tr>
-          <tr><td>アイコン（512&times;512）</td><td>${C.icon}</td></tr>
+          <tr><td>カバー画像・サムネイル（1920&times;1080）</td><td>${C.thumbnail}</td></tr>
+          <tr><td>ゲームアイコン（512&times;512）</td><td>${C.icon}</td></tr>
           <tr><td>テクスチャ（512&times;512）</td><td>${C.texture}</td></tr>
-          <tr><td>衣装（585&times;559）</td><td>${C.clothing}</td></tr>
-          <tr><td>GFX キャラクターレンダー（512&times;512）</td><td>${C.gfx}</td></tr>
+          <tr><td>アバター用シャツ・衣装（585&times;559）</td><td>${C.clothing}</td></tr>
+          <tr><td>キャラクター画像・GFX（512&times;512）</td><td>${C.gfx}</td></tr>
           <tr><td>効果音（WAV）</td><td>${C.sfx}</td></tr>
-          <tr><td>UIレイアウト</td><td>${C.ui}</td></tr>
+          <tr><td>UIキット・UIレイアウト</td><td>${C.ui}</td></tr>
         </tbody>
       </table>
       <ul>

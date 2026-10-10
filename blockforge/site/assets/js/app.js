@@ -68,8 +68,10 @@
     $("#consentForm").addEventListener("submit", (e) => e.preventDefault());
     sync();
     // Show the concrete local time the first charge would happen.
+    // Only show a live clock once a real checkout is connected.
     const ct = $("#chargeTime b");
-    if (ct && T.checkout) {
+    if (ct && T.checkout && BF.checkoutUrl) {
+      $("#chargeTime").firstChild.textContent = T.checkout.timeLineLive + " ";
       const fmt = new Intl.DateTimeFormat(BF.lang === "ja" ? "ja-JP" : "en-US", { dateStyle: "medium", timeStyle: "short" });
       const tick = () => { ct.textContent = fmt.format(new Date(Date.now() + 3600e3)) + (BF.lang === "ja" ? "（現地時間）" : " (your local time)"); };
       tick();
@@ -155,7 +157,7 @@
 
   async function generate() {
     const id = ws.tool, meta = TOOL_META[id];
-    $("#wsTitle").textContent = `${T.tools[id]} · “${ws.prompt}”`;
+    $("#wsTitle").textContent = BF.lang === "ja" ? `${T.tools[id]}・「${ws.prompt}」` : `${T.tools[id]} · “${ws.prompt}”`;
     $("#wsSize").textContent = meta.size;
     $("#wsCost").textContent = creditLabel(T.creditCosts[id]);
     const stage = $("#wsStage");
@@ -188,7 +190,8 @@
         blob = await new Promise((r) => cv.toBlob(r, "image/png"));
       }
     } catch (err) {
-      stage.innerHTML = `<p>${escapeHtml(String((err && err.message) || err))}</p>`;
+      stage.innerHTML = `<p>${escapeHtml(T.ws.error)}</p>`;
+      if (window.console) console.error(err);
       return;
     }
     ws.url = URL.createObjectURL(blob);
@@ -214,16 +217,9 @@
 
   /* ================= generated imagery ================= */
   const accent = () => getComputedStyle(document.documentElement).getPropertyValue("--ember").trim() || "#ff6b3d";
-  // English prompts seed the idea images so both languages show the same picture.
-  const IDEA_SEEDS = [
-    "mining drill breaking through a wall of gems", "pet evolving from egg to dragon",
-    "rainbow parkour bridge over a lava lake", "timer at 0:03 on the final jump",
-    "factory upgrade from wood to solid gold", "cash machine overflowing with coins",
-    "flashlight beam in an abandoned school", "shadow at the far end of the hallway",
-    "pirate ship sailing into a thunderstorm", "explorer discovering a glowing temple"
-  ];
   function thumbURL(prompt, w) {
-    const big = Gen.thumbnail(prompt, Gen.hash(prompt));
+    // Same seed as the preview dialog, so a card matches what "Preview" opens.
+    const big = Gen.thumbnail(prompt, Gen.hash(prompt.toLowerCase() + "#0#thumbnail"));
     const small = document.createElement("canvas");
     small.width = w; small.height = Math.round((w * 9) / 16);
     small.getContext("2d").drawImage(big, 0, 0, small.width, small.height);
@@ -231,7 +227,7 @@
   }
 
   function renderImagery() {
-    $$("[data-idea-img]").forEach((el) => { el.style.backgroundImage = `url(${thumbURL(IDEA_SEEDS[+el.dataset.ideaImg] || IDEA_SEEDS[0], 560)})`; });
+    $$("[data-idea-img]").forEach((el) => { el.style.backgroundImage = `url(${thumbURL(T.ideas[+el.dataset.ideaImg] || T.ideas[0], 560)})`; });
     $$("canvas[data-art]").forEach((cv) => {
       const src = Gen[cv.dataset.art](cv.dataset.prompt, Gen.hash(cv.dataset.prompt));
       cv.width = src.width; cv.height = src.height;

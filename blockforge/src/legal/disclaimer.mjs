@@ -17,7 +17,7 @@ export default {
       <p>The binding contract for using ${E.brand} is our <a href="terms.html">Terms of Service</a>. If this Disclaimer and the Terms of Service conflict, the Terms of Service prevail.</p>
 
       <h2 id="ai-output">AI-generated output</h2>
-      <p>Every thumbnail, icon, texture, clothing image, GFX render, UI layout and sound effect that ${E.brand} generates is created automatically by AI models. Because of how these models work:</p>
+      <p>Every piece of cover art (thumbnail), game icon, texture, avatar shirt (clothing image), character render (GFX), UI kit (UI layout) and sound effect that ${E.brand} generates is created automatically by AI models. Because of how these models work:</p>
       <ul>
         <li>outputs can contain errors, visual artefacts, misspelled or garbled text, or details you did not ask for;</li>
         <li>outputs can unintentionally resemble existing works, characters, logos, trademarks or real people;</li>
@@ -66,7 +66,7 @@ export default {
       <p>${J.brand}のご利用に関する契約条件は<a href="terms.html">利用規約</a>に定めています。本免責事項と利用規約の内容が異なる場合は、利用規約が優先します。</p>
 
       <h2 id="ai-output">AI生成物の正確性と類似性</h2>
-      <p>${J.brand}が生成するサムネイル、アイコン、テクスチャ、衣装画像、GFXレンダー、UIレイアウトおよび効果音は、すべてAIモデルによって自動的に作成されます。AIモデルの性質上、次の点にご注意ください。</p>
+      <p>${J.brand}が生成するカバー画像（サムネイル）、ゲームアイコン、テクスチャ、アバター用シャツ（衣装画像）、キャラクター画像（GFX）、UIキット（UIレイアウト）および効果音は、すべてAIモデルによって自動的に作成されます。AIモデルの性質上、次の点にご注意ください。</p>
       <ul>
         <li>生成物には、誤り、画像の乱れ、文字の誤りや崩れ、指示していない要素が含まれることがあります。</li>
         <li>生成物が、意図せず既存の作品、キャラクター、ロゴ、商標または実在の人物に似ることがあります。</li>

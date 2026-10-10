@@ -38,12 +38,12 @@ export default {
           <tr><th>Tool</th><th>What you receive</th><th>Size or length</th><th>File format</th><th>Credits per asset</th></tr>
         </thead>
         <tbody>
-          <tr><td>Thumbnail</td><td>16:9 game thumbnail</td><td>1920&times;1080 pixels</td><td>PNG</td><td>${C.thumbnail}</td></tr>
-          <tr><td>Icon</td><td>Game icon with a transparent background</td><td>512&times;512 pixels</td><td>PNG</td><td>${C.icon}</td></tr>
+          <tr><td>Cover art (thumbnail)</td><td>16:9 game thumbnail</td><td>1920&times;1080 pixels</td><td>PNG</td><td>${C.thumbnail}</td></tr>
+          <tr><td>Game icon</td><td>Game icon with a transparent background</td><td>512&times;512 pixels</td><td>PNG</td><td>${C.icon}</td></tr>
           <tr><td>Texture</td><td>Seamless, tileable texture</td><td>512&times;512 pixels</td><td>PNG</td><td>${C.texture}</td></tr>
-          <tr><td>Clothing</td><td>Shirt-template clothing image</td><td>585&times;559 pixels</td><td>PNG</td><td>${C.clothing}</td></tr>
-          <tr><td>GFX</td><td>Character render</td><td>512&times;512 pixels</td><td>PNG</td><td>${C.gfx}</td></tr>
-          <tr><td>UI layout</td><td>Editable UI layout, exported as an image plus a layer list you can rebuild in a game editor</td><td>Full layout image and its layer list</td><td>PNG image and layer list</td><td>${C.ui}</td></tr>
+          <tr><td>Avatar shirt (clothing)</td><td>Shirt-template clothing image</td><td>585&times;559 pixels</td><td>PNG</td><td>${C.clothing}</td></tr>
+          <tr><td>Character render (GFX)</td><td>Character render</td><td>512&times;512 pixels</td><td>PNG</td><td>${C.gfx}</td></tr>
+          <tr><td>UI kit (UI layout)</td><td>Editable UI layout, exported as an image plus a layer list you can rebuild in a game editor</td><td>Full layout image and its layer list</td><td>PNG image and layer list</td><td>${C.ui}</td></tr>
           <tr><td>Sound effect</td><td>Short sound effect</td><td>Short clip</td><td>WAV</td><td>${C.sfx}</td></tr>
         </tbody>
       </table>
@@ -116,12 +116,12 @@ export default {
           <tr><th>ツール</th><th>提供内容</th><th>サイズ・長さ</th><th>ファイル形式</th><th>消費クレジット（1点あたり）</th></tr>
         </thead>
         <tbody>
-          <tr><td>サムネイル</td><td>16:9のゲームサムネイル</td><td>1920&times;1080ピクセル</td><td>PNG</td><td>${C.thumbnail}</td></tr>
-          <tr><td>アイコン</td><td>背景透過のゲームアイコン</td><td>512&times;512ピクセル</td><td>PNG</td><td>${C.icon}</td></tr>
+          <tr><td>カバー画像（サムネイル）</td><td>16:9のゲームサムネイル</td><td>1920&times;1080ピクセル</td><td>PNG</td><td>${C.thumbnail}</td></tr>
+          <tr><td>ゲームアイコン</td><td>背景透過のゲームアイコン</td><td>512&times;512ピクセル</td><td>PNG</td><td>${C.icon}</td></tr>
           <tr><td>テクスチャ</td><td>継ぎ目なく並べられるシームレステクスチャ</td><td>512&times;512ピクセル</td><td>PNG</td><td>${C.texture}</td></tr>
-          <tr><td>衣装</td><td>シャツテンプレート形式の衣装画像</td><td>585&times;559ピクセル</td><td>PNG</td><td>${C.clothing}</td></tr>
-          <tr><td>GFX</td><td>キャラクターレンダー</td><td>512&times;512ピクセル</td><td>PNG</td><td>${C.gfx}</td></tr>
-          <tr><td>UIレイアウト</td><td>編集可能なUIレイアウト。画像と、ゲームエディター上で再構成できるレイヤー一覧として書き出します</td><td>レイアウト全体の画像とレイヤー一覧</td><td>PNG画像およびレイヤー一覧</td><td>${C.ui}</td></tr>
+          <tr><td>アバター用シャツ（衣装）</td><td>シャツテンプレート形式の衣装画像</td><td>585&times;559ピクセル</td><td>PNG</td><td>${C.clothing}</td></tr>
+          <tr><td>キャラクター画像（GFX）</td><td>キャラクターレンダー</td><td>512&times;512ピクセル</td><td>PNG</td><td>${C.gfx}</td></tr>
+          <tr><td>UIキット（UIレイアウト）</td><td>編集可能なUIレイアウト。画像と、ゲームエディター上で再構成できるレイヤー一覧として書き出します</td><td>レイアウト全体の画像とレイヤー一覧</td><td>PNG画像およびレイヤー一覧</td><td>${C.ui}</td></tr>
           <tr><td>効果音</td><td>短い効果音</td><td>短いクリップ</td><td>WAV</td><td>${C.sfx}</td></tr>
         </tbody>
       </table>

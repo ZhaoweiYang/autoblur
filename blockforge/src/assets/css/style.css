@@ -478,3 +478,4 @@ button { font: inherit; color: inherit; cursor: pointer; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+.crumbs-full { grid-column: 1 / -1; margin-bottom: 0; }
