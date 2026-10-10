@@ -79,7 +79,7 @@ function header({ lang, enPath, isHome }) {
   return `<a class="skip" href="#main">${S.nav.skip}</a>
 <header class="nav-wrap">
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="${home}" aria-label="BlockForge home">${LOGO}<span>Block<b>Forge</b></span></a>
+    <a class="brand" href="${home}" aria-label="BlockForgeo home">${LOGO}<span>Block<b>Forgeo</b></span></a>
     <ul class="nav-links" id="navLinks">
       <li><a class="nav-link" href="${sec("assets")}">${S.nav.assets}</a></li>
       <li><a class="nav-link" href="${sec("how")}">${S.nav.how}</a></li>
@@ -116,7 +116,7 @@ function footer({ lang, enPath, legal, isHome }) {
   return `<footer class="footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      <a class="brand" href="${home}">${LOGO}<span>Block<b>Forge</b></span></a>
+      <a class="brand" href="${home}">${LOGO}<span>Block<b>Forgeo</b></span></a>
       <p>${S.footer.tagline}</p>
       <p class="operated">${S.footer.operatedBy} <strong>${F.company}</strong></p>
       <address>${F.company}<br>${FACTS.en.addressLines.join("<br>")}<br><a href="mailto:${F.email}">${F.email}</a></address>

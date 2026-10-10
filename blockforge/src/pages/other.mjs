@@ -9,7 +9,7 @@ export function checkoutPage(lang, legal) {
   const S = STRINGS[lang], C = S.checkout, Pr = S.pricing, F = FACTS[lang];
   const enPath = "checkout.html";
   const rel = relFrom(langPath(lang, enPath));
-  const mailto = `mailto:${F.email}?subject=${encodeURIComponent(lang === "ja" ? "BlockForge Pro 無料トライアルの申し込み" : "Start my BlockForge Pro free trial")}`;
+  const mailto = `mailto:${F.email}?subject=${encodeURIComponent(lang === "ja" ? "BlockForgeo Pro 無料トライアルの申し込み" : "Start my BlockForgeo Pro free trial")}`;
   const target = SITE.checkoutUrl || mailto;
   const rows = [
     [C.plan, ""],
@@ -156,7 +156,7 @@ export function legalPage(lang, mod, legal) {
 </section>`;
   return page({
     lang, enPath, legal,
-    title: `${P.title} — BlockForge`,
+    title: `${P.title} — BlockForgeo`,
     description: P.description,
     ogType: "article",
     bodyClass: "legal-page",

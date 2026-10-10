@@ -1,4 +1,4 @@
-/* BlockForge — browser behaviour for the static pages.
+/* BlockForgeo — browser behaviour for the static pages.
  * Content is pre-rendered into the HTML for each language; this script only
  * adds interactivity: theme, menu, language memory, creator widgets, the
  * in-browser preview workspace, the idea cards and the checkout consent. */
@@ -193,7 +193,7 @@
     }
     ws.url = URL.createObjectURL(blob);
     dl.href = ws.url;
-    dl.download = `blockforge-preview-${id}-${slug(ws.prompt)}.${meta.ext}`;
+    dl.download = `blockforgeo-preview-${id}-${slug(ws.prompt)}.${meta.ext}`;
     dl.classList.remove("disabled");
   }
 

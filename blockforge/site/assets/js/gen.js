@@ -1,4 +1,4 @@
-/* BlockForge — procedural asset generators.
+/* BlockForgeo — procedural asset generators.
  * Everything runs locally in the browser: canvas for images, OfflineAudioContext
  * for sound. Output is seeded by the prompt text + a variation counter, so the
  * same prompt gives the same result and "New variation" gives a fresh one. */

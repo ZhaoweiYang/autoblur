@@ -1,10 +1,10 @@
-/* BlockForge — single source of truth for business facts.
+/* BlockForgeo — single source of truth for business facts.
  * Every page, policy and the structured data read from here, so prices,
  * trial and refund terms can never disagree between pages.
  * Change a value here and run `node src/build.mjs` to regenerate site/. */
 
 export const SITE = {
-  brand: "BlockForge",
+  brand: "BlockForgeo",
   // Absolute origin used for canonical URLs, Open Graph, hreflang and sitemap.
   siteUrl: "https://blockforge.vip",
   // Where "Start 1-hour free trial" sends people after they accept the terms.
@@ -12,7 +12,7 @@ export const SITE = {
   // Left empty, the button opens an email to support instead.
   checkoutUrl: "",
   // Exactly what appears on the customer's card statement.
-  statementDescriptor: "BLOCKFORGE",
+  statementDescriptor: "BLOCKFORGEO",
   // Card brands shown as accepted payment methods (order = display order).
   cards: ["visa", "mastercard", "amex", "jcb", "discover"],
   effectiveDate: "2026-10-10",
@@ -34,7 +34,7 @@ export const COMPANY = {
 };
 
 export const PLAN = {
-  name: "BlockForge Pro",
+  name: "BlockForgeo Pro",
   interval: "P1Y",
   trialHours: 1,
   trialCredits: 10,

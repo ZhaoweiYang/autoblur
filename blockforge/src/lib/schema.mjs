@@ -70,7 +70,7 @@ function offer(lang) {
   return {
     "@type": "Offer",
     "@id": `${SITE.siteUrl}/#offer-${p.currency.toLowerCase()}`,
-    name: lang === "ja" ? "BlockForge Pro 年額プラン（1時間無料トライアル付き）" : "BlockForge Pro annual plan (1-hour free trial)",
+    name: lang === "ja" ? "BlockForgeo Pro 年額プラン（1時間無料トライアル付き）" : "BlockForgeo Pro annual plan (1-hour free trial)",
     url: abs(path),
     category: "Subscription",
     price,

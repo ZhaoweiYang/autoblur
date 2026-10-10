@@ -1,4 +1,4 @@
-/* BlockForge static site build.
+/* BlockForgeo static site build.
  *   node src/build.mjs        → writes the deployable site to ./site
  * No dependencies; Node 18+. */
 import { mkdirSync, rmSync, writeFileSync, readdirSync, cpSync, existsSync } from "node:fs";
@@ -63,8 +63,8 @@ ${pages.flatMap(({ enPath, priority }) => LANGS.map((lang) => `  <url>
 write("sitemap.xml", sitemap);
 write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE.siteUrl}/sitemap.xml\n`);
 write("site.webmanifest", JSON.stringify({
-  name: "BlockForge", short_name: "BlockForge", start_url: "./", display: "standalone",
-  background_color: "#0d0c0a", theme_color: "#0d0c0a",
+  name: "BlockForgeo", short_name: "BlockForgeo", start_url: "./", display: "standalone",
+  background_color: "#0e1020", theme_color: "#0e1020",
   icons: [{ src: "assets/img/logo-192.png", sizes: "192x192", type: "image/png" }, { src: "assets/img/logo-512.png", sizes: "512x512", type: "image/png" }]
 }, null, 2));
 

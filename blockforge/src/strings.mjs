@@ -1,4 +1,4 @@
-/* BlockForge — page copy for English and Japanese.
+/* BlockForgeo — page copy for English and Japanese.
  * Facts (prices, trial, credits, company) come from config.mjs via FACTS so
  * copy and policies always agree. `rt` = strings the browser script needs. */
 import { FACTS, PLAN, SITE } from "./config.mjs";
@@ -18,15 +18,15 @@ export const STRINGS = {
       lang: "Language"
     },
     meta: {
-      homeTitle: `BlockForge — AI game art & sound | ${E.trial}, then ${E.price}/year`,
+      homeTitle: `BlockForgeo — AI game art & sound | ${E.trial}, then ${E.price}/year`,
       homeDesc: `Turn a one-line idea into cover art, icons, textures, avatar shirts, character renders, UI kits and sound effects. ${E.trial}, then ${E.priceWithCode} per year.`,
-      checkoutTitle: `Start your ${E.trial} — BlockForge Pro`,
-      checkoutDesc: `Review BlockForge Pro before you start: ${E.trial}, then ${E.priceWithCode} billed once a year. Cancel anytime. 30-day money-back guarantee on unused credits.`,
-      contactTitle: "Contact BlockForge — CALDRIVO GLOBAL INC",
-      contactDesc: `Contact BlockForge support at ${E.email}. BlockForge is operated by ${E.company}, ${E.addressOneLine}.`,
-      legalTitle: "Legal & policies — BlockForge",
-      legalDesc: "Terms of Service, Privacy, Refund, Cancellation, Delivery, Cookie, Accessibility, DMCA, Disclaimer and Do Not Sell or Share policies for BlockForge.",
-      ogAlt: `BlockForge — prompt in, game-ready art out. ${E.trial}, then ${E.price} per year.`
+      checkoutTitle: `Start your ${E.trial} — BlockForgeo Pro`,
+      checkoutDesc: `Review BlockForgeo Pro before you start: ${E.trial}, then ${E.priceWithCode} billed once a year. Cancel anytime. 30-day money-back guarantee on unused credits.`,
+      contactTitle: "Contact BlockForgeo — CALDRIVO GLOBAL INC",
+      contactDesc: `Contact BlockForgeo support at ${E.email}. BlockForgeo is operated by ${E.company}, ${E.addressOneLine}.`,
+      legalTitle: "Legal & policies — BlockForgeo",
+      legalDesc: "Terms of Service, Privacy, Refund, Cancellation, Delivery, Cookie, Accessibility, DMCA, Disclaimer and Do Not Sell or Share policies for BlockForgeo.",
+      ogAlt: `BlockForgeo — prompt in, game-ready art out. ${E.trial}, then ${E.price} per year.`
     },
     tools: {
       thumbnail: "Cover art", icon: "Game icon", ui: "UI kit", texture: "Texture", clothing: "Avatar shirt", gfx: "Character render", sfx: "Sound effect"
@@ -55,10 +55,10 @@ export const STRINGS = {
     hero: {
       eyebrow: "AI asset forge for game creators",
       title1: "Prompt in.", title2: "Game-ready art out.",
-      sub: "BlockForge turns a one-line idea into cover art, icons, textures, avatar shirts, character renders, UI kits and sound effects, sized for the platforms you publish on.",
+      sub: "BlockForgeo turns a one-line idea into cover art, icons, textures, avatar shirts, character renders, UI kits and sound effects, sized for the platforms you publish on.",
       composerTitle: "What should we forge?",
       typeLabel: "Asset type",
-      note: `Preview mode is free and runs in your browser. BlockForge Pro starts with a ${E.trial}, then ${E.priceWithCode} per year.`,
+      note: `Preview mode is free and runs in your browser. BlockForgeo Pro starts with a ${E.trial}, then ${E.priceWithCode} per year.`,
       examples: "Examples:",
       facts: [["7", "asset types"], [E.credits, "credits per year"], ["30 days", "money-back guarantee"]],
       boardTitle: "Inventory",
@@ -67,7 +67,7 @@ export const STRINGS = {
     assets: {
       eyebrow: "Asset types",
       title: "Seven kinds of assets, <em>one prompt box.</em>",
-      sub: "Every asset type is set to the size and format your platform expects, so files go straight into your project. All of them are included in BlockForge Pro.",
+      sub: "Every asset type is set to the size and format your platform expects, so files go straight into your project. All of them are included in BlockForgeo Pro.",
       included: "Included in Pro",
       preview: "Preview",
       items: {
@@ -93,7 +93,7 @@ export const STRINGS = {
     ideas: {
       eyebrow: "Ideas",
       title: "Need a <em>starting point?</em>",
-      sub: "Pick a prompt and we'll draw a rough preview in your browser. BlockForge Pro turns it into full-resolution AI art.",
+      sub: "Pick a prompt and we'll draw a rough preview in your browser. BlockForgeo Pro turns it into full-resolution AI art.",
       badge: "Preview mode",
       use: "Preview",
       items: [
@@ -112,8 +112,8 @@ export const STRINGS = {
     pricing: {
       eyebrow: "Pricing",
       title: "One plan. <em>Clear terms.</em>",
-      sub: `Everything in BlockForge is included in one annual plan. Prices on this page are in ${E.currencyName}.`,
-      planName: "BlockForge Pro",
+      sub: `Everything in BlockForgeo is included in one annual plan. Prices on this page are in ${E.currencyName}.`,
+      planName: "BlockForgeo Pro",
       planTag: "Annual plan",
       per: "/year",
       currencyNote: `Billed in ${E.currencyName}. ${E.taxNote}`,
@@ -151,39 +151,39 @@ export const STRINGS = {
       eyebrow: "FAQ",
       title: "Questions, <em>answered</em>",
       items: [
-        ["How does the 1-hour free trial work?", `Start the trial with a credit or debit card. For 1 hour you get full Pro access and ${E.trialCredits} trial credits, and nothing is charged. When the hour ends, your card is automatically charged ${E.priceWithCode} for 12 months of BlockForge Pro, unless you cancel before then. One trial per person.`],
+        ["How does the 1-hour free trial work?", `Start the trial with a credit or debit card. For 1 hour you get full Pro access and ${E.trialCredits} trial credits, and nothing is charged. When the hour ends, your card is automatically charged ${E.priceWithCode} for 12 months of BlockForgeo Pro, unless you cancel before then. One trial per person.`],
         ["When exactly will I be charged?", `Exactly 1 hour after you start the trial, then every 12 months on the same date until you cancel. We email a reminder ${E.reminderDays} days before every renewal and a receipt after every charge.`],
         ["What will I see on my card statement?", `Your card statement will show "${E.descriptor}".`],
         ["How do I cancel?", "Go to Account → Billing → Cancel subscription, or email support from your account email. Cancel within the trial hour and you are never charged. Cancel after a charge and you keep Pro and your remaining credits until the end of the paid year, with no further charges."],
         ["What is the 30-Day Money-Back Guarantee?", `Full refund on unused credits. No questions asked. Within ${E.refundDays} days of any annual charge, ask for a refund and we return the annual fee × unused credits ÷ ${E.credits}. If you haven't used any credits, that's the full ${E.price}. Refunds go back to your original card within 5 business days; your bank may take 5–10 business days to show it.`],
-        ["What does BlockForge Pro include?", `${E.credits} credits per paid year, all 7 asset types, full-resolution PNG and WAV downloads, commercial use of your assets, and an English and Japanese interface. Unused credits expire at the end of each paid year.`],
+        ["What does BlockForgeo Pro include?", `${E.credits} credits per paid year, all 7 asset types, full-resolution PNG and WAV downloads, commercial use of your assets, and an English and Japanese interface. Unused credits expire at the end of each paid year.`],
         ["How many credits does each asset use?", `Cover art, icons, textures, avatar shirts, character renders and sound effects use ${PLAN.creditCosts.thumbnail} credit each. A UI kit uses ${PLAN.creditCosts.ui} credits. If a generation fails, its credits are returned automatically.`],
         ["Which payment methods and currencies do you accept?", `Visa, Mastercard, American Express, JCB and Discover credit and debit cards. The English site charges ${E.price} in US dollars (USD); the Japanese site charges ${J.price} in Japanese yen (JPY, tax included). You pay in the currency shown at checkout.`],
-        ["Is preview mode free?", "Yes. Preview mode draws a quick, rough sketch in your browser, on your own device. It needs no account, uses no credits and isn't the AI output. BlockForge Pro generates the full-resolution AI assets."],
+        ["Is preview mode free?", "Yes. Preview mode draws a quick, rough sketch in your browser, on your own device. It needs no account, uses no credits and isn't the AI output. BlockForgeo Pro generates the full-resolution AI assets."],
         ["Can I use the assets commercially?", "Yes. You own the assets you generate (as far as the law allows) and can use them commercially, including in monetized games. We don't use your prompts, uploads or assets to train AI models."],
-        ["Is BlockForge affiliated with Roblox or other game platforms?", "No. BlockForge is an independent product of CALDRIVO GLOBAL INC and isn't affiliated with, endorsed by or sponsored by Roblox Corporation or any other game platform."]
+        ["Is BlockForgeo affiliated with Roblox or other game platforms?", "No. BlockForgeo is an independent product of CALDRIVO GLOBAL INC and isn't affiliated with, endorsed by or sponsored by Roblox Corporation or any other game platform."]
       ]
     },
     cta: {
       title1: "Your next update", title2: "deserves better art.",
-      sub: `Make a free preview right now, or start BlockForge Pro with a ${E.trial}. After the trial it's ${E.price} per year.`,
+      sub: `Make a free preview right now, or start BlockForgeo Pro with a ${E.trial}. After the trial it's ${E.price} per year.`,
       trial: "Start 1-hour free trial",
       preview: "Make a free preview"
     },
     footer: {
       tagline: "Prompt in. Game-ready art out.",
-      operatedBy: "BlockForge is operated by",
+      operatedBy: "BlockForgeo is operated by",
       company: "Company", policies: "Policies", product: "Product",
       contact: "Contact us", pay: "We accept",
       copy: `© ${SITE.copyrightYear} ${E.company}. All rights reserved.`,
-      notAffiliated: "BlockForge is not affiliated with Roblox Corporation or any other game platform."
+      notAffiliated: "BlockForgeo is not affiliated with Roblox Corporation or any other game platform."
     },
     checkout: {
       eyebrow: "Checkout",
       title: "Start your 1-hour free trial",
       sub: "Review exactly what happens before you add a card.",
       summary: "Order summary",
-      plan: "BlockForge Pro — annual plan",
+      plan: "BlockForgeo Pro — annual plan",
       today: "Due today",
       todayValue: E.price.replace(/\d[\d.,]*/, "0"),
       afterTrial: "After your 1-hour trial",
@@ -211,7 +211,7 @@ export const STRINGS = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Contact BlockForge",
+      title: "Contact BlockForgeo",
       sub: `Questions about your account, billing or the product? Email us and we reply ${E.supportResponse}, in English or Japanese.`,
       emailTitle: "Email support",
       companyTitle: "Company",
@@ -232,7 +232,7 @@ export const STRINGS = {
     legal: {
       eyebrow: "Legal",
       hubTitle: "Legal & policies",
-      hubSub: "How BlockForge works, what you pay, and how we handle your data — in plain language.",
+      hubSub: "How BlockForgeo works, what you pay, and how we handle your data — in plain language.",
       effective: "Effective date",
       updated: "Last updated",
       onThisPage: "On this page",
@@ -242,7 +242,7 @@ export const STRINGS = {
     },
     ws: {
       title: "Preview mode",
-      demo: "A rough sketch drawn in your browser. BlockForge Pro creates the full-resolution AI version.",
+      demo: "A rough sketch drawn in your browser. BlockForgeo Pro creates the full-resolution AI version.",
       generating: "Sketching your preview…",
       download: "Download preview",
       again: "Another variation",
@@ -266,15 +266,15 @@ export const STRINGS = {
       lang: "言語"
     },
     meta: {
-      homeTitle: `BlockForge — ゲーム制作のためのAI素材工房｜${J.trial}、以降${J.pricePerYear}`,
+      homeTitle: `BlockForgeo — ゲーム制作のためのAI素材工房｜${J.trial}、以降${J.pricePerYear}`,
       homeDesc: `ひとことのアイデアから、カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、UIキット、効果音を作成。${J.trial}のあと${J.pricePerYear}。`,
-      checkoutTitle: `${J.trial}を開始 — BlockForge Pro`,
+      checkoutTitle: `${J.trial}を開始 — BlockForgeo Pro`,
       checkoutDesc: `開始前にご確認ください：${J.trial}のあと、${J.pricePerYear}を年1回お支払い。いつでも解約でき、未使用クレジット分は30日間全額返金します。`,
-      contactTitle: "お問い合わせ — BlockForge（CALDRIVO GLOBAL INC）",
-      contactDesc: `BlockForge サポート：${J.email}。BlockForge は ${J.company}（米国コロラド州オーロラ）が運営しています。`,
-      legalTitle: "規約・ポリシー一覧 — BlockForge",
-      legalDesc: "BlockForge の利用規約、プライバシー、返金、解約、配送・提供、Cookie、アクセシビリティ、DMCA、免責事項、個人情報の販売・共有の拒否、特定商取引法に基づく表記。",
-      ogAlt: `BlockForge — 言葉を入れれば、ゲームで使える素材に。${J.trial}、以降${J.pricePerYear}。`
+      contactTitle: "お問い合わせ — BlockForgeo（CALDRIVO GLOBAL INC）",
+      contactDesc: `BlockForgeo サポート：${J.email}。BlockForgeo は ${J.company}（米国コロラド州オーロラ）が運営しています。`,
+      legalTitle: "規約・ポリシー一覧 — BlockForgeo",
+      legalDesc: "BlockForgeo の利用規約、プライバシー、返金、解約、配送・提供、Cookie、アクセシビリティ、DMCA、免責事項、個人情報の販売・共有の拒否、特定商取引法に基づく表記。",
+      ogAlt: `BlockForgeo — 言葉を入れれば、ゲームで使える素材に。${J.trial}、以降${J.pricePerYear}。`
     },
     tools: {
       thumbnail: "カバー画像", icon: "ゲームアイコン", ui: "UIキット", texture: "テクスチャ", clothing: "アバター用シャツ", gfx: "キャラクター画像", sfx: "効果音"
@@ -306,7 +306,7 @@ export const STRINGS = {
       sub: "ひとことのアイデアから、カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、UIキット、効果音を作成。公開先のプラットフォームに合わせたサイズで書き出します。",
       composerTitle: "何をつくりますか？",
       typeLabel: "アセットの種類",
-      note: `プレビューモードは無料で、ブラウザ上で動きます。BlockForge Pro は${J.trial}から始まり、その後は${J.pricePerYear}です。`,
+      note: `プレビューモードは無料で、ブラウザ上で動きます。BlockForgeo Pro は${J.trial}から始まり、その後は${J.pricePerYear}です。`,
       examples: "例：",
       facts: [["7", "種類のアセット"], [J.credits, "クレジット／年"], ["30日間", "返金保証"]],
       boardTitle: "インベントリ",
@@ -315,7 +315,7 @@ export const STRINGS = {
     assets: {
       eyebrow: "アセットの種類",
       title: "7種類のアセットを、<em>ひとつの入力欄から。</em>",
-      sub: "どのアセットも、プラットフォームが求めるサイズと形式にあらかじめ設定済み。書き出したファイルをそのままプロジェクトに使えます。すべて BlockForge Pro に含まれます。",
+      sub: "どのアセットも、プラットフォームが求めるサイズと形式にあらかじめ設定済み。書き出したファイルをそのままプロジェクトに使えます。すべて BlockForgeo Pro に含まれます。",
       included: "Pro に含まれます",
       preview: "プレビュー",
       items: {
@@ -341,7 +341,7 @@ export const STRINGS = {
     ideas: {
       eyebrow: "アイデア",
       title: "<em>きっかけ</em>が欲しいときは",
-      sub: "プロンプトを選ぶと、ブラウザ上で簡易プレビューを描画します。BlockForge Pro ならフル解像度の AI 作品に仕上げられます。",
+      sub: "プロンプトを選ぶと、ブラウザ上で簡易プレビューを描画します。BlockForgeo Pro ならフル解像度の AI 作品に仕上げられます。",
       badge: "プレビューモード",
       use: "プレビュー",
       items: [
@@ -360,8 +360,8 @@ export const STRINGS = {
     pricing: {
       eyebrow: "料金",
       title: "プランはひとつ。<em>条件も明快に。</em>",
-      sub: `BlockForge のすべての機能が、ひとつの年額プランに含まれます。このページの価格は${J.currencyName}・税込です。`,
-      planName: "BlockForge Pro",
+      sub: `BlockForgeo のすべての機能が、ひとつの年額プランに含まれます。このページの価格は${J.currencyName}・税込です。`,
+      planName: "BlockForgeo Pro",
       planTag: "年額プラン",
       per: "/年（税込）",
       currencyNote: `${J.currencyName}でのお支払いです。${J.taxNote}`,
@@ -399,39 +399,39 @@ export const STRINGS = {
       eyebrow: "FAQ",
       title: "ご質問に<em>お答えします</em>",
       items: [
-        ["1時間の無料トライアルはどのような仕組みですか？", `クレジットカードまたはデビットカードを登録してトライアルを開始します。1時間、Pro のすべての機能と${J.trialCredits}トライアルクレジットを利用でき、この間の請求はありません。1時間が経過すると、それまでに解約しない限り、BlockForge Pro 12か月分として${J.priceWithCode}が自動的に請求されます。トライアルはお一人様1回限りです。`],
+        ["1時間の無料トライアルはどのような仕組みですか？", `クレジットカードまたはデビットカードを登録してトライアルを開始します。1時間、Pro のすべての機能と${J.trialCredits}トライアルクレジットを利用でき、この間の請求はありません。1時間が経過すると、それまでに解約しない限り、BlockForgeo Pro 12か月分として${J.priceWithCode}が自動的に請求されます。トライアルはお一人様1回限りです。`],
         ["いつ請求されますか？", `トライアル開始のちょうど1時間後に初回の請求が行われ、その後は解約するまで12か月ごとに同じ日付で請求されます。更新の${J.reminderDays}日前までにお知らせメールを、各請求後には領収メールをお送りします。`],
         ["カード明細にはどのように表示されますか？", `カードの利用明細には「${J.descriptor}」と表示されます。`],
         ["解約方法を教えてください。", "アカウント → お支払い → サブスクリプションを解約、またはご登録のメールアドレスからサポートへご連絡ください。トライアルの1時間以内に解約すれば料金はかかりません。請求後に解約した場合は、以後の請求は行われず、お支払い済みの1年間の終わりまで Pro と残りのクレジットをご利用いただけます。"],
         ["30日間返金保証とは何ですか？", `未使用クレジット分を全額返金します。理由は問いません。各年額請求から${J.refundDays}日以内にお申し出いただくと、「年額料金 × 未使用クレジット ÷ ${J.credits}」を返金します。クレジットを使っていなければ${J.price}を全額返金します。返金は5営業日以内にお支払いに使用したカードへ処理され、明細への反映にはカード会社により5〜10営業日かかる場合があります。`],
-        ["BlockForge Pro には何が含まれますか？", `有料期間1年ごとに${J.credits}クレジット、7種類のアセットすべて、フル解像度の PNG・WAV ダウンロード、作成したアセットの商用利用、日本語・英語のインターフェースが含まれます。未使用のクレジットは各有料期間の終了時に失効します。`],
+        ["BlockForgeo Pro には何が含まれますか？", `有料期間1年ごとに${J.credits}クレジット、7種類のアセットすべて、フル解像度の PNG・WAV ダウンロード、作成したアセットの商用利用、日本語・英語のインターフェースが含まれます。未使用のクレジットは各有料期間の終了時に失効します。`],
         ["アセット1点に何クレジット必要ですか？", `カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、効果音は各${PLAN.creditCosts.thumbnail}クレジット、UIキットは${PLAN.creditCosts.ui}クレジットです。作成に失敗した場合、クレジットは自動的に戻ります。`],
         ["支払方法と通貨を教えてください。", `Visa、Mastercard、American Express、JCB、Discover のクレジットカード・デビットカードをご利用いただけます。日本語サイトでは${J.price}（日本円・税込）、英語サイトでは${E.price}（米ドル）でのお支払いとなり、決済画面に表示された通貨で請求されます。`],
-        ["プレビューモードは無料ですか？", "はい。プレビューモードはブラウザ上（お使いの端末内）で簡易的なラフを描く機能で、アカウント不要・クレジット不要です。AI による作成結果ではありません。フル解像度の AI アセットは BlockForge Pro で作成できます。"],
+        ["プレビューモードは無料ですか？", "はい。プレビューモードはブラウザ上（お使いの端末内）で簡易的なラフを描く機能で、アカウント不要・クレジット不要です。AI による作成結果ではありません。フル解像度の AI アセットは BlockForgeo Pro で作成できます。"],
         ["作成したアセットは商用利用できますか？", "はい。作成したアセットは（法律で認められる範囲で）お客様のものとなり、収益化したゲームを含めて商用利用できます。お客様のプロンプト、アップロード画像、作成物を AI の学習に使うことはありません。"],
-        ["BlockForge は Roblox などのゲームプラットフォームと提携していますか？", "いいえ。BlockForge は CALDRIVO GLOBAL INC が提供する独立したサービスであり、Roblox Corporation その他のゲームプラットフォームとの提携・承認・後援関係はありません。"]
+        ["BlockForgeo は Roblox などのゲームプラットフォームと提携していますか？", "いいえ。BlockForgeo は CALDRIVO GLOBAL INC が提供する独立したサービスであり、Roblox Corporation その他のゲームプラットフォームとの提携・承認・後援関係はありません。"]
       ]
     },
     cta: {
       title1: "次のアップデートに、", title2: "もっといい素材を。",
-      sub: `まずは無料でプレビューを。BlockForge Pro は${J.trial}から始められ、トライアル後は${J.pricePerYear}です。`,
+      sub: `まずは無料でプレビューを。BlockForgeo Pro は${J.trial}から始められ、トライアル後は${J.pricePerYear}です。`,
       trial: "1時間の無料トライアルを開始",
       preview: "無料でプレビュー"
     },
     footer: {
       tagline: "言葉を入れれば、ゲームで使える素材に。",
-      operatedBy: "BlockForge の運営会社：",
+      operatedBy: "BlockForgeo の運営会社：",
       company: "会社情報", policies: "規約・ポリシー", product: "プロダクト",
       contact: "お問い合わせ", pay: "ご利用いただけるカード",
       copy: `© ${SITE.copyrightYear} ${J.company}. All rights reserved.`,
-      notAffiliated: "BlockForge は Roblox Corporation その他のゲームプラットフォームとは提携していません。"
+      notAffiliated: "BlockForgeo は Roblox Corporation その他のゲームプラットフォームとは提携していません。"
     },
     checkout: {
       eyebrow: "お申し込み",
       title: "1時間の無料トライアルを開始",
       sub: "カードを登録する前に、このあと何が起きるかをご確認ください。",
       summary: "ご注文内容",
-      plan: "BlockForge Pro — 年額プラン",
+      plan: "BlockForgeo Pro — 年額プラン",
       today: "本日のお支払い",
       todayValue: "¥0",
       afterTrial: "1時間のトライアル終了後",
@@ -459,7 +459,7 @@ export const STRINGS = {
     },
     contact: {
       eyebrow: "お問い合わせ",
-      title: "BlockForge へのお問い合わせ",
+      title: "BlockForgeo へのお問い合わせ",
       sub: `アカウント、お支払い、製品についてのご質問はメールでお寄せください。${J.supportResponse}に日本語または英語で返信します。`,
       emailTitle: "メールサポート",
       companyTitle: "会社情報",
@@ -480,7 +480,7 @@ export const STRINGS = {
     legal: {
       eyebrow: "規約・ポリシー",
       hubTitle: "規約・ポリシー",
-      hubSub: "BlockForge の仕組み、お支払い、データの取り扱いをわかりやすくご説明します。",
+      hubSub: "BlockForgeo の仕組み、お支払い、データの取り扱いをわかりやすくご説明します。",
       effective: "施行日",
       updated: "最終更新日",
       onThisPage: "このページの内容",
@@ -490,7 +490,7 @@ export const STRINGS = {
     },
     ws: {
       title: "プレビューモード",
-      demo: "ブラウザ上で描いたラフスケッチです。フル解像度の AI 版は BlockForge Pro で作成できます。",
+      demo: "ブラウザ上で描いたラフスケッチです。フル解像度の AI 版は BlockForgeo Pro で作成できます。",
       generating: "プレビューを描いています…",
       download: "プレビューを保存",
       again: "別のバリエーション",

@@ -1,6 +1,6 @@
-# BlockForge website (English / 日本語)
+# BlockForgeo website (English / 日本語)
 
-Static, crawler-friendly marketing site for **BlockForge**, operated by **CALDRIVO GLOBAL INC**.
+Static, crawler-friendly marketing site for **BlockForgeo**, operated by **CALDRIVO GLOBAL INC**.
 Every page is pre-rendered HTML in both languages, so search engines and compliance crawlers see the full
 content, prices, policies and structured data without running JavaScript.
 
