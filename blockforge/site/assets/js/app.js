@@ -1,7 +1,7 @@
 /* BlockForge — browser behaviour for the static pages.
  * Content is pre-rendered into the HTML for each language; this script only
  * adds interactivity: theme, menu, language memory, creator widgets, the
- * in-browser preview workspace, the ideas carousel and the checkout consent. */
+ * in-browser preview workspace, the idea cards and the checkout consent. */
 (function () {
   "use strict";
 
@@ -80,42 +80,36 @@
   /* Pages without the creator/preview UI stop here. */
   if (!document.body.classList.contains("home") || !window.Gen) return;
 
-  /* ================= creator widgets ================= */
+  /* ================= creator widget ================= */
   const creators = [];
   const heroCreator = () => creators[0];
-  let sharedTool = "thumbnail";
+  let sharedTool = (T.toolOrder && T.toolOrder[0]) || "thumbnail";
 
   function Creator(root) {
-    const compact = root.hasAttribute("data-compact");
-    const tabs = $(".tool-tabs", root);
+    const tabs = $(".slot-bar", root);
     const input = $("[data-role=input]", root);
     const label = $("[data-role=label]", root);
     const btn = $("[data-role=btn]", root);
     const chips = $("[data-role=chips]", root);
-    const select = $("[data-role=select]", root);
-    const form = root.tagName === "FORM" ? root : $("form", root);
+    const form = $("form", root);
     const self = {
       render() {
         const tool = sharedTool;
         const P = T.prompt[tool];
         if (tabs) $$("[data-tool]", tabs).forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tool === tool)));
-        if (select) select.value = tool;
         input.placeholder = P.ph;
-        input.setAttribute("aria-label", P.label);
         if (label) label.textContent = P.label;
         btn.textContent = P.btn;
         if (chips) chips.innerHTML = T.chips[tool].map((c) => `<button type="button" class="chip">${escapeHtml(c)}</button>`).join("");
-        void compact;
       },
       setTool(id) { sharedTool = id; creators.forEach((c) => c.render()); },
-      focus() { input.focus(); },
+      focus() { input.focus({ preventScroll: true }); },
       setPrompt(v) { input.value = v; }
     };
     if (tabs) tabs.addEventListener("click", (e) => {
       const b = e.target.closest("[data-tool]");
       if (b) { self.setTool(b.dataset.tool); input.focus(); }
     });
-    if (select) select.addEventListener("change", () => self.setTool(select.value));
     if (chips) chips.addEventListener("click", (e) => {
       const c = e.target.closest(".chip");
       if (c) { input.value = c.textContent; input.focus(); }
@@ -130,13 +124,22 @@
   }
   $$("[data-creator]").forEach((el) => creators.push(Creator(el)));
 
+  const goToComposer = () => {
+    $(".composer").scrollIntoView({ behavior: "smooth", block: "center" });
+    setTimeout(() => heroCreator().focus(), 450);
+  };
   document.addEventListener("click", (e) => {
     const o = e.target.closest("[data-open-tool]");
-    if (!o) return;
-    e.preventDefault();
-    heroCreator().setTool(o.dataset.openTool);
-    $("#top").scrollIntoView({ behavior: "smooth" });
-    setTimeout(() => heroCreator().focus(), 500);
+    if (o) { e.preventDefault(); heroCreator().setTool(o.dataset.openTool); goToComposer(); return; }
+    const f = e.target.closest("[data-focus-composer]");
+    if (f) { e.preventDefault(); goToComposer(); return; }
+    const idea = e.target.closest("[data-idea]");
+    if (idea) {
+      const txt = T.ideas[+idea.dataset.idea];
+      heroCreator().setTool("thumbnail");
+      heroCreator().setPrompt(txt);
+      openWorkspace("thumbnail", txt);
+    }
   });
 
   /* ================= preview workspace ================= */
@@ -171,7 +174,7 @@
         ws.audio = buf;
         blob = Gen.wavBlob(buf);
         stage.innerHTML = "";
-        stage.appendChild(Gen.waveform(buf));
+        stage.appendChild(Gen.waveform(buf, 1024, 300, accent()));
         playAudio();
       } else {
         if (document.fonts) await document.fonts.ready;
@@ -210,112 +213,44 @@
   }));
 
   /* ================= generated imagery ================= */
-  const WALL_PROMPTS = [
-    "level 1 vs level 9999 emerald", "lava obby 2 seconds left", "golden coin tycoon $1B",
-    "neon cyber city race", "zombie horror corridor", "ice castle +99 levels",
-    "dragon magic crystal pet", "pirate ocean treasure", "forest moss explorer",
-    "candy pet simulator", "diamond reactor 9999", "999,999 IQ brain"
-  ];
+  const accent = () => getComputedStyle(document.documentElement).getPropertyValue("--ember").trim() || "#ff6b3d";
+  // English prompts seed the idea images so both languages show the same picture.
   const IDEA_SEEDS = [
-    "level 1 vs level 9999 mining simulator, giant emerald", "minigun turret defending a bank vault from robbers",
-    "golden drill digging to the core, how deep?!", "tornado survival, builder screaming as the fort rips apart",
-    "baby dragon pet next to a treasure chest reveal", "boy vs girl lava obby race, 2 seconds left",
-    "1 cent rusty tub vs $1B golden tub full of cash", "sword fighter charging a giant lava golem boss",
-    "tycoon upgrade from gold mine to diamond reactor", "crowned player powering up, +99 levels, blue lightning"
+    "mining drill breaking through a wall of gems", "pet evolving from egg to dragon",
+    "rainbow parkour bridge over a lava lake", "timer at 0:03 on the final jump",
+    "factory upgrade from wood to solid gold", "cash machine overflowing with coins",
+    "flashlight beam in an abandoned school", "shadow at the far end of the hallway",
+    "pirate ship sailing into a thunderstorm", "explorer discovering a glowing temple"
   ];
-  const thumbCache = new Map();
   function thumbURL(prompt, w) {
-    const key = prompt + "@" + w;
-    if (thumbCache.has(key)) return thumbCache.get(key);
     const big = Gen.thumbnail(prompt, Gen.hash(prompt));
     const small = document.createElement("canvas");
     small.width = w; small.height = Math.round((w * 9) / 16);
     small.getContext("2d").drawImage(big, 0, 0, small.width, small.height);
-    const url = small.toDataURL("image/jpeg", 0.82);
-    thumbCache.set(key, url);
-    return url;
+    return small.toDataURL("image/jpeg", 0.84);
   }
 
   function renderImagery() {
-    const grid = $("#wallGrid");
-    if (grid) grid.innerHTML = Array.from({ length: 36 }, (_, i) => `<div class="tile" style="background-image:url(${thumbURL(WALL_PROMPTS[i % WALL_PROMPTS.length], 360)})"></div>`).join("");
-    const orb = $("#orb");
-    if (orb) orb.innerHTML = Array.from({ length: 36 }, (_, i) => `<div class="tile" style="background-image:url(${thumbURL(WALL_PROMPTS[i % WALL_PROMPTS.length], 360)})"></div>`).join("");
-    $$("[data-idea-img]").forEach((el) => { el.style.backgroundImage = `url(${thumbURL(IDEA_SEEDS[+el.dataset.ideaImg] || IDEA_SEEDS[0], 640)})`; });
+    $$("[data-idea-img]").forEach((el) => { el.style.backgroundImage = `url(${thumbURL(IDEA_SEEDS[+el.dataset.ideaImg] || IDEA_SEEDS[0], 560)})`; });
     $$("canvas[data-art]").forEach((cv) => {
       const src = Gen[cv.dataset.art](cv.dataset.prompt, Gen.hash(cv.dataset.prompt));
       cv.width = src.width; cv.height = src.height;
-      cv.getContext("2d").drawImage(src, 0, 0);
+      const ctx = cv.getContext("2d");
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      ctx.drawImage(src, 0, 0);
     });
-    const seeds = { texture: "mossy stone", clothing: "racing jersey", icon: "magic gem badge", gfx: "neon explorer" };
-    Object.keys(seeds).forEach((id) => {
-      const slot = $(`[data-slot="${id}"]`);
-      if (slot && !slot.firstChild) slot.appendChild(Gen[id](seeds[id], Gen.hash(seeds[id])));
-    });
-    const sfxSlot = $('[data-slot="sfx"]');
-    if (sfxSlot && !sfxSlot.firstChild) {
-      Gen.sfx("level-up chime", 1).then((buf) => {
-        const accent = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#f7b928";
-        const w = Gen.waveform(buf, 480, 200, accent);
-        w.classList.add("wave");
-        sfxSlot.appendChild(w);
+    const slots = $$('[data-slot="sfx"]');
+    if (slots.length) {
+      Gen.sfx("victory fanfare chime", 7).then((buf) => {
+        slots.forEach((slot) => {
+          if (slot.firstChild) return;
+          const w = Gen.waveform(buf, 480, 240, accent());
+          w.classList.add("wave");
+          slot.appendChild(w);
+        });
       }).catch(() => {});
     }
   }
-
-  // Rotate the suggestion on each small tool card.
-  let k = 0;
-  setInterval(() => {
-    k++;
-    $$("[data-tool-card]").forEach((card) => {
-      const span = $(".try-line span", card);
-      const list = T.chips[card.dataset.toolCard];
-      span.classList.remove("swap"); void span.offsetWidth; span.classList.add("swap");
-      span.textContent = list[k % list.length];
-    });
-  }, 2600);
-
-  /* ================= ideas carousel ================= */
-  const carousel = $("#carousel");
-  const step = () => (carousel.firstElementChild ? carousel.firstElementChild.getBoundingClientRect().width + 20 : 300);
-  $("#showPrev").addEventListener("click", () => carousel.scrollBy({ left: -step(), behavior: "smooth" }));
-  $("#showNext").addEventListener("click", () => carousel.scrollBy({ left: step(), behavior: "smooth" }));
-  carousel.addEventListener("click", (e) => {
-    const b = e.target.closest("[data-idea]");
-    if (!b) return;
-    const txt = T.ideas[+b.dataset.idea];
-    heroCreator().setTool("thumbnail");
-    creators.forEach((cr) => cr.setPrompt(txt));
-    openWorkspace("thumbnail", txt);
-  });
-
-  /* ================= scroll effects ================= */
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver((ents) => ents.forEach((en) => {
-      if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
-    }), { rootMargin: "0px 0px -8% 0px" });
-    $$(".reveal").forEach((el) => {
-      if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in");
-      else { el.classList.add("pending"); io.observe(el); }
-    });
-  }
-
-  const dock = $("#dock");
-  let dismissed = false;
-  try { dismissed = sessionStorage.getItem("bf-dock") === "x"; } catch (e) { /* ignore */ }
-  const hero = $(".hero"), final = $(".final");
-  const updateDock = () => {
-    if (dismissed) { dock.hidden = true; return; }
-    const pastHero = hero.getBoundingClientRect().bottom < 0;
-    const atFinal = final.getBoundingClientRect().top < innerHeight * 0.8;
-    dock.hidden = !(pastHero && !atFinal);
-  };
-  addEventListener("scroll", updateDock, { passive: true });
-  $("#dockClose").addEventListener("click", () => {
-    dismissed = true; dock.hidden = true;
-    try { sessionStorage.setItem("bf-dock", "x"); } catch (e) { /* ignore */ }
-  });
-  updateDock();
 
   /* ================= utils ================= */
   function escapeHtml(s) {

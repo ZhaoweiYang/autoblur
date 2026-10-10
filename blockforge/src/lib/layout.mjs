@@ -12,7 +12,7 @@ export const langPath = (lang, enPath) => (lang === "ja" ? `ja/${enPath}` : enPa
 const depthOf = (path) => path.split("/").length - 1;
 export const relFrom = (fromPath) => (to) => "../".repeat(depthOf(fromPath)) + to;
 
-const LOGO = `<svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l12 7v14l-12 7-12-7V9z" fill="currentColor"/><path d="M18 7l-7 10h5l-2 8 7-10h-5z" fill="#1a1305"/></svg>`;
+export const LOGO = `<svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l12 7-12 7L4 10z" fill="#ffa64d"/><path d="M4 10l12 7v13L4 23z" fill="#ff6b3d"/><path d="M28 10l-12 7v13l12-7z" fill="#b8390f"/><path d="M16 3l12 7-12 7L4 10z" fill="none" stroke="#ffd2a8" stroke-width=".8" stroke-linejoin="round"/></svg>`;
 
 function head({ lang, enPath, title, description, ogType, jsonld, noindex }) {
   const S = STRINGS[lang];
@@ -53,7 +53,7 @@ function head({ lang, enPath, title, description, ogType, jsonld, noindex }) {
 <meta name="application-name" content="${SITE.brand}">
 <meta name="author" content="${FACTS.en.company}">
 <meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#0d0c0a">
+<meta name="theme-color" content="#0e1020">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="${rel("assets/img/favicon.svg")}" type="image/svg+xml">
 <link rel="icon" href="${rel("assets/img/favicon-32.png")}" type="image/png" sizes="32x32">
@@ -61,7 +61,7 @@ function head({ lang, enPath, title, description, ogType, jsonld, noindex }) {
 <link rel="manifest" href="${rel("site.webmanifest")}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Geist+Mono:wght@500;700&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap">
 <link rel="stylesheet" href="${rel("assets/css/style.css")}">
 <script>(function(){try{var t=localStorage.getItem("bf-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}
 try{if(/[?&]lang=/.test(location.search))return;var cur="${lang}",p=localStorage.getItem("bf-lang");if(!p&&cur==="en"&&(navigator.language||"").toLowerCase().indexOf("ja")===0)p="ja";if(p&&p!==cur){location.replace(${JSON.stringify(altHref)}+location.hash);}}catch(e){}})();</script>
@@ -81,7 +81,8 @@ function header({ lang, enPath, isHome }) {
   <nav class="nav" aria-label="Main">
     <a class="brand" href="${home}" aria-label="BlockForge home">${LOGO}<span>Block<b>Forge</b></span></a>
     <ul class="nav-links" id="navLinks">
-      <li><a class="nav-link" href="${sec("tools")}">${S.nav.tools}</a></li>
+      <li><a class="nav-link" href="${sec("assets")}">${S.nav.assets}</a></li>
+      <li><a class="nav-link" href="${sec("how")}">${S.nav.how}</a></li>
       <li><a class="nav-link" href="${sec("ideas")}">${S.nav.ideas}</a></li>
       <li><a class="nav-link" href="${sec("pricing")}">${S.nav.pricing}</a></li>
       <li><a class="nav-link" href="${sec("faq")}">${S.nav.faq}</a></li>
@@ -123,7 +124,8 @@ function footer({ lang, enPath, legal, isHome }) {
     <div>
       <h2 class="footer-h">${S.footer.product}</h2>
       <ul class="footer-list">
-        <li><a href="${sec("tools")}">${S.nav.tools}</a></li>
+        <li><a href="${sec("assets")}">${S.nav.assets}</a></li>
+        <li><a href="${sec("how")}">${S.nav.how}</a></li>
         <li><a href="${sec("pricing")}">${S.nav.pricing}</a></li>
         <li><a href="${sec("faq")}">${S.nav.faq}</a></li>
         <li><a href="${rel(langPath(lang, "checkout.html"))}">${S.nav.cta}</a></li>

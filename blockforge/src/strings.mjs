@@ -5,7 +5,7 @@ import { FACTS, PLAN, SITE } from "./config.mjs";
 
 const E = FACTS.en, J = FACTS.ja;
 
-const TOOLS = ["thumbnail", "ui", "texture", "clothing", "icon", "gfx", "sfx"];
+const TOOLS = ["thumbnail", "icon", "ui", "texture", "clothing", "gfx", "sfx"];
 
 export const STRINGS = {
   en: {
@@ -13,114 +13,101 @@ export const STRINGS = {
     ogLocale: "en_US",
     langName: "English",
     nav: {
-      tools: "Tools", ideas: "Ideas", pricing: "Pricing", faq: "FAQ", contact: "Contact",
+      assets: "Assets", how: "How it works", ideas: "Ideas", pricing: "Pricing", faq: "FAQ", contact: "Contact",
       cta: "Start free trial", menu: "Menu", theme: "Switch light/dark theme", skip: "Skip to content",
       lang: "Language"
     },
     meta: {
-      homeTitle: `BlockForge — AI game asset studio | ${E.trial}, then ${E.price}/year`,
-      homeDesc: `Create game thumbnails, icons, textures, clothing, GFX, UI and sound effects with AI. ${E.trial}, then ${E.priceWithCode} per year. 30-day money-back guarantee.`,
+      homeTitle: `BlockForge — AI game art & sound | ${E.trial}, then ${E.price}/year`,
+      homeDesc: `Turn a one-line idea into cover art, icons, textures, avatar shirts, character renders, UI kits and sound effects. ${E.trial}, then ${E.priceWithCode} per year.`,
       checkoutTitle: `Start your ${E.trial} — BlockForge Pro`,
       checkoutDesc: `Review BlockForge Pro before you start: ${E.trial}, then ${E.priceWithCode} billed once a year. Cancel anytime. 30-day money-back guarantee on unused credits.`,
       contactTitle: "Contact BlockForge — CALDRIVO GLOBAL INC",
       contactDesc: `Contact BlockForge support at ${E.email}. BlockForge is operated by ${E.company}, ${E.addressOneLine}.`,
       legalTitle: "Legal & policies — BlockForge",
       legalDesc: "Terms of Service, Privacy, Refund, Cancellation, Delivery, Cookie, Accessibility, DMCA, Disclaimer and Do Not Sell or Share policies for BlockForge.",
-      ogAlt: `BlockForge — AI game asset studio. ${E.trial}, then ${E.price} per year.`
+      ogAlt: `BlockForge — prompt in, game-ready art out. ${E.trial}, then ${E.price} per year.`
     },
     tools: {
-      thumbnail: "Thumbnail", ui: "UI", texture: "Texture", clothing: "Clothing", icon: "Icon", gfx: "GFX", sfx: "SFX"
+      thumbnail: "Cover art", icon: "Game icon", ui: "UI kit", texture: "Texture", clothing: "Avatar shirt", gfx: "Character render", sfx: "Sound effect"
+    },
+    toolsShort: {
+      thumbnail: "Cover", icon: "Icon", ui: "UI kit", texture: "Texture", clothing: "Shirt", gfx: "Render", sfx: "Sound"
     },
     prompt: {
-      thumbnail: { label: "Describe your thumbnail", ph: "e.g. a giant crystal pet in a mining simulator", btn: "Preview my thumbnail" },
-      ui: { label: "Describe your interface", ph: "e.g. a candy shop with 6 item slots", btn: "Preview my UI" },
-      texture: { label: "Describe your texture", ph: "e.g. mossy stone floor", btn: "Preview my texture" },
-      clothing: { label: "Describe your shirt", ph: "e.g. a red varsity jacket", btn: "Preview my shirt" },
-      icon: { label: "Describe your icon", ph: "e.g. a golden coin with a star", btn: "Preview my icon" },
-      gfx: { label: "Describe your render", ph: "e.g. a cyberpunk racer at night", btn: "Preview my GFX" },
-      sfx: { label: "Describe your sound", ph: "e.g. coin pickup", btn: "Preview my sound" }
+      thumbnail: { label: "Describe the cover", ph: "e.g. a neon racing track floating above the clouds", btn: "Forge a preview" },
+      icon: { label: "Describe the icon", ph: "e.g. a frost bow with a blue glow", btn: "Forge a preview" },
+      ui: { label: "Describe the screen", ph: "e.g. a potion shop with 8 item slots", btn: "Forge a preview" },
+      texture: { label: "Describe the surface", ph: "e.g. cracked desert ground", btn: "Forge a preview" },
+      clothing: { label: "Describe the shirt", ph: "e.g. an astronaut jacket with orange stripes", btn: "Forge a preview" },
+      gfx: { label: "Describe the character", ph: "e.g. a knight holding a glowing sword", btn: "Forge a preview" },
+      sfx: { label: "Describe the sound", ph: "e.g. a treasure chest opening", btn: "Forge a preview" }
     },
     chips: {
-      thumbnail: ["neon tycoon", "zombie obby", "lava parkour", "anime simulator", "horror elevator"],
-      ui: ["candy shop", "sci-fi HUD", "pet inventory", "daily rewards", "settings menu"],
-      texture: ["mossy stone", "sci-fi metal", "wooden planks", "volcanic rock", "ice tiles"],
-      clothing: ["varsity jacket", "space suit shirt", "pirate shirt", "racing jersey", "cozy hoodie"],
-      icon: ["crystal sword", "golden coin", "health potion", "magic chest", "diamond pickaxe"],
-      gfx: ["forest explorer", "cyberpunk racer", "pirate captain", "space adventurer", "ice mage"],
-      sfx: ["coin pickup", "level-up chime", "laser shot", "wooden door", "magic spell"]
+      thumbnail: ["castle siege at sunset", "speedrun through a candy factory", "submarine escape, 10 seconds left", "pet hatching day in a crystal cave", "rooftop chase in a rainy city"],
+      icon: ["frost bow", "treasure map", "speed potion", "dragon egg", "VIP crown"],
+      ui: ["potion shop with 8 slots", "quest log", "battle-pass track", "loading screen", "trading window"],
+      texture: ["cracked desert ground", "rusted steel plates", "mossy cobblestone", "glowing crystal floor", "snowy roof tiles"],
+      clothing: ["astronaut jacket", "samurai armor shirt", "neon tracksuit", "lumberjack flannel", "soccer kit"],
+      gfx: ["knight with a glowing sword", "skater mid-trick", "desert nomad", "robot mechanic", "wizard apprentice"],
+      sfx: ["treasure chest opening", "jump pad boing", "sword clash", "door creak", "victory fanfare"]
     },
     hero: {
-      eyebrow: "AI game asset studio for creators",
-      title1: "Game assets", title2: "that stand out.",
-      sub: "Describe a scene in a few words. BlockForge makes thumbnails, icons, textures, clothing, GFX, UI and sound effects for your game.",
-      note: `Try a free preview in your browser — no account needed. BlockForge Pro starts with a ${E.trial}, then ${E.priceWithCode} per year.`,
-      try: "Try:",
-      facts: [["7", "creation tools"], [E.credits, "credits every year"], ["30-day", "money-back guarantee"]]
+      eyebrow: "AI asset forge for game creators",
+      title1: "Prompt in.", title2: "Game-ready art out.",
+      sub: "BlockForge turns a one-line idea into cover art, icons, textures, avatar shirts, character renders, UI kits and sound effects, sized for the platforms you publish on.",
+      composerTitle: "What should we forge?",
+      typeLabel: "Asset type",
+      note: `Previews are free and run in your browser. BlockForge Pro starts with a ${E.trial}, then ${E.priceWithCode} per year.`,
+      examples: "Examples:",
+      facts: [["7", "asset types"], [E.credits, "credits per year"], ["30 days", "money-back guarantee"]],
+      boardTitle: "Inventory",
+      boardNote: "Previews drawn in your browser"
     },
-    marquee: ["7 AI creation tools", E.trial, `${E.price}/year`, "30-day money-back guarantee", "Commercial use", "English & 日本語", "16:9 thumbnails", "512×512 icons"],
+    assets: {
+      eyebrow: "Asset types",
+      title: "Seven kinds of assets, <em>one prompt box.</em>",
+      sub: "Every asset type is set to the size and format your platform expects, so files go straight into your project. All of them are included in BlockForge Pro.",
+      included: "Included in Pro",
+      preview: "Preview",
+      items: {
+        thumbnail: { spec: "16:9 · 1920 × 1080 PNG", desc: "A cover that reads at a glance in a crowded discovery feed: bold subject, big type, strong contrast." },
+        icon: { spec: "512 × 512 · transparent PNG", desc: "Square icons on a transparent background, ready for badges, passes and store tiles." },
+        ui: { spec: "Image + layer list", desc: "A shop, inventory or HUD as a flat image plus a list of its frames, labels and buttons, so you can rebuild it in your editor." },
+        texture: { spec: "512 × 512 · seamless PNG", desc: "Surfaces that repeat without visible seams: stone, metal, wood, sand, lava and more." },
+        clothing: { spec: "585 × 559 · shirt template", desc: "Your design painted onto the standard shirt template, so it wraps correctly around the avatar." },
+        gfx: { spec: "512 × 512 PNG", desc: "A dramatic render of a blocky character for posters, covers and social posts." },
+        sfx: { spec: "WAV · 44.1 kHz", desc: "Short effects for pickups, buttons, doors and spells, made from a few words." }
+      },
+      proCard: { title: "All seven in one plan", body: `${E.credits} credits per year. Most assets cost 1 credit; a UI kit costs 4.`, cta: "See pricing" }
+    },
     how: {
       eyebrow: "How it works",
-      title: "From idea to asset in <em>three steps</em>",
-      sub: "Every tool follows the same flow, from the first prompt to the finished file.",
+      title: "A session takes <em>about a minute.</em>",
       steps: [
-        ["Pick a tool", "Thumbnail, UI, texture, clothing, icon, GFX or sound. Each one outputs your game's standard sizes."],
-        ["Describe your idea", "A few words are enough. Add a reference image to steer the style."],
-        ["Download and ship", "Download PNG or WAV files and drop them straight into your game."]
+        ["Choose the asset", "Pick one of seven asset types. Each is preset to the size your platform expects."],
+        ["Write one line", "Describe the subject and the mood. Attach a reference image when you want a specific style."],
+        ["Refine and export", "Make variations, keep the one you like and download it as PNG or WAV."]
       ]
-    },
-    toolsSec: {
-      eyebrow: "One workspace",
-      title: "Seven tools. <em>One workspace.</em>",
-      sub: "From the thumbnail that gets your game noticed to the UI, textures, clothing and sounds inside it. All tools are included in BlockForge Pro.",
-      included: "Included in Pro",
-      thumb: {
-        name: "Thumbnails", spec: "16:9 · 1920 × 1080",
-        desc: "Eye-catching 16:9 thumbnails, plus 512 × 512 game icons.",
-        bullets: ["Add a reference image to steer the look", "Test several concepts before each update", "Full-resolution PNG download"],
-        cta: "Try a thumbnail preview"
-      },
-      ui: {
-        name: "UI Maker", spec: "Editable layout export",
-        desc: "Shops, HUDs and menus delivered as an image plus a layer list you can rebuild in your game editor.",
-        cta: "Try a UI preview", opens: "Layer list example"
-      },
-      small: {
-        texture: { spec: "Seamless · 512 × 512", desc: "Tileable surfaces for parts, floors and walls." },
-        clothing: { spec: "Shirt template · 585 × 559", desc: "Painted onto the classic clothing template, ready to upload." },
-        icon: { spec: "Transparent · 512 × 512", desc: "Flat icons, badges and decals with the background removed." },
-        gfx: { spec: "Character render · 512 × 512", desc: "A cinematic render of a blocky game character." },
-        sfx: { spec: "WAV sound effect", desc: "Clicks, chimes and impacts from a short description." }
-      }
     },
     ideas: {
-      eyebrow: "Ideas to try",
-      title: "Start from an <em>idea</em>",
-      sub: "These example images come from preview mode, drawn in your browser. Pick an idea to preview it yourself; Pro generates the full AI version.",
-      badge: "Preview mode",
-      idea: "Idea to try",
-      use: "Preview this idea",
-      prev: "Previous ideas",
-      next: "More ideas",
+      eyebrow: "Ideas",
+      title: "Need a <em>starting point?</em>",
+      sub: "Pick a prompt and we'll draw a rough preview in your browser. BlockForge Pro turns it into full-resolution AI art.",
+      badge: "Browser preview",
+      use: "Preview",
       items: [
-        "level 1 vs level 9999 mining simulator, giant emerald",
-        "minigun turret defending a bank vault from robbers",
-        "golden drill digging to the core, how deep?!",
-        "tornado survival, builder screaming as the fort rips apart",
-        "baby dragon pet next to a treasure chest reveal",
-        "boy vs girl lava obby race, 2 seconds left",
-        "1 cent rusty tub vs $1B golden tub full of cash",
-        "sword fighter charging a giant lava golem boss",
-        "tycoon upgrade from gold mine to diamond reactor",
-        "crowned player powering up, +99 levels, blue lightning"
+        ["Simulator", "mining drill breaking through a wall of gems"],
+        ["Simulator", "pet evolving from egg to dragon"],
+        ["Obby", "rainbow parkour bridge over a lava lake"],
+        ["Obby", "timer at 0:03 on the final jump"],
+        ["Tycoon", "factory upgrade from wood to solid gold"],
+        ["Tycoon", "cash machine overflowing with coins"],
+        ["Horror", "flashlight beam in an abandoned school"],
+        ["Horror", "shadow at the far end of the hallway"],
+        ["Adventure", "pirate ship sailing into a thunderstorm"],
+        ["Adventure", "explorer discovering a glowing temple"]
       ]
-    },
-    why: {
-      eyebrow: "Why it matters",
-      title: "Your game deserves <em>its own world.</em>",
-      sub: "Thumbnails get your game noticed. UI, textures, clothing and sounds make it feel finished. Build all of them in one workspace.",
-      bullets: ["Test several concepts per update instead of one.", "Make the visuals and sounds for your next update.", "See the credit cost of every asset before you create it."],
-      th: ["", "Create", "With BlockForge"],
-      rows: [["Visuals", "Thumbnails & GFX", "Image assets"], ["Your world", "Texture & clothing", "Game details"], ["Interface", "UI Maker", "UI projects"], ["Audio", "SFX", "Sound effects"]]
     },
     pricing: {
       eyebrow: "Pricing",
@@ -133,8 +120,8 @@ export const STRINGS = {
       equivalent: `That's about ${E.perMonthEquivalent} a month, billed once a year.`,
       keyTerms: `${E.trial}, then ${E.price} billed once a year. Renews automatically every 12 months. Cancel anytime.`,
       features: [
-        `${E.credits} credits every paid year (1 credit = 1 asset; UI layouts use 4)`,
-        "All 7 tools: thumbnails, icons, textures, clothing, GFX, UI and sound effects",
+        `${E.credits} credits every paid year (1 credit = 1 asset; a UI kit uses 4)`,
+        "All 7 asset types: cover art (game thumbnails), icons, UI kits, textures, avatar shirts, character renders and sound effects",
         "Full-resolution PNG and WAV downloads",
         "Commercial use, including monetized games",
         "English and Japanese interface",
@@ -162,28 +149,29 @@ export const STRINGS = {
     },
     faq: {
       eyebrow: "FAQ",
-      title: "Common <em>questions</em>",
+      title: "Questions, <em>answered</em>",
       items: [
         ["How does the 1-hour free trial work?", `Start the trial with a credit or debit card. For 1 hour you get full Pro access and ${E.trialCredits} trial credits, and nothing is charged. When the hour ends, your card is automatically charged ${E.priceWithCode} for 12 months of BlockForge Pro, unless you cancel before then. One trial per person.`],
         ["When exactly will I be charged?", `Exactly 1 hour after you start the trial, then every 12 months on the same date until you cancel. We email a reminder ${E.reminderDays} days before every renewal and a receipt after every charge.`],
         ["What will I see on my card statement?", `Your card statement will show "${E.descriptor}".`],
         ["How do I cancel?", "Go to Account → Billing → Cancel subscription, or email support from your account email. Cancel within the trial hour and you are never charged. Cancel after a charge and you keep Pro and your remaining credits until the end of the paid year, with no further charges."],
         ["What is the 30-Day Money-Back Guarantee?", `Full refund on unused credits. No questions asked. Within ${E.refundDays} days of any annual charge, ask for a refund and we return the annual fee × unused credits ÷ ${E.credits}. If you haven't used any credits, that's the full ${E.price}. Refunds go back to your original card within 5 business days; your bank may take 5–10 business days to show it.`],
-        ["What does BlockForge Pro include?", `${E.credits} credits per paid year, all 7 tools, full-resolution PNG and WAV downloads, commercial use of your assets, and an English and Japanese interface. Unused credits expire at the end of each paid year.`],
-        ["How many credits does each asset use?", `Thumbnails, icons, textures, clothing, GFX renders and sound effects use ${PLAN.creditCosts.thumbnail} credit each. A UI layout uses ${PLAN.creditCosts.ui} credits. If a generation fails, its credits are returned automatically.`],
+        ["What does BlockForge Pro include?", `${E.credits} credits per paid year, all 7 asset types, full-resolution PNG and WAV downloads, commercial use of your assets, and an English and Japanese interface. Unused credits expire at the end of each paid year.`],
+        ["How many credits does each asset use?", `Cover art, icons, textures, avatar shirts, character renders and sound effects use ${PLAN.creditCosts.thumbnail} credit each. A UI kit uses ${PLAN.creditCosts.ui} credits. If a generation fails, its credits are returned automatically.`],
         ["Which payment methods and currencies do you accept?", `Visa, Mastercard, American Express, JCB and Discover credit and debit cards. The English site charges ${E.price} in US dollars (USD); the Japanese site charges ${J.price} in Japanese yen (JPY, tax included). You pay in the currency shown at checkout.`],
-        ["Is the preview mode free?", "Yes. Preview mode draws quick, rough previews directly in your browser. It needs no account, uses no credits and isn't the AI output. BlockForge Pro generates the full-resolution AI assets."],
+        ["Is the browser preview free?", "Yes. The browser preview draws a quick, rough sketch on your own device. It needs no account, uses no credits and isn't the AI output. BlockForge Pro generates the full-resolution AI assets."],
         ["Can I use the assets commercially?", "Yes. You own the assets you generate (as far as the law allows) and can use them commercially, including in monetized games. We don't use your prompts, uploads or assets to train AI models."],
         ["Is BlockForge affiliated with Roblox or other game platforms?", "No. BlockForge is an independent product of CALDRIVO GLOBAL INC and isn't affiliated with, endorsed by or sponsored by Roblox Corporation or any other game platform."]
       ]
     },
     cta: {
-      title1: "Your next game asset.", title2: "Start with an idea.",
-      sub: `Preview any idea for free, then create the full version with BlockForge Pro: ${E.trial}, then ${E.price}/year.`,
-      trial: "Start 1-hour free trial →"
+      title1: "Your next update", title2: "deserves better art.",
+      sub: `Make a free preview right now, or start BlockForge Pro with a ${E.trial}. After the trial it's ${E.price} per year.`,
+      trial: "Start 1-hour free trial",
+      preview: "Make a free preview"
     },
     footer: {
-      tagline: "AI game asset studio for creators.",
+      tagline: "Prompt in. Game-ready art out.",
       operatedBy: "BlockForge is operated by",
       company: "Company", policies: "Policies", product: "Product",
       contact: "Contact us", pay: "We accept",
@@ -203,7 +191,7 @@ export const STRINGS = {
       renews: "Renews",
       renewsValue: `Every 12 months at ${E.price} until you cancel. Any price change is emailed at least ${E.priceChangeNoticeDays} days before it applies`,
       includes: "Includes",
-      includesValue: `${E.credits} credits per year · all 7 tools · commercial use`,
+      includesValue: `${E.credits} credits per year · all 7 asset types · commercial use`,
       trialCredits: "During the trial",
       trialCreditsValue: `Full access + ${E.trialCredits} trial credits`,
       timeLine: "If you start now, your card will be charged at",
@@ -253,20 +241,19 @@ export const STRINGS = {
       read: "Read"
     },
     ws: {
-      title: "Preview mode",
-      demo: "Rough preview drawn in your browser. Pro generates the full-resolution AI version.",
-      generating: "Drawing your preview…",
+      title: "Browser preview",
+      demo: "A rough sketch drawn in your browser. BlockForge Pro creates the full-resolution AI version.",
+      generating: "Sketching your preview…",
       download: "Download preview",
-      again: "New variation",
+      again: "Another variation",
       close: "Close",
       play: "Play sound",
-      empty: "Type a short description first.",
+      empty: "Write a short description first.",
       size: "Size",
       cost: "With Pro",
-      upgrade: "Create with Pro"
+      upgrade: "Make it with Pro"
     },
-    credit: { one: "1 credit", n: "{n} credits" },
-    fab: "Quick preview"
+    credit: { one: "1 credit", n: "{n} credits" }
   },
 
   ja: {
@@ -274,114 +261,101 @@ export const STRINGS = {
     ogLocale: "ja_JP",
     langName: "日本語",
     nav: {
-      tools: "ツール", ideas: "アイデア", pricing: "料金", faq: "よくある質問", contact: "お問い合わせ",
+      assets: "アセット", how: "使い方", ideas: "アイデア", pricing: "料金", faq: "よくある質問", contact: "お問い合わせ",
       cta: "無料トライアル", menu: "メニュー", theme: "ライト／ダークテーマ切替", skip: "本文へスキップ",
       lang: "言語"
     },
     meta: {
-      homeTitle: `BlockForge — ゲームアセットAIスタジオ｜${J.trial}、以降${J.pricePerYear}`,
-      homeDesc: `ゲームのサムネイル、アイコン、テクスチャ、服、GFX、UI、効果音をAIで作成。${J.trial}のあと${J.pricePerYear}。30日間返金保証付き。`,
+      homeTitle: `BlockForge — ゲーム制作のためのAI素材工房｜${J.trial}、以降${J.pricePerYear}`,
+      homeDesc: `ひとことのアイデアから、カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、UIキット、効果音を作成。${J.trial}のあと${J.pricePerYear}。`,
       checkoutTitle: `${J.trial}を開始 — BlockForge Pro`,
       checkoutDesc: `開始前にご確認ください：${J.trial}のあと、${J.pricePerYear}を年1回お支払い。いつでも解約でき、未使用クレジット分は30日間全額返金します。`,
       contactTitle: "お問い合わせ — BlockForge（CALDRIVO GLOBAL INC）",
       contactDesc: `BlockForge サポート：${J.email}。BlockForge は ${J.company}（米国コロラド州オーロラ）が運営しています。`,
       legalTitle: "規約・ポリシー一覧 — BlockForge",
       legalDesc: "BlockForge の利用規約、プライバシー、返金、解約、配送・提供、Cookie、アクセシビリティ、DMCA、免責事項、個人情報の販売・共有の拒否、特定商取引法に基づく表記。",
-      ogAlt: `BlockForge — ゲームアセットAIスタジオ。${J.trial}、以降${J.pricePerYear}。`
+      ogAlt: `BlockForge — 言葉を入れれば、ゲームで使える素材に。${J.trial}、以降${J.pricePerYear}。`
     },
     tools: {
-      thumbnail: "サムネイル", ui: "UI", texture: "テクスチャ", clothing: "服", icon: "アイコン", gfx: "GFX", sfx: "効果音"
+      thumbnail: "カバー画像", icon: "ゲームアイコン", ui: "UIキット", texture: "テクスチャ", clothing: "アバター用シャツ", gfx: "キャラクター画像", sfx: "効果音"
+    },
+    toolsShort: {
+      thumbnail: "カバー", icon: "アイコン", ui: "UIキット", texture: "テクスチャ", clothing: "シャツ", gfx: "キャラ", sfx: "効果音"
     },
     prompt: {
-      thumbnail: { label: "サムネイルを説明", ph: "例：採掘シミュレーターの巨大クリスタルペット", btn: "サムネイルをプレビュー" },
-      ui: { label: "UIを説明", ph: "例：6つのアイテム枠があるお菓子ショップ", btn: "UIをプレビュー" },
-      texture: { label: "テクスチャを説明", ph: "例：苔むした石の床", btn: "テクスチャをプレビュー" },
-      clothing: { label: "シャツを説明", ph: "例：赤いスタジャン", btn: "シャツをプレビュー" },
-      icon: { label: "アイコンを説明", ph: "例：星のついた金貨", btn: "アイコンをプレビュー" },
-      gfx: { label: "レンダーを説明", ph: "例：夜のサイバーパンクレーサー", btn: "GFXをプレビュー" },
-      sfx: { label: "効果音を説明", ph: "例：コイン取得", btn: "効果音をプレビュー" }
+      thumbnail: { label: "カバー画像の内容", ph: "例：雲の上に浮かぶネオンのレーストラック", btn: "プレビューを作成" },
+      icon: { label: "アイコンの内容", ph: "例：青く光る氷の弓", btn: "プレビューを作成" },
+      ui: { label: "画面の内容", ph: "例：8つのアイテム枠があるポーション屋", btn: "プレビューを作成" },
+      texture: { label: "素材感の内容", ph: "例：ひび割れた砂漠の地面", btn: "プレビューを作成" },
+      clothing: { label: "シャツのデザイン", ph: "例：オレンジのラインが入った宇宙飛行士ジャケット", btn: "プレビューを作成" },
+      gfx: { label: "キャラクターの内容", ph: "例：光る剣を構えた騎士", btn: "プレビューを作成" },
+      sfx: { label: "効果音の内容", ph: "例：宝箱が開く音", btn: "プレビューを作成" }
     },
     chips: {
-      thumbnail: ["ネオン・タイクーン", "ゾンビ・アスレチック", "溶岩パルクール", "アニメ・シミュレーター", "ホラーエレベーター"],
-      ui: ["お菓子ショップ", "SF風HUD", "ペットのインベントリ", "デイリー報酬", "設定メニュー"],
-      texture: ["苔むした石", "SFメタル", "木の板", "火山岩", "氷のタイル"],
-      clothing: ["スタジャン", "宇宙服シャツ", "海賊シャツ", "レーシングジャージ", "もこもこパーカー"],
-      icon: ["クリスタルの剣", "金貨", "回復ポーション", "魔法の宝箱", "ダイヤのツルハシ"],
-      gfx: ["森の探検家", "サイバーパンクレーサー", "海賊船長", "宇宙冒険家", "氷の魔法使い"],
-      sfx: ["コイン取得", "レベルアップ音", "レーザー発射", "木のドア", "魔法の呪文"]
+      thumbnail: ["夕暮れの城攻め", "お菓子工場をスピードラン", "残り10秒の潜水艦脱出", "水晶洞窟でペット孵化", "雨の街の屋上チェイス"],
+      icon: ["氷の弓", "宝の地図", "スピードポーション", "ドラゴンの卵", "VIPの王冠"],
+      ui: ["8枠のポーション屋", "クエスト一覧", "バトルパスの進行表", "ロード画面", "トレード画面"],
+      texture: ["ひび割れた砂漠", "錆びた鉄板", "苔むした石畳", "光るクリスタルの床", "雪の積もった屋根瓦"],
+      clothing: ["宇宙飛行士ジャケット", "侍の鎧シャツ", "ネオンのジャージ", "木こりのネルシャツ", "サッカーのユニフォーム"],
+      gfx: ["光る剣の騎士", "トリック中のスケーター", "砂漠の旅人", "ロボット整備士", "見習い魔法使い"],
+      sfx: ["宝箱が開く音", "ジャンプ台のバネ音", "剣がぶつかる音", "ドアがきしむ音", "勝利のファンファーレ"]
     },
     hero: {
-      eyebrow: "クリエイターのためのゲームアセットAIスタジオ",
-      title1: "目を引く", title2: "ゲームアセットを。",
-      sub: "シーンを短い言葉で説明するだけ。サムネイル、アイコン、テクスチャ、服、GFX、UI、効果音を BlockForge が作ります。",
-      note: `ブラウザ上の無料プレビューはアカウント不要。BlockForge Pro は${J.trial}から始まり、その後は${J.pricePerYear}です。`,
-      try: "例：",
-      facts: [["7", "つの作成ツール"], [J.credits, "クレジット／年"], ["30日間", "返金保証"]]
+      eyebrow: "ゲーム制作のためのAI素材工房",
+      title1: "言葉を入れれば、", title2: "ゲームで使える素材に。",
+      sub: "ひとことのアイデアから、カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、UIキット、効果音を作成。公開先のプラットフォームに合わせたサイズで書き出します。",
+      composerTitle: "何をつくりますか？",
+      typeLabel: "アセットの種類",
+      note: `プレビューは無料で、ブラウザ上で動きます。BlockForge Pro は${J.trial}から始まり、その後は${J.pricePerYear}です。`,
+      examples: "例：",
+      facts: [["7", "種類のアセット"], [J.credits, "クレジット／年"], ["30日間", "返金保証"]],
+      boardTitle: "インベントリ",
+      boardNote: "ブラウザで描画したプレビュー"
     },
-    marquee: ["7つのAI作成ツール", J.trial, `年額${J.price}`, "30日間返金保証", "商用利用OK", "日本語・English", "16:9 サムネイル", "512×512 アイコン"],
+    assets: {
+      eyebrow: "アセットの種類",
+      title: "7種類のアセットを、<em>ひとつの入力欄から。</em>",
+      sub: "どのアセットも、プラットフォームが求めるサイズと形式にあらかじめ設定済み。書き出したファイルをそのままプロジェクトに使えます。すべて BlockForge Pro に含まれます。",
+      included: "Pro に含まれます",
+      preview: "プレビュー",
+      items: {
+        thumbnail: { spec: "16:9 · 1920 × 1080 PNG", desc: "おすすめ欄でもひと目で伝わるカバー画像。大胆な主役、大きな文字、はっきりしたコントラスト。" },
+        icon: { spec: "512 × 512 · 透過PNG", desc: "透過背景の正方形アイコン。バッジ、パス、ストア用の画像にそのまま使えます。" },
+        ui: { spec: "画像＋レイヤー一覧", desc: "ショップ、インベントリ、HUD を1枚の画像と、フレーム・ラベル・ボタンのレイヤー一覧でお届け。エディタで組み直せます。" },
+        texture: { spec: "512 × 512 · シームレスPNG", desc: "つなぎ目が見えずに繰り返せる素材。石、金属、木、砂、溶岩など。" },
+        clothing: { spec: "585 × 559 · シャツテンプレート", desc: "デザインを標準のシャツテンプレートに描き込むので、アバターにきれいに巻き付きます。" },
+        gfx: { spec: "512 × 512 PNG", desc: "ブロック調キャラクターの迫力あるレンダー。ポスター、カバー、SNS投稿に。" },
+        sfx: { spec: "WAV · 44.1 kHz", desc: "アイテム取得、ボタン、ドア、魔法などの短い効果音を、数語の説明から。" }
+      },
+      proCard: { title: "7種類すべてをひとつのプランで", body: `年${J.credits}クレジット。ほとんどのアセットは1クレジット、UIキットは4クレジットです。`, cta: "料金を見る" }
+    },
     how: {
       eyebrow: "使い方",
-      title: "アイデアからアセットまで<em>3ステップ</em>",
-      sub: "すべてのツールが同じ流れ。最初のプロンプトから完成ファイルまで。",
+      title: "1回の作成は<em>およそ1分。</em>",
       steps: [
-        ["ツールを選ぶ", "サムネイル、UI、テクスチャ、服、アイコン、GFX、効果音。ゲームで使う標準サイズで出力します。"],
-        ["アイデアを書く", "数語で十分です。参考画像を追加すれば、雰囲気も指定できます。"],
-        ["ダウンロードして使う", "PNG・WAV ファイルをダウンロードして、そのままゲームへ。"]
+        ["アセットを選ぶ", "7種類から選びます。サイズはプラットフォームに合わせて設定済みです。"],
+        ["ひとことで説明する", "主役と雰囲気を書くだけ。特定のスタイルにしたいときは参考画像を添付できます。"],
+        ["調整して書き出す", "バリエーションを作って気に入ったものを選び、PNG または WAV でダウンロード。"]
       ]
-    },
-    toolsSec: {
-      eyebrow: "ひとつのワークスペース",
-      title: "7つのツール。<em>ひとつの場所で。</em>",
-      sub: "ゲームを見つけてもらうサムネイルから、ゲーム内のUI、テクスチャ、服、サウンドまで。すべてのツールが BlockForge Pro に含まれます。",
-      included: "Pro に含まれます",
-      thumb: {
-        name: "サムネイル", spec: "16:9 · 1920 × 1080",
-        desc: "目を引く 16:9 サムネイルと、512 × 512 のゲームアイコン。",
-        bullets: ["参考画像で仕上がりをコントロール", "アップデートごとに複数の案をテスト", "フル解像度の PNG をダウンロード"],
-        cta: "サムネイルをプレビュー"
-      },
-      ui: {
-        name: "UIメーカー", spec: "編集可能なレイアウト出力",
-        desc: "ショップ、HUD、メニューを、画像とレイヤー一覧でお届け。ゲームエディタ上で組み直せます。",
-        cta: "UIをプレビュー", opens: "レイヤー一覧の例"
-      },
-      small: {
-        texture: { spec: "シームレス · 512 × 512", desc: "パーツや床、壁に使えるタイル可能なテクスチャ。" },
-        clothing: { spec: "シャツテンプレート · 585 × 559", desc: "定番の服テンプレートに描画。そのままアップロードできます。" },
-        icon: { spec: "透過 · 512 × 512", desc: "背景を除去したフラットなアイコン、バッジ、デカール。" },
-        gfx: { spec: "キャラクターレンダー · 512 × 512", desc: "ブロック風キャラクターのシネマティックなレンダー。" },
-        sfx: { spec: "WAV 効果音", desc: "短い説明からクリック音、チャイム、衝撃音を作成。" }
-      }
     },
     ideas: {
       eyebrow: "アイデア",
-      title: "<em>アイデア</em>から始めよう",
-      sub: "ここに並ぶ画像は、ブラウザ上で描画したプレビューモードの例です。アイデアを選んで試してみてください。AI によるフル品質の作成は Pro で行えます。",
-      badge: "プレビュー",
-      idea: "試してみたいアイデア",
-      use: "このアイデアをプレビュー",
-      prev: "前のアイデア",
-      next: "次のアイデア",
+      title: "<em>きっかけ</em>が欲しいときは",
+      sub: "プロンプトを選ぶと、ブラウザ上で簡易プレビューを描画します。BlockForge Pro ならフル解像度の AI 作品に仕上げられます。",
+      badge: "ブラウザプレビュー",
+      use: "プレビュー",
       items: [
-        "レベル1 vs レベル9999 の採掘シミュレーター、巨大エメラルド",
-        "銀行の金庫を強盗から守るミニガン砲台",
-        "地球の中心まで掘る黄金ドリル、どこまで行ける？！",
-        "竜巻サバイバル、吹き飛ぶ砦で叫ぶビルダー",
-        "宝箱の開封シーンと赤ちゃんドラゴンのペット",
-        "男子 vs 女子の溶岩アスレチック対決、残り2秒",
-        "1円のサビた桶 vs 札束でいっぱいの10億円の金の桶",
-        "巨大な溶岩ゴーレムのボスに突撃する剣士",
-        "金鉱からダイヤ原子炉へ、タイクーンのアップグレード",
-        "王冠のプレイヤーがパワーアップ、+99レベル、青い稲妻"
+        ["シミュレーター", "宝石の壁を突き破る採掘ドリル"],
+        ["シミュレーター", "卵からドラゴンへ進化するペット"],
+        ["アスレチック", "溶岩湖にかかる虹色のパルクール橋"],
+        ["アスレチック", "最後のジャンプで残り0:03"],
+        ["タイクーン", "木造から純金へ、工場のアップグレード"],
+        ["タイクーン", "コインがあふれ出すマネーマシン"],
+        ["ホラー", "廃校を照らす懐中電灯の光"],
+        ["ホラー", "廊下の奥に立つ黒い影"],
+        ["アドベンチャー", "嵐の海へ進む海賊船"],
+        ["アドベンチャー", "光る神殿を見つけた探検家"]
       ]
-    },
-    why: {
-      eyebrow: "大切な理由",
-      title: "あなたのゲームに、<em>あなただけの世界を。</em>",
-      sub: "サムネイルはゲームを見つけてもらうきっかけに。UI、テクスチャ、服、サウンドはゲームの完成度を高めます。すべてをひとつのワークスペースで。",
-      bullets: ["アップデートごとに、ひとつではなく複数の案をテスト。", "次のアップデートに必要なビジュアルとサウンドを作成。", "作成前に、必要なクレジットを確認できます。"],
-      th: ["", "作るもの", "BlockForge なら"],
-      rows: [["ビジュアル", "サムネイル & GFX", "画像アセット"], ["世界観", "テクスチャ & 服", "ゲームのディテール"], ["インターフェース", "UIメーカー", "UIプロジェクト"], ["オーディオ", "効果音", "サウンドエフェクト"]]
     },
     pricing: {
       eyebrow: "料金",
@@ -394,8 +368,8 @@ export const STRINGS = {
       equivalent: `月あたり${J.perMonthEquivalent}。お支払いは年1回です。`,
       keyTerms: `${J.trial}のあと、${J.price}（税込）を年1回お支払い。12か月ごとに自動更新され、いつでも解約できます。`,
       features: [
-        `有料期間1年ごとに ${J.credits} クレジット（1クレジット＝アセット1点。UIレイアウトは4クレジット）`,
-        "7つのツールすべて：サムネイル、アイコン、テクスチャ、服、GFX、UI、効果音",
+        `有料期間1年ごとに ${J.credits} クレジット（1クレジット＝アセット1点。UIキットは4クレジット）`,
+        "7種類のアセットすべて：カバー画像（サムネイル）、アイコン、UIキット、テクスチャ、アバター用シャツ、キャラクター画像、効果音",
         "フル解像度の PNG・WAV をダウンロード",
         "収益化ゲームを含む商用利用OK",
         "日本語・英語のインターフェース",
@@ -423,28 +397,29 @@ export const STRINGS = {
     },
     faq: {
       eyebrow: "FAQ",
-      title: "よくある<em>質問</em>",
+      title: "ご質問に<em>お答えします</em>",
       items: [
         ["1時間の無料トライアルはどのような仕組みですか？", `クレジットカードまたはデビットカードを登録してトライアルを開始します。1時間、Pro のすべての機能と${J.trialCredits}トライアルクレジットを利用でき、この間の請求はありません。1時間が経過すると、それまでに解約しない限り、BlockForge Pro 12か月分として${J.priceWithCode}が自動的に請求されます。トライアルはお一人様1回限りです。`],
         ["いつ請求されますか？", `トライアル開始のちょうど1時間後に初回の請求が行われ、その後は解約するまで12か月ごとに同じ日付で請求されます。更新の${J.reminderDays}日前までにお知らせメールを、各請求後には領収メールをお送りします。`],
         ["カード明細にはどのように表示されますか？", `カードの利用明細には「${J.descriptor}」と表示されます。`],
         ["解約方法を教えてください。", "アカウント → お支払い → サブスクリプションを解約、またはご登録のメールアドレスからサポートへご連絡ください。トライアルの1時間以内に解約すれば料金はかかりません。請求後に解約した場合は、以後の請求は行われず、お支払い済みの1年間の終わりまで Pro と残りのクレジットをご利用いただけます。"],
         ["30日間返金保証とは何ですか？", `未使用クレジット分を全額返金します。理由は問いません。各年額請求から${J.refundDays}日以内にお申し出いただくと、「年額料金 × 未使用クレジット ÷ ${J.credits}」を返金します。クレジットを使っていなければ${J.price}を全額返金します。返金は5営業日以内にお支払いに使用したカードへ処理され、明細への反映にはカード会社により5〜10営業日かかる場合があります。`],
-        ["BlockForge Pro には何が含まれますか？", `有料期間1年ごとに${J.credits}クレジット、7つのツールすべて、フル解像度の PNG・WAV ダウンロード、作成したアセットの商用利用、日本語・英語のインターフェースが含まれます。未使用のクレジットは各有料期間の終了時に失効します。`],
-        ["アセット1点に何クレジット必要ですか？", `サムネイル、アイコン、テクスチャ、服、GFX、効果音は各${PLAN.creditCosts.thumbnail}クレジット、UIレイアウトは${PLAN.creditCosts.ui}クレジットです。作成に失敗した場合、クレジットは自動的に戻ります。`],
+        ["BlockForge Pro には何が含まれますか？", `有料期間1年ごとに${J.credits}クレジット、7種類のアセットすべて、フル解像度の PNG・WAV ダウンロード、作成したアセットの商用利用、日本語・英語のインターフェースが含まれます。未使用のクレジットは各有料期間の終了時に失効します。`],
+        ["アセット1点に何クレジット必要ですか？", `カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、効果音は各${PLAN.creditCosts.thumbnail}クレジット、UIキットは${PLAN.creditCosts.ui}クレジットです。作成に失敗した場合、クレジットは自動的に戻ります。`],
         ["支払方法と通貨を教えてください。", `Visa、Mastercard、American Express、JCB、Discover のクレジットカード・デビットカードをご利用いただけます。日本語サイトでは${J.price}（日本円・税込）、英語サイトでは${E.price}（米ドル）でのお支払いとなり、決済画面に表示された通貨で請求されます。`],
-        ["プレビューモードは無料ですか？", "はい。プレビューモードはブラウザ上で簡易的なプレビューを描画する機能で、アカウント不要・クレジット不要です。AI による作成結果ではありません。フル解像度の AI アセットは BlockForge Pro で作成できます。"],
+        ["ブラウザプレビューは無料ですか？", "はい。ブラウザプレビューはお使いの端末上で簡易的なラフを描く機能で、アカウント不要・クレジット不要です。AI による作成結果ではありません。フル解像度の AI アセットは BlockForge Pro で作成できます。"],
         ["作成したアセットは商用利用できますか？", "はい。作成したアセットは（法律で認められる範囲で）お客様のものとなり、収益化したゲームを含めて商用利用できます。お客様のプロンプト、アップロード画像、作成物を AI の学習に使うことはありません。"],
         ["BlockForge は Roblox などのゲームプラットフォームと提携していますか？", "いいえ。BlockForge は CALDRIVO GLOBAL INC が提供する独立したサービスであり、Roblox Corporation その他のゲームプラットフォームとの提携・承認・後援関係はありません。"]
       ]
     },
     cta: {
-      title1: "次のゲームアセットは、", title2: "ひとつのアイデアから。",
-      sub: `どんなアイデアも無料でプレビュー。フル品質の作成は BlockForge Pro で：${J.trial}、以降${J.pricePerYear}。`,
-      trial: "1時間の無料トライアルを開始 →"
+      title1: "次のアップデートに、", title2: "もっといい素材を。",
+      sub: `まずは無料でプレビューを。BlockForge Pro は${J.trial}から始められ、トライアル後は${J.pricePerYear}です。`,
+      trial: "1時間の無料トライアルを開始",
+      preview: "無料でプレビュー"
     },
     footer: {
-      tagline: "クリエイターのためのゲームアセットAIスタジオ。",
+      tagline: "言葉を入れれば、ゲームで使える素材に。",
       operatedBy: "BlockForge の運営会社：",
       company: "会社情報", policies: "規約・ポリシー", product: "プロダクト",
       contact: "お問い合わせ", pay: "ご利用いただけるカード",
@@ -464,7 +439,7 @@ export const STRINGS = {
       renews: "更新",
       renewsValue: `解約するまで12か月ごとに${J.price}（税込）。価格を変更する場合は適用の${J.priceChangeNoticeDays}日前までにメールでご案内します`,
       includes: "含まれるもの",
-      includesValue: `年${J.credits}クレジット・7つのツールすべて・商用利用`,
+      includesValue: `年${J.credits}クレジット・7種類のアセットすべて・商用利用`,
       trialCredits: "トライアル中",
       trialCreditsValue: `すべての機能＋${J.trialCredits}トライアルクレジット`,
       timeLine: "今すぐ開始した場合、カードへの請求日時は",
@@ -514,20 +489,19 @@ export const STRINGS = {
       read: "読む"
     },
     ws: {
-      title: "プレビューモード",
-      demo: "ブラウザ上で描画した簡易プレビューです。フル解像度の AI 版は Pro で作成できます。",
-      generating: "プレビューを描画中…",
-      download: "プレビューをダウンロード",
-      again: "別バリエーション",
+      title: "ブラウザプレビュー",
+      demo: "ブラウザ上で描いたラフスケッチです。フル解像度の AI 版は BlockForge Pro で作成できます。",
+      generating: "プレビューを描いています…",
+      download: "プレビューを保存",
+      again: "別のバリエーション",
       close: "閉じる",
       play: "再生",
-      empty: "まず短い説明を入力してください。",
+      empty: "まず短い説明を書いてください。",
       size: "サイズ",
       cost: "Pro の場合",
       upgrade: "Pro で作成する"
     },
-    credit: { one: "1 クレジット", n: "{n} クレジット" },
-    fab: "クイックプレビュー"
+    credit: { one: "1 クレジット", n: "{n} クレジット" }
   }
 };
 
@@ -536,7 +510,7 @@ export function runtimeStrings(lang) {
   const S = STRINGS[lang];
   return {
     tools: S.tools, prompt: S.prompt, chips: S.chips, ws: S.ws, credit: S.credit,
-    ideas: S.ideas.items, toolOrder: TOOLS, creditCosts: PLAN.creditCosts,
+    ideas: S.ideas.items.map(([, text]) => text), toolOrder: TOOLS, creditCosts: PLAN.creditCosts,
     checkout: { timeLine: S.checkout.timeLine, timeLineFallback: S.checkout.timeLineFallback }
   };
 }

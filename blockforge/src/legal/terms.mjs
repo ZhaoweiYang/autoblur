@@ -1,6 +1,10 @@
 import { FACTS, PLAN } from "../config.mjs";
 const E = FACTS.en, J = FACTS.ja;
 const C = PLAN.creditCosts;
+const TOOLS = Object.keys(C).length;                       // number of tools (7)
+const H = E.trialHours === 1 ? "hour" : "hours";
+const MBG_EN = `${E.refundDays}-Day Money-Back Guarantee`;  // "30-Day Money-Back Guarantee"
+const MBG_JA = `${J.refundDays}日間返金保証`;
 
 export default {
   slug: "terms",
@@ -10,11 +14,11 @@ export default {
     nav: "Terms",
     description: `Terms of Service for ${E.brand} Pro (${E.pricePerYear}): the ${E.trial} and automatic annual charge, renewal, credits, refunds, cancellation and your rights.`,
     body: `
-      <p class="lede">These Terms of Service are the contract between you and ${E.company} for using ${E.brand}. In short: ${E.brand} Pro costs ${E.price} per year (${E.currency}). It starts with a ${E.trial} that requires a payment card. Exactly ${E.trialHours} hour after the trial starts, we automatically charge the annual fee unless you cancel before the hour ends. The plan then renews every 12 months until you cancel. Within ${E.refundDays} days of any annual charge you can get a full refund on unused credits, no questions asked. You own the assets you generate, and we never use your content to train AI models.</p>
+      <p class="lede">These Terms of Service are the contract between you and ${E.company} for using ${E.brand}. In short: ${E.brand} Pro costs ${E.price} per year (${E.currency}). It starts with a ${E.trial} that requires a payment card. Exactly ${E.trialHours} ${H} after the trial starts, we automatically charge the annual fee to your card unless you cancel before the trial ends. The plan then renews every 12 months until you cancel. Within ${E.refundDays} days of any annual charge you can get a full refund on unused credits, no questions asked. You own the assets you generate, to the extent the law allows, and we never use your content to train AI models.</p>
 
       <h2 id="agreement">1. Agreement and who we are</h2>
       <p>${E.brand} (the &ldquo;Service&rdquo;) is operated by ${E.company} (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;), located at ${E.addressOneLine}. These Terms of Service (the &ldquo;Terms&rdquo;) govern your access to and use of the ${E.brand} website at blockforge.vip, the signed-in workspace, and every tool, credit and plan we offer through them.</p>
-      <p>By creating an account, starting a free trial, buying a plan or otherwise using the Service, you agree to these Terms and to the policies they refer to, including our <a href="privacy.html">Privacy Policy</a>, <a href="refund.html">Refund Policy</a>, <a href="cancellation.html">Cancellation Policy</a> and <a href="disclaimer.html">Disclaimer</a>. If you do not agree, do not use the Service. If you use the Service on behalf of a business or other organisation, you confirm that you are authorised to accept these Terms for it, and &ldquo;you&rdquo; includes that organisation.</p>
+      <p>By creating an account, starting a free trial, buying a plan or otherwise using the Service, you agree to these Terms and to the policies they refer to, including our <a href="privacy.html">Privacy Policy</a>, <a href="cookies.html">Cookie Policy</a>, <a href="refund.html">Refund Policy</a>, <a href="cancellation.html">Cancellation Policy</a>, <a href="shipping.html">Shipping &amp; Delivery Policy</a>, <a href="dmca.html">DMCA &amp; Copyright Policy</a> and <a href="disclaimer.html">Disclaimer</a>. If you do not agree, do not use the Service. If you use the Service on behalf of a business or other organisation, you confirm that you are authorised to accept these Terms for it, and &ldquo;you&rdquo; includes that organisation.</p>
 
       <h2 id="eligibility">2. Eligibility and age</h2>
       <ul>
@@ -59,15 +63,15 @@ export default {
         </tbody>
       </table>
       <p>The language of the site decides the currency. You are charged in the currency and the amount shown at checkout before you confirm. Your card issuer may add its own foreign-transaction or currency-conversion fees; your bank sets those fees, not us.</p>
-      <p>Each paid year includes <strong>${E.credits} credits</strong>, added to your account when the paid year starts. The plan includes all seven tools, full-resolution downloads, commercial use of your outputs, and the interface in English and Japanese.</p>
+      <p>Each paid year includes <strong>${E.credits} credits</strong>, added to your account when the paid year starts. The plan includes all ${TOOLS} tools, full-resolution downloads, commercial use of your outputs, and the interface in English and Japanese.</p>
 
       <h2 id="free-trial">6. Free trial and automatic charge</h2>
-      <p class="callout"><strong>Free trial, then automatic annual charge:</strong> the ${E.trial} requires a payment card. Nothing is charged during the trial. Exactly ${E.trialHours} hour after the trial starts, your card is automatically charged ${E.price} (${E.currency}) for 12 months of ${E.brand} Pro, unless you cancel before the hour ends.</p>
+      <p class="callout"><strong>Free trial, then automatic annual charge:</strong> the ${E.trial} requires a payment card. Nothing is charged during the trial. Exactly ${E.trialHours} ${H} after the trial starts, your card is automatically charged ${E.price} (${E.currency}) for 12 months of ${E.brand} Pro, unless you cancel before the trial ends.</p>
       <ul>
-        <li>You start the trial by entering a payment card on the <a href="../checkout.html">checkout page</a>.</li>
+        <li>You start the trial from our <a href="../checkout.html">checkout page</a>. Before you continue, it shows the annual price and when your card will be charged, and asks you to confirm that you understand and accept the automatic charge. You then enter your card on our payment processor&rsquo;s secure page.</li>
         <li>During the trial, your account has ${E.trialCredits} trial credits and full access to all tools.</li>
         <li>At sign-up we email you a confirmation that states the exact time your trial ends and how to cancel.</li>
-        <li>To avoid the charge, cancel before the hour ends in Account &rarr; Billing &rarr; Cancel subscription, which takes effect at once, or by emailing <a href="mailto:${E.email}">${E.email}</a> from your account email. If you cancel during the trial, you are never charged and your access ends when the trial ends. If your cancellation email reaches us before the trial ends but the annual charge goes through before we act on it, we refund that charge in full.</li>
+        <li>To avoid the charge, cancel before the trial ends in Account &rarr; Billing &rarr; Cancel subscription, which takes effect at once, or by emailing <a href="mailto:${E.email}">${E.email}</a> from your account email. If you cancel during the trial, you are never charged and your access ends when the trial ends. If your cancellation email reaches us before the trial ends but the annual charge goes through before we act on it, we refund that charge in full.</li>
         <li>If you do not cancel, the first annual charge happens automatically when the trial ends, your first paid year starts, and ${E.credits} credits are added to your account.</li>
         <li>One free trial per person and per payment card. We may decline a trial when we detect repeat or fraudulent sign-ups.</li>
         <li>Trial credits are separate from the annual credits and are not counted when we calculate refunds.</li>
@@ -84,17 +88,18 @@ export default {
 
       <h2 id="payment">8. Payment, taxes and statement descriptor</h2>
       <p>We accept major credit and debit cards: Visa, Mastercard, American Express, JCB and Discover. Payments are processed by a third-party payment processor that is PCI DSS compliant. ${E.brand} never sees or stores your full card number; we receive only the card brand, the last four digits, the expiry date, and your billing country and postal code.</p>
-      <p>By starting a trial, you authorise us, through our payment processor, to charge the annual fee to your card when the trial ends and at each renewal until you cancel.</p>
+      <p>By starting a trial, you authorise us, through our payment processor, to charge the annual fee to your card when the trial ends, and the then-current annual fee at each renewal, until you cancel.</p>
       <p><strong>Taxes:</strong> ${E.taxNote} On the Japanese site, the price includes consumption tax.</p>
       <p><strong>Statement descriptor:</strong> your card statement will show <strong>&ldquo;${E.descriptor}&rdquo;</strong>. If you see a charge you do not recognise, email <a href="mailto:${E.email}">${E.email}</a> and we will look into it right away.</p>
+      <p>Customers in Japan can find the seller details and sales terms required by Japanese law in our <a href="commercial-disclosure.html">Commercial Disclosure (Japan)</a>.</p>
 
-      <h2 id="refunds">9. 30-Day Money-Back Guarantee</h2>
+      <h2 id="refunds">9. ${MBG_EN}</h2>
       <p class="callout"><strong>${E.refundDays}-Day Money-Back Guarantee:</strong> Full refund on unused credits. No questions asked.</p>
       <ul>
         <li>Within ${E.refundDays} days after any annual charge, whether it is the first charge after your trial or a renewal, you can ask for a refund by emailing <a href="mailto:${E.email}">${E.email}</a> or from Account &rarr; Billing.</li>
         <li>Refund amount = annual fee &times; unused credits &divide; ${E.credits}. If you have used no credits, you get 100% of the fee back (${E.price}).</li>
         <li>Example: you used ${E.refundExample.used} credits, so ${E.refundExample.unused.toLocaleString("en-US")} are unused and your refund is ${E.refundExample.amount}.</li>
-        <li>We refund to the original payment method and process the refund within 5 business days. Banks usually show it within 5&ndash;10 business days.</li>
+        <li>We refund to the original payment method, in the currency of the original charge, and process the refund within 5 business days. Banks usually show it within 5&ndash;10 business days.</li>
         <li>A refund ends your subscription and removes the remaining credits for that paid year.</li>
         <li>After ${E.refundDays} days, charges are non-refundable except where the law requires otherwise, but you can still cancel so that the next renewal is not charged.</li>
       </ul>
@@ -106,7 +111,7 @@ export default {
         <li>In your account: Account &rarr; Billing &rarr; Cancel subscription.</li>
         <li>By email: write to <a href="mailto:${E.email}">${E.email}</a> from the email address on your account.</li>
       </ul>
-      <p>Cancellation takes effect immediately for future renewals, and we confirm it by email. If you cancel during the free trial, you are never charged and your access ends when the trial ends. If you cancel after a charge, no further charges are made, and your Pro access and remaining credits stay available until the end of the current paid year. Cancelling does not by itself refund the current year; to get money back, ask for a refund within ${E.refundDays} days of the charge under the 30-Day Money-Back Guarantee. Full details are in our <a href="cancellation.html">Cancellation Policy</a>.</p>
+      <p>Cancellation takes effect immediately for future renewals, and we confirm it by email. If you cancel during the free trial, you are never charged and your access ends when the trial ends. If you cancel after a charge, no further charges are made, and your Pro access and remaining credits stay available until the end of the current paid year. Cancelling does not by itself refund the current year; to get money back, ask for a refund within ${E.refundDays} days of the charge under the ${MBG_EN}. Full details are in our <a href="cancellation.html">Cancellation Policy</a>.</p>
 
       <h2 id="credits">11. Credits</h2>
       <p>Each generated asset costs credits:</p>
@@ -128,7 +133,7 @@ export default {
         <li>Credits are deducted when you start a generation. If a generation fails, its credits are returned to your balance automatically.</li>
         <li>The ${E.credits} credits of each paid year are added when that paid year starts. Unused credits expire at the end of that paid year and do not roll over to the next year.</li>
         <li>The ${E.trialCredits} trial credits are separate from the annual credits and are not counted in refund calculations.</li>
-        <li>Credits have no cash value. They cannot be sold, transferred, exchanged for money or moved to another account, except as refunds under the 30-Day Money-Back Guarantee or where the law requires.</li>
+        <li>Credits have no cash value and are not transferable: they cannot be sold, given away or moved to another account. They cannot be exchanged for money, except through a refund under the ${MBG_EN}, a pro-rata refund under section 17, or where the law requires.</li>
         <li>If credits are added or deducted by mistake, for example because of a system error, we may correct your balance.</li>
       </ul>
 
@@ -137,7 +142,7 @@ export default {
       <ul>
         <li>infringes anyone&rsquo;s copyright, trademark, privacy, publicity or other rights;</li>
         <li>is hateful or harassing, or promotes violence or discrimination;</li>
-        <li>is sexually explicit, or sexualises minors in any way (we report such content to the authorities);</li>
+        <li>is sexually explicit, or sexualises minors in any way (we report content that sexualises minors to the relevant authorities as the law requires);</li>
         <li>is illegal or promotes illegal activity;</li>
         <li>impersonates any person or organisation, or falsely presents assets as official assets of a game platform or brand.</li>
       </ul>
@@ -150,6 +155,7 @@ export default {
         <li>reverse engineer the Service, except where the law allows it despite this restriction.</li>
       </ul>
       <p>We may remove content that breaks these rules and may suspend or terminate accounts as described in section 17.</p>
+      <p><strong>Copyright complaints:</strong> if you believe content stored in the Service infringes your copyright, send a notice as described in our <a href="dmca.html">DMCA &amp; Copyright Policy</a>. In appropriate circumstances, we terminate the accounts of users who repeatedly infringe.</p>
 
       <h2 id="your-content">13. Your content and ownership of outputs</h2>
       <h3>Your inputs</h3>
@@ -157,7 +163,7 @@ export default {
       <h3>Your outputs</h3>
       <p>As between you and us, you own the assets you generate with the Service (&ldquo;Outputs&rdquo;), to the extent the law allows, and we assign to you any rights we may have in them. You may use Outputs for any lawful purpose, including commercially and in monetised games, without crediting us. Some countries do not grant copyright to AI-generated material, and similar prompts can produce similar results for different users; your ownership does not extend to similar outputs that other users generate independently.</p>
       <h3>Licence to us</h3>
-      <p>You give us a limited, non-exclusive, worldwide, royalty-free licence to host, store, copy, process and display your Inputs and Outputs only as needed to provide, secure and support the Service for you. This licence ends when you delete the content or your account, except for copies we must keep by law and copies that remain in backups for a limited time, as described in our <a href="privacy.html">Privacy Policy</a>.</p>
+      <p>You give us a limited, non-exclusive, worldwide, royalty-free licence to host, store, copy, process and display your Inputs and Outputs only as needed to provide, secure and support the Service for you. This licence ends when the content is deleted, either by you or under the retention periods in our <a href="privacy.html">Privacy Policy</a> (for example, 30 days after your account is closed), except for records we must keep by law.</p>
       <h3>No AI training</h3>
       <p><strong>We do not use your prompts, uploads or outputs to train AI models.</strong> Our AI model inference providers process your prompts only to generate your output, under contracts that forbid them from training on your content.</p>
       <h3>Our property</h3>
@@ -172,17 +178,17 @@ export default {
 
       <h2 id="availability">16. Availability and changes to the service</h2>
       <p>We work to keep the Service available, but it may be interrupted for maintenance, updates or reasons outside our control, and we do not guarantee uninterrupted availability. We may improve, change or remove features, or change the AI models we use. Where a change significantly affects how you use the paid plan, we tell you by email in advance where reasonably possible. If we decide to discontinue the Service entirely, we email you at least 30 days in advance and refund the unused credits of your current paid year on a pro-rata basis, as described in section 17.</p>
-      <p>Generated assets stay in your workspace until you delete them, or until 30 days after your account is closed. We recommend that you keep your own copies of the assets you need.</p>
+      <p>Generated assets stay in your workspace until you delete them, or until 30 days after your account is closed, whichever comes first. We recommend that you keep your own copies of the assets you need.</p>
 
       <h2 id="termination">17. Suspension and termination</h2>
       <h3>By you</h3>
-      <p>You can cancel your subscription at any time as described in section 10, and you can ask us to delete your account by emailing <a href="mailto:${E.email}">${E.email}</a>. Deleting your account ends your access immediately and removes your remaining credits. If you are within ${E.refundDays} days of an annual charge, ask for your refund under the 30-Day Money-Back Guarantee before or when you request deletion.</p>
+      <p>You can cancel your subscription at any time as described in section 10, and you can ask us to delete your account by emailing <a href="mailto:${E.email}">${E.email}</a>. Deleting your account ends your access immediately, stops all future charges and removes your remaining credits; it does not by itself refund the current paid year. If you are within ${E.refundDays} days of an annual charge, ask for your refund under the ${MBG_EN} before or when you request deletion.</p>
       <h3>By us</h3>
       <p>We may suspend or terminate your access, with notice where reasonable, if you materially breach these Terms or the acceptable-use rules, if we suspect fraud or payment abuse, if the law requires it, or if it is necessary to protect the Service, other users or third parties.</p>
       <h3>What happens to your fees</h3>
       <ul>
         <li><strong>Termination for our convenience:</strong> if we end your subscription for a reason that is not your breach of these Terms, including discontinuing the Service, we refund the unused credits of your current paid year on a pro-rata basis: annual fee &times; unused credits &divide; ${E.credits}, to your original payment method.</li>
-        <li><strong>Termination for your breach:</strong> if we terminate because you materially breached these Terms, we do not refund fees for the rest of that paid year, except where the 30-Day Money-Back Guarantee still applies or the law requires a refund.</li>
+        <li><strong>Termination for your breach:</strong> if we terminate because you materially breached these Terms, we do not refund fees for the rest of that paid year, except where the ${MBG_EN} still applies or the law requires a refund.</li>
       </ul>
       <p>Sections that by their nature should continue after termination, including ownership, disclaimers, limitation of liability, indemnity and governing law, survive termination.</p>
 
@@ -203,10 +209,10 @@ export default {
       <h2 id="governing-law">21. Governing law and disputes</h2>
       <p>These Terms and any dispute arising out of or relating to them or the Service are governed by the laws of ${E.governingLaw}, without regard to conflict-of-laws rules. The United Nations Convention on Contracts for the International Sale of Goods does not apply. Subject to the next paragraph, ${E.venue} have exclusive jurisdiction, and you and we consent to their jurisdiction.</p>
       <p><strong>Consumers:</strong> if you are a consumer, this choice of law and venue does not take away the protection of the mandatory consumer protection laws of the country where you live, for example Japan or a member state of the European Union, and you may bring proceedings in the courts where you live when those laws allow it.</p>
-      <p>Before you file a claim, please email <a href="mailto:${E.email}">${E.email}</a> so that we can try to resolve the issue informally. Most concerns are resolved quickly this way.</p>
+      <p>Before you file a claim, please email <a href="mailto:${E.email}">${E.email}</a> so that we can try to resolve the issue informally. We reply ${E.supportResponse}. This does not limit your right to go to court or to contact your card issuer.</p>
 
       <h2 id="changes">22. Changes to these Terms</h2>
-      <p>We may update these Terms from time to time. For material changes, such as changes to fees, the trial, renewal, refunds or your rights, we email you at the address on your account at least 30 days before the changes take effect, and we post the updated Terms on this page with a new effective date. Price changes also follow the rules in section 7 and never apply in the middle of a paid year. Minor changes, such as clarifications and corrections, take effect when we post them. If you do not agree to a change, you can cancel before it takes effect. If you keep using the Service after the effective date, the updated Terms apply to you. Changes do not apply to disputes that arose before they took effect.</p>
+      <p>We may update these Terms from time to time. For material changes, such as changes to fees, the trial, renewal, refunds or your rights, we email you at the address on your account at least ${E.priceChangeNoticeDays} days before the changes take effect, and we post the updated Terms on this page with a new effective date. Price changes also follow the rules in section 7 and never apply in the middle of a paid year. Minor changes, such as clarifications and corrections, take effect when we post them. If you do not agree to a change, you can cancel before it takes effect. If you keep using the Service after the effective date, the updated Terms apply to you. Changes do not apply to disputes that arose before they took effect.</p>
 
       <h2 id="general">23. General terms</h2>
       <ul>
@@ -230,11 +236,11 @@ export default {
     nav: "利用規約",
     description: `${J.brand}の利用規約です。${J.pricePerYear}のProプラン、${J.trial}と終了後の自動課金、自動更新、クレジット、返金・解約、禁止事項、責任の制限などを定めます。`,
     body: `
-      <p class="lede">本利用規約（以下「本規約」）は、${J.brand}（以下「本サービス」）のご利用について、お客様と${J.company}（以下「当社」）との間に適用される契約です。要点は次のとおりです。${J.brand} Pro の料金は${J.pricePerYear}です。ご利用はカード登録が必要な${J.trial}から始まり、トライアル開始からちょうど${J.trialHours}時間後に、それまでに解約されない限り年額料金が自動的に請求されます。その後は解約されるまで12か月ごとに自動更新されます。年額料金の請求日から${J.refundDays}日以内であれば、理由を問わず未使用クレジット分を全額返金します。お客様が生成した素材はお客様のものであり、当社がお客様のコンテンツをAIの学習に使用することはありません。</p>
+      <p class="lede">本利用規約（以下「本規約」）は、${J.brand}（以下「本サービス」）のご利用について、お客様と${J.company}（以下「当社」）との間に適用される契約です。要点は次のとおりです。${J.brand} Pro の料金は${J.pricePerYear}です。ご利用はカード登録が必要な${J.trial}から始まり、トライアル開始からちょうど${J.trialHours}時間後に、それまでに解約されない限り年額料金が自動的に請求されます。その後は解約されるまで12か月ごとに自動更新されます。年額料金の請求日から${J.refundDays}日以内であれば、理由を問わず未使用クレジット分を全額返金します。お客様が生成した素材は法令で認められる範囲でお客様に帰属し、当社がお客様のコンテンツをAIの学習に使用することはありません。</p>
 
       <h2 id="agreement">第1条（本規約への同意と運営者）</h2>
       <p>本サービスは、${J.addressOneLine}に所在する${J.company}が運営しています。本規約は、ウェブサイト blockforge.vip、ログイン後のワークスペース、ならびにこれらを通じて当社が提供するすべてのツール、クレジットおよびプランのご利用に適用されます。</p>
-      <p>お客様は、アカウントの作成、無料トライアルの開始、プランの購入その他の方法で本サービスを利用することにより、本規約、ならびに本規約が参照する<a href="privacy.html">プライバシーポリシー</a>、<a href="refund.html">返金ポリシー</a>、<a href="cancellation.html">解約ポリシー</a>および<a href="disclaimer.html">免責事項</a>に同意したものとみなされます。同意いただけない場合は、本サービスをご利用にならないでください。法人その他の団体のために本サービスを利用する場合、お客様は当該団体を代表して本規約に同意する権限を有することを表明するものとし、本規約における「お客様」には当該団体が含まれます。</p>
+      <p>お客様は、アカウントの作成、無料トライアルの開始、プランの購入その他の方法で本サービスを利用することにより、本規約、ならびに本規約が参照する<a href="privacy.html">プライバシーポリシー</a>、<a href="cookies.html">Cookieポリシー</a>、<a href="refund.html">返金ポリシー</a>、<a href="cancellation.html">解約ポリシー</a>、<a href="shipping.html">配送・提供ポリシー</a>、<a href="dmca.html">DMCA・著作権ポリシー</a>および<a href="disclaimer.html">免責事項</a>に同意したものとみなされます。同意いただけない場合は、本サービスをご利用にならないでください。法人その他の団体のために本サービスを利用する場合、お客様は当該団体を代表して本規約に同意する権限を有することを表明するものとし、本規約における「お客様」には当該団体が含まれます。</p>
 
       <h2 id="eligibility">第2条（利用資格・年齢）</h2>
       <ul>
@@ -279,13 +285,13 @@ export default {
         </tbody>
       </table>
       <p>請求通貨はサイトの表示言語によって決まります。お客様には、確定前に決済画面に表示された通貨と金額で請求されます。カード発行会社が独自に海外事務手数料や為替手数料を加算する場合がありますが、これらは当社ではなくカード発行会社が定めるものです。</p>
-      <p>各有料年度には<strong>${J.credits}クレジット</strong>が含まれ、有料年度の開始時にアカウントへ付与されます。プランには、7つのツールすべて、フル解像度でのダウンロード、生成物の商用利用、英語・日本語のインターフェースが含まれます。</p>
+      <p>各有料年度には<strong>${J.credits}クレジット</strong>が含まれ、有料年度の開始時にアカウントへ付与されます。プランには、${TOOLS}つのツールすべて、フル解像度でのダウンロード、生成物の商用利用、英語・日本語のインターフェースが含まれます。</p>
 
       <h2 id="free-trial">第6条（無料トライアルと自動課金）</h2>
       <p class="callout"><strong>無料トライアル終了後、年額料金を自動請求します：</strong>${J.trial}のご利用には、お支払い用カードの登録が必要です。トライアル期間中に料金は発生しません。トライアル開始からちょうど${J.trialHours}時間後に、それまでに解約されない限り、登録されたカードに${J.brand} Pro 12か月分の年額料金${J.priceWithCode}が自動的に請求されます。</p>
       <ul>
-        <li>トライアルは、<a href="../checkout.html">決済ページ</a>でお支払い用カードを登録して開始します。</li>
-        <li>トライアル期間中は、${J.trialCredits}クレジットのトライアル用クレジットが付与され、すべてのツールをご利用いただけます。</li>
+        <li>トライアルは、当社の<a href="../checkout.html">決済ページ</a>からお申し込みいただけます。決済ページでは、お手続きの前に年額料金と請求のタイミングをご確認のうえ、自動課金に同意してお申し込みいただきます。その後、決済代行会社の安全な決済画面でカード情報をご入力ください。</li>
+        <li>トライアル期間中は、トライアル用クレジット（${J.trialCredits}クレジット）が付与され、すべてのツールをご利用いただけます。</li>
         <li>お申し込み時に、トライアルの終了時刻と解約方法を記載した確認メールをお送りします。</li>
         <li>請求を避けるには、トライアル終了前に「アカウント &rarr; お支払い &rarr; サブスクリプションを解約」から解約するか（即時に反映されます）、ご登録のメールアドレスから <a href="mailto:${J.email}">${J.email}</a> へご連絡ください。トライアル期間中に解約された場合、料金は一切請求されず、トライアル終了時にご利用が終了します。トライアル終了前に解約のメールが当社に届いたにもかかわらず、当社が対応する前に年額料金が請求された場合は、その請求額を全額返金します。</li>
         <li>解約されない場合は、トライアル終了時に初回の年額料金が自動的に請求され、最初の有料年度が始まり、${J.credits}クレジットがアカウントに付与されます。</li>
@@ -304,21 +310,22 @@ export default {
 
       <h2 id="payment">第8条（支払方法・税金・ご利用明細の表示）</h2>
       <p>お支払いには、Visa、Mastercard、American Express、JCB、Discover の主要なクレジットカードおよびデビットカードをご利用いただけます。決済は、PCI DSS に準拠した第三者の決済代行会社が処理します。${J.brand}がカード番号の全桁を閲覧・保存することはなく、当社が受け取るのはカードブランド、下4桁、有効期限、請求先の国および郵便番号のみです。</p>
-      <p>お客様は、トライアルを開始することにより、トライアル終了時および解約されるまでの各更新時に、当社が決済代行会社を通じて年額料金をカードに請求することを承認したものとします。</p>
+      <p>お客様は、トライアルを開始することにより、当社が決済代行会社を通じて、トライアル終了時に年額料金を、その後は解約されるまで各更新時にその時点の年額料金を、お客様のカードに請求することを承認したものとします。</p>
       <p><strong>税金：</strong>${J.taxNote}英語版サイトの米ドル建て料金には、お住まいの地域により売上税またはVATが加算される場合があり、その場合は確定前に決済画面に表示されます。</p>
       <p><strong>ご利用明細の表示：</strong>カードのご利用明細には<strong>「${J.descriptor}」</strong>と表示されます。身に覚えのない請求がある場合は、<a href="mailto:${J.email}">${J.email}</a> までご連絡ください。速やかに確認いたします。</p>
+      <p>特定商取引法に基づく販売業者の情報および販売条件は、<a href="commercial-disclosure.html">特定商取引法に基づく表記</a>に記載しています。</p>
 
-      <h2 id="refunds">第9条（30日間返金保証）</h2>
+      <h2 id="refunds">第9条（${MBG_JA}）</h2>
       <p class="callout"><strong>${J.refundDays}日間返金保証：</strong>未使用クレジット分を全額返金します。理由は問いません。</p>
       <ul>
         <li>トライアル後の初回請求か更新時の請求かを問わず、年額料金の請求日から${J.refundDays}日以内であれば、<a href="mailto:${J.email}">${J.email}</a> へのメール、または「アカウント &rarr; お支払い」から返金をお申し込みいただけます。</li>
         <li>返金額 ＝ 年額料金 &times; 未使用クレジット数 &divide; ${J.credits}。クレジットを一度も使用していない場合は、年額料金の100%（${J.price}）を返金します。</li>
         <li>例：${J.refundExample.used}クレジットを使用した場合、未使用は${J.refundExample.unused.toLocaleString("ja-JP")}クレジットとなり、返金額は${J.refundExample.amount}です。</li>
-        <li>返金は元のお支払い方法に対して行い、当社は5営業日以内に返金処理を行います。カード会社の明細に反映されるまでには、通常5〜10営業日かかります。</li>
+        <li>返金は、元のお支払い方法に対し、当初の請求と同じ通貨で行います。当社は5営業日以内に返金処理を行います。カード会社の明細に反映されるまでには、通常5〜10営業日かかります。</li>
         <li>返金を行うとサブスクリプションは終了し、その有料年度の残りのクレジットは削除されます。</li>
         <li>請求日から${J.refundDays}日を過ぎた請求は、法令で返金が義務付けられる場合を除き返金できません。ただし、解約していただければ次回の更新料金は請求されません。</li>
       </ul>
-      <p>お支払いに関してお困りの際は、まず当社までご連絡ください。速やかに解決いたします。これは、カード発行会社に対するお客様の権利を制限するものではありません。詳しくは<a href="refund.html">返金ポリシー</a>をご覧ください。</p>
+      <p>お支払いに関してお困りの際は、まず当社までご連絡ください。解決に向けて速やかに対応いたします。これは、カード発行会社に対するお客様の権利を制限するものではありません。詳しくは<a href="refund.html">返金ポリシー</a>をご覧ください。</p>
 
       <h2 id="cancellation">第10条（解約）</h2>
       <p>解約は、次のいずれかの方法でいつでも行えます。</p>
@@ -326,7 +333,7 @@ export default {
         <li>アカウント画面から：「アカウント &rarr; お支払い &rarr; サブスクリプションを解約」</li>
         <li>メールで：ご登録のメールアドレスから <a href="mailto:${J.email}">${J.email}</a> へご連絡ください。</li>
       </ul>
-      <p>解約は以後の更新について直ちに有効となり、当社から確認のメールをお送りします。無料トライアル期間中に解約された場合、料金は一切請求されず、トライアル終了時にご利用が終了します。請求後に解約された場合、以後の請求は行われず、Proのご利用と残りのクレジットは現在の有料年度の終了時までご利用いただけます。解約のみでは当該年度の料金は返金されません。返金をご希望の場合は、30日間返金保証に基づき、請求日から${J.refundDays}日以内にお申し込みください。詳しくは<a href="cancellation.html">解約ポリシー</a>をご覧ください。</p>
+      <p>解約は以後の更新について直ちに有効となり、当社から確認のメールをお送りします。無料トライアル期間中に解約された場合、料金は一切請求されず、トライアル終了時にご利用が終了します。請求後に解約された場合、以後の請求は行われず、Proプランの機能と残りのクレジットは現在の有料年度の終了時まで引き続きご利用いただけます。解約のみでは当該年度の料金は返金されません。返金をご希望の場合は、${MBG_JA}に基づき、請求日から${J.refundDays}日以内にお申し込みください。詳しくは<a href="cancellation.html">解約ポリシー</a>をご覧ください。</p>
 
       <h2 id="credits">第11条（クレジット）</h2>
       <p>素材を1点生成するごとに、次のクレジットを消費します。</p>
@@ -348,7 +355,7 @@ export default {
         <li>クレジットは生成を開始した時点で消費されます。生成に失敗した場合、その生成に使用したクレジットは自動的に残高へ戻ります。</li>
         <li>各有料年度の${J.credits}クレジットは、その有料年度の開始時に付与されます。未使用のクレジットはその有料年度の終了時に失効し、翌年度へは繰り越されません。</li>
         <li>トライアル用の${J.trialCredits}クレジットは年間クレジットとは別のもので、返金額の計算には含まれません。</li>
-        <li>クレジットに現金価値はありません。30日間返金保証に基づく返金および法令で必要な場合を除き、換金、売買、譲渡、または他のアカウントへの移動はできません。</li>
+        <li>クレジットに現金価値はなく、売買、譲渡または他のアカウントへの移動はできません。また、${MBG_JA}に基づく返金、第17条に基づく按分返金および法令で必要な場合を除き、換金することはできません。</li>
         <li>システムの不具合などによりクレジットが誤って付与または消費された場合、当社は残高を修正することがあります。</li>
       </ul>
 
@@ -356,8 +363,8 @@ export default {
       <p>お客様は、本サービスを利用して、次のコンテンツを作成、アップロードまたは共有してはなりません。</p>
       <ul>
         <li>他者の著作権、商標権、プライバシー権、パブリシティ権その他の権利を侵害するもの</li>
-        <li>憎悪表現や嫌がらせに当たるもの、または暴力や差別を助長するもの</li>
-        <li>性的に露骨なもの、または方法を問わず未成年者を性的に扱うもの（当社は当該コンテンツを関係当局に通報します）</li>
+        <li>差別的・憎悪的な表現や嫌がらせに当たるもの、または暴力や差別を助長するもの</li>
+        <li>性的に露骨なもの、または方法を問わず未成年者を性的に扱うもの（未成年者を性的に扱うコンテンツについては、法令に従い関係当局に通報します）</li>
         <li>違法なもの、または違法行為を助長するもの</li>
         <li>他の個人や団体になりすますもの、またはゲームプラットフォームやブランドの公式素材であるかのように偽るもの</li>
       </ul>
@@ -370,14 +377,15 @@ export default {
         <li>法令で明示的に認められる場合を除き、本サービスをリバースエンジニアリングすること</li>
       </ul>
       <p>当社は、これらの規定に違反するコンテンツを削除し、第17条に従ってアカウントの利用を停止または終了することがあります。</p>
+      <p><strong>著作権侵害の申立て：</strong>本サービスに保存されたコンテンツがご自身の著作権を侵害しているとお考えの場合は、<a href="dmca.html">DMCA・著作権ポリシー</a>に従って通知をお送りください。当社は、侵害を繰り返すユーザーのアカウントを、適切な場合には終了します。</p>
 
       <h2 id="your-content">第13条（お客様のコンテンツと生成物の権利）</h2>
       <h3>入力内容</h3>
       <p>お客様が入力したプロンプトおよびアップロードした参考画像（以下「入力内容」）の権利は、お客様に留保されます。お客様は、入力内容をアップロードし利用するために必要な権利を有していることを表明します。</p>
       <h3>生成物</h3>
-      <p>お客様と当社との間では、お客様が本サービスで生成した素材（以下「生成物」）は、法令で認められる範囲においてお客様に帰属し、当社が生成物について有する権利があればお客様に譲渡します。お客様は、生成物を商用利用や収益化されたゲームでの利用を含め、適法な目的に自由に利用でき、当社のクレジット表記も不要です。なお、国によってはAIで生成された素材に著作権が認められない場合があります。また、似たプロンプトからは似た結果が生じることがあるため、他のユーザーが独自に生成した類似の生成物にまでお客様の権利が及ぶものではありません。</p>
+      <p>お客様と当社との間では、お客様が本サービスで生成した素材（以下「生成物」）は、法令で認められる範囲においてお客様に帰属し、当社が生成物について有する権利があればお客様に譲渡します。お客様は、生成物を商用利用や収益化されたゲームでの利用を含め、適法な目的に自由に利用でき、当社名を表示する必要もありません。なお、国によってはAIで生成された素材に著作権が認められない場合があります。また、似たプロンプトからは似た結果が生じることがあるため、他のユーザーが独自に生成した類似の生成物にまでお客様の権利が及ぶものではありません。</p>
       <h3>当社への利用許諾</h3>
-      <p>お客様は当社に対し、本サービスをお客様に提供し、保護し、サポートするために必要な範囲に限り、入力内容および生成物を保管、複製、処理および表示するための、非独占的、全世界的かつ無償の限定的な利用権を許諾します。この利用権は、お客様が当該コンテンツまたはアカウントを削除した時点で終了します。ただし、法令に基づき保存が義務付けられる複製や、<a href="privacy.html">プライバシーポリシー</a>に記載のとおり一定期間バックアップに残る複製を除きます。</p>
+      <p>お客様は当社に対し、本サービスをお客様に提供し、保護し、サポートするために必要な範囲に限り、入力内容および生成物を保管、複製、処理および表示するための、非独占的、全世界的かつ無償の限定的な利用権を許諾します。この利用権は、お客様による削除、または<a href="privacy.html">プライバシーポリシー</a>に定める保存期間（例：アカウント閉鎖から30日後）の経過により当該コンテンツが削除された時点で終了します。ただし、法令に基づき保存が義務付けられる記録を除きます。</p>
       <h3>AIの学習には使用しません</h3>
       <p><strong>当社は、お客様のプロンプト、アップロードした画像および生成物をAIモデルの学習に使用しません。</strong>当社が利用するAIモデルの推論事業者は、生成物を作成する目的に限りプロンプトを処理し、契約により当該コンテンツを学習に使用することを禁じられています。</p>
       <h3>当社の権利</h3>
@@ -391,18 +399,18 @@ export default {
       <p>本サービスは、決済代行会社、クラウドホスティング、メール配信、AIモデルの推論事業者などの第三者事業者を利用して提供されています。当社がリンクする第三者のウェブサイトやサービスには、それぞれの利用規約およびプライバシーポリシーが適用され、当社はそれらについて責任を負いません。</p>
 
       <h2 id="availability">第16条（本サービスの提供と変更）</h2>
-      <p>当社は本サービスを継続して提供できるよう努めますが、保守、更新または当社の管理が及ばない事由により中断することがあり、中断なく提供されることを保証するものではありません。当社は、機能の改善、変更もしくは廃止、または使用するAIモデルの変更を行うことがあります。有料プランのご利用に大きな影響がある変更については、合理的に可能な範囲で事前にメールでお知らせします。本サービスの提供を全面的に終了する場合は、少なくとも30日前までにメールでお知らせし、第17条に従って現在の有料年度の未使用クレジット分を日割りで返金します。</p>
-      <p>生成した素材は、お客様が削除するまで、またはアカウント閉鎖から30日後までワークスペースに保存されます。必要な素材は、お客様ご自身でも保存しておくことをおすすめします。</p>
+      <p>当社は本サービスを継続して提供できるよう努めますが、保守、更新または当社の管理が及ばない事由により中断することがあり、中断なく提供されることを保証するものではありません。当社は、機能の改善、変更もしくは廃止、または使用するAIモデルの変更を行うことがあります。有料プランのご利用に大きな影響がある変更については、合理的に可能な範囲で事前にメールでお知らせします。本サービスの提供を全面的に終了する場合は、少なくとも30日前までにメールでお知らせし、第17条に従って、現在の有料年度の年額料金を未使用クレジット数に応じて按分した金額を返金します。</p>
+      <p>生成した素材は、お客様が削除するまで、またはアカウント閉鎖から30日後までのいずれか早い時点まで、ワークスペースに保存されます。必要な素材は、お客様ご自身でも保存しておくことをおすすめします。</p>
 
       <h2 id="termination">第17条（利用停止・契約の終了）</h2>
       <h3>お客様による終了</h3>
-      <p>お客様は、第10条に従っていつでもサブスクリプションを解約でき、<a href="mailto:${J.email}">${J.email}</a> へのメールでアカウントの削除を依頼できます。アカウントを削除すると、ご利用は直ちに終了し、残りのクレジットも削除されます。年額料金の請求日から${J.refundDays}日以内の場合は、削除の依頼前または依頼と同時に、30日間返金保証に基づく返金をお申し込みください。</p>
+      <p>お客様は、第10条に従っていつでもサブスクリプションを解約でき、<a href="mailto:${J.email}">${J.email}</a> へのメールでアカウントの削除を依頼できます。アカウントを削除すると、ご利用は直ちに終了し、以後の請求はすべて停止され、残りのクレジットも削除されます。ただし、削除のみでは当該有料年度の料金は返金されません。年額料金の請求日から${J.refundDays}日以内の場合は、削除の依頼前または依頼と同時に、${MBG_JA}に基づく返金をお申し込みください。</p>
       <h3>当社による利用停止・終了</h3>
-      <p>当社は、お客様が本規約または禁止事項に重大な違反をした場合、不正行為や決済の不正利用が疑われる場合、法令により必要な場合、または本サービス、他のユーザーもしくは第三者を保護するために必要な場合に、合理的な範囲で事前に通知したうえで、お客様の利用を停止または終了することがあります。</p>
+      <p>当社は、お客様が本規約または禁止事項に重大な違反をした場合、不正行為や決済の不正利用が疑われる場合、法令により必要な場合、または本サービス、他のユーザーもしくは第三者を保護するために必要な場合には、お客様の利用を停止または終了することがあります。この場合、合理的に可能な限り事前にお知らせします。</p>
       <h3>料金の取扱い</h3>
       <ul>
-        <li><strong>当社の都合による終了：</strong>本サービスの提供終了を含め、お客様の規約違反以外の理由で当社がサブスクリプションを終了する場合、現在の有料年度の未使用クレジット分を日割りで返金します（年額料金 &times; 未使用クレジット数 &divide; ${J.credits}）。返金は元のお支払い方法に対して行います。</li>
-        <li><strong>お客様の違反による終了：</strong>お客様の本規約への重大な違反を理由に当社が終了する場合、当該有料年度の残りの期間の料金は返金しません。ただし、30日間返金保証の対象期間内である場合、または法令で返金が義務付けられる場合を除きます。</li>
+        <li><strong>当社の都合による終了：</strong>本サービスの提供終了を含め、お客様の規約違反以外の理由で当社がサブスクリプションを終了する場合、現在の有料年度の年額料金を未使用クレジット数に応じて按分した金額（年額料金 &times; 未使用クレジット数 &divide; ${J.credits}）を、元のお支払い方法に返金します。</li>
+        <li><strong>お客様の違反による終了：</strong>お客様の本規約への重大な違反を理由に当社が終了する場合、当該有料年度の残りの期間の料金は返金しません。ただし、${MBG_JA}の対象期間内である場合、または法令で返金が義務付けられる場合を除きます。</li>
       </ul>
       <p>権利の帰属、保証の否認、責任の制限、補償、準拠法など、その性質上終了後も存続すべき規定は、契約終了後も効力を有します。</p>
 
@@ -418,15 +426,15 @@ export default {
       <p>本規約のいかなる規定も、過失による生命または身体の侵害、詐欺、当社の故意または重大な過失に基づく責任、その他適用法令により制限または免除できない責任（日本の消費者契約法などの消費者保護に関する強行法規に基づくものを含みます）を制限または免除するものではありません。</p>
 
       <h2 id="indemnity">第20条（補償）</h2>
-      <p>お客様は、(a) お客様の入力内容、(b) お客様による生成物の利用または公開、(c) お客様による本規約の違反、(d) お客様による法令または第三者の権利の侵害に起因する第三者からの請求、およびこれに関連する損失、損害および合理的な弁護士費用について、${J.company}ならびにその役員、従業員および代理人を防御し、補償し、損害を与えないものとします。当社は、そのような請求があった場合には速やかにお客様に通知し、防御への参加の機会を提供します。お客様が消費者である場合、本条は法令で認められる範囲において、かつお客様に帰責事由がある場合に限り適用されます。</p>
+      <p>(a) お客様の入力内容、(b) お客様による生成物の利用または公開、(c) お客様による本規約の違反、または (d) お客様による法令もしくは第三者の権利の侵害に起因して、第三者から${J.company}またはその役員、従業員もしくは代理人（以下「当社ら」）に対して請求がなされた場合、お客様は、自らの費用と責任でこれに対応し、当該請求に関連して当社らに生じた損失、損害および合理的な弁護士費用を補償するものとします。当社は、そのような請求を受けた場合には速やかにお客様に通知し、その防御に参加する機会を提供します。お客様が消費者である場合、本条は法令で認められる範囲において、かつお客様に帰責事由がある場合に限り適用されます。</p>
 
       <h2 id="governing-law">第21条（準拠法・管轄裁判所）</h2>
       <p>本規約、ならびに本規約または本サービスに起因または関連する紛争は、抵触法の規定にかかわらず、${J.governingLaw}に準拠し、同法に従って解釈されます。国際物品売買契約に関する国際連合条約は適用されません。次段落の定めに従うことを条件として、${J.venue}を専属的合意管轄裁判所とし、お客様と当社はその管轄に同意します。</p>
       <p><strong>消費者の方へ：</strong>お客様が消費者である場合、本条の準拠法および管轄の定めは、お客様がお住まいの国（日本、欧州連合加盟国など）の消費者保護に関する強行法規による保護を奪うものではありません。また、当該法令が認める場合には、お客様はお住まいの地域の裁判所に訴えを提起することができます。</p>
-      <p>訴えを提起される前に、まず <a href="mailto:${J.email}">${J.email}</a> までご連絡ください。協議による解決に努めます。多くのご相談は、この方法で速やかに解決しています。</p>
+      <p>訴えを提起される前に、まず <a href="mailto:${J.email}">${J.email}</a> までご連絡ください。協議による解決に努め、${J.supportResponse}にご返信します。これは、裁判所に訴えを提起する権利やカード発行会社に連絡する権利を制限するものではありません。</p>
 
       <h2 id="changes">第22条（本規約の変更）</h2>
-      <p>当社は、本規約を随時変更することがあります。料金、トライアル、更新、返金またはお客様の権利に関する変更などの重要な変更については、変更の効力発生日の少なくとも30日前までにご登録のメールアドレス宛てにお知らせし、変更後の本規約を新しい施行日とともに本ページに掲載します。料金の変更は第7条の定めにも従い、有料年度の途中で適用されることはありません。表現の明確化や誤記の訂正などの軽微な変更は、本ページへの掲載時に効力を生じます。変更に同意されない場合は、効力発生日の前に解約することができます。効力発生日以降も本サービスを利用された場合、変更後の本規約が適用されます。変更は、効力発生日より前に生じた紛争には適用されません。</p>
+      <p>当社は、本規約を随時変更することがあります。料金、トライアル、更新、返金またはお客様の権利に関する変更などの重要な変更については、変更の効力発生日の少なくとも${J.priceChangeNoticeDays}日前までにご登録のメールアドレス宛てにお知らせし、変更後の本規約を新しい施行日とともに本ページに掲載します。料金の変更は第7条の定めにも従い、有料年度の途中で適用されることはありません。表現の明確化や誤記の訂正などの軽微な変更は、本ページへの掲載時に効力を生じます。変更に同意されない場合は、効力発生日の前に解約することができます。効力発生日以降も本サービスを利用された場合、変更後の本規約が適用されます。変更は、効力発生日より前に生じた紛争には適用されません。</p>
 
       <h2 id="general">第23条（一般条項）</h2>
       <ul>

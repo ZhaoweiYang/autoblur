@@ -131,11 +131,15 @@
     ctx.restore();
   }
 
-  function bigText(ctx, text, x, y, size, fill, angle) {
+  function bigText(ctx, text, x, y, size, fill, angle, maxWidth) {
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(angle || 0);
-    ctx.font = `900 ${size}px "Bricolage Grotesque", "Noto Sans JP", system-ui, sans-serif`;
+    ctx.font = `900 ${size}px "Unbounded", "Zen Kaku Gothic New", system-ui, sans-serif`;
+    if (maxWidth) {
+      const wNow = ctx.measureText(text).width;
+      if (wNow > maxWidth) { size = Math.floor((size * maxWidth) / wNow); ctx.font = `900 ${size}px "Unbounded", "Zen Kaku Gothic New", system-ui, sans-serif`; }
+    }
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.lineJoin = "round";
@@ -231,7 +235,7 @@
     ctx.stroke();
     ctx.fill();
     ctx.restore();
-    bigText(ctx, headline(prompt), w * 0.5, h * 0.15, 110, "#ffd400", -0.04);
+    bigText(ctx, headline(prompt), w * 0.5, h * 0.15, 110, "#ffd400", -0.04, w * 0.86);
     // vignette
     const v = ctx.createRadialGradient(w / 2, h / 2, h * 0.3, w / 2, h / 2, w * 0.7);
     v.addColorStop(0, "rgba(0,0,0,0)");
@@ -409,7 +413,7 @@
     // front emblem
     ctx.fillStyle = accent; ctx.strokeStyle = "#111"; ctx.lineWidth = 4;
     ctx.beginPath(); ctx.arc(295, 128, 26, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    ctx.font = '900 28px "Bricolage Grotesque", sans-serif';
+    ctx.font = '900 28px "Unbounded", sans-serif';
     ctx.fillStyle = "#111"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     ctx.fillText((prompt.trim()[0] || "B").toUpperCase(), 295, 130);
     // zipper / collar
@@ -463,7 +467,7 @@
     // title bar
     const titleTxt = headline(prompt).slice(0, 14) || "SHOP";
     ctx.fillStyle = accent; roundRect(ctx, px + pw / 2 - 200, py - 30, 400, 90, 28); ctx.fill(); ctx.stroke();
-    ctx.font = '900 46px "Bricolage Grotesque", "Noto Sans JP", sans-serif';
+    ctx.font = '900 46px "Unbounded", "Zen Kaku Gothic New", sans-serif';
     ctx.fillStyle = "#fff"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     ctx.lineWidth = 8; ctx.strokeText(titleTxt, px + pw / 2, py + 15); ctx.fillText(titleTxt, px + pw / 2, py + 15);
     // close button
@@ -477,7 +481,7 @@
       roundRect(ctx, sx, sy, 240, 185, 22); ctx.fill(); ctx.stroke();
       gem(ctx, sx + 120, sy + 75, 42, [c1, accent, "#22d3ee", "#a855f7", "#f43f5e", "#22c55e"][i], "#fff");
       ctx.fillStyle = "#22c55e"; roundRect(ctx, sx + 40, sy + 132, 160, 40, 14); ctx.fill(); ctx.stroke();
-      ctx.font = '800 24px "Bricolage Grotesque", sans-serif'; ctx.fillStyle = "#fff";
+      ctx.font = '800 24px "Unbounded", sans-serif'; ctx.fillStyle = "#fff";
       ctx.fillText(`${(i + 1) * 25 + Math.floor(r() * 10) * 5}`, sx + 120, sy + 153);
     }
     return cv;
@@ -580,7 +584,7 @@
   function waveform(audioBuffer, w = 1024, h = 300, color = "#f7b928") {
     const cv = makeCanvas(w, h);
     const ctx = cv.getContext("2d");
-    ctx.fillStyle = "#121110"; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = "#121629"; ctx.fillRect(0, 0, w, h);
     const d = audioBuffer.getChannelData(0);
     const step = Math.ceil(d.length / w);
     ctx.fillStyle = color;

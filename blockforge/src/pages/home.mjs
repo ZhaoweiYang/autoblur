@@ -1,26 +1,32 @@
 import { SITE, PLAN, FACTS } from "../config.mjs";
 import { STRINGS, TOOLS } from "../strings.mjs";
-import { page, esc, langPath, relFrom } from "../lib/layout.mjs";
+import { page, esc, langPath, relFrom, LOGO } from "../lib/layout.mjs";
 import { cardBadges } from "../lib/cards.mjs";
 import { product, webApplication, faqPage, webPage, returnPolicyNode, abs } from "../lib/schema.mjs";
 
-const LOGO = `<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l12 7v14l-12 7-12-7V9z" fill="currentColor"/><path d="M18 7l-7 10h5l-2 8 7-10h-5z" fill="#1a1305"/></svg>`;
-
 const creditLabel = (S, n) => (n === 1 ? S.credit.one : S.credit.n.replace("{n}", n));
 
-function creator(S, { withChips }) {
-  const tool = "thumbnail";
-  const P = S.prompt[tool];
-  return `<div class="creator" data-creator>
-  <div class="tool-tabs" role="tablist" aria-label="${esc(S.nav.tools)}">${TOOLS.map((t) => `<button type="button" role="tab" aria-selected="${t === tool}" data-tool="${t}">${esc(S.tools[t])}</button>`).join("")}</div>
-  <form class="prompt">
-    <span class="prompt-label" data-role="label">${esc(P.label)}</span>
-    <input type="text" maxlength="140" autocomplete="off" data-role="input" placeholder="${esc(P.ph)}" aria-label="${esc(P.label)}">
-    <button class="btn btn-primary" type="submit"><span data-role="btn">${esc(P.btn)}</span> <span aria-hidden="true">→</span></button>
-  </form>
-  ${withChips ? `<div class="try"><span>${esc(S.hero.try)}</span><div class="chips" data-role="chips">${S.chips[tool].map((c) => `<button type="button" class="chip">${esc(c)}</button>`).join("")}</div></div>` : ""}
-</div>`;
-}
+/* Small line glyphs for each asset type (stroke = currentColor). */
+const GLYPH = {
+  thumbnail: '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M6 15l4-4 3 3 2-2 3 3"/>',
+  icon: '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+  ui: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h3M8 16h3M14 13h3v3h-3z"/>',
+  texture: '<rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 12h16M12 4v16M8 4v8M16 12v8"/>',
+  clothing: '<path d="M8.5 4L4 7l2 4 2-1v10h8V10l2 1 2-4-4.5-3c-.5 1.6-1.9 2.6-3.5 2.6S9 5.6 8.5 4z"/>',
+  gfx: '<circle cx="12" cy="7" r="3"/><path d="M6 20v-3.5A4.5 4.5 0 0 1 10.5 12h3a4.5 4.5 0 0 1 4.5 4.5V20"/>',
+  sfx: '<path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/>'
+};
+const glyph = (id) => `<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">${GLYPH[id]}</svg>`;
+
+/* Prompts used to draw the static preview tiles (same in both languages). */
+const ART = {
+  thumbnail: "castle siege at sunset level 99",
+  icon: "golden coin badge",
+  ui: "potion shop",
+  texture: "mossy cobblestone",
+  clothing: "racing jersey",
+  gfx: "neon knight"
+};
 
 export function homePage(lang, legal) {
   const S = STRINGS[lang];
@@ -28,137 +34,123 @@ export function homePage(lang, legal) {
   const enPath = "index.html";
   const rel = relFrom(langPath(lang, enPath));
   const L = (slug) => rel(langPath(lang, `legal/${slug}.html`));
+  const title = (slug) => esc(legal.find((m) => m.slug === slug)[lang].title);
   const checkout = rel(langPath(lang, "checkout.html"));
-  const T = S.toolsSec;
+  const A = S.assets;
   const Pr = S.pricing;
-  const priceNum = F.price;
+  const first = TOOLS[0];
+
+  const slot = (id) => id === "sfx"
+    ? `<div class="art art-sfx" data-slot="sfx"></div>`
+    : `<canvas class="art art-${id}" data-art="${id}" data-prompt="${esc(ART[id])}" width="${id === "thumbnail" || id === "ui" ? 1280 : id === "clothing" ? 585 : 512}" height="${id === "thumbnail" || id === "ui" ? 720 : id === "clothing" ? 559 : 512}"></canvas>`;
 
   const main = `
 <section class="hero" id="top">
-  <div class="hero-wall" aria-hidden="true"><div class="wall-grid" id="wallGrid"></div></div>
-  <div class="hero-inner">
-    <p class="eyebrow-plain">${esc(S.hero.eyebrow)}</p>
-    <h1 class="hero-title"><span>${esc(S.hero.title1)}</span><br><em>${esc(S.hero.title2)}</em></h1>
-    <p class="hero-sub">${esc(S.hero.sub)}</p>
-    ${creator(S, { withChips: true })}
-    <p class="fine">${esc(S.hero.note)}</p>
-    <ul class="stats">${S.hero.facts.map(([b, s]) => `<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
-  </div>
-  <div class="ribbon" aria-hidden="true"><div class="ribbon-track">${[0, 1, 2].map(() => S.marquee.map((m) => `<span>${esc(m)}</span><i>+</i>`).join("")).join("")}</div></div>
-</section>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker">${esc(S.hero.eyebrow)}</p>
+      <h1 class="display"><span>${esc(S.hero.title1)}</span> <em>${esc(S.hero.title2)}</em></h1>
+      <p class="hero-sub">${esc(S.hero.sub)}</p>
+      <ul class="facts">${S.hero.facts.map(([b, s]) => `<li><b>${esc(b)}</b> <span>${esc(s)}</span></li>`).join("")}</ul>
+    </div>
 
-<section class="section" id="how">
-  <div class="wrap center">
-    <span class="eyebrow">${esc(S.how.eyebrow)}</span>
-    <h2 class="h2">${S.how.title}</h2>
-    <p class="lead">${esc(S.how.sub)}</p>
-    <ol class="steps">${S.how.steps.map(([t, d], i) => `<li class="step reveal"><span class="step-n">0${i + 1}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join("")}</ol>
+    <div class="composer" data-creator>
+      <h2 class="composer-title">${esc(S.hero.composerTitle)}</h2>
+      <div class="slot-bar" role="tablist" aria-label="${esc(S.hero.typeLabel)}">${TOOLS.map((t) => `<button type="button" role="tab" aria-selected="${t === first}" data-tool="${t}" title="${esc(S.tools[t])}">${glyph(t)}<span>${esc(S.toolsShort[t])}</span></button>`).join("")}</div>
+      <form class="prompt-box">
+        <label class="prompt-label" for="heroPrompt" data-role="label">${esc(S.prompt[first].label)}</label>
+        <div class="prompt-row">
+          <input id="heroPrompt" type="text" maxlength="140" autocomplete="off" data-role="input" placeholder="${esc(S.prompt[first].ph)}">
+          <button class="btn btn-primary" type="submit"><span data-role="btn">${esc(S.prompt[first].btn)}</span></button>
+        </div>
+      </form>
+      <div class="examples"><span>${esc(S.hero.examples)}</span><div class="chips" data-role="chips">${S.chips[first].map((c) => `<button type="button" class="chip">${esc(c)}</button>`).join("")}</div></div>
+      <p class="composer-note">${esc(S.hero.note)}</p>
+    </div>
   </div>
-</section>
 
-<section class="section alt" id="tools">
   <div class="wrap">
-    <span class="eyebrow">${esc(T.eyebrow)}</span>
-    <h2 class="h2">${T.title}</h2>
-    <p class="lead left">${esc(T.sub)}</p>
-    <div class="tools-top">
-      <article class="tcard big reveal">
-        <div class="tcard-body">
-          <h3>${esc(T.thumb.name)}</h3>
-          <p class="spec">${esc(T.thumb.spec)}</p>
-          <p>${esc(T.thumb.desc)}</p>
-          <ul class="bullets">${T.thumb.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
-          <div class="tags"><span class="tag">${esc(T.included)}</span><span class="tag ghost">${esc(creditLabel(S, PLAN.creditCosts.thumbnail))}</span></div>
-          <button class="btn btn-primary" type="button" data-open-tool="thumbnail">${esc(T.thumb.cta)} →</button>
-        </div>
-        <div class="tcard-art stack" aria-hidden="true">
-          <canvas data-art="thumbnail" data-prompt="level 1 vs level 9999 giant emerald" width="1280" height="720"></canvas>
-          <canvas data-art="thumbnail" data-prompt="golden coin tycoon" width="1280" height="720"></canvas>
-          <span class="badge">${esc(S.ideas.badge)}</span>
-        </div>
-      </article>
-      <article class="tcard reveal">
-        <div class="tcard-body">
-          <h3>${esc(T.ui.name)}</h3>
-          <p class="spec">${esc(T.ui.spec)}</p>
-          <p>${esc(T.ui.desc)}</p>
-          <div class="tags"><span class="tag">${esc(T.included)}</span><span class="tag ghost">${esc(creditLabel(S, PLAN.creditCosts.ui))}</span></div>
-          <button class="btn btn-ghost" type="button" data-open-tool="ui">${esc(T.ui.cta)} →</button>
-        </div>
-        <div class="tcard-art ui-art" aria-hidden="true">
-          <canvas data-art="ui" data-prompt="candy shop" width="1280" height="720"></canvas>
-          <div class="tree"><small>${esc(T.ui.opens)}</small><ul><li>ScreenGui</li><li>Frame</li><li>UICorner</li><li>UIStroke</li><li>UIGradient</li><li>TextLabel</li><li>TextButton</li><li>ImageLabel</li></ul></div>
-        </div>
-      </article>
+    <div class="board" aria-label="${esc(S.hero.boardTitle)}">
+      <div class="board-head"><span>${esc(S.hero.boardTitle)}</span><small>${esc(S.hero.boardNote)}</small></div>
+      <ul class="board-slots">${TOOLS.map((t) => `<li class="board-slot board-${t}">${slot(t)}<span class="slot-tag">${glyph(t)}${esc(S.toolsShort[t])}</span></li>`).join("")}</ul>
     </div>
-    <div class="tools-grid">${["texture", "clothing", "icon", "gfx", "sfx"].map((id) => `
-      <article class="scard" data-tool-card="${id}">
-        <div class="scard-art" data-slot="${id}" aria-hidden="true"></div>
-        <h3>${esc(S.tools[id])}</h3>
-        <p class="spec">${esc(T.small[id].spec)}</p>
-        <p>${esc(T.small[id].desc)}</p>
-        <button class="try-line" type="button" data-open-tool="${id}">› <span>${esc(S.chips[id][0])}</span></button>
-        <div class="tags"><span class="tag">${esc(T.included)}</span><span class="tag ghost">${esc(creditLabel(S, PLAN.creditCosts[id]))}</span></div>
+  </div>
+</section>
+
+<section class="section" id="assets">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">${esc(A.eyebrow)}</p>
+      <h2 class="h2">${A.title}</h2>
+      <p class="lead">${esc(A.sub)}</p>
+    </div>
+    <div class="asset-grid">${TOOLS.map((t) => `
+      <article class="asset-card">
+        <div class="asset-art">${slot(t)}</div>
+        <div class="asset-body">
+          <h3>${glyph(t)}${esc(S.tools[t])}</h3>
+          <p class="spec">${esc(A.items[t].spec)}</p>
+          <p>${esc(A.items[t].desc)}</p>
+          <div class="asset-foot"><span class="chip-cost">${esc(creditLabel(S, PLAN.creditCosts[t]))}</span><button class="link-btn" type="button" data-open-tool="${t}">${esc(A.preview)} →</button></div>
+        </div>
       </article>`).join("")}
+      <article class="asset-card pro-card">
+        <div class="asset-body">
+          <span class="pro-mark">${LOGO}</span>
+          <h3>${esc(A.proCard.title)}</h3>
+          <p>${esc(A.proCard.body)}</p>
+          <p class="pro-price"><b>${esc(F.price)}</b> <span>${esc(Pr.per)}</span></p>
+          <a class="btn btn-ghost btn-sm" href="#pricing">${esc(A.proCard.cta)} →</a>
+        </div>
+      </article>
     </div>
+  </div>
+</section>
+
+<section class="section band" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">${esc(S.how.eyebrow)}</p>
+      <h2 class="h2">${S.how.title}</h2>
+    </div>
+    <ol class="steps">${S.how.steps.map(([t, d], i) => `<li><span class="step-n">${i + 1}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join("")}</ol>
   </div>
 </section>
 
 <section class="section" id="ideas">
   <div class="wrap">
-    <div class="row-head">
-      <div>
-        <span class="eyebrow">${esc(S.ideas.eyebrow)}</span>
-        <h2 class="h2">${S.ideas.title}</h2>
-        <p class="lead left">${esc(S.ideas.sub)}</p>
-      </div>
-      <div class="arrows">
-        <button class="icon-btn round" id="showPrev" type="button" aria-label="${esc(S.ideas.prev)}">←</button>
-        <button class="icon-btn round" id="showNext" type="button" aria-label="${esc(S.ideas.next)}">→</button>
-      </div>
+    <div class="sec-head">
+      <p class="kicker">${esc(S.ideas.eyebrow)}</p>
+      <h2 class="h2">${S.ideas.title}</h2>
+      <p class="lead">${esc(S.ideas.sub)}</p>
     </div>
-  </div>
-  <div class="carousel" id="carousel">${S.ideas.items.map((txt, i) => `
-    <figure class="shot">
-      <div class="shot-img" data-idea-img="${i}" role="img" aria-label="${esc(S.ideas.badge)}: ${esc(txt)}"><span class="badge">${esc(S.ideas.badge)}</span></div>
-      <figcaption>
-        <div><small>${esc(S.ideas.idea)}</small><p>${esc(txt)}</p></div>
-        <button class="btn btn-outline btn-xs" type="button" data-idea="${i}">${esc(S.ideas.use)}</button>
-      </figcaption>
-    </figure>`).join("")}
+    <ul class="idea-grid">${S.ideas.items.map(([genre, text], i) => `
+      <li class="idea">
+        <div class="idea-img" data-idea-img="${i}" role="img" aria-label="${esc(S.ideas.badge)}: ${esc(text)}"></div>
+        <div class="idea-body">
+          <span class="genre">${esc(genre)}</span>
+          <p>${esc(text)}</p>
+          <button class="link-btn" type="button" data-idea="${i}">${esc(S.ideas.use)} →</button>
+        </div>
+      </li>`).join("")}
+    </ul>
   </div>
 </section>
 
-<section class="section why">
-  <div class="wrap why-grid">
-    <div class="reveal">
-      <span class="eyebrow">${esc(S.why.eyebrow)}</span>
-      <h2 class="h2">${S.why.title}</h2>
-      <p class="lead left">${esc(S.why.sub)}</p>
-      <ul class="hex-list">${S.why.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
-    </div>
-    <div class="why-art reveal">
-      <div class="orb" id="orb" aria-hidden="true"></div>
-      <table class="why-table">
-        <thead><tr>${S.why.th.map((h) => `<th scope="col">${esc(h)}</th>`).join("")}</tr></thead>
-        <tbody>${S.why.rows.map(([a, b, c]) => `<tr><th scope="row">${esc(a)}</th><td>${esc(b)}</td><td>${esc(c)}</td></tr>`).join("")}</tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<section class="section alt" id="pricing">
+<section class="section band" id="pricing">
   <div class="wrap">
-    <span class="eyebrow">${esc(Pr.eyebrow)}</span>
-    <h2 class="h2">${Pr.title}</h2>
-    <p class="lead left">${esc(Pr.sub)}</p>
+    <div class="sec-head">
+      <p class="kicker">${esc(Pr.eyebrow)}</p>
+      <h2 class="h2">${Pr.title}</h2>
+      <p class="lead">${esc(Pr.sub)}</p>
+    </div>
     <div class="pricing-grid">
       <article class="plan-card">
         <div class="plan-head">
           <h3>${esc(Pr.planName)}</h3>
-          <span class="tag">${esc(Pr.planTag)}</span>
+          <span class="chip-cost">${esc(Pr.planTag)}</span>
         </div>
-        <p class="plan-price"><b>${esc(priceNum)}</b><span>${esc(Pr.per)}</span></p>
+        <p class="plan-price"><b>${esc(F.price)}</b><span>${esc(Pr.per)}</span></p>
         <p class="currency-note"><strong>${esc(F.currency)}</strong> · ${esc(Pr.currencyNote)}</p>
         <p class="plan-eq">${esc(Pr.equivalent)}</p>
         <p class="key-terms">${esc(Pr.keyTerms)}</p>
@@ -187,16 +179,18 @@ export function homePage(lang, legal) {
           <div><h3>${esc(Pr.cancelTitle)}</h3><p>${esc(Pr.cancelBody)}</p></div>
           <div><h3>${esc(Pr.cardsTitle)}</h3><p>${esc(Pr.cardsNote)}</p></div>
         </div>
-        <p class="policy-links">${esc(Pr.policyLinks)} <a href="${L("terms")}">${esc(legal.find((m) => m.slug === "terms")[lang].title)}</a> · <a href="${L("refund")}">${esc(legal.find((m) => m.slug === "refund")[lang].title)}</a> · <a href="${L("cancellation")}">${esc(legal.find((m) => m.slug === "cancellation")[lang].title)}</a>${lang === "ja" ? ` · <a href="${L("commercial-disclosure")}">${esc(legal.find((m) => m.slug === "commercial-disclosure").ja.title)}</a>` : ""}</p>
+        <p class="policy-links">${esc(Pr.policyLinks)} <a href="${L("terms")}">${title("terms")}</a> · <a href="${L("refund")}">${title("refund")}</a> · <a href="${L("cancellation")}">${title("cancellation")}</a>${lang === "ja" ? ` · <a href="${L("commercial-disclosure")}">${title("commercial-disclosure")}</a>` : ""}</p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="section" id="faq">
-  <div class="wrap narrow">
-    <span class="eyebrow">${esc(S.faq.eyebrow)}</span>
-    <h2 class="h2">${S.faq.title}</h2>
+  <div class="wrap faq-wrap">
+    <div class="sec-head">
+      <p class="kicker">${esc(S.faq.eyebrow)}</p>
+      <h2 class="h2">${S.faq.title}</h2>
+    </div>
     <div class="faq">${S.faq.items.map(([q, a], i) => `
       <details${i === 0 ? " open" : ""}>
         <summary>${esc(q)}<span class="chev" aria-hidden="true"></span></summary>
@@ -206,35 +200,25 @@ export function homePage(lang, legal) {
   </div>
 </section>
 
-<section class="section final">
-  <div class="wrap center">
-    <span class="final-mark">${LOGO}</span>
-    <h2 class="hero-title sm"><span>${esc(S.cta.title1)}</span><br><em>${esc(S.cta.title2)}</em></h2>
+<section class="section closing">
+  <div class="wrap closing-inner">
+    <h2 class="display sm"><span>${esc(S.cta.title1)}</span> <em>${esc(S.cta.title2)}</em></h2>
     <p class="hero-sub">${esc(S.cta.sub)}</p>
-    ${creator(S, { withChips: false })}
-    <a class="text-link" href="${checkout}">${esc(S.cta.trial)}</a>
+    <div class="closing-actions">
+      <a class="btn btn-primary btn-lg" href="${checkout}">${esc(S.cta.trial)}</a>
+      <a class="btn btn-ghost btn-lg" href="#top" data-focus-composer>${esc(S.cta.preview)}</a>
+    </div>
   </div>
 </section>
-
-<div class="dock" id="dock" hidden>
-  <form class="dock-form" data-creator data-compact>
-    <label class="dock-select"><span class="sr-only">${esc(S.fab)}</span>
-      <select data-role="select">${TOOLS.map((t) => `<option value="${t}">${esc(S.tools[t])}</option>`).join("")}</select>
-    </label>
-    <input type="text" maxlength="140" autocomplete="off" data-role="input" placeholder="${esc(S.prompt.thumbnail.ph)}" aria-label="${esc(S.prompt.thumbnail.label)}">
-    <button class="btn btn-primary btn-sm" type="submit"><span data-role="btn">${esc(S.prompt.thumbnail.btn)}</span> →</button>
-    <button class="icon-btn dock-x" type="button" id="dockClose" aria-label="${esc(S.ws.close)}">×</button>
-  </form>
-</div>
 
 <dialog class="modal" id="workspace" aria-labelledby="wsTitle">
   <div class="modal-head">
     <div>
-      <span class="eyebrow">${esc(S.ws.title)}</span>
+      <p class="kicker">${esc(S.ws.title)}</p>
       <h3 id="wsTitle"></h3>
-      <p class="fine left">${esc(S.ws.demo)}</p>
+      <p class="modal-note">${esc(S.ws.demo)}</p>
     </div>
-    <button class="icon-btn round" type="button" data-close aria-label="${esc(S.ws.close)}">×</button>
+    <button class="icon-btn" type="button" data-close aria-label="${esc(S.ws.close)}">×</button>
   </div>
   <div class="ws-stage" id="wsStage"></div>
   <div class="ws-meta">
@@ -242,10 +226,10 @@ export function homePage(lang, legal) {
     <span><small>${esc(S.ws.cost)}</small> <b id="wsCost"></b></span>
   </div>
   <div class="ws-actions">
-    <button class="btn btn-ghost" type="button" id="wsPlay" hidden>${esc(S.ws.play)} ▶</button>
-    <button class="btn btn-ghost" type="button" id="wsAgain">${esc(S.ws.again)} ↻</button>
-    <a class="btn btn-ghost" id="wsDownload" download>${esc(S.ws.download)} ↓</a>
-    <a class="btn btn-primary" href="${checkout}">${esc(S.ws.upgrade)} →</a>
+    <button class="btn btn-ghost" type="button" id="wsPlay" hidden>${esc(S.ws.play)}</button>
+    <button class="btn btn-ghost" type="button" id="wsAgain">${esc(S.ws.again)}</button>
+    <a class="btn btn-ghost" id="wsDownload" download>${esc(S.ws.download)}</a>
+    <a class="btn btn-primary" href="${checkout}">${esc(S.ws.upgrade)}</a>
   </div>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>`;

@@ -114,8 +114,8 @@ export function product(lang) {
     category: "Software subscription",
     image: abs(lang === "ja" ? "assets/img/og-ja.png" : "assets/img/og-en.png"),
     description: lang === "ja"
-      ? `ゲームクリエイター向けのAIアセット作成サービス。サムネイル、アイコン、テクスチャ、服、GFX、UI、効果音を作成できます。有料期間1年ごとに${F.credits}クレジット、商用利用可。${F.trial}のあと${F.pricePerYear}。`
-      : `AI asset creation for game creators: thumbnails, icons, textures, clothing, GFX, UI layouts and sound effects. ${F.credits} credits per paid year, commercial use included. ${F.trial}, then ${F.priceWithCode} per year.`,
+      ? `ゲーム制作者向けのAI素材作成サービス。カバー画像（サムネイル）、アイコン、UIキット、テクスチャ、アバター用シャツ、キャラクター画像、効果音を作成できます。有料期間1年ごとに${F.credits}クレジット、商用利用可。${F.trial}のあと${F.pricePerYear}。`
+      : `AI asset creation for game creators: cover art (game thumbnails), icons, UI kits, tileable textures, avatar shirts, character renders and sound effects. ${F.credits} credits per paid year, commercial use included. ${F.trial}, then ${F.priceWithCode} per year.`,
     offers: [offer(lang), offer(lang === "ja" ? "en" : "ja")]
   };
 }
@@ -131,8 +131,8 @@ export function webApplication(lang) {
     publisher: { "@id": ORG_ID },
     offers: [{ "@id": `${SITE.siteUrl}/#offer-${PLAN.prices[lang].currency.toLowerCase()}` }],
     featureList: lang === "ja"
-      ? ["16:9 サムネイル（1920×1080）", "512×512 ゲームアイコン（透過）", "シームレステクスチャ 512×512", "シャツテンプレート 585×559", "キャラクターGFX 512×512", "編集可能なUIレイアウト", "WAV 効果音"]
-      : ["16:9 thumbnails (1920×1080)", "512×512 transparent game icons", "Seamless 512×512 textures", "585×559 shirt templates", "512×512 character GFX renders", "Editable UI layouts", "WAV sound effects"]
+      ? ["カバー画像（16:9・1920×1080）", "ゲームアイコン（512×512・透過）", "UIキット（画像＋レイヤー一覧）", "シームレステクスチャ（512×512）", "アバター用シャツ（585×559）", "キャラクター画像（512×512）", "効果音（WAV）"]
+      : ["Cover art / game thumbnails (16:9, 1920×1080)", "Game icons (512×512, transparent)", "UI kits (image + layer list)", "Tileable textures (512×512)", "Avatar shirts (585×559 template)", "Character renders (512×512)", "Sound effects (WAV)"]
   };
 }
 
