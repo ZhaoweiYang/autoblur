@@ -1,4 +1,4 @@
-/* Ugokie — in-browser image → video renderer.
+/* Ugokiego — in-browser image → video renderer.
  * The still image is animated with a virtual camera on a <canvas>, then the
  * canvas is recorded with MediaRecorder. Nothing leaves the browser.
  * To plug in a real generative model later, replace render() with an API call
@@ -11,7 +11,7 @@
   const FPS = 30;
   const MAX_BYTES = 10 * 1024 * 1024;
   const FREE_CREDITS = 3;
-  const CREDIT_KEY = 'ugokie.credits';
+  const CREDIT_KEY = 'ugokiego.credits';
 
   const els = {
     file: $('fileInput'), drop: $('drop'), dropEmpty: $('dropEmpty'), thumb: $('thumb'), clear: $('clearImg'),
@@ -27,7 +27,7 @@
   let busy = false;
   let resultUrl = null;
 
-  /* ---------------- credits (demo: stored locally) ---------------- */
+  /* ---------------- free preview credits (stored locally) ---------------- */
   function getCredits() {
     try {
       const v = localStorage.getItem(CREDIT_KEY);
@@ -46,7 +46,7 @@
     els.toast.textContent = msg;
     els.toast.classList.add('show');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => els.toast.classList.remove('show'), 3200);
+    toastTimer = setTimeout(() => els.toast.classList.remove('show'), Math.max(3200, msg.length * 70));
   }
 
   /* ---------------- image input ---------------- */
@@ -84,6 +84,9 @@
   ['dragenter', 'dragover'].forEach(ev => els.drop.addEventListener(ev, e => { e.preventDefault(); els.drop.classList.add('over'); }));
   ['dragleave', 'drop'].forEach(ev => els.drop.addEventListener(ev, e => { e.preventDefault(); els.drop.classList.remove('over'); }));
   els.drop.addEventListener('drop', e => loadFile(e.dataTransfer.files[0]));
+  els.drop.addEventListener('keydown', e => {
+    if (e.target === els.drop && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); els.file.click(); }
+  });
 
   /* ---------------- sample photos ---------------- */
   document.querySelectorAll('[data-sample]').forEach(btn => btn.addEventListener('click', () => {
@@ -193,7 +196,7 @@
       ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
       ctx.fillStyle = 'rgba(255,255,255,0.75)';
       ctx.shadowColor = 'rgba(0,0,0,0.5)'; ctx.shadowBlur = 6;
-      ctx.fillText('Ugokie', W - fs * 0.8, H - fs * 0.6);
+      ctx.fillText('Ugokiego', W - fs * 0.8, H - fs * 0.6);
       ctx.shadowBlur = 0;
     }
   }
@@ -259,7 +262,7 @@
     if (!window.MediaRecorder || !els.canvas.captureStream) { toast(t('toast.unsupported')); return; }
 
     let quality = els.quality.value;
-    const isPro = false; // demo: no paid accounts yet
+    const isPro = false; // free previews; Pro unlock comes from the billing backend
     if (quality === '1080' && !isPro) { toast(t('toast.pro')); quality = '720'; els.quality.value = '720'; }
 
     busy = true;
@@ -291,7 +294,7 @@
       els.canvas.hidden = true;
       els.result.play().catch(() => {});
       els.download.href = resultUrl;
-      els.download.download = `ugokie-${Date.now()}.${blob.type.includes('mp4') ? 'mp4' : 'webm'}`;
+      els.download.download = `ugokiego-${Date.now()}.${blob.type.includes('mp4') ? 'mp4' : 'webm'}`;
       els.outActions.hidden = false;
       setCredits(credits - 1);
       toast(t('toast.done'));
@@ -311,8 +314,31 @@
   els.generate.addEventListener('click', generate);
   els.again.addEventListener('click', generate);
 
-  /* ---------------- pricing ---------------- */
-  document.querySelectorAll('[data-plan]').forEach(b => b.addEventListener('click', () => toast(t('toast.checkout'))));
+  /* ---------------- checkout confirmation ---------------- */
+  const co = {
+    dialog: $('checkout'), agree: $('coAgree'), go: $('coContinue'), trialEnd: $('coTrialEnd'),
+  };
+  function trialEndText() {
+    const end = new Date(Date.now() + window.SITE.trialHours * 3600 * 1000);
+    return new Intl.DateTimeFormat(window.I18N.lang === 'ja' ? 'ja-JP' : 'en-GB', {
+      dateStyle: 'long', timeStyle: 'short',
+    }).format(end);
+  }
+  function openCheckout() {
+    co.agree.checked = false;
+    co.go.disabled = true;
+    co.trialEnd.textContent = trialEndText();
+    if (co.dialog.showModal) co.dialog.showModal(); else co.dialog.setAttribute('open', '');
+  }
+  co.agree.addEventListener('change', () => { co.go.disabled = !co.agree.checked; });
+  co.go.addEventListener('click', () => {
+    const url = window.SITE.checkoutUrl[window.I18N.lang];
+    if (url) { location.href = url; return; }
+    co.dialog.close();
+    toast(t('co.unavailable'));
+  });
+  $('startTrial').addEventListener('click', openCheckout);
+  document.addEventListener('langchange', () => { if (co.dialog.open) co.trialEnd.textContent = trialEndText(); });
 
   /* ---------------- gallery: play clips only while on screen ---------------- */
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
