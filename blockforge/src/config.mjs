@@ -30,7 +30,7 @@ export const COMPANY = {
   email: "support@blockforge.vip",
   supportResponse: { en: "within 2 business days", ja: "2営業日以内" },
   governingLaw: { en: "the State of Colorado, USA", ja: "米国コロラド州法" },
-  venue: { en: "the state and federal courts located in Arapahoe County, Colorado", ja: "米国コロラド州アラパホー郡に所在する州裁判所または連邦裁判所" }
+  venue: { en: "the state courts located in Arapahoe County, Colorado, or the United States District Court for the District of Colorado", ja: "米国コロラド州アラパホー郡の州裁判所、または米国コロラド州連邦地方裁判所" }
 };
 
 export const PLAN = {

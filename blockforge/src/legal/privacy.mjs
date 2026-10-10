@@ -31,7 +31,7 @@ export default {
           <tr><td>Email preferences</td><td>Whether you opted in to marketing emails, and any unsubscribe request</td><td>You</td></tr>
         </tbody>
       </table>
-      <p>Preview mode on the marketing website draws rough previews locally in your browser. It needs no account, uses no credits and does not send what you type to us or to any AI provider. The website also keeps three small functional settings in your browser (language, theme, and whether you closed the quick-create bar); see our <a href="cookies.html">Cookie Policy</a>.</p>
+      <p>Preview mode on the marketing website draws rough previews locally in your browser. It needs no account, uses no credits and does not send what you type to us or to any AI provider. The website also keeps two small functional settings in your browser (language and theme); see our <a href="cookies.html">Cookie Policy</a>.</p>
       <p>You must give us an email address, and enter a payment card on our payment processor's checkout page, to start the trial and subscribe. We need them to provide and bill the service, so without them we cannot open a paid account. A display name, reference images and marketing consent are optional.</p>
       <p>Please do not put sensitive personal information, or anyone else's personal information, into prompts or reference images unless you have the right to share it.</p>
 
@@ -82,7 +82,7 @@ export default {
 
       <h2 id="no-sale-or-sharing">No sale, no sharing, no tracking cookies</h2>
       <p class="callout">We do not sell your personal information and do not share it for cross-context behavioural advertising. We use no advertising or analytics cookies.</p>
-      <p>We have not sold or shared personal information in the past 12 months. We do not use advertising networks, tracking pixels, analytics tools or data brokers. The marketing website stores only functional preferences in your browser (<code>bf-lang</code>, <code>bf-theme</code> and <code>bf-dock</code>); the signed-in workspace uses an essential session cookie and a CSRF-protection cookie; and our payment processor's checkout page may set its own cookies for fraud prevention and security. Details are in our <a href="cookies.html">Cookie Policy</a>.</p>
+      <p>We have not sold or shared personal information in the past 12 months. We do not use advertising networks, tracking pixels, analytics tools or data brokers. The marketing website stores only functional preferences in your browser (<code>bf-lang</code> and <code>bf-theme</code>); the signed-in workspace uses an essential session cookie and a CSRF-protection cookie; and our payment processor's checkout page may set its own cookies for fraud prevention and security. Details are in our <a href="cookies.html">Cookie Policy</a>.</p>
       <p>We honour Global Privacy Control (GPC) signals as a valid request to opt out of the sale and sharing of personal information and of targeted advertising. Because we do not track you across websites, &quot;Do Not Track&quot; signals do not change how the site behaves. See <a href="do-not-sell.html">Do Not Sell or Share My Personal Information</a>.</p>
 
       <h2 id="retention">How long we keep information</h2>
@@ -94,7 +94,7 @@ export default {
           <tr><td>Prompts, reference images and generated assets</td><td>Until you delete them, or 30 days after your account is closed, whichever comes first</td></tr>
           <tr><td>Billing and tax records (charges, refunds, receipts, card brand and last four digits)</td><td>7 years, to meet tax and accounting obligations</td></tr>
           <tr><td>Server logs, including IP addresses</td><td>90 days</td></tr>
-          <tr><td>Website preferences stored in your browser</td><td><code>bf-lang</code> and <code>bf-theme</code> until you clear your browser storage; <code>bf-dock</code> until you close the browser tab</td></tr>
+          <tr><td>Website preferences stored in your browser</td><td><code>bf-lang</code> and <code>bf-theme</code> until you clear your browser storage</td></tr>
         </tbody>
       </table>
       <p>We keep specific information longer only where the law requires it or where it is needed to establish, exercise or defend a legal claim, and only for as long as that need lasts. When a retention period ends, we delete the information or irreversibly anonymise it. Copies of deleted information can remain in secure backups for a limited time, until the backups are overwritten in the normal backup cycle. We restore a backup only to recover from a system failure, and we do not use backup copies for any other purpose.</p>
@@ -207,7 +207,7 @@ export default {
           <tr><td>メール配信設定</td><td>マーケティングメールの受信同意の有無、配信停止のお申し出</td><td>お客様</td></tr>
         </tbody>
       </table>
-      <p>マーケティング用ウェブサイトのプレビューモードは、お客様のブラウザ内で簡易的なプレビューを描画する機能です。アカウント登録は不要で、クレジットも消費せず、入力内容が当社やAI事業者に送信されることはありません。また、ウェブサイトは表示言語、テーマ、クイック作成バーを閉じたかどうかという3つの機能的な設定のみをブラウザに保存します。詳しくは<a href="cookies.html">Cookieポリシー</a>をご覧ください。</p>
+      <p>マーケティング用ウェブサイトのプレビューモードは、お客様のブラウザ内で簡易的なプレビューを描画する機能です。アカウント登録は不要で、クレジットも消費せず、入力内容が当社やAI事業者に送信されることはありません。また、ウェブサイトは表示言語とテーマという2つの機能的な設定のみをブラウザに保存します。詳しくは<a href="cookies.html">Cookieポリシー</a>をご覧ください。</p>
       <p>トライアルの開始とご契約には、メールアドレスのご登録と、決済代行会社の決済ページでの支払い用カードのご入力が必要です。これらはサービスの提供と料金の請求に必要な情報のため、ご提供いただけない場合は有料アカウントを開設できません。表示名、参考画像のアップロード、マーケティングメールの受信同意は任意です。</p>
       <p>プロンプトや参考画像には、要配慮個人情報その他の機微な情報や第三者の個人情報を、正当な権限なく含めないようお願いいたします。</p>
 
@@ -258,7 +258,7 @@ export default {
 
       <h2 id="no-sale-or-sharing">個人情報の販売・共有およびトラッキングを行わないこと</h2>
       <p class="callout">当社はお客様の個人情報を販売せず、クロスコンテキスト行動広告のために共有することもありません。広告目的・分析目的のCookieも一切使用していません。</p>
-      <p>当社は過去12か月間、個人情報の販売・共有を行っていません。広告ネットワーク、トラッキングピクセル、アクセス解析ツール、データブローカーも利用していません。マーケティング用ウェブサイトがブラウザに保存するのは機能上の設定（<code>bf-lang</code>、<code>bf-theme</code>、<code>bf-dock</code>）のみです。ログイン後のワークスペースでは、必須のセッションCookieとCSRF対策用のCookieを使用します。また、決済代行会社の決済ページが不正防止とセキュリティのために独自のCookieを設定する場合があります。詳しくは<a href="cookies.html">Cookieポリシー</a>をご覧ください。</p>
+      <p>当社は過去12か月間、個人情報の販売・共有を行っていません。広告ネットワーク、トラッキングピクセル、アクセス解析ツール、データブローカーも利用していません。マーケティング用ウェブサイトがブラウザに保存するのは機能上の設定（<code>bf-lang</code>、<code>bf-theme</code>）のみです。ログイン後のワークスペースでは、必須のセッションCookieとCSRF対策用のCookieを使用します。また、決済代行会社の決済ページが不正防止とセキュリティのために独自のCookieを設定する場合があります。詳しくは<a href="cookies.html">Cookieポリシー</a>をご覧ください。</p>
       <p>当社は、Global Privacy Control（GPC）の信号を、個人情報の販売・共有およびターゲティング広告を拒否する有効な意思表示として尊重します。当社はウェブサイトをまたいだ追跡を行わないため、「Do Not Track」信号によってサイトの動作が変わることはありません。詳しくは<a href="do-not-sell.html">個人情報の販売・共有の拒否</a>をご覧ください。</p>
 
       <h2 id="retention">保存期間</h2>
@@ -270,7 +270,7 @@ export default {
           <tr><td>プロンプト、参考画像、生成物</td><td>お客様が削除した時点、またはアカウント閉鎖から30日が経過した時点のいずれか早い時点まで</td></tr>
           <tr><td>請求・税務記録（請求、返金、領収、カードブランドと下4桁）</td><td>税務・会計上の義務を果たすため7年間</td></tr>
           <tr><td>サーバーログ（IPアドレスを含む）</td><td>90日間</td></tr>
-          <tr><td>ブラウザに保存されるウェブサイトの設定</td><td><code>bf-lang</code>と<code>bf-theme</code>はお客様がブラウザのデータを消去するまで、<code>bf-dock</code>はブラウザのタブを閉じるまで</td></tr>
+          <tr><td>ブラウザに保存されるウェブサイトの設定</td><td><code>bf-lang</code>と<code>bf-theme</code>はお客様がブラウザのデータを消去するまで</td></tr>
         </tbody>
       </table>
       <p>法令で義務付けられている場合、または法的請求の立証・行使・防御に必要な場合に限り、その必要がある期間に限って特定の情報をより長く保存することがあります。保存期間が終了した情報は、削除するか、元に戻せない形で匿名化します。削除した情報の複製が、通常のバックアップの周期で上書きされるまでの一定期間、安全に管理されたバックアップに残ることがあります。バックアップはシステム障害からの復旧の場合にのみ復元し、それ以外の目的には使用しません。</p>

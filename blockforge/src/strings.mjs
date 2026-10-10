@@ -58,7 +58,7 @@ export const STRINGS = {
       sub: "BlockForge turns a one-line idea into cover art, icons, textures, avatar shirts, character renders, UI kits and sound effects, sized for the platforms you publish on.",
       composerTitle: "What should we forge?",
       typeLabel: "Asset type",
-      note: `Previews are free and run in your browser. BlockForge Pro starts with a ${E.trial}, then ${E.priceWithCode} per year.`,
+      note: `Preview mode is free and runs in your browser. BlockForge Pro starts with a ${E.trial}, then ${E.priceWithCode} per year.`,
       examples: "Examples:",
       facts: [["7", "asset types"], [E.credits, "credits per year"], ["30 days", "money-back guarantee"]],
       boardTitle: "Inventory",
@@ -94,7 +94,7 @@ export const STRINGS = {
       eyebrow: "Ideas",
       title: "Need a <em>starting point?</em>",
       sub: "Pick a prompt and we'll draw a rough preview in your browser. BlockForge Pro turns it into full-resolution AI art.",
-      badge: "Browser preview",
+      badge: "Preview mode",
       use: "Preview",
       items: [
         ["Simulator", "mining drill breaking through a wall of gems"],
@@ -159,7 +159,7 @@ export const STRINGS = {
         ["What does BlockForge Pro include?", `${E.credits} credits per paid year, all 7 asset types, full-resolution PNG and WAV downloads, commercial use of your assets, and an English and Japanese interface. Unused credits expire at the end of each paid year.`],
         ["How many credits does each asset use?", `Cover art, icons, textures, avatar shirts, character renders and sound effects use ${PLAN.creditCosts.thumbnail} credit each. A UI kit uses ${PLAN.creditCosts.ui} credits. If a generation fails, its credits are returned automatically.`],
         ["Which payment methods and currencies do you accept?", `Visa, Mastercard, American Express, JCB and Discover credit and debit cards. The English site charges ${E.price} in US dollars (USD); the Japanese site charges ${J.price} in Japanese yen (JPY, tax included). You pay in the currency shown at checkout.`],
-        ["Is the browser preview free?", "Yes. The browser preview draws a quick, rough sketch on your own device. It needs no account, uses no credits and isn't the AI output. BlockForge Pro generates the full-resolution AI assets."],
+        ["Is preview mode free?", "Yes. Preview mode draws a quick, rough sketch in your browser, on your own device. It needs no account, uses no credits and isn't the AI output. BlockForge Pro generates the full-resolution AI assets."],
         ["Can I use the assets commercially?", "Yes. You own the assets you generate (as far as the law allows) and can use them commercially, including in monetized games. We don't use your prompts, uploads or assets to train AI models."],
         ["Is BlockForge affiliated with Roblox or other game platforms?", "No. BlockForge is an independent product of CALDRIVO GLOBAL INC and isn't affiliated with, endorsed by or sponsored by Roblox Corporation or any other game platform."]
       ]
@@ -196,7 +196,7 @@ export const STRINGS = {
       trialCreditsValue: `Full access + ${E.trialCredits} trial credits`,
       timeLine: "If you start now, your card will be charged at",
       timeLineFallback: "1 hour after you start, unless you cancel first.",
-      consent: `I understand that my card will be charged ${E.priceWithCode} one hour after my free trial starts, and ${E.price} every 12 months after that until I cancel. I agree to the <a href="legal/terms.html">Terms of Service</a>, <a href="legal/refund.html">Refund Policy</a> and <a href="legal/cancellation.html">Cancellation Policy</a>.`,
+      consent: `I understand that my card will be charged ${E.priceWithCode} one hour after my free trial starts unless I cancel before then, and that my plan then renews automatically every 12 months at the current annual price (now ${E.price}) until I cancel. I agree to the <a href="legal/terms.html">Terms of Service</a>, <a href="legal/refund.html">Refund Policy</a> and <a href="legal/cancellation.html">Cancellation Policy</a>.`,
       button: "Start 1-hour free trial",
       buttonHint: "Tick the box above to continue.",
       secure: "You'll enter your card on our payment processor's secure page. We never see or store your full card number.",
@@ -241,7 +241,7 @@ export const STRINGS = {
       read: "Read"
     },
     ws: {
-      title: "Browser preview",
+      title: "Preview mode",
       demo: "A rough sketch drawn in your browser. BlockForge Pro creates the full-resolution AI version.",
       generating: "Sketching your preview…",
       download: "Download preview",
@@ -249,7 +249,7 @@ export const STRINGS = {
       close: "Close",
       play: "Play sound",
       empty: "Write a short description first.",
-      size: "Size",
+      size: "Preview size",
       cost: "With Pro",
       upgrade: "Make it with Pro"
     },
@@ -306,7 +306,7 @@ export const STRINGS = {
       sub: "ひとことのアイデアから、カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、UIキット、効果音を作成。公開先のプラットフォームに合わせたサイズで書き出します。",
       composerTitle: "何をつくりますか？",
       typeLabel: "アセットの種類",
-      note: `プレビューは無料で、ブラウザ上で動きます。BlockForge Pro は${J.trial}から始まり、その後は${J.pricePerYear}です。`,
+      note: `プレビューモードは無料で、ブラウザ上で動きます。BlockForge Pro は${J.trial}から始まり、その後は${J.pricePerYear}です。`,
       examples: "例：",
       facts: [["7", "種類のアセット"], [J.credits, "クレジット／年"], ["30日間", "返金保証"]],
       boardTitle: "インベントリ",
@@ -342,7 +342,7 @@ export const STRINGS = {
       eyebrow: "アイデア",
       title: "<em>きっかけ</em>が欲しいときは",
       sub: "プロンプトを選ぶと、ブラウザ上で簡易プレビューを描画します。BlockForge Pro ならフル解像度の AI 作品に仕上げられます。",
-      badge: "ブラウザプレビュー",
+      badge: "プレビューモード",
       use: "プレビュー",
       items: [
         ["シミュレーター", "宝石の壁を突き破る採掘ドリル"],
@@ -407,7 +407,7 @@ export const STRINGS = {
         ["BlockForge Pro には何が含まれますか？", `有料期間1年ごとに${J.credits}クレジット、7種類のアセットすべて、フル解像度の PNG・WAV ダウンロード、作成したアセットの商用利用、日本語・英語のインターフェースが含まれます。未使用のクレジットは各有料期間の終了時に失効します。`],
         ["アセット1点に何クレジット必要ですか？", `カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、効果音は各${PLAN.creditCosts.thumbnail}クレジット、UIキットは${PLAN.creditCosts.ui}クレジットです。作成に失敗した場合、クレジットは自動的に戻ります。`],
         ["支払方法と通貨を教えてください。", `Visa、Mastercard、American Express、JCB、Discover のクレジットカード・デビットカードをご利用いただけます。日本語サイトでは${J.price}（日本円・税込）、英語サイトでは${E.price}（米ドル）でのお支払いとなり、決済画面に表示された通貨で請求されます。`],
-        ["ブラウザプレビューは無料ですか？", "はい。ブラウザプレビューはお使いの端末上で簡易的なラフを描く機能で、アカウント不要・クレジット不要です。AI による作成結果ではありません。フル解像度の AI アセットは BlockForge Pro で作成できます。"],
+        ["プレビューモードは無料ですか？", "はい。プレビューモードはブラウザ上（お使いの端末内）で簡易的なラフを描く機能で、アカウント不要・クレジット不要です。AI による作成結果ではありません。フル解像度の AI アセットは BlockForge Pro で作成できます。"],
         ["作成したアセットは商用利用できますか？", "はい。作成したアセットは（法律で認められる範囲で）お客様のものとなり、収益化したゲームを含めて商用利用できます。お客様のプロンプト、アップロード画像、作成物を AI の学習に使うことはありません。"],
         ["BlockForge は Roblox などのゲームプラットフォームと提携していますか？", "いいえ。BlockForge は CALDRIVO GLOBAL INC が提供する独立したサービスであり、Roblox Corporation その他のゲームプラットフォームとの提携・承認・後援関係はありません。"]
       ]
@@ -444,7 +444,7 @@ export const STRINGS = {
       trialCreditsValue: `すべての機能＋${J.trialCredits}トライアルクレジット`,
       timeLine: "今すぐ開始した場合、カードへの請求日時は",
       timeLineFallback: "開始から1時間後です（それまでに解約しない場合）。",
-      consent: `無料トライアル開始の1時間後に${J.priceWithCode}が請求され、その後は解約するまで12か月ごとに${J.price}が請求されることを理解しました。<a href="legal/terms.html">利用規約</a>、<a href="legal/refund.html">返金ポリシー</a>、<a href="legal/cancellation.html">解約ポリシー</a>に同意します。`,
+      consent: `無料トライアル開始の1時間後（それまでに解約しない場合）に${J.priceWithCode}が請求され、その後は解約するまで12か月ごとに、その時点の年額料金（現在は${J.price}）で自動更新されることを理解しました。<a href="legal/terms.html">利用規約</a>、<a href="legal/refund.html">返金ポリシー</a>、<a href="legal/cancellation.html">解約ポリシー</a>に同意します。`,
       button: "1時間の無料トライアルを開始",
       buttonHint: "上のチェックボックスにチェックを入れてください。",
       secure: "カード情報は決済代行会社の安全なページで入力します。当社がカード番号全体を見たり保存したりすることはありません。",
@@ -489,7 +489,7 @@ export const STRINGS = {
       read: "読む"
     },
     ws: {
-      title: "ブラウザプレビュー",
+      title: "プレビューモード",
       demo: "ブラウザ上で描いたラフスケッチです。フル解像度の AI 版は BlockForge Pro で作成できます。",
       generating: "プレビューを描いています…",
       download: "プレビューを保存",
@@ -497,7 +497,7 @@ export const STRINGS = {
       close: "閉じる",
       play: "再生",
       empty: "まず短い説明を書いてください。",
-      size: "サイズ",
+      size: "プレビューのサイズ",
       cost: "Pro の場合",
       upgrade: "Pro で作成する"
     },
