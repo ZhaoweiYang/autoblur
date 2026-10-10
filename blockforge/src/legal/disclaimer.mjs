@@ -12,7 +12,7 @@ export default {
       <p class="lede">This Disclaimer explains the limits of what ${E.brand} and its website promise. In short: ${E.brand} creates assets automatically with AI, so you must review every output before you publish it; we cannot guarantee views, clicks or revenue; the free preview mode is a rough sketch drawn in your browser, not AI output; and ${E.brand} is not affiliated with Roblox Corporation or any other game platform. This Disclaimer does not reduce your ${E.refundDays}-Day Money-Back Guarantee or your rights under consumer law.</p>
 
       <h2 id="general">General information</h2>
-      <p>${E.brand} (the &ldquo;Service&rdquo;) is operated by ${E.company} (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). The information on blockforge.vip, including product descriptions, example images and FAQs, is provided to describe the Service in general terms. We work to keep it accurate and up to date, but we do not warrant that it is complete, current or free of errors, and we may change it at any time.</p>
+      <p>${E.brand} (the &ldquo;Service&rdquo;) is operated by ${E.company} (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). The information on blockforgeo.net, including product descriptions, example images and FAQs, is provided to describe the Service in general terms. We work to keep it accurate and up to date, but we do not warrant that it is complete, current or free of errors, and we may change it at any time.</p>
       <p>To the extent permitted by law, the website, the Service and all outputs are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranties of any kind, express or implied. The example images on the website are drawn by preview mode in the browser. They show the kind of asset each tool makes, not the quality or style of the AI output. Your actual results depend on your prompts and reference images and will vary.</p>
       <p>The binding contract for using ${E.brand} is our <a href="terms.html">Terms of Service</a>. If this Disclaimer and the Terms of Service conflict, the Terms of Service prevail.</p>
 
@@ -61,7 +61,7 @@ export default {
       <p class="lede">本免責事項は、${J.company}（以下「当社」）が運営する${J.brand}（以下「本サービス」）および当社ウェブサイトについて、当社が保証する内容の範囲を説明するものです。要点は次のとおりです。${J.brand}はAIによって素材を自動生成するため、公開前にすべての生成物をご確認いただく必要があります。当社は再生数、クリック数または収益を保証できません。無料のプレビューモードはブラウザ内で描画する簡易的な下書きであり、AIによる生成物ではありません。また、${J.brand}は Roblox Corporation その他いかなるゲームプラットフォームとも提携関係にありません。本免責事項は、${J.refundDays}日間返金保証や消費者法に基づくお客様の権利を制限するものではありません。</p>
 
       <h2 id="general">一般情報</h2>
-      <p>ウェブサイト blockforge.vip に掲載している製品説明、作例画像、よくある質問などの情報は、本サービスの概要をご説明するためのものです。当社は正確かつ最新の情報を掲載するよう努めていますが、その完全性、最新性または正確性を保証するものではなく、予告なく変更することがあります。</p>
+      <p>ウェブサイト blockforgeo.net に掲載している製品説明、作例画像、よくある質問などの情報は、本サービスの概要をご説明するためのものです。当社は正確かつ最新の情報を掲載するよう努めていますが、その完全性、最新性または正確性を保証するものではなく、予告なく変更することがあります。</p>
       <p>法令で認められる範囲において、ウェブサイト、本サービスおよびすべての生成物は「現状有姿」かつ「提供可能な範囲」で提供され、当社は明示または黙示を問わずいかなる保証も行いません。ウェブサイト上の作例画像は、プレビューモードによりブラウザ内で描画したものです。各ツールで作成できる素材の種類を示すものであり、AIによる生成物の品質やスタイルを示すものではありません。実際の結果は、お客様のプロンプトや参考画像によって異なります。</p>
       <p>${J.brand}のご利用に関する契約条件は<a href="terms.html">利用規約</a>に定めています。本免責事項と利用規約の内容が異なる場合は、利用規約が優先します。</p>
 

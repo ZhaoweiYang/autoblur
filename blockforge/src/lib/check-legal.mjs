@@ -12,7 +12,7 @@ const ALLOWED = new Set(["p", "h2", "h3", "ul", "ol", "li", "strong", "em", "a",
 const VOID = new Set(["br"]);
 const PLACEHOLDER = /lorem|ipsum|coming soon|\bTBD\b|\bTODO\b|\[insert|\[your|example\.com|your company|placeholder|\bXXX?\b|近日公開|準備中|ダミー/i;
 // Facts that must come from FACTS, not be typed into the source.
-const HARDCODED = [/US\$\s?99\b/, /16,?999/, /\b1,200\b/, /89\.10/, /15,?299/, /support@blockforge\.vip/, /14001/];
+const HARDCODED = [/US\$\s?99\b/, /16,?999/, /\b1,200\b/, /89\.10/, /15,?299/, /support@blockforgeo\.net/, /14001/];
 
 export function checkHtml(html, where) {
   const errors = [];

@@ -12,7 +12,7 @@ export default {
       <p class="lede">This Privacy Policy explains what personal information ${E.company} collects when you use ${E.brand}, why we use it, who helps us process it, how long we keep it and the choices you have. In short: we collect only what we need to run the service and bill you, we never use your prompts, uploads or generated assets to train AI models, we do not sell or share your personal information, and we use no advertising or analytics cookies.</p>
 
       <h2 id="who-we-are">Who we are and what this policy covers</h2>
-      <p>${E.brand} (blockforge.vip) is operated by ${E.company}, located at ${E.addressOneLine}. ${E.company} is the controller of your personal information for the purposes of the EU and UK General Data Protection Regulation (GDPR), the &quot;business&quot; or &quot;controller&quot; under US state privacy laws, and the business operator handling personal information under Japan's Act on the Protection of Personal Information (APPI).</p>
+      <p>${E.brand} (blockforgeo.net) is operated by ${E.company}, located at ${E.addressOneLine}. ${E.company} is the controller of your personal information for the purposes of the EU and UK General Data Protection Regulation (GDPR), the &quot;business&quot; or &quot;controller&quot; under US state privacy laws, and the business operator handling personal information under Japan's Act on the Protection of Personal Information (APPI).</p>
       <p>${E.brand} is an online creative tool for game creators. In a web workspace, subscribers describe what they want and ${E.brand} generates game assets with AI: thumbnails, icons, textures, clothing images, character renders (GFX), UI layouts and short sound effects. Everything is delivered digitally.</p>
       <p>This policy covers the ${E.brand} marketing website, the free preview mode, the signed-in workspace, checkout and billing, our emails and customer support. It does not cover third-party websites we link to, or the hosted payment page run by our payment processor, which has its own privacy notice.</p>
 
@@ -188,7 +188,7 @@ export default {
       <p class="lede">本プライバシーポリシーは、${J.company}（以下「当社」）が運営する ${J.brand}（以下「本サービス」）において、当社がどのような個人情報を取得し、何のために利用し、どの事業者に取扱いを委託し、どのくらいの期間保存するか、またお客様がどのような選択肢と権利をお持ちかをご説明するものです。要点として、当社はサービスの提供と決済に必要な情報のみを取得し、お客様のプロンプト・アップロード画像・生成物をAIモデルの学習に使用することは一切ありません。また、個人情報の販売・共有は行わず、広告目的または分析目的のCookieも使用していません。</p>
 
       <h2 id="who-we-are">事業者情報と本ポリシーの適用範囲</h2>
-      <p>本サービス（blockforge.vip）は、${J.addressOneLine} に所在する ${J.company} が運営しています。当社は、EU・英国の一般データ保護規則（GDPR）上の管理者（controller）、米国各州のプライバシー法上の事業者（business／controller）、および日本の個人情報の保護に関する法律（以下「個人情報保護法」）上の個人情報取扱事業者にあたります。</p>
+      <p>本サービス（blockforgeo.net）は、${J.addressOneLine} に所在する ${J.company} が運営しています。当社は、EU・英国の一般データ保護規則（GDPR）上の管理者（controller）、米国各州のプライバシー法上の事業者（business／controller）、および日本の個人情報の保護に関する法律（以下「個人情報保護法」）上の個人情報取扱事業者にあたります。</p>
       <p>${J.brand}は、ゲームクリエイター向けのオンライン制作ツールです。サブスクリプション会員がウェブ上のワークスペースで作りたいものを文章で指示すると、AIがゲーム用のサムネイル、アイコン、テクスチャ、衣装画像、キャラクターレンダー（GFX）、UIレイアウト、短い効果音などのアセットを生成します。提供はすべてデジタルで行われます。</p>
       <p>本ポリシーは、マーケティング用ウェブサイト、無料のプレビューモード、ログイン後のワークスペース、購入・決済手続、当社からのメールおよびカスタマーサポートに適用されます。リンク先の第三者サイトや、決済代行会社が運営する決済ページには適用されず、それぞれの事業者のプライバシーポリシーが適用されます。</p>
 

@@ -6,7 +6,7 @@
 export const SITE = {
   brand: "BlockForgeo",
   // Absolute origin used for canonical URLs, Open Graph, hreflang and sitemap.
-  siteUrl: "https://blockforge.vip",
+  siteUrl: "https://blockforgeo.net",
   // Where "Start 1-hour free trial" sends people after they accept the terms.
   // Set this to your payment processor's hosted checkout / payment link.
   // Left empty, the button opens an email to support instead.
@@ -27,7 +27,7 @@ export const COMPANY = {
   regionName: "Colorado",
   postalCode: "80014",
   country: "US",
-  email: "support@blockforge.vip",
+  email: "support@blockforgeo.net",
   supportResponse: { en: "within 2 business days", ja: "2営業日以内" },
   governingLaw: { en: "the State of Colorado, USA", ja: "米国コロラド州法" },
   venue: { en: "the state courts located in Arapahoe County, Colorado, or the United States District Court for the District of Colorado", ja: "米国コロラド州アラパホー郡の州裁判所、または米国コロラド州連邦地方裁判所" }

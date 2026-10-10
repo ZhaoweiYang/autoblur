@@ -23,7 +23,7 @@ export default {
       <p>Unlike cookies, localStorage is not sent to our servers with your requests. It stays on your device and are read only by our own pages, inside your browser. In this policy, &quot;cookies&quot; covers both cookies and these similar technologies.</p>
 
       <h2 id="website-storage">What the website stores</h2>
-      <p>The public website at blockforge.vip, including the English and Japanese pages, the free preview mode, our checkout page and the policy pages, sets no cookies. It saves at most the two items below in your browser, and each one is saved only after you make the choice it remembers:</p>
+      <p>The public website at blockforgeo.net, including the English and Japanese pages, the free preview mode, our checkout page and the policy pages, sets no cookies. It saves at most the two items below in your browser, and each one is saved only after you make the choice it remembers:</p>
       <table>
         <thead>
           <tr><th>Name</th><th>Type</th><th>Purpose</th><th>Duration</th></tr>
@@ -73,7 +73,7 @@ export default {
       <h2 id="managing-cookies">How to control or delete cookies and storage</h2>
       <p>You control everything described on this page. You can:</p>
       <ul>
-        <li><strong>Delete stored items.</strong> Clear the cookies and site data for blockforge.vip in your browser settings. This removes <code>bf-lang</code>, <code>bf-theme</code> and any workspace cookies.</li>
+        <li><strong>Delete stored items.</strong> Clear the cookies and site data for blockforgeo.net in your browser settings. This removes <code>bf-lang</code>, <code>bf-theme</code> and any workspace cookies.</li>
         <li><strong>Block cookies and site data.</strong> Most browsers let you block all cookies, block only third-party cookies, or block storage for specific sites.</li>
         <li><strong>Use a private window.</strong> Private or incognito windows delete their cookies and site data when you close them.</li>
       </ul>
@@ -122,7 +122,7 @@ export default {
       <p>localStorageは、Cookieと異なり、リクエストのたびに当社のサーバーへ送信されることはありません。データはお客様の端末内にとどまり、ブラウザ上で当社のページだけが読み取ります。本ポリシーでは、Cookieとこれらの類似技術をあわせて「Cookie等」といいます。</p>
 
       <h2 id="website-storage">ウェブサイトが保存する項目</h2>
-      <p>英語版・日本語版のページ、無料のプレビューモード、当社のお申し込みページ、各種ポリシーページを含む公開ウェブサイト（blockforge.vip）は、Cookieを設定しません。ブラウザに保存するのは次の最大2項目のみで、いずれも、お客様が該当する操作をしたときにはじめて保存されます。</p>
+      <p>英語版・日本語版のページ、無料のプレビューモード、当社のお申し込みページ、各種ポリシーページを含む公開ウェブサイト（blockforgeo.net）は、Cookieを設定しません。ブラウザに保存するのは次の最大2項目のみで、いずれも、お客様が該当する操作をしたときにはじめて保存されます。</p>
       <table>
         <thead>
           <tr><th>名称</th><th>種類</th><th>目的</th><th>保存期間</th></tr>
@@ -172,7 +172,7 @@ export default {
       <h2 id="managing-cookies">Cookie等の管理・削除方法</h2>
       <p>本ポリシーに記載したすべての項目は、お客様ご自身で管理できます。</p>
       <ul>
-        <li><strong>削除する：</strong>ブラウザの設定で blockforge.vip のCookieとサイトデータを消去すると、<code>bf-lang</code>、<code>bf-theme</code>、ワークスペースのCookieが削除されます。</li>
+        <li><strong>削除する：</strong>ブラウザの設定で blockforgeo.net のCookieとサイトデータを消去すると、<code>bf-lang</code>、<code>bf-theme</code>、ワークスペースのCookieが削除されます。</li>
         <li><strong>ブロックする：</strong>多くのブラウザでは、すべてのCookie、サードパーティCookieのみ、または特定のサイトのデータ保存をブロックするよう設定できます。</li>
         <li><strong>プライベートウィンドウを使う：</strong>プライベートウィンドウ（シークレットウィンドウ）では、ウィンドウを閉じるとCookieとサイトデータが削除されます。</li>
       </ul>

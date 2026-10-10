@@ -18,7 +18,7 @@ export default {
 
       <h2 id="commitment">Our commitment</h2>
       <p>Accessibility is part of how we build ${E.brand}, not an afterthought. We design and review the website and the signed-in workspace so that they can be used with a keyboard, a screen reader, screen magnification, high-contrast settings or reduced motion. We treat accessibility barriers as bugs and fix them as a priority.</p>
-      <p>This statement covers the website at blockforge.vip, including the English and Japanese pages, preview mode, our checkout page and the policy pages, and the signed-in ${E.brand} workspace. The payment page of our payment processor, where you enter your card details, is operated by a third party and is outside the scope of this statement. Because you need it to pay, we still list it under &quot;Known limitations and workarounds&quot; and help you by email if it causes problems.</p>
+      <p>This statement covers the website at blockforgeo.net, including the English and Japanese pages, preview mode, our checkout page and the policy pages, and the signed-in ${E.brand} workspace. The payment page of our payment processor, where you enter your card details, is operated by a third party and is outside the scope of this statement. Because you need it to pay, we still list it under &quot;Known limitations and workarounds&quot; and help you by email if it causes problems.</p>
 
       <h2 id="conformance">Conformance target and current status</h2>
       <p>Our target is Level AA of the Web Content Accessibility Guidelines (WCAG) 2.2, published by the World Wide Web Consortium (W3C). WCAG explains how to make web content more accessible to people with a wide range of disabilities, including blindness and low vision, deafness and hearing loss, limited movement, and cognitive or learning disabilities. WCAG 2.2 builds on WCAG 2.0, the version on which the Japanese Industrial Standard JIS X 8341-3:2016 is based.</p>
@@ -104,7 +104,7 @@ export default {
 
       <h2 id="commitment">基本方針</h2>
       <p>アクセシビリティは、後から付け加えるものではなく、${J.brand}をつくるうえでの前提です。当社は、ウェブサイトとログイン後のワークスペースを、キーボード、スクリーンリーダー、画面拡大、ハイコントラスト設定、動きを減らす設定でもご利用いただけるよう設計・確認しています。アクセシビリティ上の問題は不具合として扱い、優先して修正します。</p>
-      <p>本方針は、英語版・日本語版のページ、プレビューモード、当社のお申し込みページ、各種ポリシーページを含むウェブサイト（blockforge.vip）と、ログイン後の${J.brand}ワークスペースを対象とします。カード情報を入力する決済代行会社の決済ページは、第三者が運営しているため本方針の対象外です。ただし、お支払いに必要なページであるため「既知の制約と代替手段」に記載しており、問題がある場合はメールでサポートします。</p>
+      <p>本方針は、英語版・日本語版のページ、プレビューモード、当社のお申し込みページ、各種ポリシーページを含むウェブサイト（blockforgeo.net）と、ログイン後の${J.brand}ワークスペースを対象とします。カード情報を入力する決済代行会社の決済ページは、第三者が運営しているため本方針の対象外です。ただし、お支払いに必要なページであるため「既知の制約と代替手段」に記載しており、問題がある場合はメールでサポートします。</p>
 
       <h2 id="conformance">準拠目標と現在の対応状況</h2>
       <p>当社の目標は、W3C（World Wide Web Consortium）が公開する「ウェブコンテンツ・アクセシビリティ・ガイドライン（WCAG）2.2」のレベルAAです。WCAGは、視覚障害、聴覚障害、肢体不自由、認知・学習障害など、さまざまな障害のある方にとってウェブコンテンツをより利用しやすくするための国際的な指針です。WCAG 2.2は、日本産業規格 JIS X 8341-3:2016 の基になったWCAG 2.0を発展させた版です。</p>

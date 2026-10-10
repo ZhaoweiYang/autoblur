@@ -18,7 +18,7 @@ export default {
       <h2 id="scope">What this policy covers</h2>
       <p>This policy applies to material that is stored on, or made available through, systems controlled by ${E.company}, namely:</p>
       <ul>
-        <li>content on our website, blockforge.vip, including sample images, page text and FAQ answers;</li>
+        <li>content on our website, blockforgeo.net, including sample images, page text and FAQ answers;</li>
         <li>reference images that users upload to their ${E.brand} workspace; and</li>
         <li>prompts and generated assets stored in a user&rsquo;s ${E.brand} workspace.</li>
       </ul>
@@ -145,7 +145,7 @@ export default {
       <h2 id="scope">本ポリシーの対象</h2>
       <p>本ポリシーは、${J.company}が管理するシステム上に保存され、またはそのシステムを通じて提供される次の素材に適用されます。</p>
       <ul>
-        <li>当社ウェブサイト（blockforge.vip）上のコンテンツ（サンプル画像、ページの文章、よくある質問の回答を含みます）</li>
+        <li>当社ウェブサイト（blockforgeo.net）上のコンテンツ（サンプル画像、ページの文章、よくある質問の回答を含みます）</li>
         <li>ユーザーが${J.brand}のワークスペースにアップロードした参考画像</li>
         <li>ユーザーの${J.brand}ワークスペースに保存されたプロンプトおよび生成アセット</li>
       </ul>
