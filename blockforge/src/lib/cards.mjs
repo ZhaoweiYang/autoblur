@@ -1,8 +1,9 @@
-/* Accepted-payment badges as inline SVG (no external requests).
- * Each badge is 48×32 with an accessible name. */
+/* Accepted-payment badges. The artwork lives once in assets/img/cards.svg
+ * (one cached file); each page references it with <use> and keeps the card
+ * name in the markup as the badge's accessible name. Each badge is 48×32. */
 const W = 48, H = 32;
 const frame = (fill, inner, label, stroke = "none") =>
-  `<svg class="paycard" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${label}"><title>${label}</title><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="5" fill="${fill}" stroke="${stroke}"/>${inner}</svg>`;
+  `<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="5" fill="${fill}" stroke="${stroke}"/>${inner}`;
 
 const CARDS = {
   visa: () => frame("#ffffff",
@@ -22,8 +23,13 @@ const CARDS = {
     "Discover", "#d9d9d9")
 };
 
-export function cardBadges(list, label) {
-  return `<ul class="paycards" aria-label="${label}">${list.map((c) => `<li>${CARDS[c]()}</li>`).join("")}</ul>`;
+export const CARD_NAMES = { visa: "Visa", mastercard: "Mastercard", amex: "American Express", jcb: "JCB", discover: "Discover" };
+
+export function cardSprite() {
+  return `<svg xmlns="http://www.w3.org/2000/svg">${Object.entries(CARDS).map(([id, art]) => `<symbol id="${id}" viewBox="0 0 ${W} ${H}">${art()}</symbol>`).join("")}</svg>\n`;
 }
 
-export const CARD_NAMES = { visa: "Visa", mastercard: "Mastercard", amex: "American Express", jcb: "JCB", discover: "Discover" };
+export function cardBadges(list, label, sprite) {
+  return `<ul class="paycards" aria-label="${label}">${list.map((c) => `<li><svg class="paycard" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${CARD_NAMES[c]}"><title>${CARD_NAMES[c]}</title><use href="${sprite}#${c}"/></svg></li>`).join("")}</ul>`;
+}
+

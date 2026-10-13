@@ -51,11 +51,34 @@
     return FALLBACK[Math.floor(r() * FALLBACK.length)];
   }
 
+  // Generators draw in their native coordinates. Inside Gen.scaled() the
+  // canvas is created smaller and the context pre-scaled, so page thumbnails
+  // cost a fraction of a full-size render and still match the full preview.
+  // Canvas text: brand face for Latin, the reader's system font for Japanese.
+  const FACE = '"Wix Madefor Display", "Hiragino Sans", "Yu Gothic", Meiryo, "Noto Sans CJK JP", "Noto Sans JP", system-ui, sans-serif';
+  let SCALE = 1;
+  const BLUR = Object.getOwnPropertyDescriptor(CanvasRenderingContext2D.prototype, "shadowBlur");
   function makeCanvas(w, h) {
     const c = document.createElement("canvas");
-    c.width = w;
-    c.height = h;
+    const s = SCALE;
+    c.width = Math.max(1, Math.round(w * s));
+    c.height = Math.max(1, Math.round(h * s));
+    if (s !== 1) {
+      const get = c.getContext.bind(c);
+      let ctx = null;
+      c.getContext = (type, opts) => {
+        if (ctx) return ctx;
+        ctx = get(type, opts);
+        ctx.scale(s, s);
+        Object.defineProperty(ctx, "shadowBlur", { get() { return BLUR.get.call(this) / s; }, set(v) { BLUR.set.call(this, v * s); } });
+        return ctx;
+      };
+    }
     return c;
+  }
+  function scaled(scale, draw) {
+    SCALE = Math.min(1, Math.max(0.05, scale));
+    try { return draw(); } finally { SCALE = 1; }
   }
 
   function roundRect(ctx, x, y, w, h, r) {
@@ -135,10 +158,10 @@
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(angle || 0);
-    ctx.font = `900 ${size}px "Wix Madefor Display", "Zen Kaku Gothic New", system-ui, sans-serif`;
+    ctx.font = `900 ${size}px ${FACE}`;
     if (maxWidth) {
       const wNow = ctx.measureText(text).width;
-      if (wNow > maxWidth) { size = Math.floor((size * maxWidth) / wNow); ctx.font = `900 ${size}px "Wix Madefor Display", "Zen Kaku Gothic New", system-ui, sans-serif`; }
+      if (wNow > maxWidth) { size = Math.floor((size * maxWidth) / wNow); ctx.font = `900 ${size}px ${FACE}`; }
     }
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -251,6 +274,8 @@
 
   /* ---------- seamless texture ---------- */
   function texture(prompt, seed, size = 512) {
+    // Pixel-level noise ignores canvas transforms: render natively at the scaled size.
+    if (SCALE !== 1) { const sc = SCALE; SCALE = 1; try { return texture(prompt, seed, Math.round(size * sc)); } finally { SCALE = sc; } }
     const r = rng(seed);
     const p = prompt.toLowerCase();
     const cv = makeCanvas(size, size);
@@ -288,24 +313,26 @@
     const mix = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
     for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {
+        // Grid lines are laid out on the native 512 px tile at any output size.
+        const X = Math.floor((x * 512) / size), Y = Math.floor((y * 512) / size);
         let n = fbm(x, y), col;
         if (mode === "wood") {
           const ring = Math.sin((y / size) * Math.PI * 2 * 6 + n * 6) * 0.5 + 0.5;
           col = mix(pal[0], pal[2], ring * 0.7 + n * 0.3);
-          if (y % 128 < 3) col = mix(col, [20, 10, 4], 0.7);
+          if (Y % 128 < 3) col = mix(col, [20, 10, 4], 0.7);
         } else if (mode === "metal") {
           col = mix(pal[0], pal[2], 0.35 + n * 0.4);
-          if (x % 128 < 3 || y % 128 < 3) col = mix(col, [10, 12, 16], 0.6);
-          if ((x % 128 === 12 || x % 128 === 116) && (y % 128 === 12 || y % 128 === 116)) col = pal[2];
+          if (X % 128 < 3 || Y % 128 < 3) col = mix(col, [10, 12, 16], 0.6);
+          if ((X % 128 === 12 || X % 128 === 116) && (Y % 128 === 12 || Y % 128 === 116)) col = pal[2];
         } else if (mode === "lava") {
           const crack = Math.abs(n - 0.5) < 0.04 ? 1 : 0;
           col = crack ? mix(pal[2], [255, 220, 120], r() * 0.3) : mix(pal[0], pal[1], n);
         } else if (mode === "ice") {
           col = mix(pal[0], pal[2], n);
-          if (x % 128 < 2 || y % 128 < 2) col = mix(col, [255, 255, 255], 0.6);
+          if (X % 128 < 2 || Y % 128 < 2) col = mix(col, [255, 255, 255], 0.6);
         } else {
           col = n < 0.45 ? mix(pal[0], pal[1], n / 0.45) : mix(pal[1], pal[2], (n - 0.45) / 0.55);
-          const bx = x % 128, by = (y + (Math.floor(x / 128) % 2) * 64) % 128;
+          const bx = X % 128, by = (Y + (Math.floor(X / 128) % 2) * 64) % 128;
           if (bx < 4 || by < 4) col = mix(col, [25, 28, 22], 0.65);
         }
         const i = (y * size + x) * 4;
@@ -470,9 +497,9 @@
     const titleTxt = headline(prompt.replace(/\b\d+\s*(item\s*)?slots?\b|\d+\s*枠の?/gi, " ").replace(/\bwith\b/gi, " ").trim()) || "SHOP";
     ctx.fillStyle = accent; roundRect(ctx, px + pw / 2 - 200, py - 30, 400, 90, 28); ctx.fill(); ctx.stroke();
     let titleSize = 46;
-    ctx.font = `900 ${titleSize}px "Wix Madefor Display", "Zen Kaku Gothic New", sans-serif`;
+    ctx.font = `900 ${titleSize}px ${FACE}`;
     const tw = ctx.measureText(titleTxt).width;
-    if (tw > 360) { titleSize = Math.floor((titleSize * 360) / tw); ctx.font = `900 ${titleSize}px "Wix Madefor Display", "Zen Kaku Gothic New", sans-serif`; }
+    if (tw > 360) { titleSize = Math.floor((titleSize * 360) / tw); ctx.font = `900 ${titleSize}px ${FACE}`; }
     ctx.fillStyle = "#fff"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     ctx.lineWidth = 8; ctx.strokeText(titleTxt, px + pw / 2, py + 15); ctx.fillText(titleTxt, px + pw / 2, py + 15);
     // close button
@@ -503,7 +530,8 @@
     else if (has(p, "level", "chime", "レベル", "チャイム")) { kind = "chime"; dur = 1.2; }
     else if (has(p, "laser", "shot", "レーザー", "発射")) { kind = "laser"; dur = 0.5; }
     else if (has(p, "door", "ドア", "wood", "木", "impact", "hit")) { kind = "door"; dur = 0.7; }
-    else if (has(p, "magic", "spell", "魔法", "呪文")) { kind = "magic"; dur = 1.4; }
+    else if (has(p, "magic", "spell", "loot", "legendary", "drop", "魔法", "呪文", "レア", "ドロップ")) { kind = "magic"; dur = 1.4; }
+    else if (has(p, "sword", "swing", "whoosh", "剣", "振る")) { kind = "laser"; dur = 0.5; }
     else if (has(p, "click", "クリック", "button", "ボタン")) { kind = "click"; dur = 0.12; }
     const Ctx = window.OfflineAudioContext || window.webkitOfflineAudioContext;
     const ac = new Ctx(1, Math.ceil(sr * dur), sr);
@@ -601,5 +629,5 @@
     return cv;
   }
 
-  window.Gen = { hash, rng, thumbnail, texture, icon, clothing, gfx, ui, sfx, wavBlob, waveform };
+  window.Gen = { hash, rng, scaled, thumbnail, texture, icon, clothing, gfx, ui, sfx, wavBlob, waveform };
 })();

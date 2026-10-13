@@ -213,36 +213,49 @@
   }));
 
   /* ================= generated imagery ================= */
+  // Page art is drawn in small idle-time jobs, at the size it is shown, so
+  // the main thread never blocks for long.
   const accent = () => getComputedStyle(document.documentElement).getPropertyValue("--orange").trim() || "#fb923c";
-  function thumbURL(prompt, w) {
+  const DPR = Math.min(2, window.devicePixelRatio || 1);
+  const NATIVE = { thumbnail: [1280, 720], ui: [1280, 720], clothing: [585, 559] };
+  const nativeSize = (id) => NATIVE[id] || [512, 512];
+  const fitScale = (el, [w, h]) => Math.max((el.clientWidth * DPR) / w, (el.clientHeight * DPR) / h) || 0.5;
+
+  const idle = window.requestIdleCallback ? (fn) => requestIdleCallback(fn, { timeout: 500 }) : (fn) => setTimeout(fn, 16);
+  const jobs = [];
+  let pumping = false;
+  function schedule(job) { jobs.push(job); if (!pumping) { pumping = true; idle(pump); } }
+  function pump(deadline) {
+    do { const job = jobs.shift(); try { job(); } catch (e) { if (window.console) console.error(e); } }
+    while (jobs.length && deadline && deadline.timeRemaining && deadline.timeRemaining() > 12);
+    if (jobs.length) idle(pump); else pumping = false;
+  }
+
+  function ideaThumb(el) {
+    const prompt = T.ideas[+el.dataset.ideaImg] || T.ideas[0];
     // Same seed as the preview dialog, so a card matches what "Preview" opens.
-    const big = Gen.thumbnail(prompt, Gen.hash(prompt.toLowerCase() + "#0#thumbnail"));
-    const small = document.createElement("canvas");
-    small.width = w; small.height = Math.round((w * 9) / 16);
-    small.getContext("2d").drawImage(big, 0, 0, small.width, small.height);
-    return small.toDataURL("image/jpeg", 0.84);
+    const cv = Gen.scaled(fitScale(el, NATIVE.thumbnail), () => Gen.thumbnail(prompt, Gen.hash(prompt.toLowerCase() + "#0#thumbnail")));
+    el.style.backgroundImage = `url(${cv.toDataURL("image/jpeg", 0.84)})`;
   }
 
   function renderImagery() {
-    $$("[data-idea-img]").forEach((el) => { el.style.backgroundImage = `url(${thumbURL(T.ideas[+el.dataset.ideaImg] || T.ideas[0], 560)})`; });
-    $$("canvas[data-art]").forEach((cv) => {
-      const src = Gen[cv.dataset.art](cv.dataset.prompt, Gen.hash(cv.dataset.prompt));
+    $$("canvas[data-art]").forEach((cv) => schedule(() => {
+      const id = cv.dataset.art;
+      const src = Gen.scaled(fitScale(cv, nativeSize(id)), () => Gen[id](cv.dataset.prompt, Gen.hash(cv.dataset.prompt)));
       cv.width = src.width; cv.height = src.height;
-      const ctx = cv.getContext("2d");
-      ctx.clearRect(0, 0, cv.width, cv.height);
-      ctx.drawImage(src, 0, 0);
-    });
-    const slots = $$('[data-slot="sfx"]');
-    if (slots.length) {
+      cv.getContext("2d").drawImage(src, 0, 0);
+    }));
+    $$('[data-slot="sfx"]').forEach((slot) => schedule(() => {
       Gen.sfx("victory fanfare chime", 7).then((buf) => {
-        slots.forEach((slot) => {
-          if (slot.firstChild) return;
-          const w = Gen.waveform(buf, 480, 240, accent());
-          w.classList.add("wave");
-          slot.appendChild(w);
-        });
+        if (slot.firstChild) return;
+        const w = Gen.waveform(buf, Math.round(slot.clientWidth * DPR) || 480, Math.round(slot.clientHeight * DPR) || 240, accent());
+        w.classList.add("wave");
+        slot.appendChild(w);
       }).catch(() => {});
-    }
+    }));
+    // Small enough to draw right after the hero, so the page is complete
+    // even for visitors (and screenshot tools) that never scroll.
+    $$("[data-idea-img]").forEach((el) => schedule(() => ideaThumb(el)));
   }
 
   /* ================= utils ================= */
@@ -261,5 +274,7 @@
     toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
   }
 
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(renderImagery);
+  // Canvas text needs the display face; it is preloaded, so this resolves fast.
+  const fontReady = document.fonts && document.fonts.load ? document.fonts.load('800 40px "Wix Madefor Display"').catch(() => {}) : Promise.resolve();
+  fontReady.then(renderImagery);
 })();

@@ -61,9 +61,7 @@ function head({ lang, enPath, title, description, ogType, jsonld, noindex }) {
 <link rel="icon" href="${rel("assets/img/favicon-32.png")}" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="${rel("assets/img/apple-touch-icon.png")}">
 <link rel="manifest" href="${rel("site.webmanifest")}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600;700;800&amp;family=Wix+Madefor+Text:wght@400;500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap">
+${(lang === "ja" ? ["zen-kaku-900-ja-head.woff2"] : ["wix-madefor-display-latin.woff2", "wix-madefor-text-latin.woff2"]).map((f) => `<link rel="preload" href="${rel(`assets/fonts/${f}`)}" as="font" type="font/woff2" crossorigin>`).join("\n")}
 <link rel="stylesheet" href="${rel("assets/css/style.css")}">
 <script>(function(){try{var t=localStorage.getItem("blockgoer-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}
 try{if(/[?&]lang=/.test(location.search))return;var cur="${lang}",p=localStorage.getItem("blockgoer-lang");if(p&&p!==cur){location.replace(${JSON.stringify(altHref)}+location.hash);}}catch(e){}})();</script>
@@ -145,7 +143,7 @@ function footer({ lang, enPath, legal, isHome }) {
     </div>
     <div class="base-pay">
       <span>${S.footer.pay}</span>
-      ${cardBadges(SITE.cards, S.pricing.cardsTitle)}
+      ${cardBadges(SITE.cards, S.pricing.cardsTitle, rel("assets/img/cards.svg"))}
       <small>${esc(S.pricing.descriptor)}</small>
     </div>
     <p class="base-legal">${S.footer.copy} ${S.footer.notAffiliated}</p>
@@ -160,7 +158,10 @@ export function page(opts) {
   const S = STRINGS[lang];
   const path = langPath(lang, enPath);
   const rel = relFrom(path);
-  const runtime = { lang, checkoutUrl: SITE.checkoutUrl, email: FACTS.en.email, t: runtimeStrings(lang) };
+  // Each page carries only the runtime strings its script uses.
+  const all = runtimeStrings(lang);
+  const t = bodyClass === "home" ? all : bodyClass === "page-checkout" ? { checkout: all.checkout } : {};
+  const runtime = { lang, checkoutUrl: SITE.checkoutUrl, t };
   return prettyLinks(`<!DOCTYPE html>
 <html lang="${S.htmlLang}">
 ${head(opts)}

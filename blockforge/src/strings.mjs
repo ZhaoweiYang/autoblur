@@ -1,6 +1,7 @@
 /* Blockgoer — page copy for English and Japanese.
  * Facts (prices, trial, credits, company) come from config.mjs via FACTS so
- * copy and policies always agree. */
+ * copy and policies always agree. Billing, refund, descriptor and consent
+ * lines are compliance text: keep them literal when restyling the voice. */
 import { FACTS, PLAN, SITE } from "./config.mjs";
 
 const E = FACTS.en, J = FACTS.ja;
@@ -13,135 +14,135 @@ export const STRINGS = {
     ogLocale: "en_US",
     langName: "English",
     nav: {
-      assets: "Assets", process: "Process", prompts: "Prompts", pricing: "Pricing", faq: "FAQ", contact: "Contact",
+      assets: "Assets", process: "How it works", prompts: "Ideas", pricing: "Pricing", faq: "FAQ", contact: "Contact",
       cta: "Start free trial", menu: "Menu", theme: "Switch light/dark theme", skip: "Skip to content",
       lang: "Language", mainNav: "Main", homeLabel: "Blockgoer home"
     },
     meta: {
-      homeTitle: `Blockgoer: AI art and sound for game makers | 1-hour trial, ${E.price}/yr`,
-      homeDesc: `AI software for game creators that turns one sentence into cover art, icons, textures, shirts, UI kits or sound effects. ${E.trial}, then ${E.priceWithCode} a year.`,
+      homeTitle: `Blockgoer: AI game assets from one prompt | 1-hour trial, ${E.price}/yr`,
+      homeDesc: `Type one line, get game-ready thumbnails, icons, textures, shirts, UI kits and sound effects. ${E.trial}, then ${E.priceWithCode} a year.`,
       checkoutTitle: `Start your ${E.trial} — Blockgoer Pro`,
       checkoutDesc: `Review Blockgoer Pro before you start: ${E.trial}, then ${E.priceWithCode} once a year. Cancel anytime. 30-day money-back guarantee.`,
       contactTitle: "Contact Blockgoer — ARIELY WON THROUGH INC",
       contactDesc: `Email Blockgoer support at ${E.email}. Blockgoer is run by ${E.company} in Winona, Minnesota, USA.`,
       legalTitle: "Legal & policies — Blockgoer",
       legalDesc: "Terms of Service, Privacy, Refund, Cancellation, Delivery, Cookie, Accessibility, DMCA, Disclaimer and Do Not Sell or Share policies for Blockgoer.",
-      ogAlt: `Blockgoer — describe it, ship the asset. ${E.trial}, then ${E.price} per year.`
+      ogAlt: `Blockgoer — type it, drop it in your game. ${E.trial}, then ${E.price} per year.`
     },
     tools: {
-      thumbnail: "Cover art", icon: "Game icon", ui: "UI kit", texture: "Texture", clothing: "Avatar shirt", gfx: "Character render", sfx: "Sound effect"
+      thumbnail: "Thumbnail", icon: "Game icon", ui: "UI kit", texture: "Texture", clothing: "Avatar shirt", gfx: "Character render", sfx: "Sound effect"
     },
     toolsShort: {
-      thumbnail: "Cover art", icon: "Icon", ui: "UI kit", texture: "Texture", clothing: "Shirt", gfx: "Character", sfx: "Sound"
+      thumbnail: "Thumbnail", icon: "Icon", ui: "UI kit", texture: "Texture", clothing: "Shirt", gfx: "Character", sfx: "Sound"
     },
     prompt: {
-      thumbnail: { label: "Describe the cover art", ph: "a lighthouse on a floating island at dawn", btn: "Preview" },
-      icon: { label: "Describe the icon", ph: "a golden key with small wings", btn: "Preview" },
-      ui: { label: "Describe the screen", ph: "a crafting table with glowing slots", btn: "Preview" },
-      texture: { label: "Describe the surface", ph: "wet cobblestone after rain", btn: "Preview" },
-      clothing: { label: "Describe the shirt", ph: "a denim jacket with star patches", btn: "Preview" },
-      gfx: { label: "Describe the character", ph: "a fox mechanic holding a wrench", btn: "Preview" },
-      sfx: { label: "Describe the sound", ph: "a metal door sliding open", btn: "Preview" }
+      thumbnail: { label: "Describe your thumbnail", ph: "a noob dodging lava on a neon obby", btn: "Preview" },
+      icon: { label: "Describe your icon", ph: "a 2x coins game pass badge", btn: "Preview" },
+      ui: { label: "Describe the screen", ph: "a pet shop with rarity frames", btn: "Preview" },
+      texture: { label: "Describe the surface", ph: "mossy dungeon bricks", btn: "Preview" },
+      clothing: { label: "Describe the shirt", ph: "a racing jersey with flame stripes", btn: "Preview" },
+      gfx: { label: "Describe the character", ph: "a ninja landing on a rooftop", btn: "Preview" },
+      sfx: { label: "Describe the sound", ph: "a legendary drop from a loot chest", btn: "Preview" }
     },
     chips: {
-      thumbnail: ["haunted lighthouse at dawn", "boss fight inside a volcano", "tiny village under a giant moon", "racing through a neon tunnel", "ice cave treasure hunt"],
-      icon: ["winged key", "mana crystal", "speed boots", "pirate flag", "rainbow egg"],
-      ui: ["crafting table", "settings menu", "leaderboard", "pet shop", "daily rewards"],
-      texture: ["wet cobblestone", "lava rock", "bamboo planks", "snow drift", "brushed copper"],
-      clothing: ["denim jacket", "rocket-launch tee", "knight's tabard", "camo hoodie", "striped pirate shirt"],
-      gfx: ["fox mechanic", "ninja on a rooftop", "tiny wizard", "space cadet", "viking captain"],
-      sfx: ["metal door sliding open", "coin shower", "spell charging up", "button click", "footsteps on gravel"]
+      thumbnail: ["boss fight inside a volcano", "noob vs pro speedrun", "escape the haunted school", "tycoon empire at sunset", "legendary pet hatching"],
+      icon: ["2x coins badge", "VIP crown pass", "speed coil", "mana crystal", "mystery egg"],
+      ui: ["daily rewards", "pet inventory", "rarity shop", "leaderboard", "settings menu"],
+      texture: ["mossy dungeon bricks", "lava rock", "sci-fi floor panels", "snow drift", "pirate ship planks"],
+      clothing: ["racing jersey", "camo hoodie", "knight armor shirt", "galaxy tee", "pirate captain coat"],
+      gfx: ["ninja on a rooftop", "tiny wizard casting", "space cadet", "viking captain", "fox mechanic"],
+      sfx: ["coin pickup", "legendary loot drop", "level up jingle", "door creak", "sword swing"]
     },
     hero: {
-      kicker: "AI studio for game makers",
-      title1: "Describe it.", title2: "Ship the asset.",
-      sub: "Blockgoer makes cover art, icons, textures, avatar shirts, characters, UI kits and sound effects from a single sentence, already sized for the platform you publish on.",
+      kicker: "AI asset studio for game devs",
+      title1: "Type it.", title2: "Drop it in your game.",
+      sub: "Thumbnails, icons, textures, avatar shirts, character renders, UI kits and sound effects from one line of text. Every file comes out at the size your game needs, ready for your next update.",
       aboutLabel: "What is Blockgoer?",
       askLabel: "What do you need?",
       makeLabel: "Make",
       submit: "Preview",
       note: `Previews are free and run in your browser. Blockgoer Pro starts with a ${E.trial}, then ${E.priceWithCode} a year.`,
       examples: "Try:",
-      stripTitle: "Browser sketches",
-      stripNote: "Quick previews drawn on your device. Pro makes the full AI version."
+      stripTitle: "Live sketches",
+      stripNote: "Drawn on your device as the page loads. Pro renders the full AI version."
     },
     assets: {
-      kicker: "Assets",
-      title: "Seven assets.<br>One text box.",
-      sub: "Choose what you need and Blockgoer sets the size and file format for you. Every type is included in Blockgoer Pro.",
+      kicker: "Your loadout",
+      title: "Seven asset types.<br>One prompt bar.",
+      sub: "Pick a slot and Blockgoer sets the size and file format. Every type is unlocked in Blockgoer Pro.",
       open: "Try a preview",
       items: {
-        thumbnail: { spec: "1920 × 1080 · PNG", desc: "Wide 16:9 cover art with a clear subject, big lettering and strong contrast." },
-        icon: { spec: "512 × 512 · transparent PNG", desc: "Square icons on a clear background for badges, passes and store tiles." },
-        ui: { spec: "Image + layer list", desc: "A shop, inventory or HUD as one picture plus a list of its frames, labels and buttons." },
-        texture: { spec: "512 × 512 · seamless PNG", desc: "Surfaces that tile without visible seams: stone, metal, wood, sand, lava and more." },
-        clothing: { spec: "585 × 559 · shirt template", desc: "Your design painted on the standard shirt template so it wraps the avatar correctly." },
-        gfx: { spec: "512 × 512 · PNG", desc: "A dramatic render of a blocky character for posters, covers and social posts." },
-        sfx: { spec: "WAV · 44.1 kHz", desc: "Short effects for pickups, clicks, doors and spells, made from a few words." }
+        thumbnail: { spec: "1920 × 1080 · PNG", desc: "16:9 thumbnails with a clear hero, big readable text and colors that stand out in a busy game list." },
+        icon: { spec: "512 × 512 · transparent PNG", desc: "Square icons on a transparent background for game passes, badges and shop tiles." },
+        ui: { spec: "Image + layer list", desc: "Shops, inventories and HUDs as one image plus a list of every frame, label and button." },
+        texture: { spec: "512 × 512 · seamless PNG", desc: "Seamless surfaces for floors, walls and terrain: stone, metal, wood, sand, lava and more." },
+        clothing: { spec: "585 × 559 · shirt template", desc: "Your design painted on the standard shirt template, so it wraps the avatar cleanly." },
+        gfx: { spec: "512 × 512 · PNG", desc: "Posed character renders (GFX) for thumbnails, group banners and social posts." },
+        sfx: { spec: "WAV · 44.1 kHz", desc: "Short sounds for pickups, clicks, doors, hits and spells, made from a few words." }
       }
     },
     groups: {
-      kicker: "What will you make?",
-      title: "Pictures, parts and sound.",
+      kicker: "Pick your build",
+      title: "Art, parts and sound for your next update.",
       items: [
-        { title: "Pictures", body: "Cover art, icons and character renders for store pages, feeds and posters.", cta: "Make a picture", tool: "thumbnail" },
-        { title: "Parts of the game", body: "Textures, avatar shirts and UI kits that go straight into your project.", cta: "Make a game part", tool: "texture" },
-        { title: "Sound", body: "Short effects for pickups, buttons, doors and spells, ready to drop into a scene.", cta: "Make a sound", tool: "sfx" }
+        { title: "Store-page art", body: "Thumbnails, icons and character renders for your game page, passes and socials.", cta: "Make store art", tool: "thumbnail" },
+        { title: "In-game parts", body: "Textures, avatar shirts and UI kits you can drop straight into your project.", cta: "Make a game part", tool: "texture" },
+        { title: "Sound", body: "Pickups, buttons, doors, hits and spells. Short effects ready for any scene.", cta: "Make a sound", tool: "sfx" }
       ]
     },
     built: {
-      title: "Sized right.<br>Licensed right.",
+      title: "Sized to spec.<br>Yours to ship.",
       items: [
-        ["The right size from the start", "Each asset type comes out at the dimensions and format your platform asks for."],
-        ["Variations on demand", "Not quite it? Ask for another take and keep the one that fits."],
-        ["Yours to use", "Use what you make commercially, monetized games included. We never train models on your prompts or files."],
+        ["Sized to spec", "Every asset type exports at the dimensions and format your platform expects. No resizing before upload."],
+        ["Reroll anytime", "Not feeling it? Roll another variation and keep the one that fits."],
+        ["Yours to ship", "Use what you make commercially, monetized games included. We never train models on your prompts or files."],
         ["English and Japanese", "The whole site and workspace work in both languages."]
       ]
     },
     numbers: [
-      ["7", "asset types in one workspace"],
-      [E.credits, "credits with every paid year"],
-      ["1 hr", "free trial before the first charge"],
+      ["7", "asset types, one workspace"],
+      [E.credits, "credits every paid year"],
+      ["1 hr", "free trial before any charge"],
       ["30 days", "money-back guarantee on unused credits"]
     ],
     how: {
-      kicker: "Process",
-      title: "From a sentence<br>to a file.",
+      kicker: "How it works",
+      title: "Three steps<br>to a finished file.",
       steps: [
-        ["Pick the asset", "Choose one of the seven types. Size and format are already set."],
-        ["Say what you see", "Write the subject and the mood. Add a reference image if you want a particular style."],
-        ["Download it", "Make variations, keep your favorite and save it as PNG or WAV."]
+        ["Pick your asset", "Choose one of seven types. Size and format are locked in for you."],
+        ["Describe the vibe", "Type the subject and the mood. Add a reference image if you want a specific style."],
+        ["Grab the file", "Roll variations, keep your favorite and download it as PNG or WAV."]
       ]
     },
     ideas: {
-      kicker: "Prompts",
-      title: "Stuck? Start from a scene.",
-      sub: "Pick a prompt and your browser sketches a rough cover. Blockgoer Pro turns the same idea into full-resolution AI art.",
+      kicker: "Ideas",
+      title: "Stuck? Grab a prompt.",
+      sub: "Tap a prompt and your browser sketches a rough thumbnail. Blockgoer Pro turns the same idea into full-resolution AI art.",
       badge: "Browser sketch",
       use: "Preview",
       items: [
-        ["Simulator", "a drill rig tearing through glowing ore"],
-        ["Simulator", "a baby slime growing into a giant"],
-        ["Obby", "neon platforms over a bottomless pit"],
+        ["Simulator", "a drill rig smashing through glowing ore"],
+        ["Simulator", "a baby slime leveling up into a giant"],
+        ["Obby", "neon platforms over a bottomless void"],
         ["Obby", "a moving bridge, three seconds to cross"],
-        ["Tycoon", "a lemonade stand turned skyscraper"],
+        ["Tycoon", "a lemonade stand upgraded to a skyscraper"],
         ["Tycoon", "a vault door opening on a mountain of gold"],
-        ["Horror", "a flickering lantern in a flooded basement"],
-        ["Horror", "a figure waiting at the end of the hall"],
-        ["Adventure", "a raft drifting toward a waterfall"],
-        ["Adventure", "a lone hiker spotting a hidden ruin"]
+        ["Horror", "a flashlight flickering in a flooded basement"],
+        ["Horror", "something waiting at the end of the hall"],
+        ["Adventure", "a raft racing toward a giant waterfall"],
+        ["Adventure", "a hidden temple behind the jungle vines"]
       ]
     },
     pricing: {
       kicker: "Pricing",
-      title: "One plan,<br>plainly priced.",
-      sub: `Everything in Blockgoer comes in one yearly plan. Prices on this page are in ${E.currencyName}.`,
+      title: "One plan.<br>Everything unlocked.",
+      sub: `Every asset type and every feature in one yearly plan. Prices on this page are in ${E.currencyName}.`,
       free: {
         name: "Preview mode",
         price: `${E.price.replace(/\d[\d.,]*/, "0")}`,
         per: "no account",
         tag: "Free",
-        features: ["Sketch all seven asset types in your browser", "Download your previews", "Runs on your device; what you type is not sent to us"],
+        features: ["Sketch all seven asset types in your browser", "Download your sketches", "Runs on your device; what you type is not sent to us"],
         cta: "Try a preview"
       },
       planName: "Blockgoer Pro",
@@ -152,7 +153,7 @@ export const STRINGS = {
       keyTerms: `${E.trial}, then ${E.price} billed once a year. Renews automatically every 12 months. Cancel anytime.`,
       features: [
         `${E.credits} credits with every paid year (1 credit = 1 asset; a UI kit takes 4)`,
-        "All seven asset types, from cover art (game thumbnails) to sound effects",
+        "All seven asset types, from thumbnails to sound effects",
         "Full-resolution PNG and WAV downloads",
         "Commercial use, monetized games included",
         "English and Japanese interface",
@@ -180,7 +181,7 @@ export const STRINGS = {
     },
     faq: {
       kicker: "FAQ",
-      title: "Good questions.<br>Straight answers.",
+      title: "Questions before<br>you press start.",
       items: [
         ["How does the 1-hour free trial work?", `Start the trial with a credit or debit card. For 1 hour you get full Pro access and ${E.trialCredits} trial credits, and nothing is charged. When the hour ends, your card is automatically charged ${E.priceWithCode} (plus any applicable sales tax or VAT) for 12 months of Blockgoer Pro, unless you cancel before then. One trial per person and per payment card.`],
         ["When exactly will I be charged?", `Exactly 1 hour after you start the trial, then every 12 months on the same date until you cancel. We email a reminder at least ${E.reminderDays} days before every renewal and a receipt after every charge. Renewals are at the then-current annual price (now ${E.price}).`],
@@ -188,15 +189,15 @@ export const STRINGS = {
         ["How do I cancel?", "Go to Account → Billing → Cancel subscription, or email support from your account email. Cancel within the trial hour and you are never charged. Cancel after a charge and you keep Pro and your remaining credits until the end of the paid year, with no further charges."],
         ["What is the 30-Day Money-Back Guarantee?", `Full refund on unused credits. No questions asked. Within ${E.refundDays} days of any annual charge, ask for a refund and we return the annual fee × unused credits ÷ ${E.credits}. If you haven't used any credits, that's the full ${E.price}. Refunds go back to your original card within 5 business days; your bank may take 5–10 business days to show it. A refund ends your subscription and removes that year's remaining credits; assets you already made stay yours.`],
         ["What does Blockgoer Pro include?", `${E.credits} credits per paid year, all 7 asset types, full-resolution PNG and WAV downloads, commercial use of your assets, and an English and Japanese interface. Unused credits expire at the end of each paid year.`],
-        ["How many credits does each asset use?", `Cover art, icons, textures, avatar shirts, character renders and sound effects use ${PLAN.creditCosts.thumbnail} credit each. A UI kit uses ${PLAN.creditCosts.ui} credits. If a generation fails, its credits are returned automatically.`],
+        ["How many credits does each asset use?", `Thumbnails, icons, textures, avatar shirts, character renders and sound effects use ${PLAN.creditCosts.thumbnail} credit each. A UI kit uses ${PLAN.creditCosts.ui} credits. If a generation fails, its credits are returned automatically.`],
         ["Which payment methods and currencies do you accept?", `Visa, Mastercard, American Express, JCB and Discover credit and debit cards. On this site Blockgoer Pro is ${E.price} per year, charged in US dollars (USD); any sales tax or VAT for your location is shown at checkout before you confirm. Our Japanese site lists its own price in Japanese yen.`],
         ["Is preview mode free?", "Yes. Preview mode draws a quick, rough sketch in your browser, on your own device. It needs no account, uses no credits and isn't the AI output. Blockgoer Pro generates the full-resolution AI assets."],
-        ["Can I use the assets commercially?", "Yes. You own the assets you generate (as far as the law allows) and can use them commercially, including in monetized games. We don't use your prompts, uploads or assets to train AI models."],
+        ["Can I use the assets in my game and sell it?", "Yes. You own the assets you generate (as far as the law allows) and can use them commercially, including in monetized games. We don't use your prompts, uploads or assets to train AI models."],
         ["Is Blockgoer affiliated with Roblox or other game platforms?", "No. Blockgoer is an independent product of ARIELY WON THROUGH INC and isn't affiliated with, endorsed by or sponsored by Roblox Corporation or any other game platform."]
       ]
     },
     cta: {
-      title: "Your next update<br>deserves better art.",
+      title: "Your next update<br>starts with one prompt.",
       sub: `Sketch a free preview now, or start Blockgoer Pro with a ${E.trial}. After the trial it's ${E.price} a year.`,
       trial: "Start 1-hour free trial",
       preview: "Try a free preview"
@@ -211,7 +212,7 @@ export const STRINGS = {
     checkout: {
       eyebrow: "Checkout",
       title: "Start your 1-hour free trial",
-      sub: "See exactly what happens before you add a card.",
+      sub: "Here's exactly what happens before you add a card. No surprises.",
       summary: "Order summary",
       plan: "Blockgoer Pro — yearly plan",
       today: "Due today",
@@ -247,7 +248,7 @@ export const STRINGS = {
     contact: {
       eyebrow: "Contact",
       title: "Contact Blockgoer",
-      sub: `Questions about your account, billing or the product? Email us and we reply ${E.supportResponse}, in English or Japanese.`,
+      sub: `Stuck on billing, your account or a prompt? Email us and we reply ${E.supportResponse}, in English or Japanese.`,
       emailTitle: "Email support",
       companyTitle: "Company",
       legalName: "Legal name",
@@ -280,11 +281,11 @@ export const STRINGS = {
       title: "Browser sketch",
       demo: "A rough sketch drawn in your browser. Blockgoer Pro creates the full-resolution AI version.",
       generating: "Sketching your preview…",
-      download: "Download preview",
-      again: "Another variation",
+      download: "Download sketch",
+      again: "Reroll",
       close: "Close",
       play: "Play sound",
-      empty: "Write a short description first.",
+      empty: "Type a short description first.",
       error: "This preview couldn't be drawn in your browser. Try another asset type or a different browser.",
       size: "Preview size",
       cost: "With Pro",
@@ -298,135 +299,135 @@ export const STRINGS = {
     ogLocale: "ja_JP",
     langName: "日本語",
     nav: {
-      assets: "アセット", process: "流れ", prompts: "プロンプト", pricing: "料金", faq: "よくある質問", contact: "お問い合わせ",
+      assets: "アセット", process: "使い方", prompts: "アイデア", pricing: "料金", faq: "よくある質問", contact: "お問い合わせ",
       cta: "無料トライアル", menu: "メニュー", theme: "ライト／ダークテーマ切替", skip: "本文へスキップ",
       lang: "言語", mainNav: "メインメニュー", homeLabel: "Blockgoer ホーム"
     },
     meta: {
-      homeTitle: `Blockgoer｜ゲーム制作者のためのAI素材｜1時間無料、以降年額${J.price}（税込）`,
-      homeDesc: `ゲーム制作者向けのAIオンラインソフト。ひとことの説明からカバー画像、アイコン、テクスチャ、シャツ、キャラクター、UIキット、効果音を作成。${J.trial}のあと${J.pricePerYear}。`,
+      homeTitle: `Blockgoer｜ひとことでゲーム素材をつくるAI｜1時間無料、以降年額${J.price}（税込）`,
+      homeDesc: `ゲーム制作者向けのAI素材ツール。ひとことでサムネイル、アイコン、テクスチャ、シャツ、UIキット、効果音を作成。${J.trial}のあと${J.pricePerYear}。`,
       checkoutTitle: `${J.trial}を開始 — Blockgoer Pro`,
       checkoutDesc: `開始前にご確認ください：${J.trial}のあと、${J.pricePerYear}を年1回お支払い。いつでも解約でき、未使用クレジット分は30日間全額返金します。`,
       contactTitle: "お問い合わせ — Blockgoer（ARIELY WON THROUGH INC）",
       contactDesc: `Blockgoer サポート：${J.email}。Blockgoer は ${J.company}（米国ミネソタ州ウィノナ）が運営しています。`,
       legalTitle: "規約・ポリシー一覧 — Blockgoer",
       legalDesc: "Blockgoer の利用規約、プライバシー、返金、解約、配送・提供、Cookie、アクセシビリティ、DMCA、免責事項、個人情報の販売・共有の拒否、特定商取引法に基づく表記。",
-      ogAlt: `Blockgoer — 言葉にすれば、素材になる。${J.trial}、以降${J.pricePerYear}。`
+      ogAlt: `Blockgoer — 思いついたら、そのままゲームへ。${J.trial}、以降${J.pricePerYear}。`
     },
     tools: {
-      thumbnail: "カバー画像", icon: "ゲームアイコン", ui: "UIキット", texture: "テクスチャ", clothing: "アバター用シャツ", gfx: "キャラクター画像", sfx: "効果音"
+      thumbnail: "サムネイル", icon: "ゲームアイコン", ui: "UIキット", texture: "テクスチャ", clothing: "アバター用シャツ", gfx: "キャラクター画像", sfx: "効果音"
     },
     toolsShort: {
-      thumbnail: "カバー", icon: "アイコン", ui: "UIキット", texture: "テクスチャ", clothing: "シャツ", gfx: "キャラ", sfx: "効果音"
+      thumbnail: "サムネ", icon: "アイコン", ui: "UIキット", texture: "テクスチャ", clothing: "シャツ", gfx: "キャラ", sfx: "効果音"
     },
     prompt: {
-      thumbnail: { label: "カバー画像の内容", ph: "夜明けに浮かぶ島の灯台", btn: "プレビュー" },
-      icon: { label: "アイコンの内容", ph: "小さな翼のついた金の鍵", btn: "プレビュー" },
-      ui: { label: "画面の内容", ph: "光る枠のある作業台", btn: "プレビュー" },
-      texture: { label: "素材感の内容", ph: "雨上がりの濡れた石畳", btn: "プレビュー" },
-      clothing: { label: "シャツのデザイン", ph: "星のワッペンがついたデニムジャケット", btn: "プレビュー" },
-      gfx: { label: "キャラクターの内容", ph: "レンチを持つキツネの整備士", btn: "プレビュー" },
-      sfx: { label: "効果音の内容", ph: "金属の扉がスライドして開く音", btn: "プレビュー" }
+      thumbnail: { label: "サムネイルの内容", ph: "ネオンのアスレチックで溶岩をよける初心者", btn: "プレビュー" },
+      icon: { label: "アイコンの内容", ph: "コイン2倍のゲームパス用バッジ", btn: "プレビュー" },
+      ui: { label: "画面の内容", ph: "レア度で枠の色が変わるペットショップ", btn: "プレビュー" },
+      texture: { label: "素材感の内容", ph: "苔むしたダンジョンのレンガ", btn: "プレビュー" },
+      clothing: { label: "シャツのデザイン", ph: "炎のラインが入ったレーシングジャージ", btn: "プレビュー" },
+      gfx: { label: "キャラクターの内容", ph: "屋根の上に着地する忍者", btn: "プレビュー" },
+      sfx: { label: "効果音の内容", ph: "宝箱からレアアイテムが出る音", btn: "プレビュー" }
     },
     chips: {
-      thumbnail: ["夜明けの幽霊灯台", "火山の中のボス戦", "巨大な月の下の小さな村", "ネオンのトンネルを疾走", "氷の洞窟で宝探し"],
-      icon: ["翼のある鍵", "マナ水晶", "スピードブーツ", "海賊旗", "虹色の卵"],
-      ui: ["作業台", "設定メニュー", "ランキング", "ペットショップ", "デイリー報酬"],
-      texture: ["濡れた石畳", "溶岩の岩肌", "竹の板", "雪の吹きだまり", "磨いた銅板"],
-      clothing: ["デニムジャケット", "ロケット発射Tシャツ", "騎士の陣羽織", "迷彩パーカー", "ボーダーの海賊シャツ"],
-      gfx: ["キツネの整備士", "屋根の上の忍者", "小さな魔法使い", "宇宙の訓練生", "バイキングの船長"],
-      sfx: ["金属の扉が開く音", "コインが降る音", "呪文のチャージ音", "ボタンのクリック音", "砂利を歩く足音"]
+      thumbnail: ["火山の中のボス戦", "初心者vs上級者スピードラン", "呪われた学校から脱出", "夕焼けのタイクーン帝国", "伝説ペットが誕生"],
+      icon: ["コイン2倍バッジ", "VIP王冠パス", "スピードコイル", "マナ水晶", "ミステリーエッグ"],
+      ui: ["デイリー報酬", "ペットのインベントリ", "レア枠ショップ", "ランキング", "設定メニュー"],
+      texture: ["苔むしたレンガ", "溶岩の岩肌", "SF風の床パネル", "雪の吹きだまり", "海賊船の甲板"],
+      clothing: ["レーシングジャージ", "迷彩パーカー", "騎士のよろいシャツ", "銀河Tシャツ", "海賊船長のコート"],
+      gfx: ["屋根の上の忍者", "呪文を唱える魔法使い", "宇宙の訓練生", "バイキングの船長", "キツネの整備士"],
+      sfx: ["コインを拾う音", "レアドロップの音", "レベルアップのジングル", "きしむドア", "剣を振る音"]
     },
     hero: {
-      kicker: "ゲーム制作者のためのAIスタジオ",
-      title1: "言葉にすれば、", title2: "素材になる。",
-      sub: "カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター、UIキット、効果音を、ひとことの説明から作成。公開先のプラットフォームに合わせたサイズで書き出します。",
+      kicker: "ゲーム制作者のためのAI素材スタジオ",
+      title1: "思いついたら、", title2: "そのままゲームへ。",
+      sub: "サムネイル、アイコン、テクスチャ、アバター用シャツ、キャラクター、UIキット、効果音を、ひとことの説明から作成。どれもゲームに必要なサイズで書き出すので、次のアップデートにそのまま使えます。",
       aboutLabel: "Blockgoerとは",
       askLabel: "何が必要ですか？",
       makeLabel: "種類",
       submit: "プレビュー",
       note: `プレビューは無料で、ブラウザ上で動きます。Blockgoer Pro は${J.trial}から始まり、その後は${J.pricePerYear}です。`,
       examples: "例：",
-      stripTitle: "ブラウザのスケッチ",
-      stripNote: "お使いの端末で描く簡易プレビューです。AI による本番版は Pro で作成します。"
+      stripTitle: "その場で描くスケッチ",
+      stripNote: "ページを開いたときにお使いの端末で描いたラフです。AI による本番版は Pro で作成します。"
     },
     assets: {
-      kicker: "アセット",
-      title: "7種類のアセットを、<br>ひとつの入力欄から。",
-      sub: "必要なものを選ぶだけで、サイズとファイル形式は自動で設定されます。すべての種類が Blockgoer Pro に含まれます。",
+      kicker: "ロードアウト",
+      title: "7種類の素材を、<br>ひとつの入力欄で。",
+      sub: "スロットを選ぶだけで、サイズとファイル形式は自動でセット。すべての種類が Blockgoer Pro で使えます。",
       open: "プレビューを試す",
       items: {
-        thumbnail: { spec: "1920 × 1080 · PNG", desc: "主役がはっきり、文字が大きく、コントラストの強い 16:9 のカバー画像。" },
-        icon: { spec: "512 × 512 · 透過PNG", desc: "背景が透明な正方形アイコン。バッジ、パス、ストア用の画像に。" },
+        thumbnail: { spec: "1920 × 1080 · PNG", desc: "主役がはっきりして文字が大きく、ゲーム一覧の中でも目立つ 16:9 のサムネイル。" },
+        icon: { spec: "512 × 512 · 透過PNG", desc: "背景透過の正方形アイコン。ゲームパス、バッジ、ショップのタイルに。" },
         ui: { spec: "画像＋レイヤー一覧", desc: "ショップ、インベントリ、HUD を1枚の画像と、フレーム・ラベル・ボタンの一覧でお届け。" },
-        texture: { spec: "512 × 512 · シームレスPNG", desc: "つなぎ目が見えずに繰り返せる素材。石、金属、木、砂、溶岩など。" },
-        clothing: { spec: "585 × 559 · シャツテンプレート", desc: "標準のシャツテンプレートにデザインを描くので、アバターにきれいに巻き付きます。" },
-        gfx: { spec: "512 × 512 · PNG", desc: "ブロック調キャラクターの迫力あるレンダー。ポスター、カバー、SNS投稿に。" },
-        sfx: { spec: "WAV · 44.1 kHz", desc: "アイテム取得、クリック、ドア、魔法などの短い効果音を、数語の説明から。" }
+        texture: { spec: "512 × 512 · シームレスPNG", desc: "床・壁・地形に使えるシームレス素材。石、金属、木、砂、溶岩など。" },
+        clothing: { spec: "585 × 559 · シャツテンプレート", desc: "標準のシャツテンプレートに描くので、アバターにきれいに巻き付きます。" },
+        gfx: { spec: "512 × 512 · PNG", desc: "ポーズを決めたキャラクターのレンダー（GFX）。サムネイル、グループのバナー、SNSに。" },
+        sfx: { spec: "WAV · 44.1 kHz", desc: "アイテム取得、クリック、ドア、ヒット、魔法などの短い効果音を、数語の説明から。" }
       }
     },
     groups: {
-      kicker: "何をつくりますか？",
-      title: "絵も、パーツも、音も。",
+      kicker: "何をつくる？",
+      title: "次のアップデートに、絵もパーツも音も。",
       items: [
-        { title: "絵", body: "ストアページ、おすすめ欄、ポスターに使うカバー画像、アイコン、キャラクター画像。", cta: "絵をつくる", tool: "thumbnail" },
-        { title: "ゲームのパーツ", body: "そのままプロジェクトに入れられるテクスチャ、アバター用シャツ、UIキット。", cta: "パーツをつくる", tool: "texture" },
-        { title: "音", body: "アイテム取得、ボタン、ドア、魔法などの短い効果音。シーンにすぐ組み込めます。", cta: "音をつくる", tool: "sfx" }
+        { title: "ストア用の絵", body: "ゲームページ、パス、SNSで使うサムネイル、アイコン、キャラクター画像。", cta: "絵をつくる", tool: "thumbnail" },
+        { title: "ゲーム内パーツ", body: "プロジェクトにそのまま入れられるテクスチャ、アバター用シャツ、UIキット。", cta: "パーツをつくる", tool: "texture" },
+        { title: "音", body: "アイテム取得、ボタン、ドア、ヒット、魔法。どのシーンにも使える短い効果音。", cta: "音をつくる", tool: "sfx" }
       ]
     },
     built: {
-      title: "サイズも、<br>権利も、安心。",
+      title: "サイズはぴったり。<br>商用利用もOK。",
       items: [
-        ["最初から正しいサイズ", "どの種類も、プラットフォームが求める寸法と形式で出力します。"],
-        ["バリエーションは何度でも", "イメージと違えば別案を依頼して、ぴったりのものを選べます。"],
-        ["そのまま使える", "収益化ゲームを含む商用利用ができます。お客様のプロンプトやファイルを AI の学習に使うことはありません。"],
+        ["最初から規定サイズ", "どの種類もプラットフォームが求める寸法と形式で書き出すので、アップロード前のリサイズは不要です。"],
+        ["何度でもリロール", "イメージと違えば別のバリエーションを出して、しっくりくるものを選べます。"],
+        ["そのまま公開できる", "収益化ゲームを含む商用利用ができます。お客様のプロンプトやファイルを AI の学習に使うことはありません。"],
         ["日本語と英語に対応", "サイトもワークスペースも、2つの言語で使えます。"]
       ]
     },
     numbers: [
-      ["7", "種類のアセットをひとつの場所で"],
+      ["7", "種類の素材をひとつの場所で"],
       [J.credits, "クレジット（有料期間1年ごと）"],
-      ["1時間", "最初の請求前の無料トライアル"],
+      ["1時間", "請求前の無料トライアル"],
       ["30日間", "未使用クレジットの返金保証"]
     ],
     how: {
-      kicker: "流れ",
-      title: "ひとことから、<br>ファイルまで。",
+      kicker: "使い方",
+      title: "3ステップで、<br>ファイルが手元に。",
       steps: [
-        ["アセットを選ぶ", "7種類から選びます。サイズと形式は設定済みです。"],
-        ["見えているものを言葉に", "主役と雰囲気を書くだけ。スタイルを指定したいときは参考画像も添付できます。"],
-        ["ダウンロードする", "バリエーションを作り、気に入ったものを PNG または WAV で保存。"]
+        ["素材を選ぶ", "7種類から選ぶだけ。サイズと形式はセット済みです。"],
+        ["イメージを伝える", "主役と雰囲気を書くだけ。スタイルを指定したいときは参考画像も添えられます。"],
+        ["ファイルを受け取る", "バリエーションを出して、お気に入りを PNG または WAV でダウンロード。"]
       ]
     },
     ideas: {
-      kicker: "プロンプト",
-      title: "迷ったら、情景から。",
-      sub: "プロンプトを選ぶと、ブラウザ上でラフなカバーを描きます。同じアイデアを Blockgoer Pro ならフル解像度の AI 作品に仕上げられます。",
+      kicker: "アイデア",
+      title: "ネタ切れなら、ここから選ぼう。",
+      sub: "プロンプトをタップすると、ブラウザ上でラフなサムネイルを描きます。同じアイデアを Blockgoer Pro ならフル解像度の AI 作品に仕上げられます。",
       badge: "ブラウザスケッチ",
       use: "プレビュー",
       items: [
-        ["シミュレーター", "光る鉱石を掘り進むドリル"],
-        ["シミュレーター", "巨大に育つ赤ちゃんスライム"],
-        ["アスレチック", "底なしの穴にかかるネオンの足場"],
-        ["アスレチック", "渡るまで3秒の動く橋"],
-        ["タイクーン", "レモネード屋からビルへの大出世"],
+        ["シミュレーター", "光る鉱石を砕き進むドリル"],
+        ["シミュレーター", "レベルアップで巨大化するスライム"],
+        ["アスレチック", "底なしの闇に浮かぶネオンの足場"],
+        ["アスレチック", "渡れるのは3秒だけの動く橋"],
+        ["タイクーン", "レモネード屋から超高層ビルへ"],
         ["タイクーン", "金の山へ開く金庫の扉"],
-        ["ホラー", "水浸しの地下室で揺れるランタン"],
-        ["ホラー", "廊下の突き当たりで待つ人影"],
-        ["アドベンチャー", "滝へ流されていくいかだ"],
-        ["アドベンチャー", "隠れた遺跡を見つけた旅人"]
+        ["ホラー", "水浸しの地下室で揺れる懐中電灯"],
+        ["ホラー", "廊下の突き当たりで待つ何か"],
+        ["アドベンチャー", "巨大な滝へ突き進むいかだ"],
+        ["アドベンチャー", "ジャングルの奥に隠れた神殿"]
       ]
     },
     pricing: {
       kicker: "料金",
-      title: "プランはひとつ。<br>価格は明快。",
-      sub: `Blockgoer のすべての機能が、ひとつの年額プランに含まれます。このページの価格は${J.currencyName}・税込です。`,
+      title: "プランはひとつ。<br>全部使える。",
+      sub: `すべての素材とすべての機能が、ひとつの年額プランに。このページの価格は${J.currencyName}・税込です。`,
       free: {
         name: "プレビューモード",
         price: "¥0",
         per: "アカウント不要",
         tag: "無料",
-        features: ["7種類のアセットをブラウザでスケッチ", "プレビューを保存可能", "お使いの端末内で動作し、入力内容は当社に送信されません"],
+        features: ["7種類の素材をブラウザでスケッチ", "スケッチを保存可能", "お使いの端末内で動作し、入力内容は当社に送信されません"],
         cta: "プレビューを試す"
       },
       planName: "Blockgoer Pro",
@@ -437,7 +438,7 @@ export const STRINGS = {
       keyTerms: `${J.trial}のあと、${J.price}（税込）を年1回お支払い。12か月ごとに自動更新され、いつでも解約できます。`,
       features: [
         `有料期間1年ごとに ${J.credits} クレジット（1クレジット＝アセット1点。UIキットは4クレジット）`,
-        "7種類のアセットすべて：カバー画像（サムネイル）から効果音まで",
+        "サムネイルから効果音まで、7種類の素材すべて",
         "フル解像度の PNG・WAV をダウンロード",
         "収益化ゲームを含む商用利用OK",
         "日本語・英語のインターフェース",
@@ -465,7 +466,7 @@ export const STRINGS = {
     },
     faq: {
       kicker: "よくある質問",
-      title: "気になることに、<br>まっすぐお答えします。",
+      title: "スタートの前に、<br>よくある質問。",
       items: [
         ["1時間の無料トライアルはどのような仕組みですか？", `クレジットカードまたはデビットカードを登録してトライアルを開始します。1時間、Pro のすべての機能と${J.trialCredits}トライアルクレジットを利用でき、この間の請求はありません。1時間が経過すると、それまでに解約しない限り、Blockgoer Pro 12か月分として${J.priceWithCode}が自動的に請求されます。トライアルはお一人様・カード1枚につき1回限りです。`],
         ["いつ請求されますか？", `トライアル開始のちょうど1時間後に初回の請求が行われ、その後は解約するまで12か月ごとに同じ日付で請求されます。更新の${J.reminderDays}日前までにお知らせメールを、各請求後には領収メールをお送りします。`],
@@ -473,15 +474,15 @@ export const STRINGS = {
         ["解約方法を教えてください。", "アカウント → お支払い → サブスクリプションを解約、またはご登録のメールアドレスからサポートへご連絡ください。トライアルの1時間以内に解約すれば料金はかかりません。請求後に解約した場合は、以後の請求は行われず、お支払い済みの1年間の終わりまで Pro と残りのクレジットをご利用いただけます。"],
         ["30日間返金保証とは何ですか？", `未使用クレジット分を全額返金します。理由は問いません。各年額請求から${J.refundDays}日以内にお申し出いただくと、「年額料金 × 未使用クレジット ÷ ${J.credits}」を返金します。クレジットを使っていなければ${J.price}を全額返金します。返金は5営業日以内にお支払いに使用したカードへ処理され、明細への反映にはカード会社により5〜10営業日かかる場合があります。返金を行うとサブスクリプションは終了し、その年度の残りのクレジットは削除されます（作成済みの素材は引き続きお客様のものです）。`],
         ["Blockgoer Pro には何が含まれますか？", `有料期間1年ごとに${J.credits}クレジット、7種類のアセットすべて、フル解像度の PNG・WAV ダウンロード、作成したアセットの商用利用、日本語・英語のインターフェースが含まれます。未使用のクレジットは各有料期間の終了時に失効します。`],
-        ["アセット1点に何クレジット必要ですか？", `カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、効果音は各${PLAN.creditCosts.thumbnail}クレジット、UIキットは${PLAN.creditCosts.ui}クレジットです。作成に失敗した場合、クレジットは自動的に戻ります。`],
+        ["アセット1点に何クレジット必要ですか？", `サムネイル、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、効果音は各${PLAN.creditCosts.thumbnail}クレジット、UIキットは${PLAN.creditCosts.ui}クレジットです。作成に失敗した場合、クレジットは自動的に戻ります。`],
         ["支払方法と通貨を教えてください。", `Visa、Mastercard、American Express、JCB、Discover のクレジットカード・デビットカードをご利用いただけます。このサイトでの料金は${J.pricePerYear}で、日本円（JPY）で請求されます。英語サイトでは米ドル建ての料金を表示しています。`],
         ["プレビューモードは無料ですか？", "はい。プレビューモードはブラウザ上（お使いの端末内）で簡易的なラフを描く機能で、アカウント不要・クレジット不要です。AI による作成結果ではありません。フル解像度の AI アセットは Blockgoer Pro で作成できます。"],
-        ["作成したアセットは商用利用できますか？", "はい。作成したアセットは（法律で認められる範囲で）お客様のものとなり、収益化したゲームを含めて商用利用できます。お客様のプロンプト、アップロード画像、作成物を AI の学習に使うことはありません。"],
+        ["作った素材をゲームに入れて収益化できますか？", "はい。作成したアセットは（法律で認められる範囲で）お客様のものとなり、収益化したゲームを含めて商用利用できます。お客様のプロンプト、アップロード画像、作成物を AI の学習に使うことはありません。"],
         ["Blockgoer は Roblox などのゲームプラットフォームと提携していますか？", "いいえ。Blockgoer は ARIELY WON THROUGH INC が提供する独立したサービスであり、Roblox Corporation その他のゲームプラットフォームとの提携・承認・後援関係はありません。"]
       ]
     },
     cta: {
-      title: "次のアップデートには、<br>もっといい素材を。",
+      title: "次のアップデートは、<br>ひとことから。",
       sub: `まずは無料でプレビューを。Blockgoer Pro は${J.trial}から始められ、トライアル後は${J.pricePerYear}です。`,
       trial: "1時間の無料トライアルを開始",
       preview: "無料でプレビュー"
@@ -496,7 +497,7 @@ export const STRINGS = {
     checkout: {
       eyebrow: "お申し込み",
       title: "1時間の無料トライアルを開始",
-      sub: "カードを登録する前に、このあと何が起きるかをご確認ください。",
+      sub: "カードを登録する前に、このあと何が起きるかをすべてご確認いただけます。",
       summary: "ご注文内容",
       plan: "Blockgoer Pro — 年額プラン",
       today: "本日のお支払い",
@@ -530,7 +531,7 @@ export const STRINGS = {
     contact: {
       eyebrow: "お問い合わせ",
       title: "Blockgoer へのお問い合わせ",
-      sub: `アカウント、お支払い、製品についてのご質問はメールでお寄せください。${J.supportResponse}に日本語または英語で返信します。`,
+      sub: `お支払い、アカウント、プロンプトのことで困ったらメールでどうぞ。${J.supportResponse}に日本語または英語で返信します。`,
       emailTitle: "メールサポート",
       companyTitle: "会社情報",
       legalName: "会社名",
@@ -562,12 +563,12 @@ export const STRINGS = {
     ws: {
       title: "ブラウザスケッチ",
       demo: "ブラウザ上で描いたラフスケッチです。フル解像度の AI 版は Blockgoer Pro で作成できます。",
-      generating: "プレビューを描いています…",
-      download: "プレビューを保存",
-      again: "別のバリエーション",
+      generating: "スケッチ中…",
+      download: "スケッチを保存",
+      again: "リロール",
       close: "閉じる",
       play: "再生",
-      empty: "まず短い説明を書いてください。",
+      empty: "まず短い説明を入力してください。",
       error: "このブラウザではプレビューを描画できませんでした。別のアセットの種類か、別のブラウザでお試しください。",
       size: "プレビューのサイズ",
       cost: "Pro の場合",

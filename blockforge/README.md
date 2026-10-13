@@ -49,3 +49,9 @@ Before going live, set in `src/config.mjs`:
   Cookies, Accessibility, DMCA / Copyright, Disclaimer, Do Not Sell or Share, and 特定商取引法に基づく表記.
   `node src/lib/check-legal.mjs` validates them (structure, allowed HTML, no placeholder text, no hard-coded prices).
 - **Preview mode**: the home page draws quick previews in the browser (`src/assets/js/gen.js`); no account needed.
+- **Performance**: no third-party requests. Fonts are self-hosted (`src/assets/fonts/`): small Latin
+  files, and for Japanese only a subset of Zen Kaku Gothic New holding the characters used in headings
+  (body text uses the visitor's system font). Page art is drawn in idle time at display size, card logos come
+  from one cached sprite, and HTML/CSS/JS are minified at build time.
+  If you change a Japanese heading and the build warns about missing characters, refresh the subset:
+  `node tools/fetch-fonts.mjs && node src/build.mjs` (needs network access to Google Fonts once).

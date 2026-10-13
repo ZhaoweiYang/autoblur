@@ -59,7 +59,7 @@ export function checkoutPage(lang, legal) {
       <aside class="pay-side">
         <div class="card-block card-orange">
           <span class="seal" aria-hidden="true">30</span>
-          <h2>${esc(Pr.guaranteeTitle)}</h2>
+          <h2 class="jh">${esc(Pr.guaranteeTitle)}</h2>
           <p class="fact-strong">${esc(Pr.guaranteeLine)}</p>
           <p>${esc(Pr.guaranteeBody)}</p>
         </div>
@@ -69,7 +69,7 @@ export function checkoutPage(lang, legal) {
         </div>
         <div class="card-block">
           <h2>${esc(Pr.cardsTitle)}</h2>
-          ${cardBadges(SITE.cards, Pr.cardsTitle)}
+          ${cardBadges(SITE.cards, Pr.cardsTitle, rel("assets/img/cards.svg"))}
           <p>${esc(Pr.cardsNote)}</p>
           <p><strong>${esc(Pr.descriptor)}</strong></p>
         </div>
@@ -129,7 +129,7 @@ export function contactPage(lang, legal) {
       </table>
     </div>
     <h2 class="head-m">${esc(C.topics)}</h2>
-    <ul class="rows rows-links">${C.topicList.map(([t, d, href]) => `<li><a class="row" href="${rel(langPath(lang, href))}"><span class="row-main"><span class="row-name">${esc(t)}</span><span class="row-desc">${esc(d)}</span></span><svg class="circ" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M10 16h11M16.5 11l5 5-5 5"/></svg></a></li>`).join("")}</ul>
+    <ul class="rows rows-links">${C.topicList.map(([t, d, href]) => `<li><a class="row" href="${rel(langPath(lang, href))}"><span class="row-main"><span class="row-name">${esc(t)}</span><span class="row-desc">${esc(d)}</span></span><span class="circ" aria-hidden="true"></span></a></li>`).join("")}</ul>
   </div>
 </section>`;
   return page({
@@ -195,7 +195,7 @@ export function legalHub(lang, legal) {
     <p class="kick">${esc(L.eyebrow)}</p>
     <h1 class="head-xl">${esc(L.hubTitle)}</h1>
     <p class="lede-text">${esc(L.hubSub)}</p>
-    <ul class="rows rows-links">${legal.map((m) => `<li><a class="row" href="${rel(langPath(lang, `legal/${m.slug}.html`))}"><span class="row-main"><span class="row-name">${esc(m[lang].title)}</span><span class="row-desc">${esc(m[lang].description)}</span></span><svg class="circ" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M10 16h11M16.5 11l5 5-5 5"/></svg></a></li>`).join("")}</ul>
+    <ul class="rows rows-links">${legal.map((m) => `<li><a class="row" href="${rel(langPath(lang, `legal/${m.slug}.html`))}"><span class="row-main"><span class="row-name">${esc(m[lang].title)}</span><span class="row-desc">${esc(m[lang].description)}</span></span><span class="circ" aria-hidden="true"></span></a></li>`).join("")}</ul>
   </div>
 </section>`;
   return page({

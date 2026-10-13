@@ -7,7 +7,7 @@ import { product, faqPage, webPage, returnPolicyNode, abs } from "../lib/schema.
 const creditLabel = (S, n) => (n === 1 ? S.credit.one : S.credit.n.replace("{n}", n));
 
 /* Circled arrow used on list rows and cards. */
-const ARROW = `<svg class="circ" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M10 16h11M16.5 11l5 5-5 5"/></svg>`;
+const ARROW = `<span class="circ" aria-hidden="true"></span>`;
 
 /* Prompts used to draw the static sketches, per language, so any text drawn
  * into the art (cover lettering, UI title) matches the page language. */
@@ -100,7 +100,7 @@ export function homePage(lang, legal) {
     <h2 class="head-xl">${esc(S.groups.title)}</h2>
     <div class="trio-cards">${S.groups.items.map((g) => `
       <article class="trio-card">
-        <h3>${esc(g.title)}</h3>
+        <h3 class="jh">${esc(g.title)}</h3>
         <p>${esc(g.body)}</p>
         <button class="pill pill-ink" type="button" data-open-tool="${g.tool}">${esc(g.cta)}</button>
       </article>`).join("")}
@@ -110,14 +110,14 @@ export function homePage(lang, legal) {
 
 <section class="band-blue">
   <div class="wrap band-grid">
-    <div class="band-panel"><h2>${S.built.title}</h2></div>
+    <div class="band-panel"><h2 class="jh">${S.built.title}</h2></div>
     <ul class="lines">${S.built.items.map(([t, d]) => `<li><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join("")}</ul>
   </div>
 </section>
 
 <section class="tiles">
   <div class="wrap">
-    <ul class="tile-row">${S.numbers.map(([b, l]) => `<li><b>${esc(b)}</b><span>${esc(l)}</span></li>`).join("")}</ul>
+    <ul class="tile-row">${S.numbers.map(([b, l]) => `<li><b class="jh">${esc(b)}</b><span>${esc(l)}</span></li>`).join("")}</ul>
   </div>
 </section>
 
@@ -164,13 +164,13 @@ export function homePage(lang, legal) {
       </div>
       <div class="plan-pair">
         <article class="plan plan-free">
-          <div class="plan-top"><h3>${esc(Pr.free.name)}</h3><span class="plan-tag">${esc(Pr.free.tag)}</span></div>
+          <div class="plan-top"><h3 class="jh">${esc(Pr.free.name)}</h3><span class="plan-tag">${esc(Pr.free.tag)}</span></div>
           <p class="plan-amount"><b>${esc(Pr.free.price)}</b><span>${esc(Pr.free.per)}</span></p>
           <ul class="ticks">${Pr.free.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
           <a class="pill pill-line" href="#top" data-focus-composer>${esc(Pr.free.cta)}</a>
         </article>
         <article class="plan plan-pro">
-          <div class="plan-top"><h3>${esc(Pr.planName)}</h3><span class="plan-tag">${esc(Pr.planTag)}</span></div>
+          <div class="plan-top"><h3 class="jh">${esc(Pr.planName)}</h3><span class="plan-tag">${esc(Pr.planTag)}</span></div>
           <p class="plan-amount"><b>${esc(F.price)}</b><span>${esc(Pr.per)}</span></p>
           <p class="plan-currency"><strong>${esc(F.currency)}</strong> · ${esc(Pr.currencyNote)}</p>
           <p class="plan-eq">${esc(Pr.equivalent)}</p>
@@ -178,18 +178,18 @@ export function homePage(lang, legal) {
           <ul class="ticks">${Pr.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
           <a class="pill pill-ink pill-wide" href="${checkout}">${esc(Pr.cta)}</a>
           <p class="plan-small">${esc(Pr.ctaNote)}</p>
-          <div class="plan-pay">${cardBadges(SITE.cards, Pr.cardsTitle)}<p>${esc(Pr.descriptor)}</p></div>
+          <div class="plan-pay">${cardBadges(SITE.cards, Pr.cardsTitle, rel("assets/img/cards.svg"))}<p>${esc(Pr.descriptor)}</p></div>
         </article>
       </div>
     </div>
 
-    <h3 class="billing-title">${esc(Pr.timelineTitle)}</h3>
+    <h3 class="billing-title jh">${esc(Pr.timelineTitle)}</h3>
     <ol class="billing-steps">${Pr.timeline.map(([when, what, detail]) => `<li><span class="when">${esc(when)}</span><b>${esc(what)}</b><p>${esc(detail)}</p></li>`).join("")}</ol>
 
     <div class="facts-grid">
       <div class="fact fact-guarantee">
         <span class="seal" aria-hidden="true">30</span>
-        <h3>${esc(Pr.guaranteeTitle)}</h3>
+        <h3 class="jh">${esc(Pr.guaranteeTitle)}</h3>
         <p class="fact-strong">${esc(Pr.guaranteeLine)}</p>
         <p>${esc(Pr.guaranteeBody)}</p>
       </div>
