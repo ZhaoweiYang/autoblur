@@ -17,6 +17,7 @@ export function organization() {
     "@id": ORG_ID,
     name: COMPANY.legalName,
     legalName: COMPANY.legalName,
+    description: FACTS.en.summary,
     brand: { "@type": "Brand", name: SITE.brand, logo: abs("assets/img/logo-512.png") },
     url: SITE.siteUrl + "/",
     logo: { "@type": "ImageObject", url: abs("assets/img/logo-512.png"), width: 512, height: 512 },
@@ -44,6 +45,7 @@ export function website(lang) {
     "@type": "WebSite",
     "@id": SITE_ID,
     name: SITE.brand,
+    description: FACTS[lang].summary,
     url: SITE.siteUrl + "/",
     inLanguage: ["en", "ja"],
     publisher: { "@id": ORG_ID }

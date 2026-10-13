@@ -165,6 +165,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .sheet figcaption { margin-top: 18px; text-align: center; font-size: 13px; color: var(--muted); }
 .sheet figcaption b { color: var(--ink); font-weight: 600; margin-right: 4px; }
 
+/* ---------- what-is statement ---------- */
+.about-line { padding: 72px 0 0; }
+.about-in { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 56px; align-items: baseline; padding-top: 28px; border-top: 1px solid var(--ink); }
+.about-label { margin: 0; font: 600 15px/1.4 var(--text); color: var(--muted); }
+.about-text { margin: 0; max-width: 60ch; font: 500 clamp(19px, 1.9vw, 24px)/1.45 var(--display); letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty; }
+.lang-ja .about-text { font-family: var(--ja); font-weight: 700; letter-spacing: 0; line-height: 1.7; }
+
 /* ---------- ruled list ---------- */
 .ruled { padding: 110px 0; }
 .ruled-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 56px; align-items: start; }
@@ -436,6 +443,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .frame-thumbnail, .frame-ui, .frame-sfx { width: 267px; }
   .ruled-grid, .moves-grid, .qa-grid, .plans-top, .band-grid, .prompts-head, .pay-grid, .contact-top { grid-template-columns: 1fr; gap: 32px; }
   .ruled-intro, .plans-intro { position: static; }
+  .about-in { grid-template-columns: 1fr; gap: 10px; }
   .facts-grid { grid-template-columns: 1fr 1fr; }
   .billing-steps { grid-template-columns: 1fr 1fr; }
   .band-panel { aspect-ratio: auto; min-height: 280px; }

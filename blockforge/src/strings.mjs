@@ -19,7 +19,7 @@ export const STRINGS = {
     },
     meta: {
       homeTitle: `Blockgoer: AI art and sound for game makers | 1-hour trial, ${E.price}/yr`,
-      homeDesc: `Describe a cover, icon, texture, shirt, character, UI kit or sound effect and Blockgoer makes it. ${E.trial}, then ${E.priceWithCode} a year.`,
+      homeDesc: `AI software for game creators that turns one sentence into cover art, icons, textures, shirts, UI kits or sound effects. ${E.trial}, then ${E.priceWithCode} a year.`,
       checkoutTitle: `Start your ${E.trial} — Blockgoer Pro`,
       checkoutDesc: `Review Blockgoer Pro before you start: ${E.trial}, then ${E.priceWithCode} once a year. Cancel anytime. 30-day money-back guarantee.`,
       contactTitle: "Contact Blockgoer — ARIELY WON THROUGH INC",
@@ -56,6 +56,7 @@ export const STRINGS = {
       kicker: "AI studio for game makers",
       title1: "Describe it.", title2: "Ship the asset.",
       sub: "Blockgoer makes cover art, icons, textures, avatar shirts, characters, UI kits and sound effects from a single sentence, already sized for the platform you publish on.",
+      aboutLabel: "What is Blockgoer?",
       askLabel: "What do you need?",
       makeLabel: "Make",
       submit: "Preview",
@@ -201,7 +202,6 @@ export const STRINGS = {
       preview: "Try a free preview"
     },
     footer: {
-      tagline: "AI art and sound for game makers.",
       operatedBy: "Blockgoer is operated by",
       company: "Company", policies: "Policies", product: "Product",
       contact: "Contact us", pay: "We accept",
@@ -304,7 +304,7 @@ export const STRINGS = {
     },
     meta: {
       homeTitle: `Blockgoer｜ゲーム制作者のためのAI素材｜1時間無料、以降年額${J.price}（税込）`,
-      homeDesc: `見たい絵や音を言葉にするだけ。カバー画像、アイコン、テクスチャ、シャツ、キャラクター、UIキット、効果音を作成。${J.trial}のあと${J.pricePerYear}。`,
+      homeDesc: `ゲーム制作者向けのAIオンラインソフト。ひとことの説明からカバー画像、アイコン、テクスチャ、シャツ、キャラクター、UIキット、効果音を作成。${J.trial}のあと${J.pricePerYear}。`,
       checkoutTitle: `${J.trial}を開始 — Blockgoer Pro`,
       checkoutDesc: `開始前にご確認ください：${J.trial}のあと、${J.pricePerYear}を年1回お支払い。いつでも解約でき、未使用クレジット分は30日間全額返金します。`,
       contactTitle: "お問い合わせ — Blockgoer（ARIELY WON THROUGH INC）",
@@ -341,6 +341,7 @@ export const STRINGS = {
       kicker: "ゲーム制作者のためのAIスタジオ",
       title1: "言葉にすれば、", title2: "素材になる。",
       sub: "カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター、UIキット、効果音を、ひとことの説明から作成。公開先のプラットフォームに合わせたサイズで書き出します。",
+      aboutLabel: "Blockgoerとは",
       askLabel: "何が必要ですか？",
       makeLabel: "種類",
       submit: "プレビュー",
@@ -486,7 +487,6 @@ export const STRINGS = {
       preview: "無料でプレビュー"
     },
     footer: {
-      tagline: "ゲーム制作者のためのAI素材スタジオ。",
       operatedBy: "Blockgoer の運営会社：",
       company: "会社情報", policies: "規約・ポリシー", product: "プロダクト",
       contact: "お問い合わせ", pay: "ご利用いただけるカード",

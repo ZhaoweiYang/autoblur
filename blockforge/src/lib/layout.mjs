@@ -121,7 +121,7 @@ function footer({ lang, enPath, legal, isHome }) {
     <div class="base-top">
       <div class="base-brand">
         <a class="wordmark" href="${home}">${LOGO}<span>blockgoer</span></a>
-        <p class="base-tag">${S.footer.tagline}</p>
+        <p class="base-tag">${esc(F.summary)}</p>
         <p class="base-op">${S.footer.operatedBy} <strong>${F.company}</strong></p>
         <address>${F.company}<br>${FACTS.en.addressLines.join("<br>")}<br><a href="mailto:${F.email}">${F.email}</a></address>
       </div>

@@ -79,6 +79,7 @@ export const FACTS = {
   en: {
     lang: "en",
     brand: SITE.brand,
+    summary: `${SITE.brand} is online software that uses AI to turn a one-sentence description into downloadable game assets (cover art, icons, textures, avatar shirts, character renders, UI kits and sound effects) for independent game creators, sold as an annual subscription.`,
     domain: SITE.domain,
     company: COMPANY.legalName,
     email: COMPANY.email,
@@ -109,6 +110,7 @@ export const FACTS = {
   ja: {
     lang: "ja",
     brand: SITE.brand,
+    summary: `${SITE.brand}は、ひとことの説明からゲーム用の素材（カバー画像、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、UIキット、効果音）をAIで作成してダウンロードできる、ゲーム制作者向けのオンラインソフトウェアです。年額サブスクリプションで提供しています。`,
     domain: SITE.domain,
     company: COMPANY.legalName,
     email: COMPANY.email,

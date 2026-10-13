@@ -70,6 +70,13 @@ export function homePage(lang, legal) {
   </figure>
 </section>
 
+<section class="about-line" aria-labelledby="aboutTitle">
+  <div class="wrap about-in">
+    <h2 class="about-label" id="aboutTitle">${esc(H.aboutLabel)}</h2>
+    <p class="about-text">${esc(F.summary)}</p>
+  </div>
+</section>
+
 <section class="ruled" id="assets">
   <div class="wrap ruled-grid">
     <div class="ruled-intro">
