@@ -1,40 +1,41 @@
-/* BlockForgeo — single source of truth for business facts.
+/* Blockgoer — single source of truth for business facts.
  * Every page, policy and the structured data read from here, so prices,
  * trial and refund terms can never disagree between pages.
  * Change a value here and run `node src/build.mjs` to regenerate site/. */
 
 export const SITE = {
-  brand: "BlockForgeo",
+  brand: "Blockgoer",
+  domain: "blockgoer.net",
   // Absolute origin used for canonical URLs, Open Graph, hreflang and sitemap.
-  siteUrl: "https://blockforgeo.net",
+  siteUrl: "https://blockgoer.net",
   // Where "Start 1-hour free trial" sends people after they accept the terms.
   // Set this to your payment processor's hosted checkout / payment link.
   // Left empty, the button opens an email to support instead.
   checkoutUrl: "",
   // Exactly what appears on the customer's card statement.
-  statementDescriptor: "BLOCKFORGEO",
+  statementDescriptor: "BLOCKGOER",
   // Card brands shown as accepted payment methods (order = display order).
   cards: ["visa", "mastercard", "amex", "jcb", "discover"],
-  effectiveDate: "2026-10-10",
+  effectiveDate: "2026-10-13",
   copyrightYear: 2026
 };
 
 export const COMPANY = {
-  legalName: "CALDRIVO GLOBAL INC",
-  street: "14001 East Iliff Avenue",
-  city: "Aurora",
-  region: "CO",
-  regionName: "Colorado",
-  postalCode: "80014",
+  legalName: "ARIELY WON THROUGH INC",
+  street: "157 W 3rd St Ste 208",
+  city: "Winona",
+  region: "MN",
+  regionName: "Minnesota",
+  postalCode: "55987",
   country: "US",
-  email: "support@blockforgeo.net",
+  email: "support@blockgoer.net",
   supportResponse: { en: "within 2 business days", ja: "2営業日以内" },
-  governingLaw: { en: "the State of Colorado, USA", ja: "米国コロラド州法" },
-  venue: { en: "the state courts located in Arapahoe County, Colorado, or the United States District Court for the District of Colorado", ja: "米国コロラド州アラパホー郡の州裁判所、または米国コロラド州連邦地方裁判所" }
+  governingLaw: { en: "the State of Minnesota, USA", ja: "米国ミネソタ州法" },
+  venue: { en: "the state courts located in Winona County, Minnesota, or the United States District Court for the District of Minnesota", ja: "米国ミネソタ州ウィノナ郡の州裁判所、または米国ミネソタ州連邦地方裁判所" }
 };
 
 export const PLAN = {
-  name: "BlockForgeo Pro",
+  name: "Blockgoer Pro",
   interval: "P1Y",
   trialHours: 1,
   trialCredits: 10,
@@ -78,6 +79,7 @@ export const FACTS = {
   en: {
     lang: "en",
     brand: SITE.brand,
+    domain: SITE.domain,
     company: COMPANY.legalName,
     email: COMPANY.email,
     addressLines: [...addressLines, "United States"],
@@ -100,17 +102,18 @@ export const FACTS = {
     supportResponse: COMPANY.supportResponse.en,
     governingLaw: COMPANY.governingLaw.en,
     venue: COMPANY.venue.en,
-    effectiveDate: "October 10, 2026",
+    effectiveDate: "October 13, 2026",
     refundExample: refundExample("en", 120),             // used 120 → US$89.10
     taxNote: "Sales tax or VAT may apply depending on where you live. Any tax is shown at checkout before you confirm."
   },
   ja: {
     lang: "ja",
     brand: SITE.brand,
+    domain: SITE.domain,
     company: COMPANY.legalName,
     email: COMPANY.email,
-    addressLines: [...addressLines, "United States（アメリカ合衆国 コロラド州オーロラ）"],
-    addressOneLine: `${COMPANY.street}, ${COMPANY.city}, ${COMPANY.region} ${COMPANY.postalCode}, United States（アメリカ合衆国 コロラド州 オーロラ）`,
+    addressLines: [...addressLines, "United States（アメリカ合衆国 ミネソタ州ウィノナ）"],
+    addressOneLine: `${COMPANY.street}, ${COMPANY.city}, ${COMPANY.region} ${COMPANY.postalCode}, United States（アメリカ合衆国 ミネソタ州 ウィノナ）`,
     price: money("ja", PLAN.prices.ja.amount),           // "¥16,999"
     priceWithCode: `${money("ja", PLAN.prices.ja.amount)}（税込・JPY）`,
     currency: "JPY",
@@ -129,7 +132,7 @@ export const FACTS = {
     supportResponse: COMPANY.supportResponse.ja,
     governingLaw: COMPANY.governingLaw.ja,
     venue: COMPANY.venue.ja,
-    effectiveDate: "2026年10月10日",
+    effectiveDate: "2026年10月13日",
     refundExample: refundExample("ja", 120),             // used 120 → ¥15,299
     taxNote: "表示価格は消費税込みです。"
   }

@@ -1,4 +1,4 @@
-/* BlockForgeo — browser behaviour for the static pages.
+/* Blockgoer — browser behaviour for the static pages.
  * Content is pre-rendered into the HTML for each language; this script only
  * adds interactivity: theme, menu, language memory, creator widgets, the
  * in-browser preview workspace, the idea cards and the checkout consent. */
@@ -29,13 +29,13 @@
   /* ================= theme / language / nav ================= */
   const themeBtn = $("#themeBtn");
   if (themeBtn) themeBtn.addEventListener("click", () => {
-    const cur = document.documentElement.getAttribute("data-theme") || "dark";
+    const cur = document.documentElement.getAttribute("data-theme") || "light";
     const next = cur === "light" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", next);
-    store.set("bf-theme", next);
+    store.set("blockgoer-theme", next);
   });
 
-  $$("[data-lang]").forEach((a) => a.addEventListener("click", () => store.set("bf-lang", a.dataset.lang)));
+  $$("[data-lang]").forEach((a) => a.addEventListener("click", () => store.set("blockgoer-lang", a.dataset.lang)));
 
   const burger = $("#burger");
   if (burger) {
@@ -43,12 +43,12 @@
       const open = document.body.classList.toggle("nav-open");
       burger.setAttribute("aria-expanded", String(open));
     });
-    $$(".nav-links a").forEach((a) => a.addEventListener("click", () => {
+    $$("#navLinks a").forEach((a) => a.addEventListener("click", () => {
       document.body.classList.remove("nav-open");
       burger.setAttribute("aria-expanded", "false");
     }));
   }
-  const navWrap = $(".nav-wrap");
+  const navWrap = $("#topbar");
   addEventListener("scroll", () => navWrap && navWrap.classList.toggle("scrolled", scrollY > 20), { passive: true });
 
   /* ================= checkout ================= */
@@ -88,7 +88,7 @@
   let sharedTool = (T.toolOrder && T.toolOrder[0]) || "thumbnail";
 
   function Creator(root) {
-    const tabs = $(".slot-bar", root);
+    const typeSel = $("[data-role=type]", root);
     const input = $("[data-role=input]", root);
     const label = $("[data-role=label]", root);
     const btn = $("[data-role=btn]", root);
@@ -98,7 +98,7 @@
       render() {
         const tool = sharedTool;
         const P = T.prompt[tool];
-        if (tabs) $$("[data-tool]", tabs).forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tool === tool)));
+        if (typeSel) typeSel.value = tool;
         input.placeholder = P.ph;
         if (label) label.textContent = P.label;
         btn.textContent = P.btn;
@@ -108,10 +108,7 @@
       focus() { input.focus({ preventScroll: true }); },
       setPrompt(v) { input.value = v; }
     };
-    if (tabs) tabs.addEventListener("click", (e) => {
-      const b = e.target.closest("[data-tool]");
-      if (b) { self.setTool(b.dataset.tool); input.focus(); }
-    });
+    if (typeSel) typeSel.addEventListener("change", () => { self.setTool(typeSel.value); input.focus(); });
     if (chips) chips.addEventListener("click", (e) => {
       const c = e.target.closest(".chip");
       if (c) { input.value = c.textContent; input.focus(); }
@@ -127,7 +124,7 @@
   $$("[data-creator]").forEach((el) => creators.push(Creator(el)));
 
   const goToComposer = () => {
-    $(".composer").scrollIntoView({ behavior: "smooth", block: "center" });
+    $(".ask").scrollIntoView({ behavior: "smooth", block: "center" });
     setTimeout(() => heroCreator().focus(), 450);
   };
   document.addEventListener("click", (e) => {
@@ -162,7 +159,7 @@
     $("#wsCost").textContent = creditLabel(T.creditCosts[id]);
     const stage = $("#wsStage");
     stage.innerHTML = `<div class="spinner"></div><p>${escapeHtml(T.ws.generating)}</p>`;
-    stage.className = "ws-stage";
+    stage.className = "sketch-stage";
     const dl = $("#wsDownload");
     dl.classList.add("disabled");
     $("#wsPlay").hidden = id !== "sfx";
@@ -196,7 +193,7 @@
     }
     ws.url = URL.createObjectURL(blob);
     dl.href = ws.url;
-    dl.download = `blockforgeo-preview-${id}-${slug(ws.prompt)}.${meta.ext}`;
+    dl.download = `blockgoer-preview-${id}-${slug(ws.prompt)}.${meta.ext}`;
     dl.classList.remove("disabled");
   }
 
@@ -216,7 +213,7 @@
   }));
 
   /* ================= generated imagery ================= */
-  const accent = () => getComputedStyle(document.documentElement).getPropertyValue("--ember").trim() || "#ff6b3d";
+  const accent = () => getComputedStyle(document.documentElement).getPropertyValue("--orange").trim() || "#fb923c";
   function thumbURL(prompt, w) {
     // Same seed as the preview dialog, so a card matches what "Preview" opens.
     const big = Gen.thumbnail(prompt, Gen.hash(prompt.toLowerCase() + "#0#thumbnail"));

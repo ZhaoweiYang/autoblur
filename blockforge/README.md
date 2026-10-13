@@ -1,6 +1,6 @@
-# BlockForgeo website (English / 日本語)
+# Blockgoer website (English / 日本語)
 
-Static, crawler-friendly marketing site for **BlockForgeo**, operated by **CALDRIVO GLOBAL INC**.
+Static, crawler-friendly marketing site for **Blockgoer**, operated by **ARIELY WON THROUGH INC** (Winona, Minnesota).
 Every page is pre-rendered HTML in both languages, so search engines and compliance crawlers see the full
 content, prices, policies and structured data without running JavaScript.
 

@@ -1,4 +1,4 @@
-/* BlockForgeo — procedural asset generators.
+/* Blockgoer — procedural asset generators.
  * Everything runs locally in the browser: canvas for images, OfflineAudioContext
  * for sound. Output is seeded by the prompt text + a variation counter, so the
  * same prompt gives the same result and "New variation" gives a fresh one. */
@@ -135,10 +135,10 @@
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(angle || 0);
-    ctx.font = `900 ${size}px "Unbounded", "Zen Kaku Gothic New", system-ui, sans-serif`;
+    ctx.font = `900 ${size}px "Wix Madefor Display", "Zen Kaku Gothic New", system-ui, sans-serif`;
     if (maxWidth) {
       const wNow = ctx.measureText(text).width;
-      if (wNow > maxWidth) { size = Math.floor((size * maxWidth) / wNow); ctx.font = `900 ${size}px "Unbounded", "Zen Kaku Gothic New", system-ui, sans-serif`; }
+      if (wNow > maxWidth) { size = Math.floor((size * maxWidth) / wNow); ctx.font = `900 ${size}px "Wix Madefor Display", "Zen Kaku Gothic New", system-ui, sans-serif`; }
     }
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -470,9 +470,9 @@
     const titleTxt = headline(prompt.replace(/\b\d+\s*(item\s*)?slots?\b|\d+\s*枠の?/gi, " ").replace(/\bwith\b/gi, " ").trim()) || "SHOP";
     ctx.fillStyle = accent; roundRect(ctx, px + pw / 2 - 200, py - 30, 400, 90, 28); ctx.fill(); ctx.stroke();
     let titleSize = 46;
-    ctx.font = `900 ${titleSize}px "Unbounded", "Zen Kaku Gothic New", sans-serif`;
+    ctx.font = `900 ${titleSize}px "Wix Madefor Display", "Zen Kaku Gothic New", sans-serif`;
     const tw = ctx.measureText(titleTxt).width;
-    if (tw > 360) { titleSize = Math.floor((titleSize * 360) / tw); ctx.font = `900 ${titleSize}px "Unbounded", "Zen Kaku Gothic New", sans-serif`; }
+    if (tw > 360) { titleSize = Math.floor((titleSize * 360) / tw); ctx.font = `900 ${titleSize}px "Wix Madefor Display", "Zen Kaku Gothic New", sans-serif`; }
     ctx.fillStyle = "#fff"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     ctx.lineWidth = 8; ctx.strokeText(titleTxt, px + pw / 2, py + 15); ctx.fillText(titleTxt, px + pw / 2, py + 15);
     // close button
@@ -486,7 +486,7 @@
       roundRect(ctx, sx, sy, 240, 185, 22); ctx.fill(); ctx.stroke();
       gem(ctx, sx + 120, sy + 75, 42, [c1, accent, "#22d3ee", "#a855f7", "#f43f5e", "#22c55e"][i], "#fff");
       ctx.fillStyle = "#22c55e"; roundRect(ctx, sx + 40, sy + 132, 160, 40, 14); ctx.fill(); ctx.stroke();
-      ctx.font = '800 24px "Unbounded", sans-serif'; ctx.fillStyle = "#fff";
+      ctx.font = '800 24px "Wix Madefor Display", sans-serif'; ctx.fillStyle = "#fff";
       ctx.fillText(`${(i + 1) * 25 + Math.floor(r() * 10) * 5}`, sx + 120, sy + 153);
     }
     return cv;
@@ -589,7 +589,7 @@
   function waveform(audioBuffer, w = 1024, h = 300, color = "#f7b928") {
     const cv = makeCanvas(w, h);
     const ctx = cv.getContext("2d");
-    ctx.fillStyle = "#121629"; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = "#1a1a1f"; ctx.fillRect(0, 0, w, h);
     const d = audioBuffer.getChannelData(0);
     const step = Math.ceil(d.length / w);
     ctx.fillStyle = color;

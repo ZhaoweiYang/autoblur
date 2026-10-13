@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blockforgeo.net/sitemap.xml
+Sitemap: https://blockgoer.net/sitemap.xml

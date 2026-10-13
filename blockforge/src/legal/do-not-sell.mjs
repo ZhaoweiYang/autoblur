@@ -41,9 +41,10 @@ export default {
       <h2 id="authorised-agents">Authorised agents</h2>
       <p>You may use an authorised agent to submit an opt-out or another privacy request for you. The agent must provide written permission signed by you that names the agent and describes the request. For opt-out requests, we may contact you to confirm that you gave permission. For requests to access, correct or delete personal information, we may also ask you to verify your identity directly with us, unless the agent holds a power of attorney that is valid under applicable law. Colorado residents may also designate an agent through a technology that sends an opt-out signal on their behalf, such as a browser setting or extension that sends GPC.</p>
 
-      <h2 id="state-rights">Your rights in Colorado, California and other states</h2>
+      <h2 id="state-rights">Your rights in Colorado, California, Minnesota and other states</h2>
       <ul>
         <li><strong>Colorado.</strong> Under the Colorado Privacy Act you may opt out of the processing of your personal data for targeted advertising, for sale, and for profiling in furtherance of decisions that produce legal or similarly significant effects. You may also access, correct and delete your data and obtain a portable copy. We honour universal opt-out mechanisms recognised by the Colorado Attorney General, including GPC. If we decline a request, you can appeal by replying to our decision email with &quot;Appeal&quot; in the subject; we respond within 45 days, and if we deny the appeal you may contact the Colorado Attorney General.</li>
+        <li><strong>Minnesota.</strong> Under the Minnesota Consumer Data Privacy Act you may opt out of the processing of your personal data for targeted advertising, for sale, and for profiling in furtherance of decisions that produce legal or similarly significant effects, and you may access, correct and delete your data. If we decline a request, you can appeal by replying to our decision email with &quot;Appeal&quot; in the subject; if we deny the appeal you may contact the Minnesota Attorney General.</li>
         <li><strong>California.</strong> Under the CCPA/CPRA you may opt out of the sale or sharing of personal information, limit the use and disclosure of sensitive personal information, and ask to know, correct or delete personal information.</li>
         <li><strong>Other states.</strong> Other US states with comprehensive consumer privacy laws give their residents similar rights, which vary by state. They commonly include the right to opt out of targeted advertising, sale and profiling, and the right to appeal our decision on a request. We apply the same process, the same timing and the same appeal route to every US resident, whichever state you live in.</li>
       </ul>
@@ -104,9 +105,10 @@ export default {
       <h2 id="authorised-agents">代理人によるご請求</h2>
       <p>オプトアウトその他のプライバシーに関するご請求は、代理人を通じて行うこともできます。代理人は、代理人の氏名とご請求の内容を記載し、お客様が署名した書面による委任状を提出する必要があります。オプトアウトのご請求については、委任の事実をお客様に確認させていただくことがあります。個人情報の開示・訂正・削除のご請求については、代理人が適用法令上有効な代理権授与証書（power of attorney）を有している場合を除き、お客様ご自身に当社へ直接ご本人確認をお願いすることがあります。コロラド州にお住まいの方は、GPCを送信するブラウザ設定や拡張機能など、お客様に代わってオプトアウト信号を送信する技術を代理人として指定することもできます。</p>
 
-      <h2 id="state-rights">コロラド州、カリフォルニア州その他の州における権利</h2>
+      <h2 id="state-rights">コロラド州、カリフォルニア州、ミネソタ州その他の州における権利</h2>
       <ul>
         <li><strong>コロラド州。</strong>コロラド州プライバシー法に基づき、ターゲティング広告、販売、および法的効果またはこれと同様の重大な影響を及ぼす決定のためのプロファイリングを目的とした個人データの処理を拒否することができます。また、データへのアクセス、訂正、削除、および持ち運び可能な形式での写しの取得を請求できます。当社は、GPCを含め、コロラド州司法長官が認める統一オプトアウトの仕組みを尊重します。当社がご請求をお断りした場合は、当社の決定をお知らせするメールに、件名を「Appeal」としてご返信いただくことで、不服を申し立てることができます。当社は45日以内に回答し、申立てを認めない場合、お客様はコロラド州司法長官に連絡することができます。</li>
+        <li><strong>ミネソタ州。</strong>ミネソタ州消費者データプライバシー法に基づき、ターゲティング広告、販売、および法的効果またはこれと同様の重大な影響を及ぼす決定のためのプロファイリングを目的とした個人データの処理をオプトアウトできるほか、個人データの開示・訂正・削除を請求できます。ご請求をお断りした場合は、当社の決定メールに件名「Appeal」で返信して不服を申し立てることができます。不服申立てを退けた場合は、ミネソタ州司法長官に連絡することもできます。</li>
         <li><strong>カリフォルニア州。</strong>CCPA/CPRAに基づき、個人情報の販売・共有の拒否、センシティブ個人情報の利用・開示の制限、ならびに個人情報の開示・訂正・削除の請求ができます。</li>
         <li><strong>その他の州。</strong>包括的な消費者プライバシー法を有するその他の米国各州にお住まいの方も、州によって内容は異なりますが、同様の権利をお持ちです。一般に、ターゲティング広告・販売・プロファイリングを拒否する権利や、ご請求に対する当社の決定に不服を申し立てる権利が含まれます。当社は、お住まいの州にかかわらず、米国にお住まいのすべてのお客様に同じ手続、同じ対応期間、同じ不服申立ての方法を適用します。</li>
       </ul>

@@ -1,10 +1,10 @@
 {
-  "name": "BlockForgeo",
-  "short_name": "BlockForgeo",
+  "name": "Blockgoer",
+  "short_name": "Blockgoer",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#0e1020",
-  "theme_color": "#0e1020",
+  "background_color": "#f9f8f6",
+  "theme_color": "#f9f8f6",
   "icons": [
     {
       "src": "assets/img/logo-192.png",

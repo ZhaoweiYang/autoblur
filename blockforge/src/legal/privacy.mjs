@@ -12,7 +12,7 @@ export default {
       <p class="lede">This Privacy Policy explains what personal information ${E.company} collects when you use ${E.brand}, why we use it, who helps us process it, how long we keep it and the choices you have. In short: we collect only what we need to run the service and bill you, we never use your prompts, uploads or generated assets to train AI models, we do not sell or share your personal information, and we use no advertising or analytics cookies.</p>
 
       <h2 id="who-we-are">Who we are and what this policy covers</h2>
-      <p>${E.brand} (blockforgeo.net) is operated by ${E.company}, located at ${E.addressOneLine}. ${E.company} is the controller of your personal information for the purposes of the EU and UK General Data Protection Regulation (GDPR), the &quot;business&quot; or &quot;controller&quot; under US state privacy laws, and the business operator handling personal information under Japan's Act on the Protection of Personal Information (APPI).</p>
+      <p>${E.brand} (${E.domain}) is operated by ${E.company}, located at ${E.addressOneLine}. ${E.company} is the controller of your personal information for the purposes of the EU and UK General Data Protection Regulation (GDPR), the &quot;business&quot; or &quot;controller&quot; under US state privacy laws, and the business operator handling personal information under Japan's Act on the Protection of Personal Information (APPI).</p>
       <p>${E.brand} is an online creative tool for game creators. In a web workspace, subscribers describe what they want and ${E.brand} generates game assets with AI: thumbnails, icons, textures, clothing images, character renders (GFX), UI layouts and short sound effects. Everything is delivered digitally.</p>
       <p>This policy covers the ${E.brand} marketing website, the free preview mode, the signed-in workspace, checkout and billing, our emails and customer support. It does not cover third-party websites we link to, or the hosted payment page run by our payment processor, which has its own privacy notice.</p>
 
@@ -82,7 +82,7 @@ export default {
 
       <h2 id="no-sale-or-sharing">No sale, no sharing, no tracking cookies</h2>
       <p class="callout">We do not sell your personal information and do not share it for cross-context behavioural advertising. We use no advertising or analytics cookies.</p>
-      <p>We have not sold or shared personal information in the past 12 months. We do not use advertising networks, tracking pixels, analytics tools or data brokers. The marketing website stores only functional preferences in your browser (<code>bf-lang</code> and <code>bf-theme</code>); the signed-in workspace uses an essential session cookie and a CSRF-protection cookie; and our payment processor's checkout page may set its own cookies for fraud prevention and security. Details are in our <a href="cookies.html">Cookie Policy</a>.</p>
+      <p>We have not sold or shared personal information in the past 12 months. We do not use advertising networks, tracking pixels, analytics tools or data brokers. The marketing website stores only functional preferences in your browser (<code>blockgoer-lang</code> and <code>blockgoer-theme</code>); the signed-in workspace uses an essential session cookie and a CSRF-protection cookie; and our payment processor's checkout page may set its own cookies for fraud prevention and security. Details are in our <a href="cookies.html">Cookie Policy</a>.</p>
       <p>We honour Global Privacy Control (GPC) signals as a valid request to opt out of the sale and sharing of personal information and of targeted advertising. Because we do not track you across websites, &quot;Do Not Track&quot; signals do not change how the site behaves. See <a href="do-not-sell.html">Do Not Sell or Share My Personal Information</a>.</p>
 
       <h2 id="retention">How long we keep information</h2>
@@ -94,14 +94,14 @@ export default {
           <tr><td>Prompts, reference images and generated assets</td><td>Until you delete them, or 30 days after your account is closed, whichever comes first</td></tr>
           <tr><td>Billing and tax records (charges, refunds, receipts, card brand and last four digits)</td><td>7 years, to meet tax and accounting obligations</td></tr>
           <tr><td>Server logs, including IP addresses</td><td>90 days</td></tr>
-          <tr><td>Website preferences stored in your browser</td><td><code>bf-lang</code> and <code>bf-theme</code> until you clear your browser storage</td></tr>
+          <tr><td>Website preferences stored in your browser</td><td><code>blockgoer-lang</code> and <code>blockgoer-theme</code> until you clear your browser storage</td></tr>
         </tbody>
       </table>
       <p>We keep specific information longer only where the law requires it or where it is needed to establish, exercise or defend a legal claim, and only for as long as that need lasts. When a retention period ends, we delete the information or irreversibly anonymise it. Copies of deleted information can remain in secure backups for a limited time, until the backups are overwritten in the normal backup cycle. We restore a backup only to recover from a system failure, and we do not use backup copies for any other purpose.</p>
 
       <h2 id="international-transfers">International data transfers</h2>
       <p>${E.company} is based in the United States, and we store and process personal information in the United States. If you use ${E.brand} from Japan, the EEA, the UK or anywhere else, your information is transferred to and processed in the United States, where data protection laws may differ from those in your country.</p>
-      <p>The United States has no single comprehensive federal privacy law. Personal information is protected by sector-specific federal laws, the Federal Trade Commission Act and state laws such as the CCPA/CPRA and the Colorado Privacy Act. We protect your information as described in this policy wherever it is processed. Where the GDPR or UK GDPR requires a transfer mechanism for our service providers, we use the European Commission's Standard Contractual Clauses (with the UK Addendum) or rely on the provider's certification under the EU–US Data Privacy Framework and its UK Extension. For users in Japan, we require our service providers by contract to take measures equivalent to those required under the APPI.</p>
+      <p>The United States has no single comprehensive federal privacy law. Personal information is protected by sector-specific federal laws, the Federal Trade Commission Act and state laws such as the CCPA/CPRA, the Colorado Privacy Act and the Minnesota Consumer Data Privacy Act. We protect your information as described in this policy wherever it is processed. Where the GDPR or UK GDPR requires a transfer mechanism for our service providers, we use the European Commission's Standard Contractual Clauses (with the UK Addendum) or rely on the provider's certification under the EU–US Data Privacy Framework and its UK Extension. For users in Japan, we require our service providers by contract to take measures equivalent to those required under the APPI.</p>
 
       <h2 id="security">Security</h2>
       <p>We use administrative, technical and physical safeguards appropriate to the risk, including:</p>
@@ -118,8 +118,8 @@ export default {
       <h2 id="your-rights">Your privacy rights</h2>
       <p>Depending on where you live, you have some or all of the rights below. We handle every request through the process in &quot;How to exercise your rights&quot;.</p>
 
-      <h3>United States: California, Colorado and other states</h3>
-      <p>Under the California Consumer Privacy Act as amended by the California Privacy Rights Act (CCPA/CPRA), the Colorado Privacy Act and the comprehensive consumer privacy laws of other US states, you may have the rights below. The exact rights vary by state; we apply the same process, timing and appeal route to every US resident.</p>
+      <h3>United States: California, Colorado, Minnesota and other states</h3>
+      <p>Under the California Consumer Privacy Act as amended by the California Privacy Rights Act (CCPA/CPRA), the Colorado Privacy Act, the Minnesota Consumer Data Privacy Act and the comprehensive consumer privacy laws of other US states, you may have the rights below. The exact rights vary by state; we apply the same process, timing and appeal route to every US resident.</p>
       <ul>
         <li><strong>Know and access</strong> the categories and specific pieces of personal information we hold about you, its sources, our purposes and the categories of recipients;</li>
         <li><strong>Correct</strong> inaccurate personal information;</li>
@@ -188,7 +188,7 @@ export default {
       <p class="lede">本プライバシーポリシーは、${J.company}（以下「当社」）が運営する ${J.brand}（以下「本サービス」）において、当社がどのような個人情報を取得し、何のために利用し、どの事業者に取扱いを委託し、どのくらいの期間保存するか、またお客様がどのような選択肢と権利をお持ちかをご説明するものです。要点として、当社はサービスの提供と決済に必要な情報のみを取得し、お客様のプロンプト・アップロード画像・生成物をAIモデルの学習に使用することは一切ありません。また、個人情報の販売・共有は行わず、広告目的または分析目的のCookieも使用していません。</p>
 
       <h2 id="who-we-are">事業者情報と本ポリシーの適用範囲</h2>
-      <p>本サービス（blockforgeo.net）は、${J.addressOneLine} に所在する ${J.company} が運営しています。当社は、EU・英国の一般データ保護規則（GDPR）上の管理者（controller）、米国各州のプライバシー法上の事業者（business／controller）、および日本の個人情報の保護に関する法律（以下「個人情報保護法」）上の個人情報取扱事業者にあたります。</p>
+      <p>本サービス（${J.domain}）は、${J.addressOneLine} に所在する ${J.company} が運営しています。当社は、EU・英国の一般データ保護規則（GDPR）上の管理者（controller）、米国各州のプライバシー法上の事業者（business／controller）、および日本の個人情報の保護に関する法律（以下「個人情報保護法」）上の個人情報取扱事業者にあたります。</p>
       <p>${J.brand}は、ゲームクリエイター向けのオンライン制作ツールです。サブスクリプション会員がウェブ上のワークスペースで作りたいものを文章で指示すると、AIがゲーム用のサムネイル、アイコン、テクスチャ、衣装画像、キャラクターレンダー（GFX）、UIレイアウト、短い効果音などのアセットを生成します。提供はすべてデジタルで行われます。</p>
       <p>本ポリシーは、マーケティング用ウェブサイト、無料のプレビューモード、ログイン後のワークスペース、購入・決済手続、当社からのメールおよびカスタマーサポートに適用されます。リンク先の第三者サイトや、決済代行会社が運営する決済ページには適用されず、それぞれの事業者のプライバシーポリシーが適用されます。</p>
 
@@ -258,7 +258,7 @@ export default {
 
       <h2 id="no-sale-or-sharing">個人情報の販売・共有およびトラッキングを行わないこと</h2>
       <p class="callout">当社はお客様の個人情報を販売せず、クロスコンテキスト行動広告のために共有することもありません。広告目的・分析目的のCookieも一切使用していません。</p>
-      <p>当社は過去12か月間、個人情報の販売・共有を行っていません。広告ネットワーク、トラッキングピクセル、アクセス解析ツール、データブローカーも利用していません。マーケティング用ウェブサイトがブラウザに保存するのは機能上の設定（<code>bf-lang</code>、<code>bf-theme</code>）のみです。ログイン後のワークスペースでは、必須のセッションCookieとCSRF対策用のCookieを使用します。また、決済代行会社の決済ページが不正防止とセキュリティのために独自のCookieを設定する場合があります。詳しくは<a href="cookies.html">Cookieポリシー</a>をご覧ください。</p>
+      <p>当社は過去12か月間、個人情報の販売・共有を行っていません。広告ネットワーク、トラッキングピクセル、アクセス解析ツール、データブローカーも利用していません。マーケティング用ウェブサイトがブラウザに保存するのは機能上の設定（<code>blockgoer-lang</code>、<code>blockgoer-theme</code>）のみです。ログイン後のワークスペースでは、必須のセッションCookieとCSRF対策用のCookieを使用します。また、決済代行会社の決済ページが不正防止とセキュリティのために独自のCookieを設定する場合があります。詳しくは<a href="cookies.html">Cookieポリシー</a>をご覧ください。</p>
       <p>当社は、Global Privacy Control（GPC）の信号を、個人情報の販売・共有およびターゲティング広告を拒否する有効な意思表示として尊重します。当社はウェブサイトをまたいだ追跡を行わないため、「Do Not Track」信号によってサイトの動作が変わることはありません。詳しくは<a href="do-not-sell.html">個人情報の販売・共有の拒否</a>をご覧ください。</p>
 
       <h2 id="retention">保存期間</h2>
@@ -270,14 +270,14 @@ export default {
           <tr><td>プロンプト、参考画像、生成物</td><td>お客様が削除した時点、またはアカウント閉鎖から30日が経過した時点のいずれか早い時点まで</td></tr>
           <tr><td>請求・税務記録（請求、返金、領収、カードブランドと下4桁）</td><td>税務・会計上の義務を果たすため7年間</td></tr>
           <tr><td>サーバーログ（IPアドレスを含む）</td><td>90日間</td></tr>
-          <tr><td>ブラウザに保存されるウェブサイトの設定</td><td><code>bf-lang</code>と<code>bf-theme</code>はお客様がブラウザのデータを消去するまで</td></tr>
+          <tr><td>ブラウザに保存されるウェブサイトの設定</td><td><code>blockgoer-lang</code>と<code>blockgoer-theme</code>はお客様がブラウザのデータを消去するまで</td></tr>
         </tbody>
       </table>
       <p>法令で義務付けられている場合、または法的請求の立証・行使・防御に必要な場合に限り、その必要がある期間に限って特定の情報をより長く保存することがあります。保存期間が終了した情報は、削除するか、元に戻せない形で匿名化します。削除した情報の複製が、通常のバックアップの周期で上書きされるまでの一定期間、安全に管理されたバックアップに残ることがあります。バックアップはシステム障害からの復旧の場合にのみ復元し、それ以外の目的には使用しません。</p>
 
       <h2 id="international-transfers">外国における取扱い（国際移転）</h2>
       <p>${J.company}は米国に所在し、個人情報を米国内で保存・処理しています。日本、EEA、英国その他の国・地域から本サービスをご利用の場合、お客様の情報は米国に移転され、米国で処理されます。米国のデータ保護法制は、お客様の国・地域の法制と異なる場合があります。</p>
-      <p>米国には個人情報保護法に相当する包括的な連邦法はなく、分野ごとの連邦法、連邦取引委員会法、およびCCPA/CPRAやコロラド州プライバシー法などの州法によって個人情報が保護されています。当社は、どこで処理する場合でも本ポリシーに従ってお客様の情報を保護します。委託先への移転についてGDPRまたは英国GDPRが移転の根拠を求める場合、当社は欧州委員会の標準契約条項（英国補遺を含む）を用いるか、委託先のEU・米国データプライバシー・フレームワーク（英国拡張を含む）の認証に依拠します。日本のお客様については、個人情報保護法が求める措置に相当する措置を講じることを、契約により委託先に義務付けています。</p>
+      <p>米国には個人情報保護法に相当する包括的な連邦法はなく、分野ごとの連邦法、連邦取引委員会法、およびCCPA/CPRA、コロラド州プライバシー法、ミネソタ州消費者データプライバシー法などの州法によって個人情報が保護されています。当社は、どこで処理する場合でも本ポリシーに従ってお客様の情報を保護します。委託先への移転についてGDPRまたは英国GDPRが移転の根拠を求める場合、当社は欧州委員会の標準契約条項（英国補遺を含む）を用いるか、委託先のEU・米国データプライバシー・フレームワーク（英国拡張を含む）の認証に依拠します。日本のお客様については、個人情報保護法が求める措置に相当する措置を講じることを、契約により委託先に義務付けています。</p>
 
       <h2 id="security">安全管理措置</h2>
       <p>当社は、リスクに応じた組織的・技術的・物理的な安全管理措置を講じています。主な措置は次のとおりです。</p>
@@ -294,8 +294,8 @@ export default {
       <h2 id="your-rights">お客様の権利</h2>
       <p>お住まいの地域に応じて、お客様は以下の権利の全部または一部をお持ちです。ご請求はいずれも「権利の行使方法」に記載の手続で承ります。</p>
 
-      <h3>米国：カリフォルニア州、コロラド州その他の州</h3>
-      <p>カリフォルニア州消費者プライバシー法（カリフォルニア州プライバシー権法による改正後のもの。CCPA/CPRA）、コロラド州プライバシー法、およびその他の米国各州の包括的な消費者プライバシー法に基づき、お客様は次の権利をお持ちの場合があります。具体的な権利の内容は州によって異なりますが、当社は米国にお住まいのすべてのお客様に、同じ手続、同じ対応期間、同じ不服申立ての方法を適用します。</p>
+      <h3>米国：カリフォルニア州、コロラド州、ミネソタ州その他の州</h3>
+      <p>カリフォルニア州消費者プライバシー法（カリフォルニア州プライバシー権法による改正後のもの。CCPA/CPRA）、コロラド州プライバシー法、ミネソタ州消費者データプライバシー法、およびその他の米国各州の包括的な消費者プライバシー法に基づき、お客様は次の権利をお持ちの場合があります。具体的な権利の内容は州によって異なりますが、当社は米国にお住まいのすべてのお客様に、同じ手続、同じ対応期間、同じ不服申立ての方法を適用します。</p>
       <ul>
         <li><strong>開示・アクセス</strong>：当社が保有するお客様の個人情報の区分と具体的な内容、取得元、利用目的、提供先の区分を知る権利</li>
         <li><strong>訂正</strong>：不正確な個人情報を訂正させる権利</li>
