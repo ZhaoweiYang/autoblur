@@ -12,8 +12,8 @@ const ARROW = `<span class="circ" aria-hidden="true"></span>`;
 /* Prompts used to draw the static sketches, per language, so any text drawn
  * into the art (cover lettering, UI title) matches the page language. */
 const ART = {
-  en: { thumbnail: "haunted lighthouse at dawn level 7", icon: "golden coin badge", ui: "crafting table", texture: "wet cobblestone", clothing: "racing jersey", gfx: "fox mechanic" },
-  ja: { thumbnail: "夜明けの灯台 レベル7", icon: "金貨のバッジ", ui: "作業台", texture: "濡れた石畳", clothing: "レーシングジャージ", gfx: "キツネの整備士" }
+  en: { thumbnail: "haunted lighthouse at dawn level 7", icon: "health potion badge", ui: "crafting table", texture: "wet cobblestone", clothing: "racing jersey", gfx: "fox mechanic" },
+  ja: { thumbnail: "夜明けの灯台 レベル7", icon: "回復ポーションのバッジ", ui: "作業台", texture: "濡れた石畳", clothing: "レーシングジャージ", gfx: "キツネの整備士" }
 };
 
 const SIZE = { thumbnail: [1280, 720], ui: [1280, 720], clothing: [585, 559] };

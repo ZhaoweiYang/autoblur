@@ -526,11 +526,11 @@
     const sr = 44100;
     let dur = 0.6;
     let kind = "blip";
-    if (has(p, "coin", "コイン", "pickup", "取得")) { kind = "coin"; dur = 0.45; }
+    if (has(p, "coin", "コイン", "pickup", "拾う", "取得")) { kind = "coin"; dur = 0.45; }
     else if (has(p, "level", "chime", "レベル", "チャイム")) { kind = "chime"; dur = 1.2; }
     else if (has(p, "laser", "shot", "レーザー", "発射")) { kind = "laser"; dur = 0.5; }
     else if (has(p, "door", "ドア", "wood", "木", "impact", "hit")) { kind = "door"; dur = 0.7; }
-    else if (has(p, "magic", "spell", "loot", "legendary", "drop", "魔法", "呪文", "レア", "ドロップ")) { kind = "magic"; dur = 1.4; }
+    else if (has(p, "magic", "spell", "power", "sparkle", "legendary", "魔法", "呪文", "パワー", "レア")) { kind = "magic"; dur = 1.4; }
     else if (has(p, "sword", "swing", "whoosh", "剣", "振る")) { kind = "laser"; dur = 0.5; }
     else if (has(p, "click", "クリック", "button", "ボタン")) { kind = "click"; dur = 0.12; }
     const Ctx = window.OfflineAudioContext || window.webkitOfflineAudioContext;

@@ -37,7 +37,7 @@ export const STRINGS = {
     },
     prompt: {
       thumbnail: { label: "Describe your thumbnail", ph: "a noob dodging lava on a neon obby", btn: "Preview" },
-      icon: { label: "Describe your icon", ph: "a 2x coins game pass badge", btn: "Preview" },
+      icon: { label: "Describe your icon", ph: "a 2x speed game pass badge", btn: "Preview" },
       ui: { label: "Describe the screen", ph: "a pet shop with rarity frames", btn: "Preview" },
       texture: { label: "Describe the surface", ph: "mossy dungeon bricks", btn: "Preview" },
       clothing: { label: "Describe the shirt", ph: "a racing jersey with flame stripes", btn: "Preview" },
@@ -46,12 +46,12 @@ export const STRINGS = {
     },
     chips: {
       thumbnail: ["boss fight inside a volcano", "noob vs pro speedrun", "escape the haunted school", "tycoon empire at sunset", "legendary pet hatching"],
-      icon: ["2x coins badge", "VIP crown pass", "speed coil", "mana crystal", "mystery egg"],
+      icon: ["2x speed badge", "VIP crown pass", "speed coil", "mana crystal", "mystery egg"],
       ui: ["daily rewards", "pet inventory", "rarity shop", "leaderboard", "settings menu"],
       texture: ["mossy dungeon bricks", "lava rock", "sci-fi floor panels", "snow drift", "pirate ship planks"],
       clothing: ["racing jersey", "camo hoodie", "knight armor shirt", "galaxy tee", "pirate captain coat"],
       gfx: ["ninja on a rooftop", "tiny wizard casting", "space cadet", "viking captain", "fox mechanic"],
-      sfx: ["coin pickup", "legendary loot drop", "level up jingle", "door creak", "sword swing"]
+      sfx: ["item pickup", "power-up sparkle", "level up jingle", "door creak", "sword swing"]
     },
     hero: {
       kicker: "AI asset studio for game devs",
@@ -121,12 +121,12 @@ export const STRINGS = {
       badge: "Browser sketch",
       use: "Preview",
       items: [
-        ["Simulator", "a drill rig smashing through glowing ore"],
+        ["Simulator", "a pet egg hatching into a dragon"],
         ["Simulator", "a baby slime leveling up into a giant"],
         ["Obby", "neon platforms over a bottomless void"],
         ["Obby", "a moving bridge, three seconds to cross"],
         ["Tycoon", "a lemonade stand upgraded to a skyscraper"],
-        ["Tycoon", "a vault door opening on a mountain of gold"],
+        ["Tycoon", "a theme park growing one ride at a time"],
         ["Horror", "a flashlight flickering in a flooded basement"],
         ["Horror", "something waiting at the end of the hall"],
         ["Adventure", "a raft racing toward a giant waterfall"],
@@ -191,6 +191,7 @@ export const STRINGS = {
         ["What does Blockgoer Pro include?", `${E.credits} credits per paid year, all 7 asset types, full-resolution PNG and WAV downloads, commercial use of your assets, and an English and Japanese interface. Unused credits expire at the end of each paid year.`],
         ["How many credits does each asset use?", `Thumbnails, icons, textures, avatar shirts, character renders and sound effects use ${PLAN.creditCosts.thumbnail} credit each. A UI kit uses ${PLAN.creditCosts.ui} credits. If a generation fails, its credits are returned automatically.`],
         ["Which payment methods and currencies do you accept?", `Visa, Mastercard, American Express, JCB and Discover credit and debit cards. On this site Blockgoer Pro is ${E.price} per year, charged in US dollars (USD); any sales tax or VAT for your location is shown at checkout before you confirm. Our Japanese site lists its own price in Japanese yen.`],
+        ["What exactly are credits?", "Credits are usage allowances inside Blockgoer Pro: one credit lets you generate one asset (a UI kit uses 4). They come with your yearly plan and are not sold separately. They are not money, have no cash value, and cannot be transferred, traded or exchanged. You pay for Blockgoer only by credit or debit card, as a software subscription in US dollars or Japanese yen."],
         ["Is preview mode free?", "Yes. Preview mode draws a quick, rough sketch in your browser, on your own device. It needs no account, uses no credits and isn't the AI output. Blockgoer Pro generates the full-resolution AI assets."],
         ["Can I use the assets in my game and sell it?", "Yes. You own the assets you generate (as far as the law allows) and can use them commercially, including in monetized games. We don't use your prompts, uploads or assets to train AI models."],
         ["Is Blockgoer affiliated with Roblox or other game platforms?", "No. Blockgoer is an independent product of ARIELY WON THROUGH INC and isn't affiliated with, endorsed by or sponsored by Roblox Corporation or any other game platform."]
@@ -333,7 +334,7 @@ export const STRINGS = {
     },
     prompt: {
       thumbnail: { label: "サムネイルの内容", ph: "ネオンのアスレチックで溶岩をよける初心者", btn: "プレビュー" },
-      icon: { label: "アイコンの内容", ph: "コイン2倍のゲームパス用バッジ", btn: "プレビュー" },
+      icon: { label: "アイコンの内容", ph: "スピード2倍のゲームパス用バッジ", btn: "プレビュー" },
       ui: { label: "画面の内容", ph: "レア度で枠の色が変わるペットショップ", btn: "プレビュー" },
       texture: { label: "素材感の内容", ph: "苔むしたダンジョンのレンガ", btn: "プレビュー" },
       clothing: { label: "シャツのデザイン", ph: "炎のラインが入ったレーシングジャージ", btn: "プレビュー" },
@@ -342,12 +343,12 @@ export const STRINGS = {
     },
     chips: {
       thumbnail: ["火山の中のボス戦", "初心者vs上級者スピードラン", "呪われた学校から脱出", "夕焼けのタイクーン帝国", "伝説ペットが誕生"],
-      icon: ["コイン2倍バッジ", "VIP王冠パス", "スピードコイル", "マナ水晶", "ミステリーエッグ"],
+      icon: ["スピード2倍バッジ", "VIP王冠パス", "スピードコイル", "マナ水晶", "ミステリーエッグ"],
       ui: ["デイリー報酬", "ペットのインベントリ", "レア枠ショップ", "ランキング", "設定メニュー"],
       texture: ["苔むしたレンガ", "溶岩の岩肌", "SF風の床パネル", "雪の吹きだまり", "海賊船の甲板"],
       clothing: ["レーシングジャージ", "迷彩パーカー", "騎士のよろいシャツ", "銀河Tシャツ", "海賊船長のコート"],
       gfx: ["屋根の上の忍者", "呪文を唱える魔法使い", "宇宙の訓練生", "バイキングの船長", "キツネの整備士"],
-      sfx: ["コインを拾う音", "レアドロップの音", "レベルアップのジングル", "きしむドア", "剣を振る音"]
+      sfx: ["アイテムを拾う音", "パワーアップの音", "レベルアップのジングル", "きしむドア", "剣を振る音"]
     },
     hero: {
       kicker: "ゲーム制作者のためのAI素材スタジオ",
@@ -417,12 +418,12 @@ export const STRINGS = {
       badge: "ブラウザスケッチ",
       use: "プレビュー",
       items: [
-        ["シミュレーター", "光る鉱石を砕き進むドリル"],
+        ["シミュレーター", "たまごから生まれるドラゴン"],
         ["シミュレーター", "レベルアップで巨大化するスライム"],
         ["アスレチック", "底なしの闇に浮かぶネオンの足場"],
         ["アスレチック", "渡れるのは3秒だけの動く橋"],
         ["タイクーン", "レモネード屋から超高層ビルへ"],
-        ["タイクーン", "金の山へ開く金庫の扉"],
+        ["タイクーン", "アトラクションが増えていく遊園地"],
         ["ホラー", "水浸しの地下室で揺れる懐中電灯"],
         ["ホラー", "廊下の突き当たりで待つ何か"],
         ["アドベンチャー", "巨大な滝へ突き進むいかだ"],
@@ -487,6 +488,7 @@ export const STRINGS = {
         ["Blockgoer Pro には何が含まれますか？", `有料期間1年ごとに${J.credits}クレジット、7種類のアセットすべて、フル解像度の PNG・WAV ダウンロード、作成したアセットの商用利用、日本語・英語のインターフェースが含まれます。未使用のクレジットは各有料期間の終了時に失効します。`],
         ["アセット1点に何クレジット必要ですか？", `サムネイル、アイコン、テクスチャ、アバター用シャツ、キャラクター画像、効果音は各${PLAN.creditCosts.thumbnail}クレジット、UIキットは${PLAN.creditCosts.ui}クレジットです。作成に失敗した場合、クレジットは自動的に戻ります。`],
         ["支払方法と通貨を教えてください。", `Visa、Mastercard、American Express、JCB、Discover のクレジットカード・デビットカードをご利用いただけます。このサイトでの料金は${J.pricePerYear}で、日本円（JPY）で請求されます。英語サイトでは米ドル建ての料金を表示しています。`],
+        ["クレジットとは何ですか？", "クレジットは Blockgoer Pro の利用枠です。1クレジットで素材を1点作成できます（UIキットは4クレジット）。年額プランに含まれるもので、単体では販売していません。お金ではなく換金性もなく、譲渡・売買・交換はできません。Blockgoer のお支払いはクレジットカード・デビットカードのみで、米ドルまたは日本円のソフトウェアのサブスクリプションです。"],
         ["プレビューモードは無料ですか？", "はい。プレビューモードはブラウザ上（お使いの端末内）で簡易的なラフを描く機能で、アカウント不要・クレジット不要です。AI による作成結果ではありません。フル解像度の AI アセットは Blockgoer Pro で作成できます。"],
         ["作った素材をゲームに入れて収益化できますか？", "はい。作成したアセットは（法律で認められる範囲で）お客様のものとなり、収益化したゲームを含めて商用利用できます。お客様のプロンプト、アップロード画像、作成物を AI の学習に使うことはありません。"],
         ["Blockgoer は Roblox などのゲームプラットフォームと提携していますか？", "いいえ。Blockgoer は ARIELY WON THROUGH INC が提供する独立したサービスであり、Roblox Corporation その他のゲームプラットフォームとの提携・承認・後援関係はありません。"]
