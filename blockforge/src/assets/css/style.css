@@ -502,3 +502,5 @@ button { font: inherit; color: inherit; cursor: pointer; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+.lede-text + .rows-links { margin-top: 36px; }

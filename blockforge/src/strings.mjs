@@ -265,6 +265,17 @@ export const STRINGS = {
         ["Accessibility feedback", "Tell us about any barrier you meet on our site or in the workspace.", "legal/accessibility.html"]
       ]
     },
+    notFound: {
+      eyebrow: "Error 404",
+      title: "Page not found",
+      sub: "This link is broken or the page has moved. Pick a spot below to respawn.",
+      links: [
+        ["Home", "Make a free browser sketch of any asset type.", "index.html"],
+        ["Pricing", `${E.trial}, then ${E.priceWithCode} a year.`, "index.html#pricing"],
+        ["Legal & policies", "Terms, privacy, refunds, cancellation and more.", "legal/index.html"],
+        ["Contact", `Email ${E.email}.`, "contact.html"]
+      ]
+    },
     legal: {
       eyebrow: "Legal",
       hubTitle: "Legal & policies",
@@ -546,6 +557,17 @@ export const STRINGS = {
         ["個人情報に関するご請求", "開示、訂正、削除、オプトアウトのご請求。", "legal/privacy.html"],
         ["著作権侵害の通知", "件名を「DMCA Notice」としてお送りください。", "legal/dmca.html"],
         ["アクセシビリティに関するご意見", "サイトやワークスペースで利用しにくい点があればお知らせください。", "legal/accessibility.html"]
+      ]
+    },
+    notFound: {
+      eyebrow: "エラー 404",
+      title: "ページが見つかりません",
+      sub: "リンクが切れているか、ページが移動しました。下のリンクからリスポーンしてください。",
+      links: [
+        ["ホーム", "どの種類の素材も、ブラウザで無料スケッチできます。", "index.html"],
+        ["料金", `${J.trial}のあと${J.pricePerYear}。`, "index.html#pricing"],
+        ["規約・ポリシー", "利用規約、プライバシー、返金、解約など。", "legal/index.html"],
+        ["お問い合わせ", `${J.email} までメールでどうぞ。`, "contact.html"]
       ]
     },
     legal: {

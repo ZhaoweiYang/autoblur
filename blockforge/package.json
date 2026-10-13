@@ -1,0 +1,15 @@
+{
+  "name": "blockgoer-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Blockgoer marketing site: static, bilingual (EN/JA), built for Cloudflare Pages.",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node src/build.mjs",
+    "check": "node src/lib/check-legal.mjs && node src/lib/check-site.mjs",
+    "preview": "node tools/serve.mjs",
+    "fonts": "node tools/fetch-fonts.mjs && node src/build.mjs",
+    "cf:dev": "npx wrangler@4 pages dev site",
+    "cf:deploy": "npx wrangler@4 pages deploy site --project-name blockgoer"
+  }
+}

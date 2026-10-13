@@ -10,9 +10,23 @@ export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", 
  * The Japanese twin lives under "ja/". */
 export const langPath = (lang, enPath) => (lang === "ja" ? `ja/${enPath}` : enPath);
 const depthOf = (path) => path.split("/").length - 1;
-export const relFrom = (fromPath) => (to) => "../".repeat(depthOf(fromPath)) + to;
-/* Links to directory index pages use the directory URL (matches canonical). */
-export const pretty = (href) => href.replace(/(^|\/)index\.html(?=$|#)/, "$1") || "./";
+/* 404 pages are served at any URL, so they link from the site root. */
+export const relFrom = (fromPath) => /(^|\/)404\.html$/.test(fromPath)
+  ? (to) => "/" + to
+  : (to) => "../".repeat(depthOf(fromPath)) + to;
+/* Links use the final public URL: directory URLs for index pages and, with
+ * SITE.cleanUrls, no ".html" (matches canonical and avoids host redirects). */
+export const pretty = (href) => {
+  const [path, hash] = href.split(/(?=#)/);
+  let p = path.replace(/(^|\/)index\.html$/, "$1");
+  if (SITE.cleanUrls) p = p.replace(/\.html$/, "");
+  return (p || (path ? "./" : "")) + (hash || "");
+};
+
+/* The one inline script: applies the saved theme before first paint and sends
+ * visitors to their saved language. Identical on every page, so the
+ * Content-Security-Policy allows it by hash (see build.mjs). */
+export const BOOT_JS = `(function(){var d=document.documentElement;try{var t=localStorage.getItem("blockgoer-theme");if(t)d.setAttribute("data-theme",t);}catch(e){}try{var a=d.getAttribute("data-alt");if(!a||/[?&]lang=/.test(location.search))return;var p=localStorage.getItem("blockgoer-lang");if(p&&p!==d.lang)location.replace(a+location.hash);}catch(e){}})();`;
 
 export const LOGO = `<svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fb923c"/><rect x="8" y="7" width="7" height="18" rx="2" fill="#141418"/><rect x="15" y="15" width="10" height="10" rx="2" fill="#141418"/><rect x="18" y="18" width="4" height="4" rx="1" fill="#fb923c"/></svg>`;
 
@@ -24,18 +38,17 @@ function head({ lang, enPath, title, description, ogType, jsonld, noindex }) {
   const rel = relFrom(path);
   const ogImg = abs(`assets/img/og-${lang}.png`);
   const altLang = lang === "ja" ? "en" : "ja";
-  const altHref = pretty(rel(langPath(altLang, enPath)));
   return `<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="robots" content="${noindex ? "noindex, follow" : "index, follow, max-image-preview:large"}">
-<link rel="canonical" href="${url}">
+${noindex ? "" : `<link rel="canonical" href="${url}">
 <link rel="alternate" hreflang="en" href="${enUrl}">
 <link rel="alternate" hreflang="ja" href="${jaUrl}">
 <link rel="alternate" hreflang="x-default" href="${enUrl}">
-<meta property="og:type" content="${ogType || "website"}">
+`}<meta property="og:type" content="${ogType || "website"}">
 <meta property="og:site_name" content="${SITE.brand}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
@@ -63,8 +76,7 @@ function head({ lang, enPath, title, description, ogType, jsonld, noindex }) {
 <link rel="manifest" href="${rel("site.webmanifest")}">
 ${(lang === "ja" ? ["zen-kaku-900-ja-head.woff2"] : ["wix-madefor-display-latin.woff2", "wix-madefor-text-latin.woff2"]).map((f) => `<link rel="preload" href="${rel(`assets/fonts/${f}`)}" as="font" type="font/woff2" crossorigin>`).join("\n")}
 <link rel="stylesheet" href="${rel("assets/css/style.css")}">
-<script>(function(){try{var t=localStorage.getItem("blockgoer-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}
-try{if(/[?&]lang=/.test(location.search))return;var cur="${lang}",p=localStorage.getItem("blockgoer-lang");if(p&&p!==cur){location.replace(${JSON.stringify(altHref)}+location.hash);}}catch(e){}})();</script>
+<script>${BOOT_JS}</script>
 <script type="application/ld+json">${graph([organization(), website(lang), ...(jsonld || [])])}</script>
 </head>`;
 }
@@ -75,7 +87,8 @@ function header({ lang, enPath, isHome }) {
   const rel = relFrom(path);
   const home = rel(langPath(lang, "index.html"));
   const sec = (id) => (isHome ? `#${id}` : `${home}#${id}`);
-  const enHref = rel(enPath), jaHref = rel(`ja/${enPath}`);
+  const twin = enPath === "404.html" ? "index.html" : enPath;
+  const enHref = rel(twin), jaHref = rel(`ja/${twin}`);
   return `<a class="skiplink" href="#main">${S.nav.skip}</a>
 <header class="topbar" id="topbar">
   <div class="topbar-in">
@@ -151,7 +164,7 @@ function footer({ lang, enPath, legal, isHome }) {
 </footer>`;
 }
 
-const prettyLinks = (html) => html.replace(/href="([^"#:]*?)index\.html(#[^"]*)?"/g, (m, dir, hash) => `href="${dir || "./"}${hash || ""}"`);
+const prettyLinks = (html) => html.replace(/href="([^":]+)"/g, (m, href) => `href="${pretty(href)}"`);
 
 export function page(opts) {
   const { lang, enPath, bodyClass = "", main, scripts = [] } = opts;
@@ -162,8 +175,9 @@ export function page(opts) {
   const all = runtimeStrings(lang);
   const t = bodyClass === "home" ? all : bodyClass === "page-checkout" ? { checkout: all.checkout } : {};
   const runtime = { lang, checkoutUrl: SITE.checkoutUrl, t };
+  const alt = opts.noindex ? "" : ` data-alt="${pretty(rel(langPath(lang === "ja" ? "en" : "ja", enPath)))}"`;
   return prettyLinks(`<!DOCTYPE html>
-<html lang="${S.htmlLang}">
+<html lang="${S.htmlLang}"${alt}>
 ${head(opts)}
 <body class="${["lang-" + lang, bodyClass].filter(Boolean).join(" ")}">
 ${header(opts)}
@@ -171,7 +185,7 @@ ${header(opts)}
 ${main}
 </main>
 ${footer(opts)}
-<script>window.BF=${JSON.stringify(runtime).replace(/</g, "\\u003c")};</script>
+<script type="application/json" id="bf-data">${JSON.stringify(runtime).replace(/</g, "\\u003c")}</script>
 ${scripts.map((s) => `<script src="${rel(`assets/js/${s}`)}" defer></script>`).join("\n")}
 </body>
 </html>

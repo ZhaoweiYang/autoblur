@@ -1,0 +1,5 @@
+# Cloudflare Pages project settings (used by `wrangler pages dev/deploy` and by
+# Git-connected builds). Build command for Git builds: npm run build
+name = "blockgoer"
+pages_build_output_dir = "site"
+compatibility_date = "2026-09-01"

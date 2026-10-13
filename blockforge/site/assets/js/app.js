@@ -10,7 +10,9 @@ const store = {
 get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
 set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } }
 };
-const BF = window.BF || { lang: "en", t: {} };
+const BF = (() => {
+try { return JSON.parse(document.getElementById("bf-data").textContent); } catch (e) { return { lang: "en", t: {} }; }
+})();
 const T = BF.t;
 document.documentElement.classList.add("js");
 const TOOL_META = {

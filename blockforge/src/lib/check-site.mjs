@@ -24,6 +24,7 @@ for (const file of html) {
   const src = readFileSync(file, "utf8");
   const rel = relative(site, file);
   const isJa = rel.startsWith("ja/");
+  const is404 = /(^|\/)404\.html$/.test(rel);
   // --- head tags
   const title = one(src, /<title>([^<]*)<\/title>/);
   if (!title) bad(file, "missing <title>");
@@ -33,8 +34,12 @@ for (const file of html) {
   else if (!isJa && (desc.length < 70 || desc.length > 175)) bad(file, `description length ${desc.length}`);
   for (const p of ["og:title", "og:description", "og:url", "og:image", "og:type", "og:site_name", "og:locale"]) if (!src.includes(`property="${p}"`)) bad(file, `missing ${p}`);
   for (const n of ["twitter:card", "twitter:title", "twitter:description", "twitter:image"]) if (!src.includes(`name="${n}"`)) bad(file, `missing ${n}`);
-  if (!/<link rel="canonical" href="https:\/\//.test(src)) bad(file, "missing canonical");
-  for (const h of ["en", "ja", "x-default"]) if (!src.includes(`hreflang="${h}"`)) bad(file, `missing hreflang ${h}`);
+  if (is404) {
+    if (!/<meta name="robots" content="noindex/.test(src)) bad(file, "404 page must be noindex");
+  } else {
+    if (!/<link rel="canonical" href="https:\/\//.test(src)) bad(file, "missing canonical");
+    for (const h of ["en", "ja", "x-default"]) if (!src.includes(`hreflang="${h}"`)) bad(file, `missing hreflang ${h}`);
+  }
   if (!new RegExp(`<html lang="${isJa ? "ja" : "en"}"`).test(src)) bad(file, "wrong html lang");
   if (/<h1[\s>]/g.test(src) === false) bad(file, "no <h1>");
   if ((src.match(/<h1[\s>]/g) || []).length > 1) bad(file, "more than one <h1>");
@@ -64,14 +69,17 @@ for (const file of html) {
   if (!text.includes(COMPANY.email)) bad(file, "support email not visible");
   if (!text.includes(COMPANY.street)) bad(file, "address not visible");
   if (!text.includes(SITE.statementDescriptor)) bad(file, "statement descriptor not visible");
-  for (const p of POLICIES) if (!src.includes(`legal/${p}.html"`)) bad(file, `footer/page lacks link to ${p}`);
+  for (const p of POLICIES) if (!new RegExp(`legal/${p}(\\.html)?"`).test(src)) bad(file, `footer/page lacks link to ${p}`);
   // --- links + anchors
   for (const [, href] of src.matchAll(/\shref="([^"]+)"/g)) {
     if (/^(https?:|mailto:|tel:|data:)/.test(href)) continue;
     if (/index\.html(#|$)/.test(href)) bad(file, `link to index.html instead of directory URL: ${href}`);
-    const [path, hash] = href.split("#");
-    let target = path ? resolve(dirname(file), path) : file;
+    if (SITE.cleanUrls && /\.html(#|$)/.test(href)) bad(file, `link with .html (host would redirect): ${href}`);
+    const [pathq, hash] = href.split("#");
+    const path = pathq.split("?")[0];
+    let target = !path ? file : path.startsWith("/") ? join(site, path) : resolve(dirname(file), path);
     if (existsSync(target) && statSync(target).isDirectory()) target = join(target, "index.html");
+    else if (!existsSync(target) && existsSync(target + ".html")) target += ".html";
     if (!existsSync(target)) { bad(file, `broken link ${href}`); continue; }
     if (hash && target.endsWith(".html")) {
       const t = readFileSync(target, "utf8");
@@ -80,7 +88,8 @@ for (const file of html) {
   }
   for (const [, s] of src.matchAll(/\ssrc="([^"]+)"/g)) {
     if (/^(https?:|data:)/.test(s)) continue;
-    if (!existsSync(resolve(dirname(file), s))) bad(file, `missing asset ${s}`);
+    const p = s.split("?")[0];
+    if (!existsSync(p.startsWith("/") ? join(site, p) : resolve(dirname(file), p))) bad(file, `missing asset ${s}`);
   }
 }
 
@@ -88,7 +97,7 @@ for (const file of html) {
 const home = readFileSync(join(site, "index.html"), "utf8"), homeJa = readFileSync(join(site, "ja", "index.html"), "utf8");
 if (!visibleText(home).includes("US$99")) problems.push("index.html: US$99 not visible");
 if (!visibleText(homeJa).includes("¥16,999")) problems.push("ja/index.html: ¥16,999 not visible");
-for (const f of ["sitemap.xml", "robots.txt", "site.webmanifest", "assets/img/og-en.png", "assets/img/og-ja.png", "assets/img/logo-512.png"]) if (!existsSync(join(site, f))) problems.push(`missing ${f}`);
+for (const f of ["sitemap.xml", "robots.txt", "site.webmanifest", "_headers", "404.html", "ja/404.html", "assets/img/og-en.png", "assets/img/og-ja.png", "assets/img/logo-512.png"]) if (!existsSync(join(site, f))) problems.push(`missing ${f}`);
 
 console.log(`Checked ${html.length} pages.`);
 if (problems.length) { console.log(problems.map((p) => "✗ " + p).join("\n")); process.exit(1); }

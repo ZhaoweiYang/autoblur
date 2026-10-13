@@ -12,6 +12,10 @@ export const SITE = {
   // Set this to your payment processor's hosted checkout / payment link.
   // Left empty, the button opens an email to support instead.
   checkoutUrl: "",
+  // Extensionless URLs ("/legal/terms"), matching how Cloudflare Pages serves
+  // HTML (it 308-redirects "/legal/terms.html" to "/legal/terms"). Links,
+  // canonicals, hreflang and the sitemap all use the final address.
+  cleanUrls: true,
   // Exactly what appears on the customer's card statement.
   statementDescriptor: "BLOCKGOER",
   // Card brands shown as accepted payment methods (order = display order).

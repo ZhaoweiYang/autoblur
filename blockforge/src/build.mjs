@@ -2,13 +2,15 @@
  *   node src/build.mjs        → writes the deployable site to ./site
  * No dependencies; Node 18+. */
 import { mkdirSync, rmSync, writeFileSync, readFileSync, readdirSync, cpSync, existsSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, relative } from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { SITE } from "./config.mjs";
 import { homePage } from "./pages/home.mjs";
-import { checkoutPage, contactPage, legalPage, legalHub } from "./pages/other.mjs";
+import { checkoutPage, contactPage, legalPage, legalHub, notFoundPage } from "./pages/other.mjs";
 import { checkModule } from "./lib/check-legal.mjs";
-import { langPath } from "./lib/layout.mjs";
+import { langPath, BOOT_JS } from "./lib/layout.mjs";
+import { abs } from "./lib/schema.mjs";
 import { headChars } from "./lib/ja-head.mjs";
 import { cardSprite } from "./lib/cards.mjs";
 import { minifyHtml, minifyCss, minifyJs } from "./lib/minify.mjs";
@@ -48,6 +50,7 @@ for (const lang of LANGS) {
   add("contact.html", contactPage(lang, legal), "0.6");
   add("legal/index.html", legalHub(lang, legal), "0.5");
   for (const m of legal) add(`legal/${m.slug}.html`, legalPage(lang, m, legal), "0.4");
+  write(langPath(lang, "404.html"), notFoundPage(lang, legal)); // not in the sitemap
 }
 
 // 3. Assets.
@@ -56,8 +59,21 @@ write("assets/img/cards.svg", cardSprite());
 for (const f of readdirSync(join(out, "assets", "css"))) { const p = join(out, "assets", "css", f); writeFileSync(p, minifyCss(readFileSync(p, "utf8"))); }
 for (const f of readdirSync(join(out, "assets", "js"))) { const p = join(out, "assets", "js", f); writeFileSync(p, minifyJs(readFileSync(p, "utf8"))); }
 
+// Fingerprint assets with ?v=<content hash> so browsers can cache them for a
+// year (see _headers) and still pick up every change. Fonts first, because
+// the stylesheet references them.
+const hashOf = (p) => createHash("sha256").update(readFileSync(join(out, p))).digest("hex").slice(0, 10);
+const version = {};
+for (const f of readdirSync(join(out, "assets", "fonts"))) version[`assets/fonts/${f}`] = hashOf(`assets/fonts/${f}`);
+const cssFile = join(out, "assets", "css", "style.css");
+writeFileSync(cssFile, readFileSync(cssFile, "utf8").replace(/url\(\.\.\/fonts\/([\w.-]+)\)/g, (m, f) => `url(../fonts/${f}?v=${version[`assets/fonts/${f}`]})`));
+for (const p of ["assets/css/style.css", "assets/js/app.js", "assets/js/gen.js", "assets/img/cards.svg"]) version[p] = hashOf(p);
+const htmlFiles = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? htmlFiles(join(dir, e.name)) : e.name.endsWith(".html") ? [join(dir, e.name)] : []);
+for (const file of htmlFiles(out)) {
+  writeFileSync(file, readFileSync(file, "utf8").replace(/(assets\/(?:css|js|img|fonts)\/[\w.-]+)(?=["#])/g, (m, p) => (version[p] ? `${p}?v=${version[p]}` : p)));
+}
+
 // 4. Crawler files.
-const abs = (p) => `${SITE.siteUrl}/${p.replace(/(^|\/)index\.html$/, "$1")}`;
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${pages.flatMap(({ enPath, priority }) => LANGS.map((lang) => `  <url>
@@ -78,7 +94,49 @@ write("site.webmanifest", JSON.stringify({
   icons: [{ src: "assets/img/logo-192.png", sizes: "192x192", type: "image/png" }, { src: "assets/img/logo-512.png", sizes: "512x512", type: "image/png" }]
 }, null, 2));
 
-console.log(`Built ${pages.length * LANGS.length} pages → ${out}`);
+// 5. Cloudflare Pages headers: security headers, a Content-Security-Policy
+// that only allows this site's own files (plus the hashed boot script), long
+// caching for fingerprinted assets, and noindex on *.pages.dev copies.
+const bootHash = createHash("sha256").update(BOOT_JS).digest("base64");
+const csp = [
+  "default-src 'self'",
+  `script-src 'self' 'sha256-${bootHash}'`,
+  "style-src 'self'",
+  "img-src 'self' data: blob:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "media-src 'self' blob: data:",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "upgrade-insecure-requests"
+].join("; ");
+write("_headers", `/*
+  Content-Security-Policy: ${csp}
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+
+/assets/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/img/*
+  Cache-Control: public, max-age=604800
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+`);
+
+console.log(`Built ${pages.length * LANGS.length} pages + 404 pages → ${out}`);
 const subsetFile = join(here, "assets", "fonts", "ja-head-chars.txt");
 const subset = existsSync(subsetFile) ? new Set(readFileSync(subsetFile, "utf8").trim()) : new Set();
 const missing = [...jaHead].filter((c) => !subset.has(c));

@@ -211,3 +211,31 @@ export function legalHub(lang, legal) {
     main
   });
 }
+
+/* ---------------- 404 ----------------
+ * Cloudflare Pages serves the nearest 404.html (with status 404) for unknown
+ * URLs, so these pages link from the site root and are kept out of search. */
+export function notFoundPage(lang, legal) {
+  const S = STRINGS[lang], N = S.notFound;
+  const enPath = "404.html";
+  const rel = relFrom(langPath(lang, enPath));
+  const main = `
+<section class="inner">
+  <div class="wrap">
+    <p class="kick">${esc(N.eyebrow)}</p>
+    <h1 class="head-xl">${esc(N.title)}</h1>
+    <p class="lede-text">${esc(N.sub)}</p>
+    <ul class="rows rows-links">${N.links.map(([t, d, href]) => `<li><a class="row" href="${rel(langPath(lang, href))}"><span class="row-main"><span class="row-name">${esc(t)}</span><span class="row-desc">${esc(d)}</span></span><span class="circ" aria-hidden="true"></span></a></li>`).join("")}</ul>
+  </div>
+</section>`;
+  return page({
+    lang, enPath, legal,
+    title: `${N.title} — Blockgoer`,
+    description: N.sub,
+    bodyClass: "page-404",
+    noindex: true,
+    jsonld: [],
+    scripts: ["app.js"],
+    main
+  });
+}

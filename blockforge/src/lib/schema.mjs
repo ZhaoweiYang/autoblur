@@ -9,7 +9,11 @@ const PRODUCT_ID = (lang) => `${langRoot(lang)}#product`;
 const RETURN_ID = (lang) => `${langRoot(lang)}#return-policy`;
 const OFFER_ID = (lang) => `${langRoot(lang)}#offer`;
 
-const abs = (path) => `${SITE.siteUrl}/${path.replace(/^\/+/, "").replace(/(^|\/)index\.html$/, "$1")}`;
+export const urlPath = (path) => {
+  const p = path.replace(/^\/+/, "").replace(/(^|\/)index\.html$/, "$1");
+  return SITE.cleanUrls ? p.replace(/\.html$/, "") : p;
+};
+const abs = (path) => `${SITE.siteUrl}/${urlPath(path)}`;
 
 export function organization() {
   return {
