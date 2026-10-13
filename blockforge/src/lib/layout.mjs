@@ -1,0 +1,193 @@
+/* Shared page shell: <head> with SEO/Open Graph/JSON-LD, header, footer. */
+import { SITE, FACTS } from "../config.mjs";
+import { STRINGS, runtimeStrings } from "../strings.mjs";
+import { cardBadges } from "./cards.mjs";
+import { organization, website, graph, abs } from "./schema.mjs";
+
+export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+/* Paths are written relative to the English root ("legal/refund.html").
+ * The Japanese twin lives under "ja/". */
+export const langPath = (lang, enPath) => (lang === "ja" ? `ja/${enPath}` : enPath);
+const depthOf = (path) => path.split("/").length - 1;
+/* 404 pages are served at any URL, so they link from the site root. */
+export const relFrom = (fromPath) => /(^|\/)404\.html$/.test(fromPath)
+  ? (to) => "/" + to
+  : (to) => "../".repeat(depthOf(fromPath)) + to;
+/* Links use the final public URL: directory URLs for index pages and, with
+ * SITE.cleanUrls, no ".html" (matches canonical and avoids host redirects). */
+export const pretty = (href) => {
+  const [path, hash] = href.split(/(?=#)/);
+  let p = path.replace(/(^|\/)index\.html$/, "$1");
+  if (SITE.cleanUrls) p = p.replace(/\.html$/, "");
+  return (p || (path ? "./" : "")) + (hash || "");
+};
+
+/* The one inline script: applies the saved theme before first paint and sends
+ * visitors to their saved language. Identical on every page, so the
+ * Content-Security-Policy allows it by hash (see build.mjs). */
+export const BOOT_JS = `(function(){var d=document.documentElement;try{var t=localStorage.getItem("blockgoer-theme");if(t)d.setAttribute("data-theme",t);}catch(e){}try{var a=d.getAttribute("data-alt");if(!a||/[?&]lang=/.test(location.search))return;var p=localStorage.getItem("blockgoer-lang");if(p&&p!==d.lang)location.replace(a+location.hash);}catch(e){}})();`;
+
+export const LOGO = `<svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fb923c"/><rect x="8" y="7" width="7" height="18" rx="2" fill="#141418"/><rect x="15" y="15" width="10" height="10" rx="2" fill="#141418"/><rect x="18" y="18" width="4" height="4" rx="1" fill="#fb923c"/></svg>`;
+
+function head({ lang, enPath, title, description, ogType, jsonld, noindex }) {
+  const S = STRINGS[lang];
+  const path = langPath(lang, enPath);
+  const url = abs(path);
+  const enUrl = abs(enPath), jaUrl = abs(`ja/${enPath}`);
+  const rel = relFrom(path);
+  const ogImg = abs(`assets/img/og-${lang}.png`);
+  const altLang = lang === "ja" ? "en" : "ja";
+  return `<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(description)}">
+<meta name="robots" content="${noindex ? "noindex, follow" : "index, follow, max-image-preview:large"}">
+${noindex ? "" : `<link rel="canonical" href="${url}">
+<link rel="alternate" hreflang="en" href="${enUrl}">
+<link rel="alternate" hreflang="ja" href="${jaUrl}">
+<link rel="alternate" hreflang="x-default" href="${enUrl}">
+`}<meta property="og:type" content="${ogType || "website"}">
+<meta property="og:site_name" content="${SITE.brand}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${ogImg}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(S.meta.ogAlt)}">
+<meta property="og:locale" content="${S.ogLocale}">
+<meta property="og:locale:alternate" content="${STRINGS[altLang].ogLocale}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${ogImg}">
+<meta name="twitter:image:alt" content="${esc(S.meta.ogAlt)}">
+<meta name="application-name" content="${SITE.brand}">
+<meta name="author" content="${FACTS.en.company}">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f9f8f6">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="${rel("assets/img/favicon.svg")}" type="image/svg+xml">
+<link rel="icon" href="${rel("assets/img/favicon-32.png")}" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="${rel("assets/img/apple-touch-icon.png")}">
+<link rel="manifest" href="${rel("site.webmanifest")}">
+${(lang === "ja" ? ["zen-kaku-900-ja-head.woff2"] : ["wix-madefor-display-latin.woff2", "wix-madefor-text-latin.woff2"]).map((f) => `<link rel="preload" href="${rel(`assets/fonts/${f}`)}" as="font" type="font/woff2" crossorigin>`).join("\n")}
+<link rel="stylesheet" href="${rel("assets/css/style.css")}">
+<script>${BOOT_JS}</script>
+<script type="application/ld+json">${graph([organization(), website(lang), ...(jsonld || [])])}</script>
+</head>`;
+}
+
+function header({ lang, enPath, isHome }) {
+  const S = STRINGS[lang];
+  const path = langPath(lang, enPath);
+  const rel = relFrom(path);
+  const home = rel(langPath(lang, "index.html"));
+  const sec = (id) => (isHome ? `#${id}` : `${home}#${id}`);
+  const twin = enPath === "404.html" ? "index.html" : enPath;
+  const enHref = rel(twin), jaHref = rel(`ja/${twin}`);
+  return `<a class="skiplink" href="#main">${S.nav.skip}</a>
+<header class="topbar" id="topbar">
+  <div class="topbar-in">
+    <a class="wordmark" href="${home}" aria-label="${S.nav.homeLabel}">${LOGO}<span>blockgoer</span></a>
+    <nav class="menu" id="navLinks" aria-label="${S.nav.mainNav}">
+      <a href="${sec("assets")}">${S.nav.assets}</a>
+      <a href="${sec("process")}">${S.nav.process}</a>
+      <a href="${sec("prompts")}">${S.nav.prompts}</a>
+      <a href="${sec("pricing")}">${S.nav.pricing}</a>
+      <a href="${sec("faq")}">${S.nav.faq}</a>
+      <a href="${rel(langPath(lang, "contact.html"))}">${S.nav.contact}</a>
+    </nav>
+    <div class="topbar-tools">
+      <div class="langpick" role="group" aria-label="${S.nav.lang}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 2.6 15.2 0 18M12 3c-2.6 2.8-2.6 15.2 0 18"/></svg>
+        <a href="${enHref}" hreflang="en" lang="en" data-lang="en"${lang === "en" ? ' aria-current="true"' : ""}>EN</a>
+        <a href="${jaHref}" hreflang="ja" lang="ja" data-lang="ja"${lang === "ja" ? ' aria-current="true"' : ""}>日本語</a>
+      </div>
+      <button class="tool-btn" id="themeBtn" type="button" aria-label="${S.nav.theme}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      </button>
+      <a class="pill pill-ink topbar-cta" href="${rel(langPath(lang, "checkout.html"))}">${S.nav.cta}</a>
+      <button class="tool-btn menu-btn" id="burger" type="button" aria-label="${S.nav.menu}" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>`;
+}
+
+function footer({ lang, enPath, legal, isHome }) {
+  const S = STRINGS[lang];
+  const F = FACTS[lang];
+  const path = langPath(lang, enPath);
+  const rel = relFrom(path);
+  const home = rel(langPath(lang, "index.html"));
+  const sec = (id) => (isHome ? `#${id}` : `${home}#${id}`);
+  const policies = legal
+    .map((m) => `<li><a href="${rel(langPath(lang, `legal/${m.slug}.html`))}">${esc(m[lang].nav)}</a></li>`)
+    .join("");
+  return `<footer class="base">
+  <div class="base-in">
+    <div class="base-top">
+      <div class="base-brand">
+        <a class="wordmark" href="${home}">${LOGO}<span>blockgoer</span></a>
+        <p class="base-tag">${esc(F.summary)}</p>
+        <p class="base-op">${S.footer.operatedBy} <strong>${F.company}</strong></p>
+        <address>${F.company}<br>${FACTS.en.addressLines.join("<br>")}<br><a href="mailto:${F.email}">${F.email}</a></address>
+      </div>
+      <div class="base-cols">
+        <section>
+          <h2>${S.footer.product}</h2>
+          <ul>
+            <li><a href="${sec("assets")}">${S.nav.assets}</a></li>
+            <li><a href="${sec("process")}">${S.nav.process}</a></li>
+            <li><a href="${sec("pricing")}">${S.nav.pricing}</a></li>
+            <li><a href="${sec("faq")}">${S.nav.faq}</a></li>
+            <li><a href="${rel(langPath(lang, "checkout.html"))}">${S.nav.cta}</a></li>
+            <li><a href="${rel(langPath(lang, "contact.html"))}">${S.footer.contact}</a></li>
+          </ul>
+        </section>
+        <section class="base-policies">
+          <h2><a href="${rel(langPath(lang, "legal/index.html"))}">${S.footer.policies}</a></h2>
+          <ul>${policies}</ul>
+        </section>
+      </div>
+    </div>
+    <div class="base-pay">
+      <span>${S.footer.pay}</span>
+      ${cardBadges(SITE.cards, S.pricing.cardsTitle, rel("assets/img/cards.svg"))}
+      <small>${esc(S.pricing.descriptor)}</small>
+    </div>
+    <p class="base-legal">${S.footer.copy} ${S.footer.notAffiliated}</p>
+  </div>
+</footer>`;
+}
+
+const prettyLinks = (html) => html.replace(/href="([^":]+)"/g, (m, href) => `href="${pretty(href)}"`);
+
+export function page(opts) {
+  const { lang, enPath, bodyClass = "", main, scripts = [] } = opts;
+  const S = STRINGS[lang];
+  const path = langPath(lang, enPath);
+  const rel = relFrom(path);
+  // Each page carries only the runtime strings its script uses.
+  const all = runtimeStrings(lang);
+  const t = bodyClass === "home" ? all : bodyClass === "page-checkout" ? { checkout: all.checkout } : {};
+  const runtime = { lang, checkoutUrl: SITE.checkoutUrl, t };
+  const alt = opts.noindex ? "" : ` data-alt="${pretty(rel(langPath(lang === "ja" ? "en" : "ja", enPath)))}"`;
+  return prettyLinks(`<!DOCTYPE html>
+<html lang="${S.htmlLang}"${alt}>
+${head(opts)}
+<body class="${["lang-" + lang, bodyClass].filter(Boolean).join(" ")}">
+${header(opts)}
+<main id="main">
+${main}
+</main>
+${footer(opts)}
+<script type="application/json" id="bf-data">${JSON.stringify(runtime).replace(/</g, "\\u003c")}</script>
+${scripts.map((s) => `<script src="${rel(`assets/js/${s}`)}" defer></script>`).join("\n")}
+</body>
+</html>
+`);
+}
